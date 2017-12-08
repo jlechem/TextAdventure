@@ -3,6 +3,7 @@
 
 Room::Room()
 {
+	_exits = make_unique<map<Directions, shared_ptr<Room>>>();
 }
 
 Room::~Room()
@@ -29,22 +30,17 @@ void Room::setDescription(string description)
 	_description = description;
 }
 
-vector<Directions> Room::getExits()
+unique_ptr<map<Directions, shared_ptr<Room>>> Room::getExits()
 {
-	return _exits;
+	return std::move(_exits);
 }
 
-void Room::setExits(vector<Directions> exits)
+void Room::setExits(unique_ptr<map<Directions, shared_ptr<Room>>> exits)
 {
-	_exits = exits;
+	_exits = std::move(exits);
 }
 
-void Room::addExit(Directions exit)
+void Room::addExit(Directions exit, shared_ptr<Room> room)
 {
-	_exits.push_back(exit);
-}
-
-void Room::removeExit(Directions exit)
-{
-	// TODO: find item in vector and remove it
+	(*_exits)[exit] = room;
 }

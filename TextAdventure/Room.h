@@ -14,14 +14,13 @@ public:
 	string getDescription();
 	void setDescription(string);
 
-	vector<Directions> getExits();
-	void setExits(vector<Directions>);
-	void addExit(Directions);
-	void removeExit(Directions);
+	unique_ptr<map<Directions, shared_ptr<Room>>> getExits();
+	void setExits(unique_ptr<map<Directions, shared_ptr<Room>>>);
+	void addExit(Directions, shared_ptr<Room>);
 
 private:
 	string _name;
 	string _description;
-	vector<Directions> _exits;
+	unique_ptr<map<Directions,shared_ptr<Room>>> _exits;
 
 };

@@ -12,20 +12,22 @@ public:
 	Player();
 	~Player();
 
-	vector<unique_ptr<Item>>* getInventory();
+	shared_ptr<vector<unique_ptr<Item>>> getInventory();
 	void addItem(unique_ptr<Item>);
 	unique_ptr<Item> dropItem(string);
 
-	vector<unique_ptr<Treasure>>* getTreasures();
+	shared_ptr<vector<unique_ptr<Treasure>>> getTreasures();
 	void addTreasure(unique_ptr<Treasure>);
 	unique_ptr<Treasure> dropTreasure(string);
 
-	void Move(Directions);
+	bool Move(Directions);
 
 private:
-	vector<unique_ptr<Item>>* _items;
+	shared_ptr<vector<unique_ptr<Item>>> _items;
 
-	vector<unique_ptr<Treasure>>* _treasures;
+	shared_ptr<vector<unique_ptr<Treasure>>> _treasures;
+
+	shared_ptr<Room> _currentRoom;
 
 	string _name;
 
