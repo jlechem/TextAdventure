@@ -1,0 +1,11 @@
+
+*.pdb
+*.exe
+*.ilk
+*.obj
+*.pch
+*.tlog
+*.log
+*.idb
+*.filters
+*.user
