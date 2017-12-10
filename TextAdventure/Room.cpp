@@ -30,6 +30,16 @@ void Room::setDescription(string description)
 	_description = description;
 }
 
+string Room::getShortDescription()
+{
+	return _shortDesctiption;
+}
+
+void Room::setShortDescription(string shortDescription)
+{
+	_shortDesctiption = shortDescription;
+}
+
 unique_ptr<map<Directions, shared_ptr<Room>>> Room::getExits()
 {
 	return std::move(_exits);

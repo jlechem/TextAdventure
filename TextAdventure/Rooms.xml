@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<Rooms>
+  <Room>
+    <Id>1</Id>
+    <Name>Room 1</Name>
+    <Description></Description>
+    <Exits>
+      <Exit>N</Exit>
+    </Exits>
+    <Items>
+      <Item>1</Item>
+      <Item>2</Item>
+    </Items>
+  </Room>
+  <Room>
+    <Id>1</Id>
+    <Name>Room 1</Name>
+    <Description></Description>
+    <Exits>
+      <Exit>S</Exit>
+    </Exits>
+  </Room>
+</Rooms>

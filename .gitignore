@@ -13,3 +13,4 @@
 .vs/TextAdventure/v15/.suo
 *.db
 *.opendb
+*.sqlite
