@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<Items>
+  <Item>
+    <Id>1</Id>
+    <Name>Stick</Name>
+    <Description>A small pointy stick.</Description>
+  </Item>
+  <Item>
+    <Id>2</Id>
+    <Name>Rock</Name>
+    <Description>A small black and very shiny rock.</Description>
+  </Item>
+</Items>

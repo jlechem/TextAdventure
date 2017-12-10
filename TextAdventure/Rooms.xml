@@ -5,19 +5,30 @@
     <Name>Room 1</Name>
     <Description></Description>
     <Exits>
-      <Exit>N</Exit>
+      <Exit>
+        <Direction>N</Direction>
+        <RoomId>1</RoomId>
+      </Exit>
     </Exits>
     <Items>
       <Item>1</Item>
       <Item>2</Item>
     </Items>
+    <Treasures />
   </Room>
   <Room>
     <Id>1</Id>
     <Name>Room 1</Name>
     <Description></Description>
     <Exits>
-      <Exit>S</Exit>
+      <Exit>
+        <Direction>S</Direction>
+        <RoomId>1</RoomId>
+      </Exit>
     </Exits>
+    <Items />
+    <Treasures>
+      <Treasure>1</Treasure>
+    </Treasures>
   </Room>
 </Rooms>
