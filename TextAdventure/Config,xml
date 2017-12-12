@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<config>
+  <Items>
+    <Item>
+      <Id>1</Id>
+      <Name>Stick</Name>
+      <Description>A small pointy stick.</Description>
+    </Item>
+    <Item>
+      <Id>2</Id>
+      <Name>Rock</Name>
+      <Description>A small black and very shiny rock.</Description>
+    </Item>
+  </Items>
+  <Treasures>
+    <Treasure>
+      <Id>1</Id>
+      <Name>Golden Egg</Name>
+      <Description>A egg laid by a golden goose.</Description>
+    </Treasure>
+  </Treasures>
+  <Rooms>
+    <Room>
+      <Id>1</Id>
+      <Name>Room 1</Name>
+      <Description></Description>
+      <Exits>
+        <Exit>
+          <Direction>N</Direction>
+          <RoomId>1</RoomId>
+        </Exit>
+      </Exits>
+      <Items>
+        <Item>1</Item>
+        <Item>2</Item>
+      </Items>
+      <Treasures />
+    </Room>
+    <Room>
+      <Id>1</Id>
+      <Name>Room 1</Name>
+      <Description></Description>
+      <Exits>
+        <Exit>
+          <Direction>S</Direction>
+          <RoomId>1</RoomId>
+        </Exit>
+      </Exits>
+      <Items />
+      <Treasures>
+        <Treasure>1</Treasure>
+      </Treasures>
+    </Room>
+  </Rooms>
+</config>

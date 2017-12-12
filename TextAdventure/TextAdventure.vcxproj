@@ -135,6 +135,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <Text Include="Config,xml" />
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
@@ -168,11 +169,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.dat" />
-  </ItemGroup>
-  <ItemGroup>
-    <Xml Include="Items.xml" />
-    <Xml Include="Rooms.xml" />
-    <Xml Include="Treasures.xml" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
