@@ -1,5 +1,10 @@
 <?xml version="1.0"?>
 <config>
+  <GameData>
+    <Name>Justins Text Adventure</Name>
+    <Version>1.0</Version>
+    
+  </GameData>
   <Items>
     <Item>
       <Id>1</Id>
@@ -23,11 +28,11 @@
     <Room>
       <Id>1</Id>
       <Name>Room 1</Name>
-      <Description></Description>
+      <Description>A small brown room.</Description>
       <Exits>
         <Exit>
           <Direction>N</Direction>
-          <RoomId>1</RoomId>
+          <RoomId>2</RoomId>
         </Exit>
       </Exits>
       <Items>
@@ -37,9 +42,9 @@
       <Treasures />
     </Room>
     <Room>
-      <Id>1</Id>
-      <Name>Room 1</Name>
-      <Description></Description>
+      <Id>2</Id>
+      <Name>Room 2</Name>
+      <Description>A small green room.</Description>
       <Exits>
         <Exit>
           <Direction>S</Direction>
