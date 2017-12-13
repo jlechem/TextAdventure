@@ -85,25 +85,21 @@ void LoadRooms(vector<shared_ptr<Room>> &rooms, vector<unique_ptr<Item>> &items,
 
 void LoadVerbs(unique_ptr<Command> &command)
 {
-	// TODO: load from the XML file
-	command->getVerbs()->push_back("north");
-	command->getVerbs()->push_back("n");
-	command->getVerbs()->push_back("south");
-	command->getVerbs()->push_back("s");
-	command->getVerbs()->push_back("look");
-	command->getVerbs()->push_back("l");
-	command->getVerbs()->push_back("east");
-	command->getVerbs()->push_back("e");
-	command->getVerbs()->push_back("w");
-	command->getVerbs()->push_back("west");
-	command->getVerbs()->push_back("take");
-	command->getVerbs()->push_back("drop");
-	command->getVerbs()->push_back("exits");
-	command->getVerbs()->push_back("take");
-	command->getVerbs()->push_back("t");
-	command->getVerbs()->push_back("quit");
-	command->getVerbs()->push_back("q");
-	command->getVerbs()->push_back("exit");
+	// load from the verbs.dat file
+	string verb;
+
+	ifstream inputFile("verbs.dat", ifstream::in);
+
+	if (inputFile.is_open())
+	{
+		while (inputFile >> verb)
+		{
+			command->getVerbs()->push_back(verb);
+		}
+	}
+
+	inputFile.close();
+
 }
 
 void LoadItems(vector<unique_ptr<Item>> &items)

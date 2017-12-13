@@ -37,9 +37,6 @@ public:
 	void setExits(map<Directions, shared_ptr<Room>>&);
 	void addExit(Directions, shared_ptr<Room>);
 
-	void generateItemString();
-	void generateTreasureString();
-
 	string getItems();
 	string getTreasures();
 
@@ -57,7 +54,8 @@ private:
 	map<Directions,shared_ptr<Room>> _exits;
 
 	void generateExitString();
-
+	void generateItemString();
+	void generateTreasureString();
 	string convertDirectionToString(Directions);
 
 };

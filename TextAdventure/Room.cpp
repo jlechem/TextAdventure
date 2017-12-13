@@ -60,27 +60,37 @@ void Room::setShortDescription(string shortDescription)
 void Room::addItem(unique_ptr<Item> item)
 {
 	_items.push_back(std::move(item));
+	generateItemString();
 }
 
 void Room::removeItem(string itemName)
 {
+	// TODO: remove item from vector
+	generateItemString();
 }
 
 void Room::removeItem(unique_ptr<Item> item)
 {
+	// TODO: remove item from vector
+	generateItemString();
 }
 
 void Room::addTreasure(unique_ptr<Treasure> treasure)
 {
 	_treasures.push_back(std::move(treasure));
+	generateTreasureString();
 }
 
 void Room::removeTreasure(string treasureName)
 {
+	// TODO: remove treasure from vector
+	generateTreasureString();
 }
 
 void Room::removeTreasure(unique_ptr<Treasure> treasure)
 {
+	// TODO: remove treasure from vector
+	generateTreasureString();
 }
 
 string Room::getExits()
