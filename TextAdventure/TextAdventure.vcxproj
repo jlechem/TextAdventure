@@ -140,6 +140,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Directions.h" />
+    <ClInclude Include="GameSettings.h" />
     <ClInclude Include="Helpers.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="ItemBase.h" />
@@ -154,6 +155,7 @@
     <ClInclude Include="Treasure.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="GameSettings.cpp" />
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="ItemBase.cpp" />
     <ClCompile Include="Player.cpp" />

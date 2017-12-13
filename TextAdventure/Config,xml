@@ -3,8 +3,13 @@
   <GameData>
     <Name>Justins Text Adventure</Name>
     <Version>1.0</Version>
-    
+    <DisplayIntroduction>true</DisplayIntroduction>
+    <Introduction>Test intro.</Introduction>
   </GameData>
+  <Player>
+    <Name>Justin</Name>
+    <SaveFile>save.dat</SaveFile>
+  </Player>
   <Items>
     <Item>
       <Id>1</Id>
@@ -14,7 +19,7 @@
     <Item>
       <Id>2</Id>
       <Name>Rock</Name>
-      <Description>A small black and very shiny rock.</Description>
+      <Description>A small and very shiny black.</Description>
     </Item>
   </Items>
   <Treasures>
