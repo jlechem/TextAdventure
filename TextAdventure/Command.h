@@ -13,6 +13,8 @@ public:
 	void setCommand(string);
 	string getCommand();
 
+	unique_ptr<vector<string>>& getVerbs();
+
 	bool IsValid();
 
 private:
@@ -24,6 +26,8 @@ private:
 
 	void parseCommand();
 	void calculateIsValid();
+	
+	unique_ptr<vector<string>> _verbs;
 
 };
 

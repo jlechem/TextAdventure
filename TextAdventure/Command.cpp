@@ -4,9 +4,10 @@
 
 Command::Command()
 {
+	_verbs = make_unique<vector<string>>();
 }
 
-Command::Command(string command)
+Command::Command(string command): Command()
 {
 	_command = command;
 	parseCommand();
@@ -28,6 +29,11 @@ void Command::setCommand(string command)
 string Command::getCommand()
 {
 	return _command;
+}
+
+unique_ptr<vector<string>>& Command::getVerbs()
+{
+	return _verbs;
 }
 
 bool Command::IsValid()

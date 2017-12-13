@@ -4,6 +4,7 @@
 
 #include "GameSettings.h"
 #include "rapidxml.hpp"
+#include "Command.h"
 
 shared_ptr<Room> FindRoom(int id)
 {
@@ -32,12 +33,18 @@ void PrintRoomExits(unique_ptr<Player> &player)
 
 void PrintRoomItems(unique_ptr<Player> &player)
 {
-
+	if (player->getCurrentRoom()->getItems().size() != 0)
+	{
+		cout << "You see the following items: " << player->getCurrentRoom()->getItems() << endl;
+	}
 }
 
 void PrintRoomTreasures(unique_ptr<Player> &player)
 {
-
+	if (player->getCurrentRoom()->getTreasures().size() != 0)
+	{
+		cout << "You see the following treasures: " << player->getCurrentRoom()->getTreasures() << endl;
+	}
 }
 
 void LoadRooms(vector<shared_ptr<Room>> &rooms, vector<unique_ptr<Item>> &items, vector<unique_ptr<Treasure>> &treasures)
@@ -76,22 +83,27 @@ void LoadRooms(vector<shared_ptr<Room>> &rooms, vector<unique_ptr<Item>> &items,
 
 }
 
-void LoadVerbs(vector<string> &verbs)
+void LoadVerbs(unique_ptr<Command> &command)
 {
 	// TODO: load from the XML file
-	verbs.push_back("north");
-	verbs.push_back("n");
-	verbs.push_back("south");
-	verbs.push_back("s");
-	verbs.push_back("look");
-	verbs.push_back("l");
-	verbs.push_back("east");
-	verbs.push_back("e");
-	verbs.push_back("w");
-	verbs.push_back("west");
-	verbs.push_back("take");
-	verbs.push_back("drop");
-	verbs.push_back("exits");
+	command->getVerbs()->push_back("north");
+	command->getVerbs()->push_back("n");
+	command->getVerbs()->push_back("south");
+	command->getVerbs()->push_back("s");
+	command->getVerbs()->push_back("look");
+	command->getVerbs()->push_back("l");
+	command->getVerbs()->push_back("east");
+	command->getVerbs()->push_back("e");
+	command->getVerbs()->push_back("w");
+	command->getVerbs()->push_back("west");
+	command->getVerbs()->push_back("take");
+	command->getVerbs()->push_back("drop");
+	command->getVerbs()->push_back("exits");
+	command->getVerbs()->push_back("take");
+	command->getVerbs()->push_back("t");
+	command->getVerbs()->push_back("quit");
+	command->getVerbs()->push_back("q");
+	command->getVerbs()->push_back("exit");
 }
 
 void LoadItems(vector<unique_ptr<Item>> &items)

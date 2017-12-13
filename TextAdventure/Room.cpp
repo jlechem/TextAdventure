@@ -100,6 +100,49 @@ void Room::addExit(Directions exit, shared_ptr<Room> room)
 	generateExitString();
 }
 
+void Room::generateItemString()
+{
+	std::vector<unique_ptr<Item>>::iterator it;
+
+	_itemsString.clear();
+
+	for (it = _items.begin(); it != _items.end(); ++it)
+	{
+		_itemsString += (*it)->getName();
+		_itemsString += ",";
+	}
+
+	// take off the last comma
+	_itemsString.erase(_itemsString.end() - 1);
+}
+
+void Room::generateTreasureString()
+{
+	std::vector<unique_ptr<Treasure>>::iterator it;
+
+	_treasuresString.clear();
+
+	for (it = _treasures.begin(); it != _treasures.end(); ++it)
+	{
+		_treasuresString += (*it)->getName();
+		_treasuresString += ",";
+	}
+
+	// take off the last comma
+	_treasuresString.erase(_treasuresString.end() - 1);
+
+}
+
+string Room::getItems()
+{
+	return _itemsString;
+}
+
+string Room::getTreasures()
+{
+	return _treasuresString;
+}
+
 void Room::generateExitString()
 {
 	std::map<Directions, shared_ptr<Room>>::iterator it;

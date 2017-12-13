@@ -9,7 +9,7 @@ bool IsValidCommand(vector<string> commands, string command)
 	return false;
 }
 
-void EnterCommand(Command& command)
+void EnterCommand(unique_ptr<Command>& command)
 {
 	string commandLine;
 
@@ -17,16 +17,24 @@ void EnterCommand(Command& command)
 	
 	getline(cin, commandLine);
 	
-	command.setCommand(commandLine);
+	command->setCommand(commandLine);
 
 }
 
-void ProcessCommand(Command command)
+void PrintInvalidCommand(unique_ptr<Command>& command)
+{
+	cout << "I don't understand how to '" << command->getCommand() << "'" << endl;
+}
+
+void ProcessCommand(unique_ptr<Command>& command)
 {
 	// TODO: process the command
-}
+	if (command->IsValid())
+	{
 
-void PrintInvalidCommand(Command command)
-{
-
+	}
+	else
+	{
+		PrintInvalidCommand(command);
+	}
 }

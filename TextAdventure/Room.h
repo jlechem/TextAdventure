@@ -37,12 +37,20 @@ public:
 	void setExits(map<Directions, shared_ptr<Room>>&);
 	void addExit(Directions, shared_ptr<Room>);
 
+	void generateItemString();
+	void generateTreasureString();
+
+	string getItems();
+	string getTreasures();
+
 private:
 	int _id;
 	string _name;
 	string _description;
 	string _shortDesctiption;
 	string _exitString;
+	string _itemsString;
+	string _treasuresString;
 
 	vector<unique_ptr<Item>> _items;
 	vector<unique_ptr<Treasure>> _treasures;
