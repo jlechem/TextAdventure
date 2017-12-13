@@ -18,5 +18,8 @@
 #include <vector>
 #include <string>
 #include <map>
+#include <locale>
+#include <algorithm>
+#include <cctype>
 
 using namespace std;

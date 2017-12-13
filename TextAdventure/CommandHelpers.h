@@ -17,6 +17,8 @@ void EnterCommand(unique_ptr<Command>& command)
 	
 	getline(cin, commandLine);
 	
+	transform(commandLine.begin(), commandLine.end(), commandLine.begin(), tolower);
+
 	command->setCommand(commandLine);
 
 }
@@ -37,4 +39,18 @@ void ProcessCommand(unique_ptr<Command>& command)
 	{
 		PrintInvalidCommand(command);
 	}
+}
+
+bool IsMoveCommand(unique_ptr<Command>& command)
+{
+	return false;
+}
+bool IsTakeCommand(unique_ptr<Command>& command)
+{
+	return false;
+}
+
+bool IsDropCommand(unique_ptr<Command>& command)
+{
+	return false;
 }
