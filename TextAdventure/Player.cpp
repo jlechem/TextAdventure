@@ -7,6 +7,11 @@ Player::Player()
 	_treasures = make_shared<vector<unique_ptr<Treasure>>>();
 }
 
+Player::Player(shared_ptr<Room> initialRoom)
+{
+	_currentRoom = initialRoom;
+}
+
 Player::~Player()
 {
 }
@@ -41,25 +46,14 @@ unique_ptr<Treasure> Player::dropTreasure(string name)
 	return findTreasure(name);
 }
 
+shared_ptr<Room> Player::getCurrentRoom()
+{
+	return _currentRoom;
+}
+
 bool Player::Move(Directions direction)
 {
-	auto exits = _currentRoom->getExits();
-	map<Directions, shared_ptr<Room>>::iterator it = exits->find(direction);
-
-	bool result = false;
-
-	if (it != exits->end())
-	{
-		//element found;
-		result = true;
-		
-		// set current room to room pointer in map
-		_currentRoom = it->second;
-
-	}
-	
-	return result;
-
+	return false;
 }
 
 unique_ptr<Item> Player::findItem(string name)

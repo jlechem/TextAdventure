@@ -139,6 +139,8 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Command.h" />
+    <ClInclude Include="CommandHelpers.h" />
     <ClInclude Include="Directions.h" />
     <ClInclude Include="GameSettings.h" />
     <ClInclude Include="Helpers.h" />
@@ -155,6 +157,7 @@
     <ClInclude Include="Treasure.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Command.cpp" />
     <ClCompile Include="GameSettings.cpp" />
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="ItemBase.cpp" />

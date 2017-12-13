@@ -10,6 +10,7 @@ class Player
 {
 public:
 	Player();
+	Player(shared_ptr<Room>);
 	~Player();
 
 	shared_ptr<vector<unique_ptr<Item>>> getInventory();
@@ -19,6 +20,8 @@ public:
 	shared_ptr<vector<unique_ptr<Treasure>>> getTreasures();
 	void addTreasure(unique_ptr<Treasure>);
 	unique_ptr<Treasure> dropTreasure(string);
+
+	shared_ptr<Room> getCurrentRoom();
 
 	bool Move(Directions);
 
