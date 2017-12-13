@@ -21,5 +21,6 @@
 #include <locale>
 #include <algorithm>
 #include <cctype>
+#include <sstream>
 
 using namespace std;

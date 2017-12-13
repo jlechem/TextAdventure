@@ -25,9 +25,8 @@ private:
 	bool _isValid;		// is this commands valid
 
 	void parseCommand();
-	void calculateIsValid();
+	void calculateIsValid(vector<string>);
 	
 	unique_ptr<vector<string>> _verbs;
 
 };
-
