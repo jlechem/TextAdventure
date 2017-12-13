@@ -38,14 +38,27 @@ unique_ptr<vector<string>>& Command::getVerbs()
 
 bool Command::IsValid()
 {
+
+
 	return _isValid;
 }
 
 void Command::parseCommand()
 {
+	// tokenize the command based on spaces
 }
 
 void Command::calculateIsValid()
 {
+	if (_command.size() == 0)
+	{
+		_isValid = false;
+	}
+	else
+	{
+
+	}
+	
 	_isValid = false;
+
 }

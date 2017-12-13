@@ -25,7 +25,9 @@ void EnterCommand(unique_ptr<Command>& command)
 
 void PrintInvalidCommand(unique_ptr<Command>& command)
 {
-	cout << "I don't understand how to '" << command->getCommand() << "'" << endl;
+	string error;
+	error = command->getCommand().size() != 0 ? "I don't understand how to '" + command->getCommand() + "'" : "You didn't enter anything";
+	cout << error << endl;
 }
 
 void ProcessCommand(unique_ptr<Command>& command)
