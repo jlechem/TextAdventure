@@ -13,11 +13,11 @@ public:
 	Player(shared_ptr<Room>);
 	~Player();
 
-	shared_ptr<vector<unique_ptr<Item>>> getInventory();
+	vector<unique_ptr<Item>>* getInventory();
 	void addItem(unique_ptr<Item>);
 	unique_ptr<Item> dropItem(string);
 
-	shared_ptr<vector<unique_ptr<Treasure>>> getTreasures();
+	vector<unique_ptr<Treasure>>* getTreasures();
 	void addTreasure(unique_ptr<Treasure>);
 	unique_ptr<Treasure> dropTreasure(string);
 
@@ -28,9 +28,9 @@ public:
 	int getScore();
 
 private:
-	shared_ptr<vector<unique_ptr<Item>>> _items;
-
-	shared_ptr<vector<unique_ptr<Treasure>>> _treasures;
+	vector<unique_ptr<Item>> _items;
+	
+	vector<unique_ptr<Treasure>> _treasures;
 
 	shared_ptr<Room> _currentRoom;
 

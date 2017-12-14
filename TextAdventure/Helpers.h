@@ -271,6 +271,21 @@ void PrintInvalidMove(string direction)
 
 void PrintInventory(unique_ptr<Player>& player)
 {
+	auto items = player->getInventory();
+
+	cout << endl << "You have the following items" << endl;
+
+	if (items && items->size() > 0 )
+	{
+		vector<unique_ptr<Item>>::iterator it;
+
+		for (it == items->begin(); it != items->end(); ++it)
+		{
+			cout << (*it)->getName() << endl;
+		}
+	}
+
+	cout << endl;
 
 }
 
@@ -306,7 +321,7 @@ void ProcessCommand(unique_ptr<Command>& command, unique_ptr<Player>& player)
 				break;
 
 			case ActionType::Save:
-
+				SaveGame();
 				break;
 
 			default:

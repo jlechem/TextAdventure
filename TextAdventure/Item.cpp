@@ -3,6 +3,7 @@
 
 Item::Item()
 {
+	_isContainer = false;
 }
 
 

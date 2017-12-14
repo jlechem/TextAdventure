@@ -5,7 +5,6 @@ ItemBase::ItemBase()
 {
 }
 
-
 ItemBase::~ItemBase()
 {
 }

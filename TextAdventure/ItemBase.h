@@ -27,6 +27,6 @@ protected:
 	string _name;
 	string _description;
 	int _scoreValue;
-
+	
 };
 

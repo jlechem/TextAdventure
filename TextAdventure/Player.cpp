@@ -3,8 +3,6 @@
 
 Player::Player()
 {
-	_items = make_shared<vector<unique_ptr<Item>>>();
-	_treasures = make_shared<vector<unique_ptr<Treasure>>>();
 }
 
 Player::Player(shared_ptr<Room> initialRoom)
@@ -16,14 +14,14 @@ Player::~Player()
 {
 }
 
-shared_ptr<vector<unique_ptr<Item>>> Player::getInventory()
+vector<unique_ptr<Item>>* Player::getInventory()
 {
-	return _items;
+	return &_items;
 }
 
 void Player::addItem(unique_ptr<Item> item)
 {
-	_items->push_back(std::move(item));
+	_items.push_back(std::move(item));
 }
 
 unique_ptr<Item> Player::dropItem(string name)
@@ -31,14 +29,14 @@ unique_ptr<Item> Player::dropItem(string name)
 	return findItem(name);
 }
 
-shared_ptr<vector<unique_ptr<Treasure>>> Player::getTreasures()
+vector<unique_ptr<Treasure>>* Player::getTreasures()
 {
-	return _treasures;
+	return &_treasures;
 }
 
 void Player::addTreasure(unique_ptr<Treasure> treasure)
 {
-	_treasures->push_back(std::move(treasure));
+	_treasures.push_back(std::move(treasure));
 }
 
 unique_ptr<Treasure> Player::dropTreasure(string name)
@@ -79,11 +77,11 @@ unique_ptr<Item> Player::findItem(string name)
 
 	vector<unique_ptr<Item>>::iterator it;
 
-	for (auto i = 0; i < _items->size(); i++) 
+	for (auto i = 0; i < _items.size(); i++) 
 	{
-		if ( _items->operator[](i)->getName() == name )
+		if ( _items[i]->getName() == name )
 		{
-			temp = std::move(_items->operator[](i));
+			temp = std::move(_items[i]);
 		}
 	}
 
@@ -96,15 +94,15 @@ unique_ptr<Treasure> Player::findTreasure(string name)
 
 	vector<unique_ptr<Treasure>>::iterator it;
 
-	for (auto i = 0; i < _treasures->size(); i++)
+	for (it = _treasures.begin(); it != _treasures.end(); ++it)
 	{
-		if (_treasures->operator[](i)->getName() == name)
+		if ( (*it)->getName() == name)
 		{
-			temp = std::move(_treasures->operator[](i));
+			temp = std::move((*it));
+			_treasures.erase(it);
 		}
 	}
 
 	return temp;
-
-
+	
 }

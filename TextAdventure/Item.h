@@ -9,4 +9,10 @@ class Item: public ItemBase
 public:
 	Item();
 	~Item();
+
+private:
+	bool _isContainer;
+
+	vector<Item> _subItems;
+
 };
