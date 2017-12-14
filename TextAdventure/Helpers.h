@@ -8,7 +8,6 @@
 #include "Room.h"
 #include "Player.h"
 
-
 shared_ptr<Room> FindRoom(int id)
 {
 	return NULL;
@@ -175,9 +174,9 @@ void PrintInto(unique_ptr<GameSettings> &settings)
 	}
 }
 
-void PrintEnding()
+void PrintEnding(unique_ptr<Player>& player)
 {
-
+	cout << endl << "Thanks for playing. You final score is: " << player->getScore() << endl;
 }
 
 void PrintPlayerDeath()
@@ -270,9 +269,13 @@ void PrintInvalidMove(string direction)
 	cout << "There is no exit " + direction << endl;
 }
 
+void PrintInventory(unique_ptr<Player>& player)
+{
+
+}
+
 void ProcessCommand(unique_ptr<Command>& command, unique_ptr<Player>& player)
 {
-	// TODO: process the command
 	if (command->IsValid())
 	{
 		switch (command->getActionType())
@@ -294,11 +297,11 @@ void ProcessCommand(unique_ptr<Command>& command, unique_ptr<Player>& player)
 				break;
 
 			case ActionType::Inventory:
-
+				PrintInventory(player);
 				break;
 
 			case ActionType::Quit:
-				PrintEnding();
+				PrintEnding(player);
 				exit(0);
 				break;
 

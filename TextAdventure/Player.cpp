@@ -68,6 +68,11 @@ bool Player::Move(Directions direction)
 
 }
 
+int Player::getScore()
+{
+	return _score;
+}
+
 unique_ptr<Item> Player::findItem(string name)
 {
 	unique_ptr<Item> temp = NULL;

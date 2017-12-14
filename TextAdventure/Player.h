@@ -25,6 +25,8 @@ public:
 
 	bool Move(Directions);
 
+	int getScore();
+
 private:
 	shared_ptr<vector<unique_ptr<Item>>> _items;
 
