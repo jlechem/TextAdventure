@@ -297,6 +297,11 @@ void ProcessCommand(unique_ptr<Command>& command, unique_ptr<Player>& player)
 
 				break;
 
+			case ActionType::Quit:
+				PrintEnding();
+				exit(0);
+				break;
+
 			case ActionType::Save:
 
 				break;

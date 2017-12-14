@@ -181,6 +181,11 @@ void Command::calculateActionType(string verb)
 		_isValid = true;
 		_actionType = ActionType::Inventory;
 	}
+	else if (isExitCommand(verb))
+	{
+		_isValid = true;
+		_actionType = ActionType::Quit;
+	}
 	else
 	{
 		_isValid = false;
