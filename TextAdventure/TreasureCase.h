@@ -22,4 +22,3 @@ private:
 	int _score;
 
 };
-

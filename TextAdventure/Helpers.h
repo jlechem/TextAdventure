@@ -5,6 +5,9 @@
 #include "GameSettings.h"
 #include "rapidxml.hpp"
 #include "Command.h"
+#include "Room.h"
+#include "Player.h"
+
 
 shared_ptr<Room> FindRoom(int id)
 {
@@ -21,14 +24,9 @@ unique_ptr<Treasure> FindTreasure(int id)
 	return NULL;
 }
 
-void PrintRoomDescription(unique_ptr<Player> &player)
-{
-	cout << player->getCurrentRoom()->getDescription() << endl;
-}
-
 void PrintRoomExits(unique_ptr<Player> &player)
 {
-	cout << "You can go: " << player->getCurrentRoom()->getExits() << endl;
+	cout << "You can go: " << player->getCurrentRoom()->getExitsString() << endl;
 }
 
 void PrintRoomItems(unique_ptr<Player> &player)
@@ -45,6 +43,16 @@ void PrintRoomTreasures(unique_ptr<Player> &player)
 	{
 		cout << "You see the following treasures: " << player->getCurrentRoom()->getTreasures() << endl;
 	}
+}
+
+void PrintRoomDescription(unique_ptr<Player> &player)
+{
+	cout << endl << player->getCurrentRoom()->getDescription() << endl;
+
+	PrintRoomExits(player);
+	PrintRoomItems(player);
+	PrintRoomTreasures(player);
+
 }
 
 void LoadRooms(vector<shared_ptr<Room>> &rooms, vector<unique_ptr<Item>> &items, vector<unique_ptr<Treasure>> &treasures)
@@ -183,4 +191,123 @@ void LoadGameData(unique_ptr<GameSettings> &settings)
 	settings->setShowIntroduction(true);
 	settings->setIntroduction("As the spaceship rover heads into deep space, the crew slowly awakes from cryogenic slumber...");
 	settings->setTitle("Justins Space Adventure");
+}
+
+bool IsValidCommand(vector<string> commands, string command)
+{
+	return false;
+}
+
+void EnterCommand(unique_ptr<Command>& command)
+{
+	string commandLine;
+
+	cout << "?> ";
+
+	getline(cin, commandLine);
+
+	transform(commandLine.begin(), commandLine.end(), commandLine.begin(), tolower);
+
+	command->setCommand(commandLine);
+
+}
+
+void PrintInvalidCommand(unique_ptr<Command>& command)
+{
+	string error;
+	error = command->getCommand().size() != 0 ? "I don't understand how to '" + command->getCommand() + "'" : "You didn't enter anything";
+	cout << error << endl;
+}
+
+Directions getDirection(string command)
+{
+	Directions result = Directions::Invalid;
+
+	if (command == NORTH || command == NORTH_SHORT)
+	{
+		result = Directions::North;
+	}
+	else if (command == EAST || command == EAST_SHORT)
+	{
+		result = Directions::East;
+	}
+	else if (command == SOUTH || command == SOUTH_SHORT)
+	{
+		result = Directions::South;
+	}
+	else if (command == WEST || command == WEST_SHORT)
+	{
+		result = Directions::West;
+	}
+	else if (command == NORTHEAST || command == NORTHEAST_SHORT)
+	{
+		result = Directions::NorthEast;
+	}
+	else if (command == SOUTHEAST || command == SOUTHEAST_SHORT)
+	{
+		result = Directions::SouthEast;
+	}
+	else if (command == SOUTHWEST || command == SOUTHWEST_SHORT)
+	{
+		result = Directions::SouthWest;
+	}
+	else if (command == NORTHWEST || command == NORTHWEST_SHORT)
+	{
+		result = Directions::NorthWest;
+	}
+
+	return result;
+
+}
+
+bool IsValidMove(unique_ptr<Player>& player, Directions direction)
+{
+	return player->Move(direction);
+}
+
+void PrintInvalidMove(string direction)
+{
+	cout << "There is no exit " + direction << endl;
+}
+
+void ProcessCommand(unique_ptr<Command>& command, unique_ptr<Player>& player)
+{
+	// TODO: process the command
+	if (command->IsValid())
+	{
+		switch (command->getActionType())
+		{
+			case ActionType::Look:
+				PrintRoomDescription(player);
+				break;
+
+			case ActionType::Movement:
+				if (!IsValidMove(player, getDirection(command->getCommand())))
+				{
+					PrintInvalidMove(command->getCommand());
+				}
+				else
+				{
+					PrintRoomDescription(player);
+				}
+
+				break;
+
+			case ActionType::Inventory:
+
+				break;
+
+			case ActionType::Save:
+
+				break;
+
+			default:
+				break;
+
+		}
+	}
+	else
+	{
+		PrintInvalidCommand(command);
+	}
 }

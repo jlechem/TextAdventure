@@ -136,11 +136,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <Text Include="Config,xml" />
-    <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ActionType.h" />
     <ClInclude Include="Command.h" />
-    <ClInclude Include="CommandHelpers.h" />
     <ClInclude Include="Directions.h" />
     <ClInclude Include="GameSettings.h" />
     <ClInclude Include="Helpers.h" />
@@ -175,6 +174,7 @@
     <ClCompile Include="TreasureCase.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="nounds.dat" />
     <None Include="ReadMe.dat" />
     <None Include="verbs.dat" />
   </ItemGroup>

@@ -93,7 +93,12 @@ void Room::removeTreasure(unique_ptr<Treasure> treasure)
 	generateTreasureString();
 }
 
-string Room::getExits()
+map<Directions, shared_ptr<Room>>& Room::getExits()
+{
+	return _exits;
+}
+
+string Room::getExitsString()
 {
 	return _exitString;
 }

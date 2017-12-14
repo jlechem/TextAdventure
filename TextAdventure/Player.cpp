@@ -53,7 +53,19 @@ shared_ptr<Room> Player::getCurrentRoom()
 
 bool Player::Move(Directions direction)
 {
-	return false;
+	bool result = false;
+
+	// get the value from our map for this key
+	auto newRoom = _currentRoom->getExits()[direction];
+
+	if (newRoom)
+	{
+		_currentRoom = newRoom;
+		result = true;
+	}
+
+	return result;
+
 }
 
 unique_ptr<Item> Player::findItem(string name)

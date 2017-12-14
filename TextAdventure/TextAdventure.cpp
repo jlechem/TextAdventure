@@ -1,12 +1,13 @@
 // TextAdventure.cpp : Defines the entry point for the console application.
 //
 
+#pragma once
+
 #include "stdafx.h"
 
 #include "Room.h"
 #include "Player.h"
 #include "Helpers.h"
-#include "CommandHelpers.h"
 #include "GameSettings.h"
 #include "Command.h"
 
@@ -34,15 +35,12 @@ int main()
 	PrintInto(settings);
 
 	PrintRoomDescription(player);
-	PrintRoomExits(player);
-	PrintRoomItems(player);
-	PrintRoomTreasures(player);
-
+	
 	// run the game loop
 	while (!GaveOver(player))
 	{
 		EnterCommand(command);
-		ProcessCommand(command);
+		ProcessCommand(command, player);
 	}
 
     return 0;

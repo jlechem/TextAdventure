@@ -33,7 +33,8 @@ public:
 	void removeTreasure(string);
 	void removeTreasure(unique_ptr<Treasure>);
 
-	string getExits();
+	string getExitsString();
+	map<Directions, shared_ptr<Room>>& getExits();
 	void setExits(map<Directions, shared_ptr<Room>>&);
 	void addExit(Directions, shared_ptr<Room>);
 

@@ -2,6 +2,8 @@
 
 #include "stdafx.h"
 
+#include "ActionType.h"
+
 class Command
 {
 public:
@@ -12,6 +14,8 @@ public:
 
 	void setCommand(string);
 	string getCommand();
+
+	ActionType getActionType();
 
 	unique_ptr<vector<string>>& getVerbs();
 
@@ -26,7 +30,21 @@ private:
 
 	void parseCommand();
 	void calculateIsValid(vector<string>);
-	
+
 	unique_ptr<vector<string>> _verbs;
+	unique_ptr<vector<string>> _nouns;
+	unique_ptr<vector<string>> _modifiers;
+
+	ActionType _actionType;
+
+	bool isMoveCommand(string verb);
+	bool isTakeCommand(string verb);
+	bool isLookCommand(string verb);
+	bool isDropCommand(string verb);
+	bool isItemCommand(string verb);
+	bool isInventoryCommand(string verb);
+	bool isSaveCommand(string verb);
+	bool isExitCommand(string verb);
+	void calculateActionType(string verb);
 
 };

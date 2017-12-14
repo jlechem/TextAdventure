@@ -1,3 +1,5 @@
+#pragma once
+
 #ifndef RAPIDXML_HPP_INCLUDED
 #define RAPIDXML_HPP_INCLUDED
 

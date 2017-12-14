@@ -9,5 +9,6 @@ enum Directions
 	South,
 	SouthWest,
 	West,
-	NorthWest
+	NorthWest,
+	Invalid
 };

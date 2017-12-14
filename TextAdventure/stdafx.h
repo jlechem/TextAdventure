@@ -24,3 +24,21 @@
 #include <sstream>
 
 using namespace std;
+
+#define NORTH "north"
+#define SOUTH "south"
+#define EAST "east"
+#define WEST "west"
+#define NORTHEAST "northeast"
+#define NORTHWEST "northwest"
+#define SOUTHEAST "southeast"
+#define SOUTHWEST "southwest"
+
+#define NORTH_SHORT "n"
+#define SOUTH_SHORT "s"
+#define EAST_SHORT "e"
+#define WEST_SHORT "w"
+#define NORTHEAST_SHORT "ne"
+#define NORTHWEST_SHORT "nw"
+#define SOUTHEAST_SHORT "se"
+#define SOUTHWEST_SHORT "sw"
