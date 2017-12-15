@@ -10,5 +10,5 @@ enum  ActionType
 	Look,
 	Inventory,
 	Quit,
-	LookObject
+	Examine
 };

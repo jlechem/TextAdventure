@@ -4,6 +4,8 @@
 
 #include "ActionType.h"
 
+
+
 class Command
 {
 public:
@@ -14,6 +16,10 @@ public:
 
 	void setCommand(string);
 	string getCommand();
+
+	string getAction();
+	string getNoun();
+	string getModifier();
 
 	ActionType getActionType();
 

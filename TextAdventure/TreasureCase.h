@@ -1,7 +1,7 @@
 #pragma once
 
 #include "stdafx.h"
-#include "Treasure.h"
+#include "Item.h"
 
 class TreasureCase
 {
@@ -12,13 +12,14 @@ public:
 	void setDescription(string);
 	string getDescription();
 
-	void addTreasure(unique_ptr<Treasure>);
-	unique_ptr<Treasure> removeTreasure(string);
+	void addTreasure(unique_ptr<Item>);
+	unique_ptr<Item> removeTreasure(string);
 
 private:
 	string _description;
 
-	vector<unique_ptr<Treasure>> _treasures;
+	vector<unique_ptr<Item>> _items;
+
 	int _score;
 
 };

@@ -7,6 +7,7 @@
 #include "Command.h"
 #include "Room.h"
 #include "Player.h"
+#include "Item.h"
 
 shared_ptr<Room> FindRoom(int id)
 {
@@ -15,12 +16,7 @@ shared_ptr<Room> FindRoom(int id)
 
 unique_ptr<Item> FindItem(int id)
 {
-	return NULL;
-}
-
-unique_ptr<Treasure> FindTreasure(int id)
-{
-	return NULL;
+	return make_unique<Item>();
 }
 
 void PrintRoomExits(unique_ptr<Player> &player)
@@ -36,25 +32,15 @@ void PrintRoomItems(unique_ptr<Player> &player)
 	}
 }
 
-void PrintRoomTreasures(unique_ptr<Player> &player)
-{
-	if (player->getCurrentRoom()->getTreasures().size() != 0)
-	{
-		cout << "You see the following treasures: " << player->getCurrentRoom()->getTreasures() << endl;
-	}
-}
-
 void PrintRoomDescription(unique_ptr<Player> &player)
 {
 	cout << endl << player->getCurrentRoom()->getDescription() << endl;
 
 	PrintRoomExits(player);
 	PrintRoomItems(player);
-	PrintRoomTreasures(player);
-
 }
 
-void LoadRooms(vector<shared_ptr<Room>> &rooms, vector<unique_ptr<Item>> &items, vector<unique_ptr<Treasure>> &treasures)
+void LoadRooms(vector<shared_ptr<Room>> &rooms, vector<unique_ptr<Item>> &items)
 {
 	// TODO: load from the XML file
 
@@ -79,14 +65,11 @@ void LoadRooms(vector<shared_ptr<Room>> &rooms, vector<unique_ptr<Item>> &items,
 
 	// add items
 	rooms[0]->addItem(std::move(items[0]));
+	rooms[0]->addItem(std::move(items[2]));
+
 	rooms[1]->addItem(std::move(items[1]));
-
+	
 	items.clear();
-
-	// add treasures
-	rooms[0]->addTreasure(std::move(treasures[0]));
-
-	treasures.clear(); 
 
 }
 
@@ -119,6 +102,7 @@ void LoadItems(vector<unique_ptr<Item>> &items)
 	newItem->setName("stick");
 	newItem->setDescription("a sharp pointy stick");
 	newItem->setScore(100);
+	newItem->setType(ItemType::BaseItem);
 	items.push_back(std::move(newItem));
 
 	auto newItem2 = make_unique<Item>();
@@ -126,21 +110,16 @@ void LoadItems(vector<unique_ptr<Item>> &items)
 	newItem2->setName("black rock");
 	newItem2->setDescription("a small, round, and very shiny black rock");
 	newItem2->setScore(5000);
+	newItem2->setType(ItemType::BaseItem);
 	items.push_back(std::move(newItem2));
 
-}
-
-void LoadTreasures(vector<unique_ptr<Treasure>> &treasures)
-{
-	// TODO: load from the XML file
-
-	// make a new temp treasure
-	auto newItem = make_unique<Treasure>();
-	newItem->setId(1);
-	newItem->setName("Golden Egg");
-	newItem->setDescription("An egg laid by the golden goose");
-	newItem->setScore(8000);
-	treasures.push_back(std::move(newItem));
+	auto newItem3 = make_unique<Item>();
+	newItem3->setId(3);
+	newItem3->setName("Golden Egg");
+	newItem3->setDescription("An egg laid by the golden goose.");
+	newItem3->setScore(50000);
+	newItem3->setType(ItemType::Treasure);
+	items.push_back(std::move(newItem3));
 
 }
 
@@ -275,17 +254,37 @@ void PrintInventory(unique_ptr<Player>& player)
 
 	cout << endl << "You have the following items" << endl;
 
-	if (items && items->size() > 0 )
+	if (items)
 	{
-		vector<unique_ptr<Item>>::iterator it;
-
-		for (it == items->begin(); it != items->end(); ++it)
+		for ( auto i = 0; i < items->size(); i++)
 		{
-			cout << (*it)->getName() << endl;
+			cout << (*items)[i]->getName() << endl;
 		}
 	}
-
+	
 	cout << endl;
+
+}
+
+void TakeItem(unique_ptr<Command>& command, unique_ptr<Player>& player)
+{
+	// check we have something to take
+	if (command->getNoun().size() == 0)
+	{
+		cout << "Take what?" << endl;
+	}
+	else if (player->addItem(command->getNoun()))
+	{
+		cout << "You take the " << command->getNoun() << endl;
+	}
+	else
+	{
+		cout << "I don't see a " << command->getNoun() << " here" << endl;
+	}
+}
+
+void DropItem(unique_ptr<Command>& command, unique_ptr<Player>& player)
+{
 
 }
 
@@ -295,6 +294,7 @@ void ProcessCommand(unique_ptr<Command>& command, unique_ptr<Player>& player)
 	{
 		switch (command->getActionType())
 		{
+			// these are single actions
 			case ActionType::Look:
 				PrintRoomDescription(player);
 				break;
@@ -323,6 +323,18 @@ void ProcessCommand(unique_ptr<Command>& command, unique_ptr<Player>& player)
 			case ActionType::Save:
 				SaveGame();
 				break;
+
+			// these are double actions, it take X, drop X, examine X etc
+			case ActionType::Take:
+				TakeItem(command,player);
+				break;
+
+			case ActionType::Drop:
+				DropItem(command,player);
+				break;
+
+			// TODO: implement 3 word actions, look at X, jump on X
+
 
 			default:
 				break;

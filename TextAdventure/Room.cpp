@@ -75,24 +75,6 @@ void Room::removeItem(unique_ptr<Item> item)
 	generateItemString();
 }
 
-void Room::addTreasure(unique_ptr<Treasure> treasure)
-{
-	_treasures.push_back(std::move(treasure));
-	generateTreasureString();
-}
-
-void Room::removeTreasure(string treasureName)
-{
-	// TODO: remove treasure from vector
-	generateTreasureString();
-}
-
-void Room::removeTreasure(unique_ptr<Treasure> treasure)
-{
-	// TODO: remove treasure from vector
-	generateTreasureString();
-}
-
 map<Directions, shared_ptr<Room>>& Room::getExits()
 {
 	return _exits;
@@ -115,6 +97,28 @@ void Room::addExit(Directions exit, shared_ptr<Room> room)
 	generateExitString();
 }
 
+unique_ptr<Item> Room::findItem(string name)
+{
+	vector<unique_ptr<Item>>::iterator it;
+
+	unique_ptr<Item> result = NULL;
+
+	for (it = _items.begin(); it != _items.end(); ++it)
+	{
+		if ((*it)->getName() == name)
+		{
+			result = std::move((*it));
+			_items.erase(it);
+			break;
+		}
+	}
+
+	generateItemString();
+
+	return result;
+
+}
+
 void Room::generateItemString()
 {
 	std::vector<unique_ptr<Item>>::iterator it;
@@ -124,38 +128,16 @@ void Room::generateItemString()
 	for (it = _items.begin(); it != _items.end(); ++it)
 	{
 		_itemsString += (*it)->getName();
-		_itemsString += ",";
+		_itemsString += ", ";
 	}
 
 	// take off the last comma
-	_itemsString.erase(_itemsString.end() - 1);
-}
-
-void Room::generateTreasureString()
-{
-	std::vector<unique_ptr<Treasure>>::iterator it;
-
-	_treasuresString.clear();
-
-	for (it = _treasures.begin(); it != _treasures.end(); ++it)
-	{
-		_treasuresString += (*it)->getName();
-		_treasuresString += ",";
-	}
-
-	// take off the last comma
-	_treasuresString.erase(_treasuresString.end() - 1);
-
+	_itemsString.erase(_itemsString.end() - 2);
 }
 
 string Room::getItems()
 {
 	return _itemsString;
-}
-
-string Room::getTreasures()
-{
-	return _treasuresString;
 }
 
 void Room::generateExitString()

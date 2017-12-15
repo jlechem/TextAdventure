@@ -3,7 +3,6 @@
 #include "stdafx.h"
 
 #include "Item.h"
-#include "Treasure.h"
 #include "Room.h"
 
 class Player
@@ -14,12 +13,8 @@ public:
 	~Player();
 
 	vector<unique_ptr<Item>>* getInventory();
-	void addItem(unique_ptr<Item>);
+	bool addItem(string);
 	unique_ptr<Item> dropItem(string);
-
-	vector<unique_ptr<Treasure>>* getTreasures();
-	void addTreasure(unique_ptr<Treasure>);
-	unique_ptr<Treasure> dropTreasure(string);
 
 	shared_ptr<Room> getCurrentRoom();
 
@@ -30,8 +25,6 @@ public:
 private:
 	vector<unique_ptr<Item>> _items;
 	
-	vector<unique_ptr<Treasure>> _treasures;
-
 	shared_ptr<Room> _currentRoom;
 
 	string _name;
@@ -39,6 +32,5 @@ private:
 	int _score;
 
 	unique_ptr<Item> findItem(string);
-	unique_ptr<Treasure> findTreasure(string);
 
 };

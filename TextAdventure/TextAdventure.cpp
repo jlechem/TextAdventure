@@ -18,15 +18,13 @@ int main()
 	// declare some variables we need to use
 	vector<shared_ptr<Room>> rooms;
 	vector<unique_ptr<Item>> items;
-	vector<unique_ptr<Treasure>> treasures;
 	unique_ptr<GameSettings> settings = make_unique<GameSettings>();
 	unique_ptr<Command> command = make_unique<Command>();
 
 	// load our data
 	LoadVerbs(command);
 	LoadItems(items);
-	LoadTreasures(treasures);
-	LoadRooms(rooms, items, treasures);
+	LoadRooms(rooms, items);
 	LoadGameData(settings);
 
 	// this is our main player object, we use it for running the game

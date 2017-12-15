@@ -31,6 +31,21 @@ string Command::getCommand()
 	return _command;
 }
 
+string Command::getAction()
+{
+	return _action;
+}
+
+string Command::getNoun()
+{
+	return _noun;
+}
+
+string Command::getModifier()
+{
+	return _modifier;
+}
+
 ActionType Command::getActionType()
 {
 	return _actionType;
@@ -68,6 +83,10 @@ void Command::parseCommand()
 void Command::calculateIsValid(vector<string> tokens)
 {
 	_isValid = false;
+	
+	_action = "";
+	_noun = "";
+	_modifier = "";
 
 	// look at the size, we can only handle certain combos of text
 	// 1, 2, or 3
@@ -75,17 +94,24 @@ void Command::calculateIsValid(vector<string> tokens)
 		tokens.size() == 2 ||
 		tokens.size() == 3 )
 	{
+		_action = tokens[0];
+
 		// based on the number of tokens we need to validate our command
 		switch (tokens.size())
 		{
 		case 1:
-			calculateActionType(tokens[0]);
+			calculateActionType(_action);
 			break;
 
 		case 2:
+			_noun = tokens[1];
+			calculateActionType(_action);
 			break;
 
 		case 3:
+			_modifier = tokens[1];
+			_noun = tokens[2];
+			calculateActionType(_action);
 			break;
 
 		default:
@@ -185,6 +211,11 @@ void Command::calculateActionType(string verb)
 	{
 		_isValid = true;
 		_actionType = ActionType::Quit;
+	}
+	else if (isTakeCommand(verb))
+	{
+		_isValid = true;
+		_actionType = ActionType::Take;
 	}
 	else
 	{

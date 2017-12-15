@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "Player.h"
+#include "Item.h"
 
 Player::Player()
 {
@@ -19,29 +20,26 @@ vector<unique_ptr<Item>>* Player::getInventory()
 	return &_items;
 }
 
-void Player::addItem(unique_ptr<Item> item)
+bool Player::addItem(string name)
 {
-	_items.push_back(std::move(item));
+	bool result = false;
+
+	// check if our room has an item or teasure with this name
+	unique_ptr<Item> item = std::move(_currentRoom->findItem(name));
+
+	if (item != nullptr)
+	{
+		_items.push_back(std::move(item));
+		result = true;
+	}
+	
+	return result;
+
 }
 
 unique_ptr<Item> Player::dropItem(string name)
 {
 	return findItem(name);
-}
-
-vector<unique_ptr<Treasure>>* Player::getTreasures()
-{
-	return &_treasures;
-}
-
-void Player::addTreasure(unique_ptr<Treasure> treasure)
-{
-	_treasures.push_back(std::move(treasure));
-}
-
-unique_ptr<Treasure> Player::dropTreasure(string name)
-{
-	return findTreasure(name);
 }
 
 shared_ptr<Room> Player::getCurrentRoom()
@@ -86,23 +84,4 @@ unique_ptr<Item> Player::findItem(string name)
 	}
 
 	return temp;
-}
-
-unique_ptr<Treasure> Player::findTreasure(string name)
-{
-	unique_ptr<Treasure> temp = NULL;
-
-	vector<unique_ptr<Treasure>>::iterator it;
-
-	for (it = _treasures.begin(); it != _treasures.end(); ++it)
-	{
-		if ( (*it)->getName() == name)
-		{
-			temp = std::move((*it));
-			_treasures.erase(it);
-		}
-	}
-
-	return temp;
-	
 }
