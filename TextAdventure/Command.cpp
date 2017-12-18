@@ -5,8 +5,6 @@
 
 Command::Command()
 {
-	_verbs = make_unique<vector<string>>();
-	_actionType = ActionType::InvalidAction;
 	_player = make_shared<Player>();
 }
 
@@ -31,29 +29,9 @@ string Command::getCommand()
 	return _command;
 }
 
-string Command::getAction()
-{
-	return _action;
-}
-
-string Command::getNoun()
-{
-	return _noun;
-}
-
-string Command::getModifier()
-{
-	return _modifier;
-}
-
 string Command::getCommandResult()
 {
 	return _commandResult;
-}
-
-ActionType Command::getActionType()
-{
-	return _actionType;
 }
 
 void Command::setPlayer(shared_ptr<Player> player)
@@ -61,26 +39,57 @@ void Command::setPlayer(shared_ptr<Player> player)
 	_player = player;
 }
 
-unique_ptr<vector<string>>& Command::getVerbs()
-{
-	return _verbs;
+
+void Command::process()
+{	
+	// no text was entered
+	if (_commands.size() == 0)
+	{		
+		_commandResult = "What do you want to do?";
+	}
+	else if ( !isValid(_commands[0]) )
+	{
+		_commandResult = "I don't know how to " + _commands[0];
+	}
+	else
+	{
+		// TODO: Process the command entered in before
+		// check for fun things, ie jump, hum, etc
+		switch (_commands.size())
+		{
+			case 1:
+
+				// if we have a look command then print the room
+
+				// if we have a 'fun' command print the result
+
+				// if we have a move command then move
+
+				break;
+
+			case 2:
+				break;
+
+			case 3:
+				break;
+
+			default:
+				break;
+		}
+	}
+
+	printResult();
+
 }
 
-void Command::Process()
-{
-	// TODO: Process the command entered in before
-}
-
-void Command::PrintResult()
+void Command::printResult()
 {
 	cout << endl << _commandResult << endl;
 }
 
-bool Command::IsValid()
+vector<string>& Command::getVerbs()
 {
-
-
-	return _isValid;
+	return _validActions;
 }
 
 void Command::parseCommand()
@@ -89,54 +98,13 @@ void Command::parseCommand()
 	char delim = ' ';
 	stringstream ss(_command);
 	string item;
-	vector<string> tokens;
+	
+	_commands.clear();
 
 	while (std::getline(ss, item, delim)) 
 	{
-		tokens.push_back(item);
-	}
-
-	calculateIsValid(tokens);
-
-}
-
-void Command::calculateIsValid(vector<string> tokens)
-{
-	_isValid = false;
-	
-	_action = "";
-	_noun = "";
-	_modifier = "";
-
-	// look at the size, we can only handle certain combos of text
-	// 1, 2, or 3
-	if (tokens.size() == 1 ||
-		tokens.size() == 2 ||
-		tokens.size() == 3 )
-	{
-		_action = tokens[0];
-
-		// based on the number of tokens we need to validate our command
-		switch (tokens.size())
-		{
-		case 1:
-			calculateActionType(_action);
-			break;
-
-		case 2:
-			_noun = tokens[1];
-			calculateActionType(_action);
-			break;
-
-		case 3:
-			_modifier = tokens[1];
-			_noun = tokens[2];
-			calculateActionType(_action);
-			break;
-
-		default:
-			break;
-		}
+		transform(item.begin(), item.end(), item.begin(), tolower);
+		_commands.push_back(item);
 	}
 }
 
@@ -199,73 +167,36 @@ bool Command::isExitCommand(string verb)
 		verb == "q";
 }
 
-void Command::calculateActionType(string verb)
-{
-	if (isMoveCommand(verb))
-	{
-		_isValid = true;
-		_actionType = ActionType::Movement;
-	}
-	else if (isLookCommand(verb))
-	{
-		_isValid = true;
-		_actionType = ActionType::Look;
-	}
-	else if (isSaveCommand(verb))
-	{
-		_isValid = true;
-		_actionType = ActionType::Save;
-	}
-	else if (isInventoryCommand(verb))
-	{
-		_isValid = true;
-		_actionType = ActionType::Inventory;
-	}
-	else if (isExitCommand(verb))
-	{
-		_isValid = true;
-		_actionType = ActionType::Quit;
-	}
-	else if (isTakeCommand(verb))
-	{
-		_isValid = true;
-		_actionType = ActionType::Take;
-	}
-	else if (isActionCommand(verb))
-	{
-		_isValid = true;
-		calculateActionResult(verb);
-		_actionType = ActionType::Action;
-	}
-	else
-	{
-		_isValid = false;
-		_actionType = ActionType::InvalidAction;
-	}
-}
-
 void Command::calculateActionResult(string verb)
 {
-	if (verb == "jump")
+}
+
+void Command::loadActions()
+{
+	// TODO: load the actions from the config file
+	_funCommands["jump"] = "You jump up and down";
+	_funCommands["sleep"] = "You lie down and sleep, refreshing!";
+	_funCommands["rest"] = "You rest for a minute";
+	_funCommands["hum"] = "You hum a ditty, it makes the work go by faster";
+	_funCommands["sing"] = "You sing that song you like, but the key seems to be off.....";
+}
+
+bool Command::isValid(string action)
+{
+	bool result = false;
+
+	vector<string>::iterator it;
+
+	for (it = _validActions.begin(); it != _validActions.end(); ++it)
 	{
-		_commandResult = "You jump up and down";
+		if ((*it) == action)
+		{
+			result = true;
+			break;
+		}
 	}
-	else if (verb == "sleep")
-	{
-		_commandResult = "You lie down and sleep for a while, refreshing!";
-	}
-	else if (verb == "rest")
-	{
-		_commandResult = "You rest for a minute";
-	}
-	else if (verb == "hum")
-	{
-		_commandResult = "You hum a little ditty, it seems to make the work go by faster.";
-	}
-	else if (verb == "sing")
-	{
-		_commandResult = "You sing a song, but the key seems to be off....";
-	}
+
+	return result;
 
 }
 

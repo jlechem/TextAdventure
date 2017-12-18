@@ -16,35 +16,24 @@ public:
 	void setCommand(string);
 	
 	string getCommand();
-	string getAction();
-	string getNoun();
-	string getModifier();
 	string getCommandResult();
-	ActionType getActionType();
 	void setPlayer(shared_ptr<Player>);
-	unique_ptr<vector<string>>& getVerbs();
-	void Process();
-	void PrintResult();
-	bool IsValid();
+	void process();
+	void printResult();
+	vector<string>& getVerbs();
 
 private:
-	string _commandResult;	// result of the command
-	string _action;			// look, north, take, etc
-	string _noun;			// thing actions acts on, Item, Treasure, etc
-	string _modifier;		// temp words, ie ACTION at NOUN
-	string _command;		// entire command, ACTION MODIFIER NOUN
-	bool _isValid;			// is this commands valid
+	string _commandResult;				// result of the command
+	vector<string> _commands;			// string command seperated using white space
+	string _command;					// entire command
 
-	shared_ptr<Player> _player;
+	vector<string> _validActions;		// a list of valid base actions, look, jump, etc
 
-	unique_ptr<vector<string>> _verbs;
-	unique_ptr<vector<string>> _nouns;
-	unique_ptr<vector<string>> _modifiers;
+	map<string, string> _funCommands;	// single commands with no real use, like jump, hum, dance, etc
 
-	ActionType _actionType;
+	shared_ptr<Player> _player;			// the player, we need this for item management, etc
 
 	void parseCommand();
-	void calculateIsValid(vector<string>);
 	bool isActionCommand(string verb);
 	bool isMoveCommand(string verb);
 	bool isTakeCommand(string verb);
@@ -54,7 +43,7 @@ private:
 	bool isInventoryCommand(string verb);
 	bool isSaveCommand(string verb);
 	bool isExitCommand(string verb);
-	void calculateActionType(string verb);
 	void calculateActionResult(string verb);
-
+	void loadActions();
+	bool isValid(string);
 };

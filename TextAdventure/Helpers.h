@@ -65,7 +65,6 @@ void LoadRooms(vector<shared_ptr<Room>> &rooms, vector<unique_ptr<Item>> &items)
 
 void LoadVerbs(unique_ptr<Command> &command)
 {
-	// load from the verbs.dat file
 	string verb;
 
 	ifstream inputFile("verbs.dat", ifstream::in);
@@ -74,7 +73,7 @@ void LoadVerbs(unique_ptr<Command> &command)
 	{
 		while (inputFile >> verb)
 		{
-			command->getVerbs()->push_back(verb);
+			command->getVerbs().push_back(verb);
 		}
 	}
 
@@ -184,54 +183,5 @@ void PrintCommandResult(unique_ptr<Command>& command)
 
 void ProcessCommand(unique_ptr<Command>& command)
 {
-	command->Process();
-	command->PrintResult();
+	command->process();
 }
-
-//switch (command->getActionType())
-//{
-//case ActionType::Action:
-//	PrintAction(command);
-//	break;
-//
-//case ActionType::Look:
-//	PrintRoomDescription(player);
-//	break;
-//
-//case ActionType::Movement:
-//	if (!IsValidMove(player, getDirection(command->getCommand())))
-//	{
-//		PrintInvalidMove(command->getCommand());
-//	}
-//	else
-//	{
-//		PrintRoomDescription(player);
-//	}
-//
-//	break;
-//
-//case ActionType::Inventory:
-//	PrintInventory(player);
-//	break;
-//
-//case ActionType::Quit:
-//	PrintEnding(player);
-//	exit(0);
-//	break;
-//
-//case ActionType::Save:
-//	SaveGame();
-//	break;
-//
-//case ActionType::Take:
-//	TakeItem(command, player);
-//	break;
-//
-//case ActionType::Drop:
-//	DropItem(command, player);
-//	break;
-//
-//default:
-//	break;
-//
-//}
