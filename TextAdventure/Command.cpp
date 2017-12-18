@@ -60,8 +60,7 @@ void Command::process()
 	else
 	{
 		string command = _commands[0];
-		string result = "";
-
+		
 		switch (_commands.size())
 		{
 			case 1:
@@ -80,7 +79,7 @@ void Command::process()
 				{
 					_player->Move(command) ? setRoomDescription() : setInvalidMove(command);
 				}
-				else if (isMissingAction(command))
+				else if (isActionCommand(command))
 				{
 					_commandResult = command + " what?";
 				}
@@ -117,11 +116,17 @@ void Command::printResult()
 	cout << endl << _commandResult << endl;
 }
 
+/*
+	Gets our list of verbs.
+*/
 vector<string>& Command::getVerbs()
 {
 	return _validActions;
 }
 
+/*
+	Parses our command
+*/
 void Command::parseCommand()
 {
 	// tokenize the command based on spaces
@@ -231,18 +236,17 @@ void Command::setRoomDescription()
 	_commandResult += "\nYou see the following items: " + _player->getCurrentRoom()->getItems();
 }
 
+/*
+	Sets our command result to an invalid direction movement.
+*/
 void Command::setInvalidMove(string direction)
 {
 	_commandResult = "There is no exit " + direction;
 }
 
-bool Command::isMissingAction(string verb)
-{
-	return	isTakeCommand(verb) ||
-			isDropCommand(verb) ||
-			isKillCommand(verb);
-}
-
+/*
+	This function checks if we have a kill command (kill or fight)
+*/
 bool Command::isKillCommand(string verb)
 {
 	return verb == "kill" || verb == "fight";
@@ -268,6 +272,9 @@ bool Command::isActionCommand(string verb)
 			isTakeCommand(verb);
 }
 
+/*
+	This function checks if we have a clear screen command
+*/
 bool Command::isClearCommand(string command)
 {
 	return command == "cls" || command == "clear";

@@ -32,17 +32,16 @@ public:
 	int getScore();
 
 private:
-	vector<unique_ptr<Item>> _items;
-	
-	shared_ptr<Room> _currentRoom;
-
 	string _name;
 
 	int _score;
-
+	
+	vector<unique_ptr<Item>> _items;
+	
+	shared_ptr<Room> _currentRoom;
+	
 	Directions convertDirection(string);
-	shared_ptr<Room> getNextRoom(Directions);
-
+	
 	unique_ptr<Item> findItem(string);
 
 };

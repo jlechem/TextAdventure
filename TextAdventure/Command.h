@@ -54,7 +54,6 @@ private:
 	bool isInventoryCommand(string);
 	bool isSaveCommand(string);
 	bool isExitCommand(string);
-	bool isMissingAction(string);
 	bool isKillCommand(string);
 	bool isValid(string);
 	bool isActionCommand(string);
