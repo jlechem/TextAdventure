@@ -28,17 +28,21 @@ int main()
 	LoadGameData(settings);
 
 	// this is our main player object, we use it for running the game
-	unique_ptr<Player> player = make_unique<Player>(rooms[0]);
+	shared_ptr<Player> player = make_shared<Player>(rooms[0]);
 
+	command->setPlayer(player);
+	
 	PrintInto(settings);
-
-	PrintRoomDescription(player);
+	
+	// first thing we do is look to start the game
+	command->setCommand("LOOK");
+	ProcessCommand(command);
 	
 	// run the game loop
 	while (!GaveOver(player))
 	{
 		EnterCommand(command);
-		ProcessCommand(command, player);
+		ProcessCommand(command);
 	}
 
     return 0;

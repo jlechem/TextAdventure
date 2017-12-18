@@ -9,16 +9,6 @@
 #include "Player.h"
 #include "Item.h"
 
-shared_ptr<Room> FindRoom(int id)
-{
-	return NULL;
-}
-
-unique_ptr<Item> FindItem(int id)
-{
-	return make_unique<Item>();
-}
-
 void PrintRoomExits(unique_ptr<Player> &player)
 {
 	cout << "You can go: " << player->getCurrentRoom()->getExitsString() << endl;
@@ -123,7 +113,7 @@ void LoadItems(vector<unique_ptr<Item>> &items)
 
 }
 
-void LoadPlayer(unique_ptr<Player> &player)
+void LoadPlayer(shared_ptr<Player> &player)
 {
 }
 
@@ -137,7 +127,7 @@ void LoadGame()
 
 }
 
-bool GaveOver(unique_ptr<Player> &player)
+bool GaveOver(shared_ptr<Player> &player)
 {
 	return false;
 }
@@ -158,22 +148,12 @@ void PrintEnding(unique_ptr<Player>& player)
 	cout << endl << "Thanks for playing. You final score is: " << player->getScore() << endl;
 }
 
-void PrintPlayerDeath()
-{
-
-}
-
 void LoadGameData(unique_ptr<GameSettings> &settings)
 {
 	// TODO: get from the config file
 	settings->setShowIntroduction(true);
 	settings->setIntroduction("As the spaceship rover heads into deep space, the crew slowly awakes from cryogenic slumber...");
 	settings->setTitle("Justins Space Adventure");
-}
-
-bool IsValidCommand(vector<string> commands, string command)
-{
-	return false;
 }
 
 void EnterCommand(unique_ptr<Command>& command)
@@ -190,163 +170,68 @@ void EnterCommand(unique_ptr<Command>& command)
 
 }
 
-void PrintInvalidCommand(unique_ptr<Command>& command)
+//void PrintInvalidCommand(unique_ptr<Command>& command)
+//{
+//	string error;
+//	error = command->getCommand().size() != 0 ? "I don't understand how to '" + command->getCommand() + "'" : "You didn't enter anything";
+//	cout << error << endl;
+//}
+
+void PrintCommandResult(unique_ptr<Command>& command)
 {
-	string error;
-	error = command->getCommand().size() != 0 ? "I don't understand how to '" + command->getCommand() + "'" : "You didn't enter anything";
-	cout << error << endl;
+	cout << endl << command->getCommandResult() << endl;
 }
 
-Directions getDirection(string command)
+void ProcessCommand(unique_ptr<Command>& command)
 {
-	Directions result = Directions::Invalid;
-
-	if (command == NORTH || command == NORTH_SHORT)
-	{
-		result = Directions::North;
-	}
-	else if (command == EAST || command == EAST_SHORT)
-	{
-		result = Directions::East;
-	}
-	else if (command == SOUTH || command == SOUTH_SHORT)
-	{
-		result = Directions::South;
-	}
-	else if (command == WEST || command == WEST_SHORT)
-	{
-		result = Directions::West;
-	}
-	else if (command == NORTHEAST || command == NORTHEAST_SHORT)
-	{
-		result = Directions::NorthEast;
-	}
-	else if (command == SOUTHEAST || command == SOUTHEAST_SHORT)
-	{
-		result = Directions::SouthEast;
-	}
-	else if (command == SOUTHWEST || command == SOUTHWEST_SHORT)
-	{
-		result = Directions::SouthWest;
-	}
-	else if (command == NORTHWEST || command == NORTHWEST_SHORT)
-	{
-		result = Directions::NorthWest;
-	}
-
-	return result;
-
+	command->Process();
+	command->PrintResult();
 }
 
-bool IsValidMove(unique_ptr<Player>& player, Directions direction)
-{
-	return player->Move(direction);
-}
-
-void PrintInvalidMove(string direction)
-{
-	cout << "There is no exit " + direction << endl;
-}
-
-void PrintInventory(unique_ptr<Player>& player)
-{
-	auto items = player->getInventory();
-
-	cout << endl << "You have the following items" << endl;
-
-	if (items)
-	{
-		for ( auto i = 0; i < items->size(); i++)
-		{
-			cout << (*items)[i]->getName() << endl;
-		}
-	}
-	
-	cout << endl;
-
-}
-
-void TakeItem(unique_ptr<Command>& command, unique_ptr<Player>& player)
-{
-	// check we have something to take
-	if (command->getNoun().size() == 0)
-	{
-		cout << "Take what?" << endl;
-	}
-	else if (player->addItem(command->getNoun()))
-	{
-		cout << "You take the " << command->getNoun() << endl;
-	}
-	else
-	{
-		cout << "I don't see a " << command->getNoun() << " here" << endl;
-	}
-}
-
-void DropItem(unique_ptr<Command>& command, unique_ptr<Player>& player)
-{
-
-}
-
-void PrintAction(unique_ptr<Command>& command)
-{
-	cout << endl << command->getActionResult() << endl;
-}
-
-void ProcessCommand(unique_ptr<Command>& command, unique_ptr<Player>& player)
-{
-	if (command->IsValid())
-	{
-		switch (command->getActionType())
-		{
-		case ActionType::Action:
-				PrintAction(command);
-				break;
-				
-			case ActionType::Look:
-				PrintRoomDescription(player);
-				break;
-
-			case ActionType::Movement:
-				if (!IsValidMove(player, getDirection(command->getCommand())))
-				{
-					PrintInvalidMove(command->getCommand());
-				}
-				else
-				{
-					PrintRoomDescription(player);
-				}
-
-				break;
-
-			case ActionType::Inventory:
-				PrintInventory(player);
-				break;
-
-			case ActionType::Quit:
-				PrintEnding(player);
-				exit(0);
-				break;
-
-			case ActionType::Save:
-				SaveGame();
-				break;
-
-			case ActionType::Take:
-				TakeItem(command,player);
-				break;
-
-			case ActionType::Drop:
-				DropItem(command,player);
-				break;
-
-			default:
-				break;
-
-		}
-	}
-	else
-	{
-		PrintInvalidCommand(command);
-	}
-}
+//switch (command->getActionType())
+//{
+//case ActionType::Action:
+//	PrintAction(command);
+//	break;
+//
+//case ActionType::Look:
+//	PrintRoomDescription(player);
+//	break;
+//
+//case ActionType::Movement:
+//	if (!IsValidMove(player, getDirection(command->getCommand())))
+//	{
+//		PrintInvalidMove(command->getCommand());
+//	}
+//	else
+//	{
+//		PrintRoomDescription(player);
+//	}
+//
+//	break;
+//
+//case ActionType::Inventory:
+//	PrintInventory(player);
+//	break;
+//
+//case ActionType::Quit:
+//	PrintEnding(player);
+//	exit(0);
+//	break;
+//
+//case ActionType::Save:
+//	SaveGame();
+//	break;
+//
+//case ActionType::Take:
+//	TakeItem(command, player);
+//	break;
+//
+//case ActionType::Drop:
+//	DropItem(command, player);
+//	break;
+//
+//default:
+//	break;
+//
+//}

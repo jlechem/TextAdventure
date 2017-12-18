@@ -7,6 +7,7 @@ Command::Command()
 {
 	_verbs = make_unique<vector<string>>();
 	_actionType = ActionType::InvalidAction;
+	_player = make_shared<Player>();
 }
 
 Command::Command(string command): Command()
@@ -45,9 +46,9 @@ string Command::getModifier()
 	return _modifier;
 }
 
-string Command::getActionResult()
+string Command::getCommandResult()
 {
-	return _actionResult;
+	return _commandResult;
 }
 
 ActionType Command::getActionType()
@@ -55,9 +56,24 @@ ActionType Command::getActionType()
 	return _actionType;
 }
 
+void Command::setPlayer(shared_ptr<Player> player)
+{
+	_player = player;
+}
+
 unique_ptr<vector<string>>& Command::getVerbs()
 {
 	return _verbs;
+}
+
+void Command::Process()
+{
+	// TODO: Process the command entered in before
+}
+
+void Command::PrintResult()
+{
+	cout << endl << _commandResult << endl;
 }
 
 bool Command::IsValid()
@@ -232,23 +248,23 @@ void Command::calculateActionResult(string verb)
 {
 	if (verb == "jump")
 	{
-		_actionResult = "You jump up and down";
+		_commandResult = "You jump up and down";
 	}
 	else if (verb == "sleep")
 	{
-		_actionResult = "You lie down and sleep for a while, refreshing!";
+		_commandResult = "You lie down and sleep for a while, refreshing!";
 	}
 	else if (verb == "rest")
 	{
-		_actionResult = "You rest for a minute";
+		_commandResult = "You rest for a minute";
 	}
 	else if (verb == "hum")
 	{
-		_actionResult = "You hum a little ditty, it seems to make the work go by faster.";
+		_commandResult = "You hum a little ditty, it seems to make the work go by faster.";
 	}
 	else if (verb == "sing")
 	{
-		_actionResult = "You sing a song, but the key seems to be off....";
+		_commandResult = "You sing a song, but the key seems to be off....";
 	}
 
 }
