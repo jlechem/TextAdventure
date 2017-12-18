@@ -42,16 +42,21 @@ private:
 	shared_ptr<Player> _player;			// the player, we need this for item management, etc
 
 	void parseCommand();
-	bool isActionCommand(string verb);
-	bool isMoveCommand(string verb);
-	bool isTakeCommand(string verb);
-	bool isLookCommand(string verb);
-	bool isDropCommand(string verb);
-	bool isItemCommand(string verb);
-	bool isInventoryCommand(string verb);
-	bool isSaveCommand(string verb);
-	bool isExitCommand(string verb);
-	void calculateActionResult(string verb);
+	
 	void loadActions();
+	
+	bool isActionCommand(string);
+	bool isMoveCommand(string);
+	bool isTakeCommand(string);
+	bool isLookCommand(string);
+	bool isDropCommand(string);
+	bool isItemCommand(string);
+	bool isInventoryCommand(string);
+	bool isSaveCommand(string);
+	bool isExitCommand(string);
 	bool isValid(string);
+	
+	void setRoomDescription();
+	void setInvalidMove(string);
+
 };

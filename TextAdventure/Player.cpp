@@ -47,26 +47,29 @@ shared_ptr<Room> Player::getCurrentRoom()
 	return _currentRoom;
 }
 
-bool Player::Move(Directions direction)
+bool Player::Move(string direction)
 {
+	return false;
+
 	bool result = false;
-
-	// get the value from our map for this key
-	auto newRoom = _currentRoom->getExits()[direction];
-
-	if (newRoom)
-	{
-		_currentRoom = newRoom;
-		result = true;
-	}
-
-	return result;
 
 }
 
 int Player::getScore()
 {
 	return _score;
+}
+
+Directions Player::convertDirection(string direction)
+{
+	return Directions();
+}
+
+shared_ptr<Room> Player::getNextRoom(Directions direction)
+{
+	shared_ptr<Room> room();
+
+	return shared_ptr<Room>();
 }
 
 unique_ptr<Item> Player::findItem(string name)

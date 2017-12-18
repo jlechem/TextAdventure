@@ -27,7 +27,7 @@ public:
 
 	shared_ptr<Room> getCurrentRoom();
 
-	bool Move(Directions);
+	bool Move(string);
 
 	int getScore();
 
@@ -39,6 +39,9 @@ private:
 	string _name;
 
 	int _score;
+
+	Directions convertDirection(string);
+	shared_ptr<Room> getNextRoom(Directions);
 
 	unique_ptr<Item> findItem(string);
 

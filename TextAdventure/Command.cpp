@@ -64,20 +64,17 @@ void Command::process()
 				// if we have a look command then print the room
 				if (isLookCommand(command))
 				{
-					_commandResult = _player->getCurrentRoom()->getDescription();
-					_commandResult += "\nYou see the following exists: " + _player->getCurrentRoom()->getExitsString();
-					_commandResult += "\nYou see the following items: " + _player->getCurrentRoom()->getItems();
+					setRoomDescription();
 				}
-
 				// if we have a 'fun' command print the result
 				else if (isActionCommand(command))
 				{
 					_commandResult = _funCommands[command];
 				}
-				// if we have a move command then move
+				// if we have a move command then try and move
 				else if (isMoveCommand(command))
 				{
-
+					_player->Move(command) ? setRoomDescription() : setInvalidMove(command);
 				}
 
 				break;
@@ -182,10 +179,6 @@ bool Command::isExitCommand(string verb)
 		verb == "q";
 }
 
-void Command::calculateActionResult(string verb)
-{
-}
-
 void Command::loadActions()
 {
 	// TODO: load the actions from the config file
@@ -200,19 +193,24 @@ bool Command::isValid(string action)
 {
 	bool result = false;
 
-	vector<string>::iterator it;
+	auto command = find(_validActions.begin(), _validActions.end(), action);
 
-	for (it = _validActions.begin(); it != _validActions.end(); ++it)
-	{
-		if ((*it) == action)
-		{
-			result = true;
-			break;
-		}
-	}
+	result = command != _validActions.end();
 
 	return result;
 
+}
+
+void Command::setRoomDescription()
+{
+	_commandResult = _player->getCurrentRoom()->getDescription();
+	_commandResult += "\nYou see the following exists: " + _player->getCurrentRoom()->getExitsString();
+	_commandResult += "\nYou see the following items: " + _player->getCurrentRoom()->getItems();
+}
+
+void Command::setInvalidMove(string direction)
+{
+	_commandResult = "There is no exit " + direction;
 }
 
 bool Command::isActionCommand(string verb)
