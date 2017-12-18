@@ -2,6 +2,7 @@
 
 enum  ActionType
 {
+	Action,
 	InvalidAction,
 	Movement,
 	Take,

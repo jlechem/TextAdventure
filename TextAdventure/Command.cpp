@@ -15,7 +15,6 @@ Command::Command(string command): Command()
 	parseCommand();
 }
 
-
 Command::~Command()
 {
 }
@@ -44,6 +43,11 @@ string Command::getNoun()
 string Command::getModifier()
 {
 	return _modifier;
+}
+
+string Command::getActionResult()
+{
+	return _actionResult;
 }
 
 ActionType Command::getActionType()
@@ -181,12 +185,6 @@ bool Command::isExitCommand(string verb)
 
 void Command::calculateActionType(string verb)
 {
-	// single verb comamnds can be
-	// movement, N S E W, etc
-	// look (room)
-	// save
-	// quit
-	// inventory, i
 	if (isMoveCommand(verb))
 	{
 		_isValid = true;
@@ -217,9 +215,45 @@ void Command::calculateActionType(string verb)
 		_isValid = true;
 		_actionType = ActionType::Take;
 	}
+	else if (isActionCommand(verb))
+	{
+		_isValid = true;
+		calculateActionResult(verb);
+		_actionType = ActionType::Action;
+	}
 	else
 	{
 		_isValid = false;
 		_actionType = ActionType::InvalidAction;
 	}
+}
+
+void Command::calculateActionResult(string verb)
+{
+	if (verb == "jump")
+	{
+		_actionResult = "You jump up and down";
+	}
+	else if (verb == "sleep")
+	{
+		_actionResult = "You lie down and sleep for a while, refreshing!";
+	}
+	else if (verb == "rest")
+	{
+		_actionResult = "You rest for a minute";
+	}
+	else if (verb == "hum")
+	{
+		_actionResult = "You hum a little ditty, it seems to make the work go by faster.";
+	}
+	else if (verb == "sing")
+	{
+		_actionResult = "You sing a song, but the key seems to be off....";
+	}
+
+}
+
+bool Command::isActionCommand(string verb)
+{
+	return verb == "jump" || verb == "sleep" || verb == "rest" || verb == "hum" || verb == "sing";
 }

@@ -288,13 +288,21 @@ void DropItem(unique_ptr<Command>& command, unique_ptr<Player>& player)
 
 }
 
+void PrintAction(unique_ptr<Command>& command)
+{
+	cout << endl << command->getActionResult() << endl;
+}
+
 void ProcessCommand(unique_ptr<Command>& command, unique_ptr<Player>& player)
 {
 	if (command->IsValid())
 	{
 		switch (command->getActionType())
 		{
-			// these are single actions
+		case ActionType::Action:
+				PrintAction(command);
+				break;
+				
 			case ActionType::Look:
 				PrintRoomDescription(player);
 				break;
@@ -324,7 +332,6 @@ void ProcessCommand(unique_ptr<Command>& command, unique_ptr<Player>& player)
 				SaveGame();
 				break;
 
-			// these are double actions, it take X, drop X, examine X etc
 			case ActionType::Take:
 				TakeItem(command,player);
 				break;
@@ -332,9 +339,6 @@ void ProcessCommand(unique_ptr<Command>& command, unique_ptr<Player>& player)
 			case ActionType::Drop:
 				DropItem(command,player);
 				break;
-
-			// TODO: implement 3 word actions, look at X, jump on X
-
 
 			default:
 				break;

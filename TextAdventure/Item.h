@@ -30,7 +30,8 @@ private:
 	string _name;
 	string _description;
 	int _scoreValue;
-	
+	vector<string> _takeNames;
+
 	ItemType _type;
 
 	vector<Item> _subItems;
