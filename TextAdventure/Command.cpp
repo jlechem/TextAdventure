@@ -35,6 +35,9 @@ string Command::getCommandResult()
 	return _commandResult;
 }
 
+/*
+	Set the specified player into the command.
+*/
 void Command::setPlayer(shared_ptr<Player> player)
 {
 	_player = player;
@@ -57,6 +60,7 @@ void Command::process()
 	else
 	{
 		string command = _commands[0];
+		string result = "";
 
 		switch (_commands.size())
 		{
@@ -67,7 +71,7 @@ void Command::process()
 					setRoomDescription();
 				}
 				// if we have a 'fun' command print the result
-				else if (isActionCommand(command))
+				else if (isFunCommand(command))
 				{
 					_commandResult = _funCommands[command];
 				}
@@ -75,6 +79,20 @@ void Command::process()
 				else if (isMoveCommand(command))
 				{
 					_player->Move(command) ? setRoomDescription() : setInvalidMove(command);
+				}
+				else if (isMissingAction(command))
+				{
+					_commandResult = command + " what?";
+				}
+				else if (isExitCommand(command))
+				{
+					// TODO: add game option prompts before we exit
+					exit(0);
+				}
+				else if (isClearCommand(command))
+				{
+					system("cls");
+					setRoomDescription();
 				}
 
 				break;
@@ -179,6 +197,9 @@ bool Command::isExitCommand(string verb)
 		verb == "q";
 }
 
+/*
+	Loads all of our valid actions into a list.
+*/
 void Command::loadActions()
 {
 	// TODO: load the actions from the config file
@@ -189,18 +210,20 @@ void Command::loadActions()
 	_funCommands["sing"] = "You sing that song you like, but the key seems to be off.....";
 }
 
+/*
+	Checks the action against our list of valid actions to determine if it's valid or not.
+*/
 bool Command::isValid(string action)
 {
-	bool result = false;
-
 	auto command = find(_validActions.begin(), _validActions.end(), action);
 
-	result = command != _validActions.end();
-
-	return result;
-
+	return command != _validActions.end();
 }
 
+/*
+	Takes the current players current room and uses it to build a description of the room
+	the player is in
+*/
 void Command::setRoomDescription()
 {
 	_commandResult = _player->getCurrentRoom()->getDescription();
@@ -213,7 +236,39 @@ void Command::setInvalidMove(string direction)
 	_commandResult = "There is no exit " + direction;
 }
 
+bool Command::isMissingAction(string verb)
+{
+	return	isTakeCommand(verb) ||
+			isDropCommand(verb) ||
+			isKillCommand(verb);
+}
+
+bool Command::isKillCommand(string verb)
+{
+	return verb == "kill" || verb == "fight";
+}
+
+/*
+	This function checks if the command is in our 'fun' command list
+*/
+bool Command::isFunCommand(string verb)
+{
+	auto result = _funCommands.find(verb);
+	
+	return result != _funCommands.end();
+}
+
+/*
+	This function determines if a command requires a second part, ie kill X, drop X, take X
+*/
 bool Command::isActionCommand(string verb)
 {
-	return verb == "jump" || verb == "sleep" || verb == "rest" || verb == "hum" || verb == "sing";
+	return	isKillCommand(verb) ||
+			isDropCommand(verb) ||
+			isTakeCommand(verb);
+}
+
+bool Command::isClearCommand(string command)
+{
+	return command == "cls" || command == "clear";
 }

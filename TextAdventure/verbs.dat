@@ -15,11 +15,12 @@ ne
 sw
 se
 look
+l
 take
 drop
 quit
 q
-take
+exit
 lick
 suck
 jump
@@ -32,6 +33,7 @@ dive
 clean
 move
 clear
+cls
 inventory
 i
 kill

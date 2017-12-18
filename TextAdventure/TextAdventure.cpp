@@ -18,30 +18,6 @@
 
 using namespace std;
 
-/*
-Helper Functions
-*/
-void PrintRoomExits(unique_ptr<Player> &player)
-{
-	cout << "You can go: " << player->getCurrentRoom()->getExitsString() << endl;
-}
-
-void PrintRoomItems(unique_ptr<Player> &player)
-{
-	if (player->getCurrentRoom()->getItems().size() != 0)
-	{
-		cout << "You see the following items: " << player->getCurrentRoom()->getItems() << endl;
-	}
-}
-
-void PrintRoomDescription(unique_ptr<Player> &player)
-{
-	cout << endl << player->getCurrentRoom()->getDescription() << endl;
-
-	PrintRoomExits(player);
-	PrintRoomItems(player);
-}
-
 void LoadRooms(vector<shared_ptr<Room>> &rooms, vector<unique_ptr<Item>> &items)
 {
 	// TODO: load from the XML file
@@ -188,7 +164,6 @@ void ProcessCommand(unique_ptr<Command>& command)
 	command->process();
 }
 
-
 /*
 	Main function
 */
@@ -211,6 +186,8 @@ int main()
 
 	command->setPlayer(player);
 	
+	system("CLS");
+
 	PrintInto(settings);
 	
 	// first thing we do is look to start the game

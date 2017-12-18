@@ -45,7 +45,7 @@ private:
 	
 	void loadActions();
 	
-	bool isActionCommand(string);
+	bool isFunCommand(string);
 	bool isMoveCommand(string);
 	bool isTakeCommand(string);
 	bool isLookCommand(string);
@@ -54,8 +54,12 @@ private:
 	bool isInventoryCommand(string);
 	bool isSaveCommand(string);
 	bool isExitCommand(string);
+	bool isMissingAction(string);
+	bool isKillCommand(string);
 	bool isValid(string);
-	
+	bool isActionCommand(string);
+	bool isClearCommand(string);
+
 	void setRoomDescription();
 	void setInvalidMove(string);
 
