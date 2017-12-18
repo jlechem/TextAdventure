@@ -41,10 +41,6 @@ private:
 
 	shared_ptr<Player> _player;			// the player, we need this for item management, etc
 
-	void parseCommand();
-	
-	void loadActions();
-	
 	bool isFunCommand(string);
 	bool isMoveCommand(string);
 	bool isTakeCommand(string);
@@ -59,7 +55,11 @@ private:
 	bool isActionCommand(string);
 	bool isClearCommand(string);
 
+	void parseCommand();
+	void loadActions();
 	void setRoomDescription();
 	void setInvalidMove(string);
+	void takeItem();
+	void dropItem();
 
 };

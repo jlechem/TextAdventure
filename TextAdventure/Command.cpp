@@ -93,16 +93,94 @@ void Command::process()
 					system("cls");
 					setRoomDescription();
 				}
+				else
+				{
+					_commandResult = "I don't know how to " + _command;
+				}
 
 				break;
 
 			case 2:
+				// handle take and drop commands
+				if (isTakeCommand(command))
+				{
+					takeItem();
+				}
+				else if (isDropCommand(command))
+				{
+					dropItem();
+				}
+				else if (isKillCommand(command))
+				{
+					// TODO: handle fighting
+				}
+				else
+				{
+					_commandResult = "I don't know how to " + _command;
+				}
+
 				break;
 
 			case 3:
+				// handle take and drop commands
+				if (isTakeCommand(command))
+				{
+					takeItem();
+				}
+				else if (isDropCommand(command))
+				{
+					dropItem();
+				}
+				else if (isKillCommand(command))
+				{
+					// TODO: handle fighting
+				}
+				else if (isLookCommand(command))
+				{
+					// TODO: implement complex Look
+				}
+				else
+				{
+					_commandResult = "I don't know how to " + _command;
+				}
+
+				break;
+
+			case 4:
+				// look at X T Z
+				if (isLookCommand(command))
+				{
+					// TODO: implement complex Look
+				}
+				else if (isTakeCommand(command))
+				{
+					takeItem();
+				}
+				else if (isDropCommand(command))
+				{
+					dropItem();
+				}
+				else
+				{
+					_commandResult = "I don't know how to " + _command;
+				}
+
 				break;
 
 			default:
+				if (isTakeCommand(command))
+				{
+					takeItem();
+				}
+				else if (isDropCommand(command))
+				{
+					dropItem();
+				}
+				else
+				{
+					_commandResult = "I don't know how to " + _command;
+				}
+
 				break;
 		}
 	}
@@ -143,63 +221,34 @@ void Command::parseCommand()
 	}
 }
 
-bool Command::isMoveCommand(string verb)
+void Command::takeItem() 
 {
-	return
-		verb == "north" ||
-		verb == "south" ||
-		verb == "east" ||
-		verb == "west" ||
-		verb == "n" ||
-		verb == "e" ||
-		verb == "s" ||
-		verb == "w" ||
-		verb == "northeast" ||
-		verb == "northwest" ||
-		verb == "southeast" ||
-		verb == "southwest" ||
-		verb == "ne" ||
-		verb == "nw" ||
-		verb == "se" ||
-		verb == "sw";
+	// check for a special take 'the' input
+	if (_commands.size() == 2 && 
+		_commands[1] == "the" )
+	{
+		_commandResult = "take what?";
+	}
+	// otherwise if no 'the build our input
+	else
+	{
+		string item = "";
+
+		auto startIndex = _commands[1] == "the" ? 2 : 1;
+
+		for (auto i = startIndex; i < _commands.size(); i++)
+		{
+			item += _commands[i] + " ";
+		}
+
+		item.erase(item.end());
+
+	}	
 }
 
-bool Command::isTakeCommand(string verb)
+void Command::dropItem()
 {
-	return verb == "take";
-}
-
-bool Command::isLookCommand(string verb)
-{
-	return verb == "look" || verb == "l";
-}
-
-bool Command::isDropCommand(string verb)
-{
-	return verb == "drop";
-}
-
-bool Command::isItemCommand(string verb)
-{
-	return false;
-}
-
-bool Command::isInventoryCommand(string verb)
-{
-	return	verb == "i" ||
-		verb == "inventory";
-}
-
-bool Command::isSaveCommand(string verb)
-{
-	return verb == "save";
-}
-
-bool Command::isExitCommand(string verb)
-{
-	return	verb == "exit" ||
-		verb == "quit" ||
-		verb == "q";
+	// check the second word, if it's 'the' we can skip it
 }
 
 /*
@@ -278,4 +327,63 @@ bool Command::isActionCommand(string verb)
 bool Command::isClearCommand(string command)
 {
 	return command == "cls" || command == "clear";
+}
+
+bool Command::isMoveCommand(string verb)
+{
+	return
+		verb == "north" ||
+		verb == "south" ||
+		verb == "east" ||
+		verb == "west" ||
+		verb == "n" ||
+		verb == "e" ||
+		verb == "s" ||
+		verb == "w" ||
+		verb == "northeast" ||
+		verb == "northwest" ||
+		verb == "southeast" ||
+		verb == "southwest" ||
+		verb == "ne" ||
+		verb == "nw" ||
+		verb == "se" ||
+		verb == "sw";
+}
+
+bool Command::isTakeCommand(string verb)
+{
+	return verb == "take";
+}
+
+bool Command::isLookCommand(string verb)
+{
+	return verb == "look" || verb == "l";
+}
+
+bool Command::isDropCommand(string verb)
+{
+	return verb == "drop";
+}
+
+bool Command::isItemCommand(string verb)
+{
+	return false;
+}
+
+bool Command::isInventoryCommand(string verb)
+{
+	return	verb == "i" ||
+		verb == "inventory";
+}
+
+bool Command::isSaveCommand(string verb)
+{
+	return verb == "save";
+}
+
+bool Command::isExitCommand(string verb)
+{
+	return	verb == "exit" ||
+		verb == "quit" ||
+		verb == "q";
 }
