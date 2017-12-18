@@ -1,3 +1,11 @@
+/*
+	TreasureCase.h
+	Created By:		Justin LeCheminant
+	Created On:		12-18-2017
+	Last Modified:	12-18-2017
+	Notes: A class that represents the treasure chest in the game
+*/
+
 #pragma once
 
 #include "stdafx.h"

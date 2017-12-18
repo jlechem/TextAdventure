@@ -142,7 +142,6 @@
     <ClInclude Include="Command.h" />
     <ClInclude Include="Directions.h" />
     <ClInclude Include="GameSettings.h" />
-    <ClInclude Include="Helpers.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="ItemType.h" />
     <ClInclude Include="Player.h" />

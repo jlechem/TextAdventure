@@ -6,6 +6,7 @@
 Command::Command()
 {
 	_player = make_shared<Player>();
+	loadActions();
 }
 
 Command::Command(string command): Command()
@@ -39,31 +40,45 @@ void Command::setPlayer(shared_ptr<Player> player)
 	_player = player;
 }
 
-
 void Command::process()
 {	
+	_commandResult.clear();
+
 	// no text was entered
 	if (_commands.size() == 0)
 	{		
 		_commandResult = "What do you want to do?";
 	}
+	// whatever was entered, the first thing has to be a valid verb/command
 	else if ( !isValid(_commands[0]) )
 	{
 		_commandResult = "I don't know how to " + _commands[0];
 	}
 	else
 	{
-		// TODO: Process the command entered in before
-		// check for fun things, ie jump, hum, etc
+		string command = _commands[0];
+
 		switch (_commands.size())
 		{
 			case 1:
-
 				// if we have a look command then print the room
+				if (isLookCommand(command))
+				{
+					_commandResult = _player->getCurrentRoom()->getDescription();
+					_commandResult += "\nYou see the following exists: " + _player->getCurrentRoom()->getExitsString();
+					_commandResult += "\nYou see the following items: " + _player->getCurrentRoom()->getItems();
+				}
 
 				// if we have a 'fun' command print the result
-
+				else if (isActionCommand(command))
+				{
+					_commandResult = _funCommands[command];
+				}
 				// if we have a move command then move
+				else if (isMoveCommand(command))
+				{
+
+				}
 
 				break;
 
