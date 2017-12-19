@@ -37,9 +37,21 @@ bool Player::addItem(string name)
 
 }
 
-unique_ptr<Item> Player::dropItem(string name)
+bool Player::dropItem(string name)
 {
-	return findItem(name);
+	bool result = false;
+
+	// find the item in our collection if it exists
+	auto foundItem = findItem(name);
+
+	if (foundItem != nullptr)
+	{
+		_currentRoom->addItem(std::move(foundItem));
+		result = true;
+	}
+
+	return result;
+
 }
 
 shared_ptr<Room> Player::getCurrentRoom()
@@ -114,19 +126,22 @@ Directions Player::convertDirection(string direction)
 
 unique_ptr<Item> Player::findItem(string name)
 {
-	unique_ptr<Item> temp = nullptr;
+	unique_ptr<Item> result = nullptr;
 
 	vector<unique_ptr<Item>>::iterator it;
 
-	for (auto i = 0; i < _items.size(); i++) 
+	for (it = _items.begin(); it != _items.end(); ++it)
 	{
-		if ( _items[i]->getName() == name )
+		auto temp = find((*it)->getAlterateNames().begin(), (*it)->getAlterateNames().end(), name);
+
+		if (temp != (*it)->getAlterateNames().end())
 		{
-			temp = std::move(_items[i]);
+			result = std::move((*it));
+			break;
 		}
 	}
 
-	return std::move(temp);
+	return std::move(result);
 }
 
 void Player::printInventory()

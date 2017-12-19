@@ -227,7 +227,7 @@ void Command::parseCommand()
 
 void Command::takeItem() 
 {
-	// this means they type 'take the' and nothing else
+	// this means they typed 'take the' and nothing else
 	if (_commands.size() == 2 && 
 		_commands[1] == "the" )
 	{
@@ -259,7 +259,34 @@ void Command::takeItem()
 
 void Command::dropItem()
 {
-	// check the second word, if it's 'the' we can skip it
+	// this means they typed 'take the' and nothing else
+	if (_commands.size() == 2 &&
+		_commands[1] == "the")
+	{
+		_commandResult = "drop what?";
+	}
+	// take X Z
+	// or take the X Y Z
+	else
+	{
+		// skip 'the' word if needed
+		auto startIndex = _commands[1] == "the" ? 2 : 1;
+
+		// we need to concat words based on spaces
+		string item = "";
+
+		for (auto i = startIndex; i < _commands.size(); i++)
+		{
+			item += _commands[i] + " ";
+		}
+
+		// clear the last space at the end
+		item.erase(item.end() - 1);
+
+		// try and add this item from the room to the player
+		_commandResult = _player->dropItem(item) ? "You drop the " + item : "You don't have a " + item;
+
+	}
 }
 
 /*
