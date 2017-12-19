@@ -82,6 +82,10 @@ void LoadItems(vector<unique_ptr<Item>> &items)
 	newItem->setDescription("a sharp pointy stick");
 	newItem->setScore(100);
 	newItem->setType(ItemType::BaseItem);
+	newItem->addAlternateName("stick");
+	newItem->addAlternateName("pointy stick");
+	newItem->addAlternateName("sharp stick");
+	newItem->addAlternateName("sharp pointy stick");
 	items.push_back(std::move(newItem));
 
 	auto newItem2 = make_unique<Item>();
@@ -90,6 +94,9 @@ void LoadItems(vector<unique_ptr<Item>> &items)
 	newItem2->setDescription("a small, round, and very shiny black rock");
 	newItem2->setScore(5000);
 	newItem2->setType(ItemType::BaseItem);
+	newItem2->addAlternateName("black rock");
+	newItem2->addAlternateName("rock");
+
 	items.push_back(std::move(newItem2));
 
 	auto newItem3 = make_unique<Item>();
@@ -98,6 +105,9 @@ void LoadItems(vector<unique_ptr<Item>> &items)
 	newItem3->setDescription("An egg laid by the golden goose.");
 	newItem3->setScore(50000);
 	newItem3->setType(ItemType::Treasure);
+	newItem3->addAlternateName("egg");
+	newItem3->addAlternateName("golden egg");
+	newItem3->addAlternateName("goose egg");
 	items.push_back(std::move(newItem3));
 
 }

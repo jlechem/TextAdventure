@@ -33,12 +33,15 @@ public:
 	ItemType getType();
 	void setType(ItemType);
 
+	void addAlternateName(string);
+	vector<string>& getAlterateNames();
+
 private:
 	int _id;
 	string _name;
 	string _description;
-	int _scoreValue;
-	vector<string> _takeNames;
+	int _score;
+	vector<string> _alternateNames;
 
 	ItemType _type;
 

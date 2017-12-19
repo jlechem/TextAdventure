@@ -101,11 +101,14 @@ unique_ptr<Item> Room::findItem(string name)
 {
 	vector<unique_ptr<Item>>::iterator it;
 
-	unique_ptr<Item> result = NULL;
+	unique_ptr<Item> result = nullptr;
 
+	// loop through all the items in this room and search for the one we want
 	for (it = _items.begin(); it != _items.end(); ++it)
 	{
-		if ((*it)->getName() == name)
+		auto temp = find((*it)->getAlterateNames().begin(), (*it)->getAlterateNames().end(), name);
+
+		if (temp != (*it)->getAlterateNames().end())
 		{
 			result = std::move((*it));
 			_items.erase(it);
@@ -115,24 +118,25 @@ unique_ptr<Item> Room::findItem(string name)
 
 	generateItemString();
 
-	return result;
+	return std::move(result);
 
 }
 
 void Room::generateItemString()
 {
-	std::vector<unique_ptr<Item>>::iterator it;
-
 	_itemsString.clear();
 
-	for (it = _items.begin(); it != _items.end(); ++it)
+	for (auto i = 0; i < _items.size(); i++)
 	{
-		_itemsString += (*it)->getName();
+		_itemsString += _items[i]->getName();
 		_itemsString += ", ";
 	}
 
-	// take off the last comma
-	_itemsString.erase(_itemsString.end() - 2);
+	if (_itemsString.size() > 2)
+	{
+		// take off the last comma and space
+		_itemsString.erase(_itemsString.end() - 2);
+	}
 }
 
 string Room::getItems()

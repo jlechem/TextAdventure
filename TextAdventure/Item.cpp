@@ -32,12 +32,12 @@ void Item::setName(string name)
 
 int Item::getScore()
 {
-	return _scoreValue;
+	return _score;
 }
 
 void Item::setScore(int score)
 {
-	_scoreValue = score;
+	_score = score;
 }
 
 string Item::getDescription()
@@ -58,4 +58,14 @@ ItemType Item::getType()
 void Item::setType(ItemType type)
 {
 	_type = type;
+}
+
+void Item::addAlternateName(string name)
+{
+	_alternateNames.push_back(name);
+}
+
+vector<string>& Item::getAlterateNames()
+{
+	return _alternateNames;
 }

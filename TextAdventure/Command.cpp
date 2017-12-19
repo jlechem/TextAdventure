@@ -93,6 +93,10 @@ void Command::process()
 					system("cls");
 					setRoomDescription();
 				}
+				else if (isInventoryCommand(command))
+				{
+					_player->printInventory();
+				}
 				else
 				{
 					_commandResult = "I don't know how to " + _command;
@@ -223,26 +227,33 @@ void Command::parseCommand()
 
 void Command::takeItem() 
 {
-	// check for a special take 'the' input
+	// this means they type 'take the' and nothing else
 	if (_commands.size() == 2 && 
 		_commands[1] == "the" )
 	{
 		_commandResult = "take what?";
 	}
-	// otherwise if no 'the build our input
+	// take X Z
+	// or take the X Y Z
 	else
 	{
-		string item = "";
-
+		// skip 'the' word if needed
 		auto startIndex = _commands[1] == "the" ? 2 : 1;
+
+		// we need to concat words based on spaces
+		string item = "";
 
 		for (auto i = startIndex; i < _commands.size(); i++)
 		{
 			item += _commands[i] + " ";
 		}
 
-		item.erase(item.end());
+		// clear the last space at the end
+		item.erase(item.end() - 1);
 
+		// try and add this item from the room to the player
+		_commandResult = _player->addItem(item) ? "You pick up the " + item : "You don't see a " + item + " here";
+		
 	}	
 }
 

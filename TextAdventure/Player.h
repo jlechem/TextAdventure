@@ -24,12 +24,10 @@ public:
 	vector<unique_ptr<Item>>* getInventory();
 	bool addItem(string);
 	unique_ptr<Item> dropItem(string);
-
 	shared_ptr<Room> getCurrentRoom();
-
 	bool Move(string);
-
 	int getScore();
+	void printInventory();
 
 private:
 	string _name;

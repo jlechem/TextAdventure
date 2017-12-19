@@ -25,7 +25,7 @@ bool Player::addItem(string name)
 	bool result = false;
 
 	// check if our room has an item or teasure with this name
-	unique_ptr<Item> item = std::move(_currentRoom->findItem(name));
+	unique_ptr<Item> item = _currentRoom->findItem(name);
 
 	if (item != nullptr)
 	{
@@ -114,7 +114,7 @@ Directions Player::convertDirection(string direction)
 
 unique_ptr<Item> Player::findItem(string name)
 {
-	unique_ptr<Item> temp = NULL;
+	unique_ptr<Item> temp = nullptr;
 
 	vector<unique_ptr<Item>>::iterator it;
 
@@ -126,5 +126,17 @@ unique_ptr<Item> Player::findItem(string name)
 		}
 	}
 
-	return temp;
+	return std::move(temp);
+}
+
+void Player::printInventory()
+{
+	vector<unique_ptr<Item>>::iterator it;
+
+	cout << "You have the following items" << endl;
+
+	for (it = _items.begin(); it != _items.end(); ++it)
+	{
+		cout << (*it)->getName() << endl;
+	}
 }
