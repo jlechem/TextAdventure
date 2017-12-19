@@ -18,14 +18,13 @@
 
 using namespace std;
 
-void LoadXML(char* xmlBuffer)
+void LoadXML(string& xmlBuffer)
 {
 	ifstream inputFile("config.xml", ifstream::in);
 	
 	if (inputFile.is_open())
 	{
-		string result(std::string((std::istreambuf_iterator<char>(inputFile)), std::istreambuf_iterator<char>()));
-		strcpy(xmlBuffer, result.c_str());
+		xmlBuffer = (std::string((std::istreambuf_iterator<char>(inputFile)), std::istreambuf_iterator<char>()));
 	}
 
 	inputFile.close();
@@ -157,15 +156,31 @@ void PrintEnding(unique_ptr<Player>& player)
 	cout << endl << "Thanks for playing. You final score is: " << player->getScore() << endl;
 }
 
-void LoadGameData(unique_ptr<GameSettings> &settings, char* xml, rapidxml::xml_document<>* document)
+void LoadGameData(unique_ptr<GameSettings> &settings, rapidxml::xml_document<>* document)
 {
-	rapidxml::xml_node<>* root_node = document->first_node("GameData");
+	// get the first config node
+	rapidxml::xml_node<>* rootNode = document->first_node("config");
 
+	if (rootNode)
+	{
+		// move down to the next node, GameData
+		rootNode = rootNode->first_node();
 
-	// TODO: get from the config file
-	settings->setShowIntroduction(true);
-	settings->setIntroduction("As the spaceship rover heads into deep space, the crew slowly awakes from cryogenic slumber...");
-	settings->setTitle("Justins Space Adventure");
+		// move down to the next node, Name (Title)
+		rootNode = rootNode->first_node();
+		settings->setTitle(string(rootNode->value()));
+
+		// move down to the next node, Version
+		rootNode = rootNode->next_sibling();
+
+		// move down to the next node, DisplayIntroduction
+		rootNode = rootNode->next_sibling();
+		settings->setShowIntroduction(rootNode->value() == "y" || rootNode->value() == "yes");
+
+		// move down to the next node, Introduction
+		rootNode = rootNode->next_sibling();
+		settings->setIntroduction(string(rootNode->value()));
+	}
 }
 
 void EnterCommand(unique_ptr<Command>& command)
@@ -200,18 +215,18 @@ int main()
 		unique_ptr<GameSettings> settings = make_unique<GameSettings>();
 		unique_ptr<Command> command = make_unique<Command>();
 
-		char* p_xmlText = new char();
+		string xml;
 
 		// load our data
-		LoadXML(p_xmlText);
+		LoadXML(xml);
 
 		rapidxml::xml_document<> doc;
-		doc.parse<0>(p_xmlText);
+		doc.parse<0>((char *)xml.c_str());
 
 		LoadVerbs(command);
 		LoadItems(items, &doc);
 		LoadRooms(rooms, items, &doc);
-		LoadGameData(settings, p_xmlText, &doc);
+		LoadGameData(settings, &doc);
 
 		// this is our main player object, we use it for running the game
 		shared_ptr<Player> player = make_shared<Player>(rooms[0]);

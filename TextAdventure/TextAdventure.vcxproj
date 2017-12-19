@@ -135,9 +135,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <Text Include="Config,xml" />
-  </ItemGroup>
-  <ItemGroup>
     <ClInclude Include="ActionType.h" />
     <ClInclude Include="Command.h" />
     <ClInclude Include="Directions.h" />
@@ -170,9 +167,11 @@
     <ClCompile Include="TreasureCase.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="nounds.dat" />
     <None Include="ReadMe.dat" />
     <None Include="verbs.dat" />
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="config.xml" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

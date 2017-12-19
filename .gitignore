@@ -16,3 +16,5 @@
 *.sqlite
 *.enc
 *.json
+*.ipdb
+*.iobj
