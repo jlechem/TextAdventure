@@ -58,7 +58,7 @@
   </Items>
   <Rooms>
     <Room>
-      <Id>1</Id>
+      <Id>3</Id>
       <Name>Room 1</Name>
       <Description>A small brown room. With a door to the North.</Description>
       <Exits>
@@ -93,7 +93,7 @@
       </Items>
     </Room>
     <Room>
-      <Id>3</Id>
+      <Id>1</Id>
       <Name>Purple Room</Name>
       <Description>A large purple room with a golden ceiling and tiled floor. There's a door to the West.</Description>
       <Exits>

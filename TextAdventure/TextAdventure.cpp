@@ -44,34 +44,63 @@ void LoadXML(string& xmlBuffer)
 /// <param name="document">The document.</param>
 void LoadRooms(vector<shared_ptr<Room>> &rooms, vector<unique_ptr<Item>> &items, rapidxml::xml_document<>* document)
 {
-	// TODO: load from the XML file
+	// get the first config node
+	rapidxml::xml_node<>* rootNode = document->first_node("config");
 
-	// create two new temp rooms
-	auto newRoom = make_shared<Room>();
-	newRoom->setId(1);
-	newRoom->setName("Brown Room");
-	newRoom->setDescription("You are standing in a small brownish room with nothing in it but a door North");
-	newRoom->setShortDescription("A small brown room");
-	rooms.push_back(newRoom);
+	if (rootNode)
+	{
+		// move down to the next node, GameData
+		rootNode = rootNode->first_node();
 
-	auto newRoom2 = make_shared<Room>();
-	newRoom2->setId(2);
-	newRoom2->setName("Green Room");
-	newRoom2->setDescription("You are standing in a small green room with a tacky carpet. There's a door South");
-	newRoom2->setShortDescription("A small green room");
-	rooms.push_back(newRoom2);
+		// move down to the next node group, Player
+		rootNode = rootNode->next_sibling();
 
-	// set exits
-	rooms[0]->addExit(North, rooms[1]);
-	rooms[1]->addExit(South, rooms[0]);
+		// move down to the next node group, Items
+		rootNode = rootNode->next_sibling();
 
-	// add items
-	rooms[0]->addItem(std::move(items[0]));
-	rooms[0]->addItem(std::move(items[2]));
+		// move down to the next node group, Rooms
+		rootNode = rootNode->next_sibling();
 
-	rooms[1]->addItem(std::move(items[1]));
+		// this is our Room Node
+		rapidxml::xml_node<>* roomNode = rootNode->first_node();
 
+		while (roomNode)
+		{
+			auto newRoom = make_shared<Room>();
+
+			// this is our Room attribute Node, starts at Id
+			rapidxml::xml_node<>* attributeNode = roomNode->first_node();			
+			newRoom->setId(atoi(attributeNode->value()));
+			
+			// name
+			attributeNode = attributeNode->next_sibling();
+			newRoom->setName(attributeNode->value());
+			
+			// description
+			attributeNode = attributeNode->next_sibling();
+			newRoom->setDescription(attributeNode->value());
+			
+			// handle exits
+
+			// handle items
+
+			rooms.push_back(newRoom);
+
+			// move to the next room
+			roomNode = roomNode->next_sibling();
+		}
+	}
+	
 	items.clear();
+}
+
+void FindRoom(int ind)
+{
+
+}
+
+void FindItem(int id)
+{
 
 }
 
@@ -326,9 +355,9 @@ int main()
 			ProcessCommand(command);
 		}
 	}
-	catch (exception ex)
+	catch (exception* ex)
 	{
-		cout << "An error occured: " << ex.what() << endl;
+		cout << "An error occured: " << ex->what() << endl;
 	}
 
     return 0;
