@@ -20,7 +20,7 @@ using namespace std;
 
 void LoadXML(char* xmlBuffer)
 {
-	ifstream inputFile("D:\Config.dat", ifstream::in);
+	ifstream inputFile("config.xml", ifstream::in);
 	
 	if (inputFile.is_open())
 	{
@@ -30,7 +30,6 @@ void LoadXML(char* xmlBuffer)
 
 	inputFile.close();
 	
-	throw(errno);
 }
 
 void LoadRooms(vector<shared_ptr<Room>> &rooms, vector<unique_ptr<Item>> &items, rapidxml::xml_document<>* document)
@@ -193,42 +192,50 @@ void ProcessCommand(unique_ptr<Command>& command)
 */
 int main()
 {
-	// declare some variables we need to use
-	vector<shared_ptr<Room>> rooms;
-	vector<unique_ptr<Item>> items;
-	unique_ptr<GameSettings> settings = make_unique<GameSettings>();
-	unique_ptr<Command> command = make_unique<Command>();
-
-	char* p_xmlText = new char();
-
-	rapidxml::xml_document<> doc;
-	doc.parse<0>(p_xmlText);
-	
-	// load our data
-	LoadXML(p_xmlText);
-	LoadVerbs(command);
-	LoadItems(items, &doc);
-	LoadRooms(rooms, items, &doc);
-	LoadGameData(settings, p_xmlText, &doc);
-
-	// this is our main player object, we use it for running the game
-	shared_ptr<Player> player = make_shared<Player>(rooms[0]);
-
-	command->setPlayer(player);
-	
-	system("CLS");
-
-	PrintInto(settings);
-	
-	// first thing we do is look to start the game
-	command->setCommand("LOOK");
-	ProcessCommand(command);
-	
-	// run the game loop
-	while (!GaveOver(player))
+	try
 	{
-		EnterCommand(command);
+		// declare some variables we need to use
+		vector<shared_ptr<Room>> rooms;
+		vector<unique_ptr<Item>> items;
+		unique_ptr<GameSettings> settings = make_unique<GameSettings>();
+		unique_ptr<Command> command = make_unique<Command>();
+
+		char* p_xmlText = new char();
+
+		// load our data
+		LoadXML(p_xmlText);
+
+		rapidxml::xml_document<> doc;
+		doc.parse<0>(p_xmlText);
+
+		LoadVerbs(command);
+		LoadItems(items, &doc);
+		LoadRooms(rooms, items, &doc);
+		LoadGameData(settings, p_xmlText, &doc);
+
+		// this is our main player object, we use it for running the game
+		shared_ptr<Player> player = make_shared<Player>(rooms[0]);
+
+		command->setPlayer(player);
+
+		system("CLS");
+
+		PrintInto(settings);
+
+		// first thing we do is look to start the game
+		command->setCommand("LOOK");
 		ProcessCommand(command);
+
+		// run the game loop
+		while (!GaveOver(player))
+		{
+			EnterCommand(command);
+			ProcessCommand(command);
+		}
+	}
+	catch (exception ex)
+	{
+		cout << "An error occured: " << ex.what() << endl;
 	}
 
     return 0;
