@@ -15,26 +15,52 @@
       <Id>1</Id>
       <Name>Stick</Name>
       <Description>A small pointy stick.</Description>
-      <Type>Item</Type>
+      <Type>item</Type>
+      <AlternateNames>
+        <Name>stick</Name>
+        <Name>pointy stick</Name>
+        <Name>sharp stick</Name>
+        <Name>sharp pointy stick</Name>
+      </AlternateNames>
     </Item>
     <Item>
       <Id>2</Id>
       <Name>Rock</Name>
-      <Description>A small and very shiny black.</Description>
-      <Type>Item</Type>
+      <Description>A small and very shiny black rock.</Description>
+      <Type>item</Type>
+      <AlternateNames>
+        <Name>rock</Name>
+        <Name>black rock</Name>
+        <Name>shiny rock</Name>
+        <Name>shiny black rock</Name>
+        <Name>black shiny rock</Name>
+      </AlternateNames>
     </Item>
-    <Treasure>
-      <Id>1</Id>
+    <Item>
+      <Id>3</Id>
       <Name>Golden Egg</Name>
       <Description>A egg laid by a golden goose.</Description>
-      <Type>Treasure</Type>
-    </Treasure>
+      <Type>treasure</Type>
+      <AlternateNames>
+        <Name>golden egg</Name>
+        <Name>gold egg</Name>
+        <Name>goose egg</Name>
+        <Name>egg</Name>
+      </AlternateNames>
+    </Item>
+    <Item>
+      <Id>4</Id>
+      <Name>Dome</Name>
+      <Description>A shiny golden dome.</Description>
+      <Type>treasure</Type>
+      <AlternateNames />
+    </Item>
   </Items>
   <Rooms>
     <Room>
       <Id>1</Id>
       <Name>Room 1</Name>
-      <Description>A small brown room.</Description>
+      <Description>A small brown room. With a door to the North.</Description>
       <Exits>
         <Exit>
           <Direction>N</Direction>
@@ -43,24 +69,43 @@
       </Exits>
       <Items>
         <Item>1</Item>
-        <Item>2</Item>
+        <Item>4</Item>
       </Items>
       <Treasures />
     </Room>
     <Room>
       <Id>2</Id>
-      <Name>Room 2</Name>
-      <Description>A small green room.</Description>
+      <Name>Green Room</Name>
+      <Description>A small green room. With a door to the South and East.</Description>
       <Exits>
         <Exit>
           <Direction>S</Direction>
           <RoomId>1</RoomId>
         </Exit>
+        <Exit>
+          <Direction>E</Direction>
+          <RoomId>3</RoomId>
+        </Exit>
       </Exits>
-      <Items />
-      <Treasures>
-        <Treasure>1</Treasure>
-      </Treasures>
+      <Items>
+        <Item>2</Item>
+        <Item>3</Item>
+      </Items>
+    </Room>
+    <Room>
+      <Id>3</Id>
+      <Name>Purple Room</Name>
+      <Description>A large purple room with a golden ceiling and tiled floor. There's a door to the West.</Description>
+      <Exits>
+        <Exit>
+          <Direction>W</Direction>
+          <RoomId>2</RoomId>
+        </Exit>
+      </Exits>
+      <Items>
+        <Item>2</Item>
+        <Item>3</Item>
+      </Items>
     </Room>
   </Rooms>
 </config>

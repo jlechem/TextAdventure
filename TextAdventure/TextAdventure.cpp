@@ -106,43 +106,67 @@ void LoadVerbs(unique_ptr<Command> &command)
 /// <param name="document">The document.</param>
 void LoadItems(vector<unique_ptr<Item>> &items, rapidxml::xml_document<>* document)
 {
-	// TODO: load from the XML file
+	// get the first config node
+	rapidxml::xml_node<>* rootNode = document->first_node("config");
 
-	// make two new temp items
-	auto newItem = make_unique<Item>();
-	newItem->setId(1);
-	newItem->setName("stick");
-	newItem->setDescription("a sharp pointy stick");
-	newItem->setScore(100);
-	newItem->setType(ItemType::BaseItem);
-	newItem->addAlternateName("stick");
-	newItem->addAlternateName("pointy stick");
-	newItem->addAlternateName("sharp stick");
-	newItem->addAlternateName("sharp pointy stick");
-	items.push_back(std::move(newItem));
+	if (rootNode)
+	{
+		// move down to the next node, GameData
+		rootNode = rootNode->first_node();
 
-	auto newItem2 = make_unique<Item>();
-	newItem2->setId(2);
-	newItem2->setName("black rock");
-	newItem2->setDescription("a small, round, and very shiny black rock");
-	newItem2->setScore(5000);
-	newItem2->setType(ItemType::BaseItem);
-	newItem2->addAlternateName("black rock");
-	newItem2->addAlternateName("rock");
+		// get the next sibling, player node
+		rootNode = rootNode->next_sibling();
 
-	items.push_back(std::move(newItem2));
+		// get the next sibling, Items node
+		rootNode = rootNode->next_sibling();
 
-	auto newItem3 = make_unique<Item>();
-	newItem3->setId(3);
-	newItem3->setName("Golden Egg");
-	newItem3->setDescription("An egg laid by the golden goose.");
-	newItem3->setScore(50000);
-	newItem3->setType(ItemType::Treasure);
-	newItem3->addAlternateName("egg");
-	newItem3->addAlternateName("golden egg");
-	newItem3->addAlternateName("goose egg");
-	items.push_back(std::move(newItem3));
+		// put us on the first Item sub group (if it exists)
+		rapidxml::xml_node<>* itemNode = rootNode->first_node();
 
+		while (itemNode)
+		{
+			auto newItem = make_unique<Item>();
+
+			// attributes, this will put us on Id
+			rapidxml::xml_node<>* attributeNode = itemNode->first_node();
+			newItem->setId(atoi(attributeNode->value()));
+			
+			// name
+			attributeNode = attributeNode->next_sibling();
+			newItem->setName(attributeNode->value());
+
+			// description
+			attributeNode = attributeNode->next_sibling();
+			newItem->setDescription(attributeNode->value());
+
+			// score
+			/*attributeNode = attributeNode->next_sibling();
+			newItem->setScore(atoi(attributeNode->value()));*/
+
+			// item type
+			attributeNode = attributeNode->next_sibling();
+			newItem->setType(attributeNode->value() == "item" ? ItemType::BaseItem : ItemType::Treasure);
+
+			// move to the alternate names group
+			attributeNode = attributeNode->next_sibling();
+			
+			// move to the first child node in the group, if we have a group
+			attributeNode = attributeNode->first_node();
+
+			// loop through the alternate names
+			while (attributeNode)
+			{
+				newItem->addAlternateName(attributeNode->value());
+				attributeNode = attributeNode->next_sibling();
+			}
+
+			items.push_back(std::move(newItem));
+
+			// move to the next sibling node
+			itemNode = itemNode->next_sibling();
+
+		}
+	}
 }
 
 /// <summary>
