@@ -18,7 +18,22 @@
 
 using namespace std;
 
-void LoadRooms(vector<shared_ptr<Room>> &rooms, vector<unique_ptr<Item>> &items)
+void LoadXML(char* xmlBuffer)
+{
+	ifstream inputFile("D:\Config.dat", ifstream::in);
+	
+	if (inputFile.is_open())
+	{
+		string result(std::string((std::istreambuf_iterator<char>(inputFile)), std::istreambuf_iterator<char>()));
+		strcpy(xmlBuffer, result.c_str());
+	}
+
+	inputFile.close();
+	
+	throw(errno);
+}
+
+void LoadRooms(vector<shared_ptr<Room>> &rooms, vector<unique_ptr<Item>> &items, rapidxml::xml_document<>* document)
 {
 	// TODO: load from the XML file
 
@@ -71,7 +86,7 @@ void LoadVerbs(unique_ptr<Command> &command)
 
 }
 
-void LoadItems(vector<unique_ptr<Item>> &items)
+void LoadItems(vector<unique_ptr<Item>> &items, rapidxml::xml_document<>* document)
 {
 	// TODO: load from the XML file
 
@@ -112,10 +127,6 @@ void LoadItems(vector<unique_ptr<Item>> &items)
 
 }
 
-void LoadPlayer(shared_ptr<Player> &player)
-{
-}
-
 void SaveGame()
 {
 
@@ -147,8 +158,11 @@ void PrintEnding(unique_ptr<Player>& player)
 	cout << endl << "Thanks for playing. You final score is: " << player->getScore() << endl;
 }
 
-void LoadGameData(unique_ptr<GameSettings> &settings)
+void LoadGameData(unique_ptr<GameSettings> &settings, char* xml, rapidxml::xml_document<>* document)
 {
+	rapidxml::xml_node<>* root_node = document->first_node("GameData");
+
+
 	// TODO: get from the config file
 	settings->setShowIntroduction(true);
 	settings->setIntroduction("As the spaceship rover heads into deep space, the crew slowly awakes from cryogenic slumber...");
@@ -185,11 +199,17 @@ int main()
 	unique_ptr<GameSettings> settings = make_unique<GameSettings>();
 	unique_ptr<Command> command = make_unique<Command>();
 
+	char* p_xmlText = new char();
+
+	rapidxml::xml_document<> doc;
+	doc.parse<0>(p_xmlText);
+	
 	// load our data
+	LoadXML(p_xmlText);
 	LoadVerbs(command);
-	LoadItems(items);
-	LoadRooms(rooms, items);
-	LoadGameData(settings);
+	LoadItems(items, &doc);
+	LoadRooms(rooms, items, &doc);
+	LoadGameData(settings, p_xmlText, &doc);
 
 	// this is our main player object, we use it for running the game
 	shared_ptr<Player> player = make_shared<Player>(rooms[0]);
