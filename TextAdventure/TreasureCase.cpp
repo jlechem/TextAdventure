@@ -1,12 +1,10 @@
 #include "stdafx.h"
 #include "TreasureCase.h"
 
-
 TreasureCase::TreasureCase()
 {
 	_score = 0;
 }
-
 
 TreasureCase::~TreasureCase()
 {
@@ -22,13 +20,13 @@ string TreasureCase::getDescription()
 	return _description;
 }
 
-void TreasureCase::addTreasure(unique_ptr<Treasure> treasure)
+void TreasureCase::addTreasure(unique_ptr<Item> item)
 {
-	_treasures.push_back(std::move(treasure));
-	_score += treasure->getScore();
+	_items.push_back(std::move(item));
+	_score += item->getScore();
 }
 
-unique_ptr<Treasure> TreasureCase::removeTreasure(string)
+unique_ptr<Item> TreasureCase::removeTreasure(string)
 {
-	return unique_ptr<Treasure>();
+	return unique_ptr<Item>();
 }

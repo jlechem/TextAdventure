@@ -75,25 +75,12 @@ void Room::removeItem(unique_ptr<Item> item)
 	generateItemString();
 }
 
-void Room::addTreasure(unique_ptr<Treasure> treasure)
+map<Directions, shared_ptr<Room>>& Room::getExits()
 {
-	_treasures.push_back(std::move(treasure));
-	generateTreasureString();
+	return _exits;
 }
 
-void Room::removeTreasure(string treasureName)
-{
-	// TODO: remove treasure from vector
-	generateTreasureString();
-}
-
-void Room::removeTreasure(unique_ptr<Treasure> treasure)
-{
-	// TODO: remove treasure from vector
-	generateTreasureString();
-}
-
-string Room::getExits()
+string Room::getExitsString()
 {
 	return _exitString;
 }
@@ -110,47 +97,51 @@ void Room::addExit(Directions exit, shared_ptr<Room> room)
 	generateExitString();
 }
 
-void Room::generateItemString()
+unique_ptr<Item> Room::findItem(string name)
 {
-	std::vector<unique_ptr<Item>>::iterator it;
+	vector<unique_ptr<Item>>::iterator it;
 
-	_itemsString.clear();
+	unique_ptr<Item> result = nullptr;
 
+	// loop through all the items in this room and search for the one we want
 	for (it = _items.begin(); it != _items.end(); ++it)
 	{
-		_itemsString += (*it)->getName();
-		_itemsString += ",";
+		auto temp = find((*it)->getAlterateNames().begin(), (*it)->getAlterateNames().end(), name);
+
+		if (temp != (*it)->getAlterateNames().end())
+		{
+			result = std::move((*it));
+			_items.erase(it);
+			break;
+		}
 	}
 
-	// take off the last comma
-	_itemsString.erase(_itemsString.end() - 1);
+	generateItemString();
+
+	return std::move(result);
+
 }
 
-void Room::generateTreasureString()
+void Room::generateItemString()
 {
-	std::vector<unique_ptr<Treasure>>::iterator it;
+	_itemsString.clear();
 
-	_treasuresString.clear();
-
-	for (it = _treasures.begin(); it != _treasures.end(); ++it)
+	for (auto i = 0; i < _items.size(); i++)
 	{
-		_treasuresString += (*it)->getName();
-		_treasuresString += ",";
+		_itemsString += _items[i]->getName();
+		_itemsString += ", ";
 	}
 
-	// take off the last comma
-	_treasuresString.erase(_treasuresString.end() - 1);
-
+	if (_itemsString.size() > 2)
+	{
+		// take off the last comma and space
+		_itemsString.erase(_itemsString.end() - 2);
+	}
 }
 
 string Room::getItems()
 {
 	return _itemsString;
-}
-
-string Room::getTreasures()
-{
-	return _treasuresString;
 }
 
 void Room::generateExitString()

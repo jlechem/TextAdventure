@@ -1,9 +1,16 @@
+/*
+	Room.h
+	Created By:		Justin LeCheminant
+	Created On:		12-18-2017
+	Last Modified:	12-18-2017
+	Notes: A class that represents a room in the game
+*/
+
 #pragma once
 
 #include "stdafx.h"
 
 #include "Item.h"
-#include "Treasure.h"
 
 class Room
 {
@@ -29,16 +36,14 @@ public:
 	void removeItem(string);
 	void removeItem(unique_ptr<Item>);
 
-	void addTreasure(unique_ptr<Treasure>);
-	void removeTreasure(string);
-	void removeTreasure(unique_ptr<Treasure>);
-
-	string getExits();
+	string getExitsString();
+	map<Directions, shared_ptr<Room>>& getExits();
 	void setExits(map<Directions, shared_ptr<Room>>&);
 	void addExit(Directions, shared_ptr<Room>);
 
+	unique_ptr<Item> findItem(string);
+
 	string getItems();
-	string getTreasures();
 
 private:
 	int _id;
@@ -47,15 +52,12 @@ private:
 	string _shortDesctiption;
 	string _exitString;
 	string _itemsString;
-	string _treasuresString;
 
 	vector<unique_ptr<Item>> _items;
-	vector<unique_ptr<Treasure>> _treasures;
 	map<Directions,shared_ptr<Room>> _exits;
 
 	void generateExitString();
 	void generateItemString();
-	void generateTreasureString();
 	string convertDirectionToString(Directions);
 
 };

@@ -1,9 +1,17 @@
+/*
+	Player.h
+	Created By:		Justin LeCheminant
+	Created On:		12-18-2017
+	Last Modified:	12-18-2017
+	Notes: A class that represents the player in the game
+*/
+
+
 #pragma once
 
 #include "stdafx.h"
 
 #include "Item.h"
-#include "Treasure.h"
 #include "Room.h"
 
 class Player
@@ -13,30 +21,25 @@ public:
 	Player(shared_ptr<Room>);
 	~Player();
 
-	shared_ptr<vector<unique_ptr<Item>>> getInventory();
-	void addItem(unique_ptr<Item>);
+	vector<unique_ptr<Item>>* getInventory();
+	bool addItem(string);
 	unique_ptr<Item> dropItem(string);
-
-	shared_ptr<vector<unique_ptr<Treasure>>> getTreasures();
-	void addTreasure(unique_ptr<Treasure>);
-	unique_ptr<Treasure> dropTreasure(string);
-
 	shared_ptr<Room> getCurrentRoom();
-
-	bool Move(Directions);
+	bool Move(string);
+	int getScore();
+	void printInventory();
 
 private:
-	shared_ptr<vector<unique_ptr<Item>>> _items;
-
-	shared_ptr<vector<unique_ptr<Treasure>>> _treasures;
-
-	shared_ptr<Room> _currentRoom;
-
 	string _name;
 
 	int _score;
-
+	
+	vector<unique_ptr<Item>> _items;
+	
+	shared_ptr<Room> _currentRoom;
+	
+	Directions convertDirection(string);
+	
 	unique_ptr<Item> findItem(string);
-	unique_ptr<Treasure> findTreasure(string);
 
 };
