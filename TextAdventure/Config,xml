@@ -15,20 +15,21 @@
       <Id>1</Id>
       <Name>Stick</Name>
       <Description>A small pointy stick.</Description>
+      <Type>Item</Type>
     </Item>
     <Item>
       <Id>2</Id>
       <Name>Rock</Name>
       <Description>A small and very shiny black.</Description>
+      <Type>Item</Type>
     </Item>
-  </Items>
-  <Treasures>
     <Treasure>
       <Id>1</Id>
       <Name>Golden Egg</Name>
       <Description>A egg laid by a golden goose.</Description>
+      <Type>Treasure</Type>
     </Treasure>
-  </Treasures>
+  </Items>
   <Rooms>
     <Room>
       <Id>1</Id>
