@@ -3,46 +3,72 @@
 #include "stdafx.h"
 #include "Command.h"
 
+/// <summary>
+/// Initializes a new instance of the <see cref="Command"/> class.
+/// </summary>
 Command::Command()
 {
 	_player = make_shared<Player>();
 	loadActions();
 }
 
-Command::Command(string command): Command()
+/// <summary>
+/// Initializes a new instance of the <see cref="Command"/> class.
+/// </summary>
+/// <param name="command">The command.</param>
+Command::Command(string command) : Command()
 {
 	_command = command;
 	parseCommand();
 }
 
+/// <summary>
+/// Finalizes an instance of the <see cref="Command"/> class.
+/// </summary>
 Command::~Command()
 {
 }
 
+/// <summary>
+/// Sets the command.
+/// </summary>
+/// <param name="command">The command.</param>
 void Command::setCommand(string command)
 {
 	_command = command;
 	parseCommand();
 }
 
+/// <summary>
+/// Gets the command.
+/// </summary>
+/// <returns></returns>
 string Command::getCommand()
 {
 	return _command;
 }
 
+/// <summary>
+/// Gets the command result.
+/// </summary>
+/// <returns></returns>
 string Command::getCommandResult()
 {
 	return _commandResult;
 }
 
-/*
-	Set the specified player into the command.
-*/
+/// <summary>
+/// Sets the player.
+/// </summary>
+/// <param name="player">The player.</param>
 void Command::setPlayer(shared_ptr<Player> player)
 {
 	_player = player;
 }
 
+/// <summary>
+/// Processes this instance.
+/// </summary>
 void Command::process()
 {	
 	_commandResult.clear();
@@ -193,22 +219,26 @@ void Command::process()
 
 }
 
+/// <summary>
+/// Prints the result.
+/// </summary>
 void Command::printResult()
 {
 	cout << endl << _commandResult << endl;
 }
 
-/*
-	Gets our list of verbs.
-*/
+/// <summary>
+/// Gets the verbs.
+/// </summary>
+/// <returns></returns>
 vector<string>& Command::getVerbs()
 {
 	return _validActions;
 }
 
-/*
-	Parses our command
-*/
+/// <summary>
+/// Parses the command.
+/// </summary>
 void Command::parseCommand()
 {
 	// tokenize the command based on spaces
@@ -225,7 +255,10 @@ void Command::parseCommand()
 	}
 }
 
-void Command::takeItem() 
+/// <summary>
+/// Takes the item.
+/// </summary>
+void Command::takeItem()
 {
 	// this means they typed 'take the' and nothing else
 	if (_commands.size() == 2 && 
@@ -257,6 +290,9 @@ void Command::takeItem()
 	}	
 }
 
+/// <summary>
+/// Drops the item.
+/// </summary>
 void Command::dropItem()
 {
 	// this means they typed 'take the' and nothing else
@@ -289,9 +325,9 @@ void Command::dropItem()
 	}
 }
 
-/*
-	Loads all of our valid actions into a list.
-*/
+/// <summary>
+/// Loads the actions.
+/// </summary>
 void Command::loadActions()
 {
 	// TODO: load the actions from the config file
@@ -302,9 +338,13 @@ void Command::loadActions()
 	_funCommands["sing"] = "You sing that song you like, but the key seems to be off.....";
 }
 
-/*
-	Checks the action against our list of valid actions to determine if it's valid or not.
-*/
+/// <summary>
+/// Determines whether the specified action is valid.
+/// </summary>
+/// <param name="action">The action.</param>
+/// <returns>
+///   <c>true</c> if the specified action is valid; otherwise, <c>false</c>.
+/// </returns>
 bool Command::isValid(string action)
 {
 	auto command = find(_validActions.begin(), _validActions.end(), action);
@@ -312,10 +352,9 @@ bool Command::isValid(string action)
 	return command != _validActions.end();
 }
 
-/*
-	Takes the current players current room and uses it to build a description of the room
-	the player is in
-*/
+/// <summary>
+/// Sets the room description.
+/// </summary>
 void Command::setRoomDescription()
 {
 	_commandResult = _player->getCurrentRoom()->getDescription();
@@ -323,25 +362,34 @@ void Command::setRoomDescription()
 	_commandResult += "\nYou see the following items: " + _player->getCurrentRoom()->getItems();
 }
 
-/*
-	Sets our command result to an invalid direction movement.
-*/
+/// <summary>
+/// Sets the invalid move.
+/// </summary>
+/// <param name="direction">The direction.</param>
 void Command::setInvalidMove(string direction)
 {
 	_commandResult = "There is no exit " + direction;
 }
 
-/*
-	This function checks if we have a kill command (kill or fight)
-*/
+/// <summary>
+/// Determines whether [is kill command] [the specified verb].
+/// </summary>
+/// <param name="verb">The verb.</param>
+/// <returns>
+///   <c>true</c> if [is kill command] [the specified verb]; otherwise, <c>false</c>.
+/// </returns>
 bool Command::isKillCommand(string verb)
 {
 	return verb == "kill" || verb == "fight";
 }
 
-/*
-	This function checks if the command is in our 'fun' command list
-*/
+/// <summary>
+/// Determines whether [is fun command] [the specified verb].
+/// </summary>
+/// <param name="verb">The verb.</param>
+/// <returns>
+///   <c>true</c> if [is fun command] [the specified verb]; otherwise, <c>false</c>.
+/// </returns>
 bool Command::isFunCommand(string verb)
 {
 	auto result = _funCommands.find(verb);
@@ -349,9 +397,13 @@ bool Command::isFunCommand(string verb)
 	return result != _funCommands.end();
 }
 
-/*
-	This function determines if a command requires a second part, ie kill X, drop X, take X
-*/
+/// <summary>
+/// Determines whether [is action command] [the specified verb].
+/// </summary>
+/// <param name="verb">The verb.</param>
+/// <returns>
+///   <c>true</c> if [is action command] [the specified verb]; otherwise, <c>false</c>.
+/// </returns>
 bool Command::isActionCommand(string verb)
 {
 	return	isKillCommand(verb) ||
@@ -359,14 +411,25 @@ bool Command::isActionCommand(string verb)
 			isTakeCommand(verb);
 }
 
-/*
-	This function checks if we have a clear screen command
-*/
+/// <summary>
+/// Determines whether [is clear command] [the specified command].
+/// </summary>
+/// <param name="command">The command.</param>
+/// <returns>
+///   <c>true</c> if [is clear command] [the specified command]; otherwise, <c>false</c>.
+/// </returns>
 bool Command::isClearCommand(string command)
 {
 	return command == "cls" || command == "clear";
 }
 
+/// <summary>
+/// Determines whether [is move command] [the specified verb].
+/// </summary>
+/// <param name="verb">The verb.</param>
+/// <returns>
+///   <c>true</c> if [is move command] [the specified verb]; otherwise, <c>false</c>.
+/// </returns>
 bool Command::isMoveCommand(string verb)
 {
 	return
@@ -388,37 +451,86 @@ bool Command::isMoveCommand(string verb)
 		verb == "sw";
 }
 
+/// <summary>
+/// Determines whether [is take command] [the specified verb].
+/// </summary>
+/// <param name="verb">The verb.</param>
+/// <returns>
+///   <c>true</c> if [is take command] [the specified verb]; otherwise, <c>false</c>.
+/// </returns>
 bool Command::isTakeCommand(string verb)
 {
 	return verb == "take";
 }
 
+/// <summary>
+/// Determines whether [is look command] [the specified verb].
+/// </summary>
+/// <param name="verb">The verb.</param>
+/// <returns>
+///   <c>true</c> if [is look command] [the specified verb]; otherwise, <c>false</c>.
+/// </returns>
 bool Command::isLookCommand(string verb)
 {
 	return verb == "look" || verb == "l";
 }
 
+/// <summary>
+/// Determines whether [is drop command] [the specified verb].
+/// </summary>
+/// <param name="verb">The verb.</param>
+/// <returns>
+///   <c>true</c> if [is drop command] [the specified verb]; otherwise, <c>false</c>.
+/// </returns>
 bool Command::isDropCommand(string verb)
 {
 	return verb == "drop";
 }
 
+/// <summary>
+/// Determines whether [is item command] [the specified verb].
+/// </summary>
+/// <param name="verb">The verb.</param>
+/// <returns>
+///   <c>true</c> if [is item command] [the specified verb]; otherwise, <c>false</c>.
+/// </returns>
 bool Command::isItemCommand(string verb)
 {
 	return false;
 }
 
+/// <summary>
+/// Determines whether [is inventory command] [the specified verb].
+/// </summary>
+/// <param name="verb">The verb.</param>
+/// <returns>
+///   <c>true</c> if [is inventory command] [the specified verb]; otherwise, <c>false</c>.
+/// </returns>
 bool Command::isInventoryCommand(string verb)
 {
 	return	verb == "i" ||
 		verb == "inventory";
 }
 
+/// <summary>
+/// Determines whether [is save command] [the specified verb].
+/// </summary>
+/// <param name="verb">The verb.</param>
+/// <returns>
+///   <c>true</c> if [is save command] [the specified verb]; otherwise, <c>false</c>.
+/// </returns>
 bool Command::isSaveCommand(string verb)
 {
 	return verb == "save";
 }
 
+/// <summary>
+/// Determines whether [is exit command] [the specified verb].
+/// </summary>
+/// <param name="verb">The verb.</param>
+/// <returns>
+///   <c>true</c> if [is exit command] [the specified verb]; otherwise, <c>false</c>.
+/// </returns>
 bool Command::isExitCommand(string verb)
 {
 	return	verb == "exit" ||

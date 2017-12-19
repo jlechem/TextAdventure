@@ -1,8 +1,9 @@
 /*
 	TextAdventure.cpp
-	Created By:		Justin LeCheminant
-	Created On:		12-18-2017
-	Last Modified:	12-18-2017
+	Created By:			Justin LeCheminant
+	Created On:			12-18-2017
+	Last Modified:		12-19-2017
+	Last Modified By:	Justin LeCheminant
 */
 
 #pragma once
@@ -18,6 +19,10 @@
 
 using namespace std;
 
+/// <summary>
+/// Loads the XML.
+/// </summary>
+/// <param name="xmlBuffer">The XML buffer.</param>
 void LoadXML(string& xmlBuffer)
 {
 	ifstream inputFile("config.xml", ifstream::in);
@@ -31,6 +36,12 @@ void LoadXML(string& xmlBuffer)
 	
 }
 
+/// <summary>
+/// Loads the rooms.
+/// </summary>
+/// <param name="rooms">The rooms.</param>
+/// <param name="items">The items.</param>
+/// <param name="document">The document.</param>
 void LoadRooms(vector<shared_ptr<Room>> &rooms, vector<unique_ptr<Item>> &items, rapidxml::xml_document<>* document)
 {
 	// TODO: load from the XML file
@@ -64,6 +75,10 @@ void LoadRooms(vector<shared_ptr<Room>> &rooms, vector<unique_ptr<Item>> &items,
 
 }
 
+/// <summary>
+/// Loads the allowed verbs from the verbs.data file.
+/// </summary>
+/// <param name="command">The command.</param>
 void LoadVerbs(unique_ptr<Command> &command)
 {
 	string verb;
@@ -84,6 +99,11 @@ void LoadVerbs(unique_ptr<Command> &command)
 
 }
 
+/// <summary>
+/// Loads the items from the xml config file.
+/// </summary>
+/// <param name="items">The items.</param>
+/// <param name="document">The document.</param>
 void LoadItems(vector<unique_ptr<Item>> &items, rapidxml::xml_document<>* document)
 {
 	// TODO: load from the XML file
@@ -125,21 +145,38 @@ void LoadItems(vector<unique_ptr<Item>> &items, rapidxml::xml_document<>* docume
 
 }
 
+/// <summary>
+/// Saves the game.
+/// </summary>
 void SaveGame()
 {
 
 }
 
+/// <summary>
+/// Loads the game.
+/// </summary>
 void LoadGame()
 {
 
 }
 
-bool GaveOver(shared_ptr<Player> &player)
+/// <summary>
+/// Determines whether [is gave over] [the specified player].
+/// </summary>
+/// <param name="player">The player.</param>
+/// <returns>
+///   <c>true</c> if [is gave over] [the specified player]; otherwise, <c>false</c>.
+/// </returns>
+bool IsGaveOver(shared_ptr<Player> &player)
 {
 	return false;
 }
 
+/// <summary>
+/// Prints the into.
+/// </summary>
+/// <param name="settings">The settings.</param>
 void PrintInto(unique_ptr<GameSettings> &settings)
 {
 	cout << settings->getTitle() << endl << endl;
@@ -151,11 +188,20 @@ void PrintInto(unique_ptr<GameSettings> &settings)
 	}
 }
 
+/// <summary>
+/// Prints the ending.
+/// </summary>
+/// <param name="player">The player.</param>
 void PrintEnding(unique_ptr<Player>& player)
 {
 	cout << endl << "Thanks for playing. You final score is: " << player->getScore() << endl;
 }
 
+/// <summary>
+/// Loads the game data.
+/// </summary>
+/// <param name="settings">The settings.</param>
+/// <param name="document">The document.</param>
 void LoadGameData(unique_ptr<GameSettings> &settings, rapidxml::xml_document<>* document)
 {
 	// get the first config node
@@ -183,6 +229,10 @@ void LoadGameData(unique_ptr<GameSettings> &settings, rapidxml::xml_document<>* 
 	}
 }
 
+/// <summary>
+/// Enters the command.
+/// </summary>
+/// <param name="command">The command.</param>
 void EnterCommand(unique_ptr<Command>& command)
 {
 	string commandLine;
@@ -197,6 +247,10 @@ void EnterCommand(unique_ptr<Command>& command)
 
 }
 
+/// <summary>
+/// Processes the command.
+/// </summary>
+/// <param name="command">The command.</param>
 void ProcessCommand(unique_ptr<Command>& command)
 {
 	command->process();
@@ -242,7 +296,7 @@ int main()
 		ProcessCommand(command);
 
 		// run the game loop
-		while (!GaveOver(player))
+		while (!IsGaveOver(player))
 		{
 			EnterCommand(command);
 			ProcessCommand(command);
