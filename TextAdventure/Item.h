@@ -25,13 +25,7 @@ public:
 	void addAlternateName(string);
 	vector<string>& getAlterateNames();
 
-private:
-	int _id;
-	int _score;
-
-	string _name;
-	string _description;
-	
+private:	
 	vector<string> _alternateNames;
 
 	ItemType _itemType;

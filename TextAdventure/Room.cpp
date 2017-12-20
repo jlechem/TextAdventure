@@ -129,9 +129,11 @@ void Room::generateItemString()
 {
 	_itemsString.clear();
 
-	for (auto i = 0; i < _items.size(); i++)
+	vector<unique_ptr<Item>>::iterator it;
+
+	for ( it = _items.begin(); it != _items.end(); ++it )
 	{
-		_itemsString += _items[i]->getName();
+		_itemsString += (*it)->getName();
 		_itemsString += ", ";
 	}
 

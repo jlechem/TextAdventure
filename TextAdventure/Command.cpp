@@ -323,6 +323,56 @@ void Command::dropItem()
 	}
 }
 
+void Command::examinteItem()
+{
+	// this means they typed 'look at' || 'looked at the' and nothing else
+	if ((_commands.size() == 2 && _commands[1] == "at") ||
+		(_commands.size() == 3 && _commands[1] == "at" && _commands[2] == "the"))
+	{
+		_commandResult = "Look at what?";
+	}
+	else
+	{
+		int startIndex = 0;
+
+		switch (_commands.size())
+		{
+		case 2:
+			startIndex = 1;
+			break;
+
+		case 3:
+			startIndex = _commands[1] == "at" ? 2 : 1;
+			break;
+
+		case 4:
+			startIndex = _commands[1] == "at" && _commands[2] == "the" ? 3 : 2;
+			break;
+
+		default:
+			break;
+
+		}
+
+		// we need to concat words based on spaces
+		string item = "";
+
+		for (auto i = startIndex; i < _commands.size(); i++)
+		{
+			item += _commands[i] + " ";
+		}
+
+		// remove the last space
+		item.erase(item.end() - 1);
+
+		// see if the room has this item
+		auto foundItem = _player->getCurrentRoom()->findItemDescription(item);
+
+		_commandResult = foundItem.size() == 0 ? "You don't see a " + item + " here" : "You see " + foundItem;
+
+	}
+}
+
 /// <summary>
 /// Looks at item.
 /// </summary>
@@ -364,7 +414,6 @@ void Command::lookAtItem()
 		{
 			item += _commands[i] + " ";
 		}
-
 
 		// remove the last space
 		item.erase(item.end() - 1);

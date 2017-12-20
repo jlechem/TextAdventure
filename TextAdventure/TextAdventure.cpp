@@ -87,7 +87,7 @@ void LoadXML(string& xmlBuffer)
 	}
 	else
 	{
-		throw " config.xml file wasn't found.";
+		throw "config.xml file wasn't found.";
 	}
 }
 
@@ -444,10 +444,11 @@ int main()
 		vector<unique_ptr<Item>> items;
 		unique_ptr<GameSettings> settings = make_unique<GameSettings>();
 		unique_ptr<Command> command = make_unique<Command>();
+		vector<unique_ptr<Player>> enemies;
 
 		string xml;
 
-		cout << "Loading data" << endl << "Loading XML..";
+		cout << "Loading data" << endl << "Loading XML...";
 
 		// load our data
 		LoadXML(xml);
@@ -494,19 +495,19 @@ int main()
 	}
 	catch (exception* ex)
 	{
-		cout << "An error occured: " << ex->what() << endl;
+		cout << " An error occured, " << ex->what() << endl;
 	}
 	catch (int errorNumber)
 	{
-		cout << "An error occured" << errorNumber << endl;
+		cout << " An error occured, " << errorNumber << endl;
 	}
 	catch (char* message)
 	{
-		cout << "An error occured" << message << endl;
+		cout << " An error occured, " << message << endl;
 	}
 	catch (...)
 	{
-		cout << "An error occured" << endl;
+		cout << " An error occured" << endl;
 	}
 
     return 0;

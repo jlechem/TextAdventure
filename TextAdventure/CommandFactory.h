@@ -26,4 +26,3 @@ public:
 	static unique_ptr<CommandInterface> getCommand(string);
 
 };
-

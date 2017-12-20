@@ -23,14 +23,13 @@ public:
 	~Command();
 
 	void setCommand(string);
-	
 	string getCommand();
 	string getCommandResult();
 	void setPlayer(shared_ptr<Player>);
 	void process();
 	void printResult();
 	vector<string>& getVerbs();
-
+	
 private:
 	string _commandResult;				// result of the command
 	vector<string> _commands;			// string command seperated using white space
@@ -50,5 +49,6 @@ private:
 	void takeItem();
 	void dropItem();
 	void lookAtItem();
+	void examinteItem();
 
 };
