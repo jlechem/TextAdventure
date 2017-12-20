@@ -165,7 +165,7 @@ bool Utilities::isTakeCommand(string command)
 /// </returns>
 bool Utilities::isLookCommand(string command)
 {
-	return command == "look" || command == "l" || command == "examine";
+	return command == "look" || command == "l";
 }
 
 /// <summary>
@@ -229,4 +229,16 @@ bool Utilities::isExitCommand(string command)
 	return	command == "exit" ||
 		command == "quit" ||
 		command == "q";
+}
+
+/// <summary>
+/// Determines whether [is examine command] [the specified command].
+/// </summary>
+/// <param name="command">The command.</param>
+/// <returns>
+///   <c>true</c> if [is examine command] [the specified command]; otherwise, <c>false</c>.
+/// </returns>
+bool Utilities::isExamineCommand(string command)
+{
+	return	command == "examine";
 }

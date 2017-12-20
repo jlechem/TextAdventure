@@ -36,6 +36,8 @@ public:
 
 	static bool isExitCommand(string);
 
+	static bool isExamineCommand(string command);
+
 	static bool isKillCommand(string);
 
 	static bool isActionCommand(string);

@@ -114,7 +114,7 @@ void Command::process()
 				{
 					_player->Move(command) ? setRoomDescription() : setInvalidMove(command);
 				}
-				else if (Utilities::isActionCommand(command))
+				else if (Utilities::isActionCommand(command) || Utilities::isExamineCommand(command))
 				{
 					_commandResult = command + " what?";
 				}
@@ -178,7 +178,7 @@ void Command::process()
 				}
 				else if (Utilities::isLookCommand(command))
 				{
-					// TODO: implement complex Look
+					lookAtItem();
 				}
 				else
 				{
@@ -329,8 +329,34 @@ void Command::dropItem()
 /// </summary>
 void Command::lookAtItem()
 {
-	// TODO: implement complex and simple look results
+	// this means they typed 'look at' and nothing else
+	if ( (_commands.size() == 2 && _commands[1] == "at" ) || 
+		 (_commands.size() == 3 && _commands[1] == "at" && _commands[2] == "the" ) )
+	{
+		_commandResult = "Look at what?";
+	}
+	// take X Z
+	// or take the X Y Z
+	else
+	{
+		// skip 'the' word if needed
+		auto startIndex = _commands[1] == "the" ? 2 : 1;
 
+		// we need to concat words based on spaces
+		string item = "";
+
+		for (auto i = startIndex; i < _commands.size(); i++)
+		{
+			item += _commands[i] + " ";
+		}
+
+		// clear the last space at the end
+		item.erase(item.end() - 1);
+
+		// try and add this item from the room to the player
+		_commandResult = _player->addItem(item) ? "You pick up the " + item : "You don't see a " + item + " here";
+
+	}
 }
 
 /// <summary>
