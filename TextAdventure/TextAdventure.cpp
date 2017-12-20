@@ -81,10 +81,14 @@ void LoadXML(string& xmlBuffer)
 	if (inputFile.is_open())
 	{
 		xmlBuffer = (std::string((std::istreambuf_iterator<char>(inputFile)), std::istreambuf_iterator<char>()));
-	}
 
-	inputFile.close();
-	
+		inputFile.close();
+
+	}
+	else
+	{
+		throw " config.xml file wasn't found.";
+	}
 }
 
 /// <summary>
@@ -491,6 +495,14 @@ int main()
 	catch (exception* ex)
 	{
 		cout << "An error occured: " << ex->what() << endl;
+	}
+	catch (int errorNumber)
+	{
+		cout << "An error occured" << errorNumber << endl;
+	}
+	catch (char* message)
+	{
+		cout << "An error occured" << message << endl;
 	}
 	catch (...)
 	{
