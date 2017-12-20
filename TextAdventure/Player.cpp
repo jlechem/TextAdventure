@@ -64,7 +64,7 @@ bool Player::Move(string direction)
 	bool result = false;
 
 	// first get the enum from the string
-	auto enumDirection = convertDirection(direction);
+	auto enumDirection = ConvertDirection(direction);
 
 	// get the shared pointer from the map we have
 	auto newRoom = getCurrentRoom()->getExits()[enumDirection];
@@ -82,46 +82,6 @@ bool Player::Move(string direction)
 int Player::getScore()
 {
 	return _score;
-}
-
-Directions Player::convertDirection(string direction)
-{
-	Directions result = Directions::Invalid;
-	
-	if (direction == "n" || direction == "north")
-	{
-		result = Directions::North;
-	}
-	else if (direction == "s" || direction == "south")
-	{
-		result = Directions::South;
-	}
-	else if (direction == "e" || direction == "east")
-	{
-		result = Directions::East;
-	}
-	else if (direction == "w" || direction == "west")
-	{
-		result = Directions::West;
-	}
-	else if (direction == "ne" || direction == "northeast" || direction == "north east")
-	{
-		result = Directions::NorthEast;
-	}
-	else if (direction == "se" || direction == "southeast" || direction == "south east")
-	{
-		result = Directions::SouthEast;
-	}
-	else if (direction == "sw" || direction == "southwest" || direction == "south west")
-	{
-		result = Directions::SouthWest;
-	}
-	else if (direction == "nw" || direction == "northwest" || direction == "north west")
-	{
-		result = Directions::NorthWest;
-	}
-	
-	return result;
 }
 
 unique_ptr<Item> Player::findItem(string name)

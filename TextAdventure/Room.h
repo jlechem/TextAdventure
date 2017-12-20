@@ -40,6 +40,7 @@ public:
 	map<Directions, shared_ptr<Room>>& getExits();
 	void setExits(map<Directions, shared_ptr<Room>>&);
 	void addExit(Directions, shared_ptr<Room>);
+	void addExit(int, Directions);
 
 	unique_ptr<Item> findItem(string);
 
@@ -55,7 +56,7 @@ private:
 
 	vector<unique_ptr<Item>> _items;
 	map<Directions,shared_ptr<Room>> _exits;
-
+	
 	void generateExitString();
 	void generateItemString();
 	string convertDirectionToString(Directions);

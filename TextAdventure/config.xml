@@ -53,20 +53,19 @@
       <Name>Dome</Name>
       <Description>A shiny golden dome.</Description>
       <Type>treasure</Type>
-      <AlternateNames />
+      <AlternateNames>
+        <Name>dome</Name>
+        <Name>golden dome</Name>
+        <Name>shiny dome</Name>
+        <Name>shiny golden dome</Name>
+      </AlternateNames>
     </Item>
   </Items>
   <Rooms>
     <Room>
-      <Id>3</Id>
+      <Id>1</Id>
       <Name>Room 1</Name>
       <Description>A small brown room. With a door to the North.</Description>
-      <Exits>
-        <Exit>
-          <Direction>N</Direction>
-          <RoomId>2</RoomId>
-        </Exit>
-      </Exits>
       <Items>
         <Item>1</Item>
         <Item>4</Item>
@@ -77,35 +76,52 @@
       <Id>2</Id>
       <Name>Green Room</Name>
       <Description>A small green room. With a door to the South and East.</Description>
-      <Exits>
-        <Exit>
-          <Direction>S</Direction>
-          <RoomId>1</RoomId>
-        </Exit>
-        <Exit>
-          <Direction>E</Direction>
-          <RoomId>3</RoomId>
-        </Exit>
-      </Exits>
       <Items>
         <Item>2</Item>
         <Item>3</Item>
       </Items>
     </Room>
     <Room>
-      <Id>1</Id>
+      <Id>3</Id>
       <Name>Purple Room</Name>
       <Description>A large purple room with a golden ceiling and tiled floor. There's a door to the West.</Description>
-      <Exits>
-        <Exit>
-          <Direction>W</Direction>
-          <RoomId>2</RoomId>
-        </Exit>
-      </Exits>
       <Items>
         <Item>2</Item>
         <Item>3</Item>
       </Items>
     </Room>
   </Rooms>
+  <RoomExits>
+    <Room>
+      <RoomId>1</RoomId>
+      <Exits>
+        <Exit>
+          <RoomId>2</RoomId>
+          <Direction>n</Direction>
+        </Exit>
+      </Exits>
+    </Room>
+    <Room>
+      <RoomId>2</RoomId>
+      <Exits>
+        <Exit>
+          <RoomId>1</RoomId>
+          <Direction>s</Direction>
+        </Exit>
+        <Exit>
+          <RoomId>3</RoomId>
+          <Direction>e</Direction>
+        </Exit>
+      </Exits>
+    </Room>
+    <Room>
+      <RoomId>3</RoomId>
+      <Exits>
+        <Exit>
+          <RoomId>2</RoomId>
+          <Direction>w</Direction>
+        </Exit>
+      </Exits>
+    </Room>
+  </RoomExits>
 </config>

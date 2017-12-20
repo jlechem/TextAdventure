@@ -9,7 +9,6 @@
 
 #include <stdio.h>
 #include <tchar.h>
-#include "Directions.h"
 
 // TODO: reference additional headers your program requires here
 #include <iostream>
@@ -22,6 +21,9 @@
 #include <algorithm>
 #include <cctype>
 #include <sstream>
+
+#include "Directions.h"
+#include "Utils.h"
 
 using namespace std;
 

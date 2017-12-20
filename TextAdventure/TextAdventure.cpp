@@ -20,6 +20,56 @@
 using namespace std;
 
 /// <summary>
+/// Finds the room.
+/// </summary>
+/// <param name="id">The identifier.</param>
+/// <param name="rooms">The rooms.</param>
+/// <returns></returns>
+shared_ptr<Room> FindRoom(int id, vector<shared_ptr<Room>> &rooms)
+{
+	vector<shared_ptr<Room>>::iterator it;
+
+	shared_ptr<Room> result = nullptr;
+
+	for (it = rooms.begin(); it != rooms.end(); ++it)
+	{
+		if ((*it)->getId() == id)
+		{
+			result = (*it);
+			break;
+		}
+	}
+
+	return result;
+}
+
+/// <summary>
+/// Finds the item.
+/// </summary>
+/// <param name="id">The identifier.</param>
+/// <param name="items">The items.</param>
+/// <returns></returns>
+unique_ptr<Item> FindItem(int id, vector<unique_ptr<Item>> &items)
+{
+	vector<unique_ptr<Item>>::iterator it;
+
+	unique_ptr<Item> result = nullptr;
+
+	for (it = items.begin(); it != items.end(); ++it)
+	{
+		if ((*it)->getId() == id)
+		{
+			result = std::move((*it));
+			items.erase(it);
+			break;
+		}
+	}
+
+	return result;
+	
+}
+
+/// <summary>
 /// Loads the XML.
 /// </summary>
 /// <param name="xmlBuffer">The XML buffer.</param>
@@ -69,40 +119,114 @@ void LoadRooms(vector<shared_ptr<Room>> &rooms, vector<unique_ptr<Item>> &items,
 			auto newRoom = make_shared<Room>();
 
 			// this is our Room attribute Node, starts at Id
-			rapidxml::xml_node<>* attributeNode = roomNode->first_node();			
+			rapidxml::xml_node<>* attributeNode = roomNode->first_node();
 			newRoom->setId(atoi(attributeNode->value()));
-			
+
 			// name
 			attributeNode = attributeNode->next_sibling();
 			newRoom->setName(attributeNode->value());
-			
+
 			// description
 			attributeNode = attributeNode->next_sibling();
 			newRoom->setDescription(attributeNode->value());
-			
-			// handle exits
 
-			// handle items
+			// move to the Items group
+			attributeNode = attributeNode->next_sibling();
 
+			// get the first Item node if we have any
+			rapidxml::xml_node<>* itemNode = attributeNode->first_node();
+
+			// iterate through the items
+			while (itemNode)
+			{
+				rapidxml::xml_node<>* itemIdNode = itemNode->first_node();
+
+				// we should be on the item id
+				auto itemID = atoi(itemIdNode->value());
+
+				// get the item that has this ID
+				auto newItem = FindItem(itemID, items);
+
+				// if we found an item, add it to our room
+				if (newItem)
+				{
+					newRoom->addItem(std::move(newItem));
+				}
+
+				// get next exit node
+				itemNode = itemNode->next_sibling();
+
+			}
+
+			// add thw new room to our vector
 			rooms.push_back(newRoom);
 
 			// move to the next room
 			roomNode = roomNode->next_sibling();
 		}
+
+		// move down to the next node group, RoomExits
+		rootNode = rootNode->next_sibling();
+
+		// get the first room node if we have one
+		roomNode = rootNode->first_node();
+
+		// loop through our room nodes
+		while (roomNode)
+		{
+			// move down to the room id
+			rapidxml::xml_node<>* attributeNode = roomNode->first_node();
+			auto roomID = atoi(attributeNode->value());
+
+			// find the room with that ID
+			auto room = FindRoom(roomID, rooms);
+
+			// if we have a room that matches that, then add some exits
+			if (room)
+			{
+				// move to the exits group node
+				attributeNode = attributeNode->next_sibling();
+
+				// move down to the first exit if we have any
+				rapidxml::xml_node<>* exitNode = attributeNode->first_node();
+
+				// loop through our exits if we have any
+				while (exitNode)
+				{
+					// move down to the room id and parse it
+					attributeNode = exitNode->first_node();
+					roomID = atoi(attributeNode->value());
+
+					// move to the direction node
+					attributeNode = attributeNode->next_sibling();
+					auto direction = ConvertDirection(attributeNode->value());
+
+					// find a room with this ID
+					auto exitRoom = FindRoom(roomID, rooms);
+
+					// if we have a room with this ID then add it to our map
+					if (exitRoom)
+					{
+						room->addExit(direction, exitRoom);
+
+						// move to the next Exit node in the Exits group
+						exitNode = exitNode->next_sibling();
+					}
+				}
+
+				// move to the next exit node
+				roomNode = roomNode->next_sibling();
+
+			}
+
+		}
+
+		items.clear();
+
 	}
+}
+
 	
-	items.clear();
-}
-
-void FindRoom(int ind)
-{
-
-}
-
-void FindItem(int id)
-{
-
-}
 
 /// <summary>
 /// Loads the allowed verbs from the verbs.data file.
@@ -167,10 +291,6 @@ void LoadItems(vector<unique_ptr<Item>> &items, rapidxml::xml_document<>* docume
 			// description
 			attributeNode = attributeNode->next_sibling();
 			newItem->setDescription(attributeNode->value());
-
-			// score
-			/*attributeNode = attributeNode->next_sibling();
-			newItem->setScore(atoi(attributeNode->value()));*/
 
 			// item type
 			attributeNode = attributeNode->next_sibling();
@@ -324,27 +444,41 @@ int main()
 
 		string xml;
 
+		cout << "Loading data" << endl << "Loading XML..";
+
 		// load our data
 		LoadXML(xml);
+
+		cout << "Done" << endl << "Parsing XML...";
 
 		rapidxml::xml_document<> doc;
 		doc.parse<0>((char *)xml.c_str());
 
-		LoadVerbs(command);
-		LoadItems(items, &doc);
-		LoadRooms(rooms, items, &doc);
+		cout << "Done" << endl << "Loading Game Settings...";
+
 		LoadGameData(settings, &doc);
+		
+		cout << "Done" << endl << "Loading verbs...";
+		
+		LoadVerbs(command);
+		
+		cout << "Done" << endl << "Loading Items...";
+		
+		LoadItems(items, &doc);
+
+		cout << "Done" << endl << "Loading Rooms...";
+
+		LoadRooms(rooms, items, &doc);
+
+		cout << "Done" << endl << "All game data loaded" << endl << endl;
 
 		// this is our main player object, we use it for running the game
 		shared_ptr<Player> player = make_shared<Player>(rooms[0]);
 
 		command->setPlayer(player);
 
-		system("CLS");
-
 		PrintInto(settings);
-
-		// first thing we do is look to start the game
+		
 		command->setCommand("LOOK");
 		ProcessCommand(command);
 
