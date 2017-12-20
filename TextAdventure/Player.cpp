@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "Player.h"
 #include "Item.h"
+#include "Utils.h"
 
 Player::Player()
 {
@@ -64,7 +65,7 @@ bool Player::Move(string direction)
 	bool result = false;
 
 	// first get the enum from the string
-	auto enumDirection = ConvertDirection(direction);
+	Directions enumDirection = Utilities::convertDirection(direction);
 
 	// get the shared pointer from the map we have
 	auto newRoom = getCurrentRoom()->getExits()[enumDirection];

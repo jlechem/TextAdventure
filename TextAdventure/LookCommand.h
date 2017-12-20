@@ -1,14 +1,17 @@
 #pragma once
 
-#include "CommandBase.h"
+#include "CommandInterface.h"
 
 class LookCommand :
-	public CommandBase
+	public CommandInterface
 {
 public:
 	LookCommand();
+	LookCommand(string);
 	~LookCommand();
 
 	void process();
 
+private:
+	void calculateValidity();
 };

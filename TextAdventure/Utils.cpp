@@ -1,10 +1,21 @@
+/*
+	Utilis.cpp
+	Created By:			Justin LeCheminant
+	Created On:			12-20-2017
+	Last Modified:		12-20-2017
+	Last Modified By:	Justin LeCheminant
+
+	Notes: Implementation of the Utilities class.
+
+*/
+
 #pragma once
 
 #include "stdafx.h"
 
 #include "Utils.h"
 
-Directions ConvertDirection(std::string direction)
+Directions Utilities::convertDirection(string direction)
 {
 	Directions result = Directions::Invalid;
 
@@ -52,42 +63,170 @@ Directions ConvertDirection(std::string direction)
 	return result;
 }
 
-Directions Utilities::convertDirectionStringToEnum(string direction)
+/// <summary>
+/// Determines whether [is kill command] [the specified command].
+/// </summary>
+/// <param name="command">The command.</param>
+/// <returns>
+///   <c>true</c> if [is kill command] [the specified command]; otherwise, <c>false</c>.
+/// </returns>
+bool Utilities::isKillCommand(string command)
 {
-	Directions result = Directions::Invalid;
+	return command == "kill" || command == "fight";
+}
 
-	if (direction == "n" || direction == "north")
-	{
-		result = Directions::North;
-	}
-	else if (direction == "s" || direction == "south")
-	{
-		result = Directions::South;
-	}
-	else if (direction == "e" || direction == "east")
-	{
-		result = Directions::East;
-	}
-	else if (direction == "w" || direction == "west")
-	{
-		result = Directions::West;
-	}
-	else if (direction == "ne" || direction == "northeast" || direction == "north east")
-	{
-		result = Directions::NorthEast;
-	}
-	else if (direction == "se" || direction == "southeast" || direction == "south east")
-	{
-		result = Directions::SouthEast;
-	}
-	else if (direction == "sw" || direction == "southwest" || direction == "south west")
-	{
-		result = Directions::SouthWest;
-	}
-	else if (direction == "nw" || direction == "northwest" || direction == "north west")
-	{
-		result = Directions::NorthWest;
-	}
+/// <summary>
+/// Determines whether [is fun command] [the specified command].
+/// </summary>
+/// <param name="command">The command.</param>
+/// <returns>
+///   <c>true</c> if [is fun command] [the specified command]; otherwise, <c>false</c>.
+/// </returns>
+bool Utilities::isFunCommand(string command)
+{
+	/*auto result = _funCommands.find(command);
 
-	return result;
+	return result != _funCommands.end();*/
+	return false;
+}
+
+/// <summary>
+/// Determines whether [is action command] [the specified command].
+/// </summary>
+/// <param name="command">The command.</param>
+/// <returns>
+///   <c>true</c> if [is action command] [the specified command]; otherwise, <c>false</c>.
+/// </returns>
+bool Utilities::isActionCommand(string command)
+{
+	return	isKillCommand(command) ||
+		isDropCommand(command) ||
+		isTakeCommand(command);
+}
+
+/// <summary>
+/// Determines whether [is clear command] [the specified command].
+/// </summary>
+/// <param name="command">The command.</param>
+/// <returns>
+///   <c>true</c> if [is clear command] [the specified command]; otherwise, <c>false</c>.
+/// </returns>
+bool Utilities::isClearCommand(string command)
+{
+	return command == "cls" || command == "clear";
+}
+
+/// <summary>
+/// Determines whether [is move command] [the specified command].
+/// </summary>
+/// <param name="command">The command.</param>
+/// <returns>
+///   <c>true</c> if [is move command] [the specified command]; otherwise, <c>false</c>.
+/// </returns>
+bool Utilities::isMoveCommand(string command)
+{
+	return
+		command == "north" ||
+		command == "south" ||
+		command == "east" ||
+		command == "west" ||
+		command == "n" ||
+		command == "e" ||
+		command == "s" ||
+		command == "w" ||
+		command == "northeast" ||
+		command == "northwest" ||
+		command == "southeast" ||
+		command == "southwest" ||
+		command == "ne" ||
+		command == "nw" ||
+		command == "se" ||
+		command == "sw";
+}
+
+/// <summary>
+/// Determines whether [is take command] [the specified command].
+/// </summary>
+/// <param name="command">The command.</param>
+/// <returns>
+///   <c>true</c> if [is take command] [the specified command]; otherwise, <c>false</c>.
+/// </returns>
+bool Utilities::isTakeCommand(string command)
+{
+	return command == "take";
+}
+
+/// <summary>
+/// Determines whether [is look command] [the specified command].
+/// </summary>
+/// <param name="command">The command.</param>
+/// <returns>
+///   <c>true</c> if [is look command] [the specified command]; otherwise, <c>false</c>.
+/// </returns>
+bool Utilities::isLookCommand(string command)
+{
+	return command == "look" || command == "l" || command == "examine";
+}
+
+/// <summary>
+/// Determines whether [is drop command] [the specified command].
+/// </summary>
+/// <param name="command">The command.</param>
+/// <returns>
+///   <c>true</c> if [is drop command] [the specified command]; otherwise, <c>false</c>.
+/// </returns>
+bool Utilities::isDropCommand(string command)
+{
+	return command == "drop";
+}
+
+/// <summary>
+/// Determines whether [is item command] [the specified command].
+/// </summary>
+/// <param name="command">The command.</param>
+/// <returns>
+///   <c>true</c> if [is item command] [the specified command]; otherwise, <c>false</c>.
+/// </returns>
+bool Utilities::isItemCommand(string command)
+{
+	return false;
+}
+
+/// <summary>
+/// Determines whether [is inventory command] [the specified command].
+/// </summary>
+/// <param name="command">The command.</param>
+/// <returns>
+///   <c>true</c> if [is inventory command] [the specified command]; otherwise, <c>false</c>.
+/// </returns>
+bool Utilities::isInventoryCommand(string command)
+{
+	return	command == "i" ||
+		command == "inventory";
+}
+
+/// <summary>
+/// Determines whether [is save command] [the specified command].
+/// </summary>
+/// <param name="command">The command.</param>
+/// <returns>
+///   <c>true</c> if [is save command] [the specified command]; otherwise, <c>false</c>.
+/// </returns>
+bool Utilities::isSaveCommand(string command)
+{
+	return command == "save";
+}
+
+/// <summary>
+/// Determines whether [is exit command] [the specified command].
+/// </summary>
+/// <param name="command">The command.</param>
+/// <returns>
+///   <c>true</c> if [is exit command] [the specified command]; otherwise, <c>false</c>.
+/// </returns>
+bool Utilities::isExitCommand(string command)
+{
+	return	command == "exit" ||
+		command == "quit" ||
+		command == "q";
 }

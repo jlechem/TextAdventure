@@ -2,7 +2,7 @@
 	TextAdventure.cpp
 	Created By:			Justin LeCheminant
 	Created On:			12-18-2017
-	Last Modified:		12-19-2017
+	Last Modified:		12-20-2017
 	Last Modified By:	Justin LeCheminant
 */
 
@@ -16,6 +16,7 @@
 #include "Command.h"
 #include "rapidxml.hpp"
 #include "Item.h"
+#include "Utils.h"
 
 using namespace std;
 
@@ -199,7 +200,7 @@ void LoadRooms(vector<shared_ptr<Room>> &rooms, vector<unique_ptr<Item>> &items,
 
 					// move to the direction node
 					attributeNode = attributeNode->next_sibling();
-					auto direction = ConvertDirection(attributeNode->value());
+					auto direction = Utilities::convertDirection(attributeNode->value());
 
 					// find a room with this ID
 					auto exitRoom = FindRoom(roomID, rooms);
@@ -490,6 +491,10 @@ int main()
 	catch (exception* ex)
 	{
 		cout << "An error occured: " << ex->what() << endl;
+	}
+	catch (...)
+	{
+		cout << "An error occured" << endl;
 	}
 
     return 0;

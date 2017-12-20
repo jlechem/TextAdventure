@@ -6,6 +6,11 @@ LookCommand::LookCommand()
 {
 }
 
+LookCommand::LookCommand(string command)
+	:CommandInterface(command)
+{
+}
+
 
 LookCommand::~LookCommand()
 {
@@ -13,4 +18,9 @@ LookCommand::~LookCommand()
 
 void LookCommand::process()
 {
+}
+
+void LookCommand::calculateValidity()
+{
+	_isValid = false;
 }
