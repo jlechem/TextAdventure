@@ -32,3 +32,8 @@ void CommandBase::setCommand(string command)
 {
 	_command = command;
 }
+
+string CommandBase::getResult()
+{
+	return _commandResult;
+}

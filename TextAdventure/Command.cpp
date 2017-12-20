@@ -1,3 +1,11 @@
+/*
+	Command.cpp
+	Created By:		Justin LeCheminant
+	Created On:		12-18-2017
+	Last Modified:	12-20-2017
+	Notes: Implementation of the command class
+*/
+
 #pragma once
 
 #include "stdafx.h"
@@ -131,7 +139,6 @@ void Command::process()
 				break;
 
 			case 2:
-				// handle take and drop commands
 				if (isTakeCommand(command))
 				{
 					takeItem();
@@ -144,6 +151,10 @@ void Command::process()
 				{
 					// TODO: handle fighting
 				}
+				else if (isLookCommand(command))
+				{
+					lookAtItem();
+				}
 				else
 				{
 					_commandResult = "I don't know how to " + _command;
@@ -152,7 +163,6 @@ void Command::process()
 				break;
 
 			case 3:
-				// handle take and drop commands
 				if (isTakeCommand(command))
 				{
 					takeItem();
@@ -180,7 +190,7 @@ void Command::process()
 				// look at X T Z
 				if (isLookCommand(command))
 				{
-					// TODO: implement complex Look
+					lookAtItem();
 				}
 				else if (isTakeCommand(command))
 				{
@@ -323,6 +333,11 @@ void Command::dropItem()
 		_commandResult = _player->dropItem(item) ? "You drop the " + item : "You don't have a " + item;
 
 	}
+}
+
+void Command::lookAtItem()
+{
+	// TODO: implement complex and simple look results
 }
 
 /// <summary>
@@ -472,7 +487,7 @@ bool Command::isTakeCommand(string verb)
 /// </returns>
 bool Command::isLookCommand(string verb)
 {
-	return verb == "look" || verb == "l";
+	return verb == "look" || verb == "l" || verb == "examine";
 }
 
 /// <summary>

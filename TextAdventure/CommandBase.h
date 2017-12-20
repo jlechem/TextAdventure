@@ -21,10 +21,13 @@ public:
 	string getCommad();
 	void setCommand(string);
 
+	string getResult();
+
 private:
 	bool _isValid;
 	
 	string _command;
+	string _commandResult;
 
 	virtual void calculateValidity() = 0;
 

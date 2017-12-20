@@ -61,5 +61,6 @@ private:
 	void setInvalidMove(string);
 	void takeItem();
 	void dropItem();
+	void lookAtItem();
 
 };
