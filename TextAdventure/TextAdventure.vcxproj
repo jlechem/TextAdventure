@@ -137,10 +137,12 @@
   <ItemGroup>
     <ClInclude Include="ActionType.h" />
     <ClInclude Include="Command.h" />
+    <ClInclude Include="CommandBase.h" />
     <ClInclude Include="Directions.h" />
     <ClInclude Include="GameSettings.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="ItemType.h" />
+    <ClInclude Include="LookCommand.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="rapidxml.hpp" />
     <ClInclude Include="rapidxml_iterators.hpp" />
@@ -154,8 +156,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Command.cpp" />
+    <ClCompile Include="CommandBase.cpp" />
     <ClCompile Include="GameSettings.cpp" />
     <ClCompile Include="Item.cpp" />
+    <ClCompile Include="LookCommand.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Room.cpp" />
     <ClCompile Include="stdafx.cpp">
