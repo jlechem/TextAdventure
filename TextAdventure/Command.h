@@ -40,7 +40,7 @@ private:
 	map<string, string> _funCommands;	// single commands with no real use, like jump, hum, dance, etc
 
 	shared_ptr<Player> _player;			// the player, we need this for item management, etc
-
+	
 	bool isValid(string);
 	void parseCommand();
 	void loadActions();

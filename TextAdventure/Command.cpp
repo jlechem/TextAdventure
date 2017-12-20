@@ -352,8 +352,16 @@ void Command::loadActions()
 void Command::setRoomDescription()
 {
 	_commandResult = _player->getCurrentRoom()->getDescription();
-	_commandResult += "\nYou see the following exists: " + _player->getCurrentRoom()->getExitsString();
-	_commandResult += "\nYou see the following items: " + _player->getCurrentRoom()->getItems();
+
+	if (_player->getCurrentRoom()->getExitsString().size() > 0)
+	{
+		_commandResult += "\nYou see the following exists: " + _player->getCurrentRoom()->getExitsString();
+	}
+
+	if (_player->getCurrentRoom()->getItems().size() > 0)
+	{
+		_commandResult += "\nYou see the following items: " + _player->getCurrentRoom()->getItems();
+	}
 }
 
 /// <summary>
