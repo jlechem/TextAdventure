@@ -48,13 +48,11 @@ void Room::addItem(unique_ptr<Item> item)
 
 void Room::removeItem(string itemName)
 {
-	// TODO: remove item from vector
 	generateItemString();
 }
 
 void Room::removeItem(unique_ptr<Item> item)
 {
-	// TODO: remove item from vector
 	generateItemString();
 }
 
@@ -80,8 +78,26 @@ void Room::addExit(Directions exit, shared_ptr<Room> room)
 	generateExitString();
 }
 
-void Room::addExit(int, Directions)
+string Room::findItemDescription(string name)
 {
+	vector<unique_ptr<Item>>::iterator it;
+
+	string result = "";
+
+	// loop through all the items in this room and search for the one we want
+	for (it = _items.begin(); it != _items.end(); ++it)
+	{
+		auto temp = find((*it)->getAlterateNames().begin(), (*it)->getAlterateNames().end(), name);
+
+		if (temp != (*it)->getAlterateNames().end())
+		{
+			result = (*it)->getDescription();
+			break;
+		}
+	}
+
+	return result;
+
 }
 
 unique_ptr<Item> Room::findItem(string name)
@@ -126,7 +142,7 @@ void Room::generateItemString()
 	}
 }
 
-string Room::getItems()
+string Room::getItemsString()
 {
 	return _itemsString;
 }

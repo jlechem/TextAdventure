@@ -33,11 +33,12 @@ public:
 	map<Directions, shared_ptr<Room>>& getExits();
 	void setExits(map<Directions, shared_ptr<Room>>&);
 	void addExit(Directions, shared_ptr<Room>);
-	void addExit(int, Directions);
+	
+	string findItemDescription(string name);
 
 	unique_ptr<Item> findItem(string);
-
-	string getItems();
+	
+	string getItemsString();
 
 private:
 	int _id;

@@ -328,18 +328,34 @@ void Command::dropItem()
 /// </summary>
 void Command::lookAtItem()
 {
-	// this means they typed 'look at' and nothing else
+	// this means they typed 'look at' || 'looked at the' and nothing else
 	if ( (_commands.size() == 2 && _commands[1] == "at" ) || 
 		 (_commands.size() == 3 && _commands[1] == "at" && _commands[2] == "the" ) )
 	{
 		_commandResult = "Look at what?";
 	}
-	// take X Z
-	// or take the X Y Z
 	else
 	{
-		// skip 'the' word if needed
-		auto startIndex = _commands[1] == "the" ? 2 : 1;
+		int startIndex = 0;
+
+		switch (_commands.size())
+		{
+		case 2:
+			startIndex = 1;
+			break;
+
+		case 3:
+			startIndex = _commands[1] == "at" ? 2 : 1;
+			break;
+
+		case 4:
+			startIndex = _commands[1] == "at" && _commands[2] == "the" ? 3 : 2;
+			break;
+
+		default:
+			break;
+
+		}
 
 		// we need to concat words based on spaces
 		string item = "";
@@ -349,12 +365,15 @@ void Command::lookAtItem()
 			item += _commands[i] + " ";
 		}
 
-		// clear the last space at the end
+
+		// remove the last space
 		item.erase(item.end() - 1);
 
-		// try and add this item from the room to the player
-		_commandResult = _player->addItem(item) ? "You pick up the " + item : "You don't see a " + item + " here";
+		// see if the room has this item
+		auto foundItem = _player->getCurrentRoom()->findItemDescription(item);
 
+		_commandResult = foundItem.size() == 0 ? "You don't see a " + item + " here" : "You see " + foundItem;
+		
 	}
 }
 
@@ -383,9 +402,9 @@ void Command::setRoomDescription()
 		_commandResult += "\nYou see the following exists: " + _player->getCurrentRoom()->getExitsString();
 	}
 
-	if (_player->getCurrentRoom()->getItems().size() > 0)
+	if (_player->getCurrentRoom()->getItemsString().size() > 0)
 	{
-		_commandResult += "\nYou see the following items: " + _player->getCurrentRoom()->getItems();
+		_commandResult += "\nYou see the following items: " + _player->getCurrentRoom()->getItemsString();
 	}
 }
 
