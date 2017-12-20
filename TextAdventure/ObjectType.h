@@ -18,25 +18,21 @@ enum ObjectType
 	/// <summary>
 	/// The player
 	/// </summary>
-	Player,
+	PlayerObject,
 
 	/// <summary>
 	/// The item
 	/// </summary>
-	Item,
+	ItemObject,
 
 	/// <summary>
 	/// The treasure
 	/// </summary>
-	Treasure,
+	TreasureObject,
 
 	/// <summary>
 	/// The room
 	/// </summary>
-	Room,
+	RoomObject
 
-	/// <summary>
-	/// The command
-	/// </summary>
-	Command
 };

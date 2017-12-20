@@ -117,6 +117,16 @@ bool Utilities::isClearCommand(string command)
 }
 
 /// <summary>
+/// Converts the value to all lower case.
+/// </summary>
+/// <param name="value">The value.</param>
+/// <returns></returns>
+void Utilities::toLower(string& value)
+{
+	transform(value.begin(), value.end(), value.begin(), tolower);
+}
+
+/// <summary>
 /// Determines whether [is move command] [the specified command].
 /// </summary>
 /// <param name="command">The command.</param>
@@ -241,4 +251,53 @@ bool Utilities::isExitCommand(string command)
 bool Utilities::isExamineCommand(string command)
 {
 	return	command == "examine";
+}
+
+/// <summary>
+/// Converts the direction.
+/// </summary>
+/// <param name="direction">The direction.</param>
+/// <returns></returns>
+string Utilities::convertDirection(Directions direction)
+{
+	string result = "";
+
+	switch (direction)
+	{
+		case North:
+			result = "North";
+			break;
+
+		case South:
+			result = "South";
+			break;
+
+		case East:
+			result = "East";
+			break;
+
+		case West:
+			result = "West";
+			break;
+
+		case NorthWest:
+			result = "North West";
+			break;
+
+		case NorthEast:
+			result = "North East";
+			break;
+
+		case SouthEast:
+			result = "South East";
+			break;
+
+		case SouthWest:
+			result = "South West";
+			break;
+
+	}
+
+	return result;
+
 }

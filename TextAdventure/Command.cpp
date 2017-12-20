@@ -10,7 +10,6 @@
 
 #include "stdafx.h"
 #include "Command.h"
-#include "Utils.h"
 
 /// <summary>
 /// Initializes a new instance of the <see cref="Command"/> class.
@@ -249,7 +248,7 @@ void Command::parseCommand()
 
 	while (std::getline(ss, item, delim)) 
 	{
-		transform(item.begin(), item.end(), item.begin(), tolower);
+		Utilities::toLower(item);
 		_commands.push_back(item);
 	}
 }

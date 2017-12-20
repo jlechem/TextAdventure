@@ -8,7 +8,7 @@ class ObjectBase
 {
 public:
 	ObjectBase();
-	ObjectBase(string, string, int, ObjectType);
+	ObjectBase(string, string, int, int, ObjectType);
 	~ObjectBase();
 
 	string getName();
@@ -16,6 +16,9 @@ public:
 
 	string getDescription();
 	void setDescription(string);
+
+	int getId();
+	void setId(int);
 
 	int getScore();
 	void setScore(int);
@@ -29,6 +32,7 @@ protected:
 	string _description;
 	int _score;
 	ObjectType _type;
+	int _id;
 
 private:
 

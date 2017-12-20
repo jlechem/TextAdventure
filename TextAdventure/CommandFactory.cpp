@@ -11,8 +11,6 @@
 
 #include "stdafx.h"
 #include "CommandFactory.h"
-#include "LookCommand.h"
-#include "Utils.h"
 
 /// <summary>
 /// Initializes a new instance of the <see cref="CommandFactory"/> class.

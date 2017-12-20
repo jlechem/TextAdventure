@@ -1,8 +1,21 @@
+/*
+	Room.cpp
+	Created By:			Justin LeCheminant
+	Created On:			12-20-2017
+	Last Modified:		12-20-2017
+	Last Modified By:	Justin LeCheminant
+
+	Notes: Implementation of the Room class.
+
+*/
+
 #include "stdafx.h"
 #include "Room.h"
 
-Room::Room()
+
+Room::Room(): ObjectBase()
 {
+	_type = ObjectType::RoomObject;
 }
 
 Room::~Room()
@@ -15,36 +28,6 @@ Room::Room(int id, string name, string description, string shortDescription ): R
 	_name = name;
 	_description = description;
 	_shortDesctiption = shortDescription;
-}
-
-int Room::getId()
-{
-	return _id;
-}
-
-void Room::setId(int id)
-{
-	_id = id;
-}
-
-string Room::getName()
-{
-	return _name;
-}
-
-void Room::setName(string name)
-{
-	_name = name;
-}
-
-string Room::getDescription()
-{
-	return _description;
-}
-
-void Room::setDescription(string description)
-{
-	_description = description;
 }
 
 string Room::getShortDescription()
@@ -95,6 +78,10 @@ void Room::addExit(Directions exit, shared_ptr<Room> room)
 {
 	_exits[exit] = room;
 	generateExitString();
+}
+
+void Room::addExit(int, Directions)
+{
 }
 
 unique_ptr<Item> Room::findItem(string name)
@@ -152,55 +139,11 @@ void Room::generateExitString()
 
 	for (it = _exits.begin(); it != _exits.end(); ++it)
 	{
-		_exitString += convertDirectionToString(it->first);
+		_exitString += Utilities::convertDirection(it->first);
 		_exitString += ",";
 	}
 
 	// take off the last comma
 	_exitString.erase(_exitString.end() - 1);
-
-}
-
-string Room::convertDirectionToString(Directions direction)
-{
-	string result;
-
-	switch (direction)
-	{
-	case North:
-		result = "North";
-		break;
-
-	case South:
-		result = "South";
-		break;
-
-	case East:
-		result = "East";
-		break;
-	
-	case West:
-		result = "West";
-		break;
-	
-	case NorthWest:
-		result = "North West";
-		break;
-	
-	case NorthEast:
-		result = "North East";
-		break;
-	
-	case SouthEast:
-		result = "South East";
-		break;
-	
-	case SouthWest:
-		result = "South West";
-		break;
-
-	}
-
-	return result;
 
 }

@@ -293,7 +293,7 @@ void LoadItems(vector<unique_ptr<Item>> &items, rapidxml::xml_document<>* docume
 
 			// item type
 			attributeNode = attributeNode->next_sibling();
-			newItem->setType(attributeNode->value() == "item" ? ItemType::BaseItem : ItemType::Treasure);
+			newItem->setItemType(attributeNode->value() == "item" ? ItemType::BaseItem : ItemType::Treasure);
 
 			// move to the alternate names group
 			attributeNode = attributeNode->next_sibling();
@@ -413,7 +413,7 @@ void EnterCommand(unique_ptr<Command>& command)
 
 	getline(cin, commandLine);
 
-	transform(commandLine.begin(), commandLine.end(), commandLine.begin(), tolower);
+	Utilities::toLower(commandLine);
 
 	command->setCommand(commandLine);
 

@@ -13,8 +13,10 @@
 
 #include "Item.h"
 #include "Room.h"
+#include "ObjectBase.h"
+#include "Utils.h"
 
-class Player
+class Player: public ObjectBase
 {
 public:
 	Player();
@@ -30,10 +32,6 @@ public:
 	void printInventory();
 	
 private:
-	string _name;
-
-	int _score;
-	
 	vector<unique_ptr<Item>> _items;
 	
 	shared_ptr<Room> _currentRoom;

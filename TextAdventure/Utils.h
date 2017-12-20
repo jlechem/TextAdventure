@@ -16,7 +16,9 @@
 class Utilities
 {
 public:
+
 	static Directions convertDirection(string direction);
+	static string convertDirection(Directions);
 
 	static bool isFunCommand(string);
 
@@ -43,5 +45,7 @@ public:
 	static bool isActionCommand(string);
 
 	static bool isClearCommand(string);
+
+	static void toLower(string&);
 
 };

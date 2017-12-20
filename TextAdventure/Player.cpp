@@ -1,10 +1,20 @@
+/*
+Map.cpp
+Created By:			Justin LeCheminant
+Created On:			12-20-2017
+Last Modified:		12-20-2017
+Last Modified By:	Justin LeCheminant
+
+Notes: Implementation of the Player class.
+
+*/
+
 #include "stdafx.h"
 #include "Player.h"
-#include "Item.h"
-#include "Utils.h"
 
 Player::Player()
 {
+	_type = ObjectType::PlayerObject;
 }
 
 Player::Player(shared_ptr<Room> initialRoom)

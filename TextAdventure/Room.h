@@ -11,23 +11,16 @@
 #include "stdafx.h"
 
 #include "Item.h"
+#include "ObjectBase.h"
+#include "Utils.h"
 
-class Room
+class Room : public ObjectBase
 {
 public:
 	Room();
 	~Room();
 
 	Room(int, string, string, string);
-
-	int getId();
-	void setId(int);
-
-	string getName();
-	void setName(string);
-
-	string getDescription();
-	void setDescription(string);
 
 	string getShortDescription();
 	void setShortDescription(string);
@@ -59,6 +52,5 @@ private:
 	
 	void generateExitString();
 	void generateItemString();
-	string convertDirectionToString(Directions);
 
 };

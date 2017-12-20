@@ -14,6 +14,8 @@
 #include "stdafx.h"
 
 #include "CommandInterface.h"
+#include "LookCommand.h"
+#include "Utils.h"
 
 class CommandFactory
 {

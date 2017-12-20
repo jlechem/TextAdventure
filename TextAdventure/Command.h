@@ -12,6 +12,7 @@
 
 #include "ActionType.h"
 #include "Player.h"
+#include "Utils.h"
 
 class Command
 {

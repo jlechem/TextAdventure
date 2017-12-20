@@ -11,39 +11,30 @@
 #include "stdafx.h"
 
 #include "ItemType.h"
+#include "ObjectBase.h"
 
-class Item
+class Item: public ObjectBase
 {
 public:
 	Item();
 	~Item();
 
-	int getId();
-	void setId(int);
-
-	string getName();
-	void setName(string);
-
-	int getScore();
-	void setScore(int);
-
-	string getDescription();
-	void setDescription(string);
-
-	ItemType getType();
-	void setType(ItemType);
+	ItemType getItemType();
+	void setItemType(ItemType);
 
 	void addAlternateName(string);
 	vector<string>& getAlterateNames();
 
 private:
 	int _id;
+	int _score;
+
 	string _name;
 	string _description;
-	int _score;
+	
 	vector<string> _alternateNames;
 
-	ItemType _type;
+	ItemType _itemType;
 
 	vector<Item> _subItems;
 

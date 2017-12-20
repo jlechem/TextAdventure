@@ -1,63 +1,36 @@
+/*
+	Item.cpp
+	Created By:			Justin LeCheminant
+	Created On:			12-20-2017
+	Last Modified:		12-20-2017
+	Last Modified By:	Justin LeCheminant
+
+	Notes: Implementation of the Item class.
+
+*/
+
 #include "stdafx.h"
 #include "Item.h"
 
-Item::Item()
+Item::Item(): 
+	ObjectBase()
 {
-	_type = ItemType::BaseItem;
+	_itemType = ItemType::BaseItem;
+	_type = ObjectType::ItemObject;
 }
 
 Item::~Item()
 {
 }
 
-int Item::getId()
+ItemType Item::getItemType()
 {
-	return _id;
+	return _itemType;
 }
 
-void Item::setId(int value)
+void Item::setItemType(ItemType type)
 {
-	_id = value;
-}
-
-string Item::getName()
-{
-	return _name;
-}
-
-void Item::setName(string name)
-{
-	_name = name;
-}
-
-int Item::getScore()
-{
-	return _score;
-}
-
-void Item::setScore(int score)
-{
-	_score = score;
-}
-
-string Item::getDescription()
-{
-	return _description;
-}
-
-void Item::setDescription(string description)
-{
-	_description = description;
-}
-
-ItemType Item::getType()
-{
-	return _type;
-}
-
-void Item::setType(ItemType type)
-{
-	_type = type;
+	_itemType = type;
 }
 
 void Item::addAlternateName(string name)
