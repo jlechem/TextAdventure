@@ -226,8 +226,6 @@ void LoadRooms(vector<shared_ptr<Room>> &rooms, vector<unique_ptr<Item>> &items,
 	}
 }
 
-	
-
 /// <summary>
 /// Loads the allowed verbs from the verbs.data file.
 /// </summary>

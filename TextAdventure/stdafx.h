@@ -1,7 +1,15 @@
-// stdafx.h : include file for standard system include files,
-// or project specific include files that are used frequently, but
-// are changed infrequently
-//
+/*
+	StdAfx.h
+	Created By:			Justin LeCheminant
+	Created On:			12-18-2017
+	Last Modified:		12-19-2017
+	Last Modified By:	Justin LeCheminant
+
+	Include file for standard system include files,
+	or project specific include files that are used frequently, but
+	are changed infrequently
+
+*/
 
 #pragma once
 
@@ -44,3 +52,13 @@ using namespace std;
 #define NORTHWEST_SHORT "nw"
 #define SOUTHEAST_SHORT "se"
 #define SOUTHWEST_SHORT "sw"
+
+#define NORTHEAST_SPACE "north east"
+#define NORTHWEST_SPACE "north west"
+#define SOUTHEAST_SPACE "south east"
+#define SOUTHWEST_SPACE "south west"
+
+#define UP "up"
+#define UP_SHORT "u"
+#define DOWN "down"
+#define DOWN_SHORT "d"
