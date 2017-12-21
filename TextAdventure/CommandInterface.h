@@ -14,6 +14,8 @@
 
 #include "stdafx.h"
 
+#include "ActorBase.h"
+
 class CommandInterface
 {
 public:
@@ -40,6 +42,10 @@ protected:
 	vector<string> _commandWords;
 
 	virtual void calculateValidity() = 0;
+
+	shared_ptr<ActorBase> _player;
+	shared_ptr<ActorBase> _playerToActOn;
+	unique_ptr<ObjectBase> _objectToActOne;
 
 private:
 		

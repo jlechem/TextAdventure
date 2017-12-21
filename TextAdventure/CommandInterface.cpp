@@ -12,19 +12,20 @@
 
 CommandInterface::CommandInterface()
 {
+	 _player = make_shared<ActorBase>();
+	 _playerToActOn = make_shared<ActorBase>();
+	_objectToActOne = make_unique<Item>();
 }
 
 CommandInterface::CommandInterface(string command)
 {
+	_player = make_shared<ActorBase>();
+	_playerToActOn = make_shared<ActorBase>();
+	_objectToActOne = make_unique<Item>();
 	_command = command;
 }
 
-
 CommandInterface::~CommandInterface()
-{
-}
-
-void CommandInterface::process()
 {
 }
 
