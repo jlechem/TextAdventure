@@ -45,9 +45,6 @@
     <ClInclude Include="targetver.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Player.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Room.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -123,15 +120,15 @@
     <ClInclude Include="NPC.h">
       <Filter>Actors\Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>Actors\Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="TextAdventure.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Player.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Room.cpp">
@@ -183,6 +180,9 @@
       <Filter>Actors\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="NPC.cpp">
+      <Filter>Actors\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
       <Filter>Actors\Source Files</Filter>
     </ClCompile>
   </ItemGroup>

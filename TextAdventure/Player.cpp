@@ -59,6 +59,7 @@ string Player::takeAllItems()
 		// add them to the players inventory
 		for (it = items->begin(); it != items->end(); ++it)
 		{
+			_score += (*it)->getScore();
 			result += (*it)->getName() + ", ";
 			_items.push_back(std::move((*it)));
 		}
@@ -97,9 +98,8 @@ string Player::dropAllItems()
 		for (it = _items.begin(); it != _items.end(); ++it)
 		{
 			result += (*it)->getName() + ", ";
-		
+			_score -= (*it)->getScore();
 			_currentRoom->addItem(std::move((*it)));
-			
 		}
 
 		_items.clear();
