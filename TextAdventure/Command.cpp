@@ -304,6 +304,11 @@ void Command::dropItem()
 	{
 		_commandResult = "drop what?";
 	}
+	else if (_commands.size() == 2 &&
+		_commands[1] == "all")
+	{
+		_commandResult = _player->dropAllItems();
+	}
 	// take X Z
 	// or take the X Y Z
 	else

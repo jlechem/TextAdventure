@@ -76,3 +76,40 @@ string Player::takeAllItems()
 	return result;
 
 }
+
+string Player::dropAllItems()
+{
+	string result = "";
+
+	vector<unique_ptr<Item>>::iterator it;
+
+	if (_items.size() == 0)
+	{
+		result = "You don't have anything";
+	}
+	else
+	{
+		result = "You drop the following items: ";
+
+		// loop through the items in the room and add them to our inventory
+		// add them to the players inventory
+		for (it = _items.begin(); it != _items.end(); ++it)
+		{
+			result += (*it)->getName() + ", ";
+		
+			_currentRoom->addItem(std::move((*it)));
+			
+		}
+
+		_items.clear();
+
+		// clear any ', ' at the end
+		if (result.size() > 2)
+		{
+			result.erase(result.end() - 2, result.end());
+		}
+	}
+
+	return result;
+
+}

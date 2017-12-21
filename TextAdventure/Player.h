@@ -28,6 +28,8 @@ public:
 	
 	string takeAllItems();
 
+	string dropAllItems();
+
 private:
 	
 };
