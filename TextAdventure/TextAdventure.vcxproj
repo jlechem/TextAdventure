@@ -142,6 +142,7 @@
     <ClInclude Include="CommandInterface.h" />
     <ClInclude Include="DescribableObjectInterface.h" />
     <ClInclude Include="Directions.h" />
+    <ClInclude Include="DropCommand.h" />
     <ClInclude Include="GameSettings.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="ItemType.h" />
@@ -157,6 +158,7 @@
     <ClInclude Include="rapidxml_utils.hpp" />
     <ClInclude Include="Room.h" />
     <ClInclude Include="stdafx.h" />
+    <ClInclude Include="TakeCommand.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="TreasureCase.h" />
     <ClInclude Include="Utils.h" />
@@ -167,6 +169,7 @@
     <ClCompile Include="CommandFactory.cpp" />
     <ClCompile Include="CommandInterface.cpp" />
     <ClCompile Include="DescribableObjectInterface.cpp" />
+    <ClCompile Include="DropCommand.cpp" />
     <ClCompile Include="GameSettings.cpp" />
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="LookCommand.cpp" />
@@ -181,6 +184,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="TakeCommand.cpp" />
     <ClCompile Include="TextAdventure.cpp" />
     <ClCompile Include="TreasureCase.cpp" />
     <ClCompile Include="Utils.cpp" />
