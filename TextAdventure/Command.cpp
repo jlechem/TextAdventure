@@ -259,10 +259,15 @@ void Command::parseCommand()
 void Command::takeItem()
 {
 	// this means they typed 'take the' and nothing else
-	if (_commands.size() == 2 && 
-		_commands[1] == "the" )
+	if (_commands.size() == 2 &&
+		_commands[1] == "the")
 	{
 		_commandResult = "take what?";
+	}
+	else if (_commands.size() == 2 &&
+		_commands[1] == "all")
+	{
+		_player->takeAllItems();
 	}
 	// take X Z
 	// or take the X Y Z
