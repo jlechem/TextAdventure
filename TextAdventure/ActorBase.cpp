@@ -14,10 +14,20 @@
 
 ActorBase::ActorBase()
 {
+	_score = 0;
+	_numberOfMoves = 0;
+	_description = "";
+	_name = "";
+	_id = 0;
 }
 
 ActorBase::ActorBase(shared_ptr<Room> initialRoom)
 {
+	_score = 0;
+	_numberOfMoves = 0;
+	_description = "";
+	_name = "";
+	_id = 0;
 	_currentRoom = initialRoom;
 }
 
@@ -128,13 +138,23 @@ bool ActorBase::Move(string direction)
 
 		if (newRoom != nullptr)
 		{
+			_numberOfMoves++;
+			
+			// TODO: update the visit count on the room
+
 			_currentRoom = newRoom;
+			_currentRoom->updateVisitCount();
 			result = true;
 		}
 	}
 
 	return result;
 
+}
+
+unsigned long ActorBase::getMoveCount()
+{
+	return _numberOfMoves;
 }
 
 unique_ptr<Item> ActorBase::findItem(string name)

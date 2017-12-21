@@ -350,7 +350,7 @@ void LoadGame()
 /// </returns>
 bool IsGaveOver(shared_ptr<Player> &player)
 {
-	return false;
+	return player->getIsGameOver();
 }
 
 /// <summary>
@@ -372,9 +372,24 @@ void PrintInto(unique_ptr<GameSettings> &settings)
 /// Prints the ending.
 /// </summary>
 /// <param name="player">The player.</param>
-void PrintEnding(unique_ptr<Player>& player)
+void PrintEnding(shared_ptr<Player> player, unique_ptr<GameSettings>& settings)
 {
-	cout << endl << "Thanks for playing. You final score is: " << player->getScore() << endl;
+	auto items = player->getInventory();
+
+	vector<unique_ptr<Item>>::iterator it;
+
+	// print out the score, etc
+	cout << endl << endl << "Thanks for playing " << settings->getTitle() << endl << endl
+		<< "You made a total of: " << player->getMoveCount() << " moves" << endl
+		<< "You have the following items: " << endl;
+	
+	for (it = items->begin(); it != items->end(); ++it)
+	{
+		cout << (*it)->getName() << endl;
+	}
+
+	cout << "Thanks for playing. Your final score is: " << player->getScore() << endl;
+
 }
 
 /// <summary>
@@ -496,6 +511,9 @@ int main()
 			EnterCommand(command);
 			ProcessCommand(command);
 		}
+
+		PrintEnding(player, settings);
+
 	}
 	catch (exception* ex)
 	{
@@ -513,6 +531,10 @@ int main()
 	{
 		cout << " An error occured" << endl;
 	}
+
+	cout << "Press any key to exit" << endl;
+	
+	auto id = getchar();
 
     return 0;
 

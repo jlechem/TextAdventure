@@ -30,6 +30,9 @@ public:
 
 	string dropAllItems();
 
+	bool getIsGameOver();
+	void setIsGameOver(bool);
+
 private:
-	
+	bool _isGameOver;
 };

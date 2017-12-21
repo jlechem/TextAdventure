@@ -15,6 +15,7 @@
 
 Room::Room(): ObjectBase()
 {
+	_visitCount = 0;
 	_type = ObjectType::RoomObject;
 }
 
@@ -149,6 +150,11 @@ void Room::generateItemString()
 	}
 }
 
+void Room::increaseVisitCount()
+{
+	_visitCount++;
+}
+
 string Room::getItemsString()
 {
 	return _itemsString;
@@ -157,6 +163,16 @@ string Room::getItemsString()
 void Room::setItemsString(string itemsString)
 {
 	_itemsString = itemsString;
+}
+
+unsigned long Room::getVisitCount()
+{
+	return _visitCount;
+}
+
+void Room::updateVisitCount()
+{
+	_visitCount++;
 }
 
 void Room::generateExitString()

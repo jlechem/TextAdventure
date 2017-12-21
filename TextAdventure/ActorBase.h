@@ -44,11 +44,14 @@ public:
 	
 	bool Move(string);
 	
+	unsigned long getMoveCount();
+
 protected:
 	string _name;
 	string _description;
 	int _score;
 	int _id;
+	unsigned long _numberOfMoves;
 
 	vector<unique_ptr<Item>> _items;
 

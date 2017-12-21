@@ -149,6 +149,7 @@
     <ClInclude Include="LookCommand.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="MoveCommand.h" />
+    <ClInclude Include="NPC.h" />
     <ClInclude Include="ObjectBase.h" />
     <ClInclude Include="ObjectType.h" />
     <ClInclude Include="Player.h" />
@@ -175,6 +176,7 @@
     <ClCompile Include="LookCommand.cpp" />
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="MoveCommand.cpp" />
+    <ClCompile Include="NPC.cpp" />
     <ClCompile Include="ObjectBase.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Room.cpp" />

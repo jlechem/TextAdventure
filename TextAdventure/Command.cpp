@@ -119,8 +119,7 @@ void Command::process()
 				}
 				else if (Utilities::isExitCommand(command))
 				{
-					// TODO: add game option prompts before we exit
-					exit(0);
+					_player->setIsGameOver(true);
 				}
 				else if (Utilities::isClearCommand(command))
 				{

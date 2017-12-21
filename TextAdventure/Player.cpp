@@ -14,11 +14,12 @@ Notes: Implementation of the Player class.
 
 Player::Player(): ActorBase()
 {
+	_isGameOver = false;
 }
 
 Player::Player(shared_ptr<Room> initialRoom): ActorBase(initialRoom)
 {
-
+	_isGameOver = false;
 }
 
 Player::~Player()
@@ -112,4 +113,14 @@ string Player::dropAllItems()
 
 	return result;
 
+}
+
+bool Player::getIsGameOver()
+{
+	return _isGameOver;
+}
+
+void Player::setIsGameOver(bool gameOverFlag)
+{
+	_isGameOver = gameOverFlag;
 }

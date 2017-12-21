@@ -43,7 +43,12 @@ public:
 	string getItemsString();
 	void setItemsString(string);
 
+	unsigned long getVisitCount();
+	void updateVisitCount();
+
 private:
+	unsigned long _visitCount;
+
 	string _shortDesctiption;
 	string _exitString;
 	string _itemsString;
@@ -53,5 +58,6 @@ private:
 	
 	void generateExitString();
 	void generateItemString();
+	void increaseVisitCount();
 
 };
