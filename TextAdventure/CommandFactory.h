@@ -14,7 +14,11 @@
 #include "stdafx.h"
 
 #include "CommandInterface.h"
+#include "DropCommand.h"
 #include "LookCommand.h"
+#include "MoveCommand.h"
+#include "TakeCommand.h"
+
 #include "Utils.h"
 
 class CommandFactory

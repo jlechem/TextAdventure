@@ -123,6 +123,12 @@
     <ClInclude Include="Player.h">
       <Filter>Actors\Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="ExamineCommand.h">
+      <Filter>Commands\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FunCommand.h">
+      <Filter>Commands\Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -184,6 +190,12 @@
     </ClCompile>
     <ClCompile Include="Player.cpp">
       <Filter>Actors\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ExamineCommand.cpp">
+      <Filter>Commands\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FunCommand.cpp">
+      <Filter>Commands\Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -143,6 +143,8 @@
     <ClInclude Include="DescribableObjectInterface.h" />
     <ClInclude Include="Directions.h" />
     <ClInclude Include="DropCommand.h" />
+    <ClInclude Include="ExamineCommand.h" />
+    <ClInclude Include="FunCommand.h" />
     <ClInclude Include="GameSettings.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="ItemType.h" />
@@ -171,6 +173,8 @@
     <ClCompile Include="CommandInterface.cpp" />
     <ClCompile Include="DescribableObjectInterface.cpp" />
     <ClCompile Include="DropCommand.cpp" />
+    <ClCompile Include="ExamineCommand.cpp" />
+    <ClCompile Include="FunCommand.cpp" />
     <ClCompile Include="GameSettings.cpp" />
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="LookCommand.cpp" />
