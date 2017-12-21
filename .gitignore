@@ -7,7 +7,6 @@
 *.tlog
 *.log
 *.idb
-*.filters
 *.user
 *.ipch
 .vs/TextAdventure/v15/.suo
