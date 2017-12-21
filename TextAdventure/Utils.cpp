@@ -2,7 +2,7 @@
 	Utilis.cpp
 	Created By:			Justin LeCheminant
 	Created On:			12-20-2017
-	Last Modified:		12-20-2017
+	Last Modified:		12-21-2017
 	Last Modified By:	Justin LeCheminant
 
 	Notes: Implementation of the Utilities class.
@@ -251,6 +251,58 @@ bool Utilities::isExitCommand(string command)
 bool Utilities::isExamineCommand(string command)
 {
 	return	command == "examine";
+}
+
+/// <summary>
+/// Determines whether [is open command] [the specified command].
+/// </summary>
+/// <param name="command">The command.</param>
+/// <returns>
+///   <c>true</c> if [is open command] [the specified command]; otherwise, <c>false</c>.
+/// </returns>
+bool Utilities::isOpenCommand(string command)
+{
+	// TODO: implement isOpenCommand
+	return false;
+}
+
+/// <summary>
+/// Determines whether [is close command] [the specified command].
+/// </summary>
+/// <param name="command">The command.</param>
+/// <returns>
+///   <c>true</c> if [is close command] [the specified command]; otherwise, <c>false</c>.
+/// </returns>
+bool Utilities::isCloseCommand(string command)
+{
+	// TODO: implement isCloseCommand
+	return false;
+}
+
+/// <summary>
+/// Determines whether [is lock command] [the specified command].
+/// </summary>
+/// <param name="command">The command.</param>
+/// <returns>
+///   <c>true</c> if [is lock command] [the specified command]; otherwise, <c>false</c>.
+/// </returns>
+bool Utilities::isLockCommand(string command)
+{
+	// TODO: implement isLockCommand
+	return false;
+}
+
+/// <summary>
+/// Determines whether [is unlock command] [the specified command].
+/// </summary>
+/// <param name="command">The command.</param>
+/// <returns>
+///   <c>true</c> if [is unlock command] [the specified command]; otherwise, <c>false</c>.
+/// </returns>
+bool Utilities::isUnlockCommand(string command)
+{
+	// TODO: implement isUnlockCommand
+	return false;
 }
 
 /// <summary>
