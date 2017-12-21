@@ -2,7 +2,7 @@
 	ObjectType.h
 	Created By:		Justin LeCheminant
 	Created On:		12-18-2017
-	Last Modified:	12-18-2017
+	Last Modified:	12-21-2017
 	Notes: An enumeration for the various types of objects in the game, Item, Room, Treasure, Player, etc
 */
 
@@ -19,6 +19,16 @@ enum ObjectType
 	/// The player
 	/// </summary>
 	PlayerObject,
+
+	/// <summary>
+	/// The Non Playable Character
+	/// </summary>
+	NPC,
+
+	/// <summary>
+	/// The enemy
+	/// </summary>
+	Enemy,
 
 	/// <summary>
 	/// The item

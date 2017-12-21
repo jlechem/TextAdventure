@@ -28,6 +28,15 @@
     <Filter Include="Enums">
       <UniqueIdentifier>{4aa45d9a-9587-4913-b8d9-d0646732f49a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Actors">
+      <UniqueIdentifier>{a1079610-795b-41d5-8fd6-623ec821911e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Actors\Header Files">
+      <UniqueIdentifier>{b8388bda-bccc-4919-a6f0-c0a97a4d6add}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Actors\Source Files">
+      <UniqueIdentifier>{017722c9-0782-4287-bf34-96ad7ce11dad}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -40,9 +49,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Room.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Directions.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="rapidxml.hpp">
@@ -66,34 +72,19 @@
     <ClInclude Include="TreasureCase.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ActionType.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ItemType.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Item.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Utils.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="CommandFactory.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="ObjectBase.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ObjectType.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="DescribableObjectInterface.h">
       <Filter>Interfaces</Filter>
     </ClInclude>
     <ClInclude Include="Map.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ActorBase.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="LookCommand.h">
@@ -105,14 +96,32 @@
     <ClInclude Include="TakeCommand.h">
       <Filter>Commands\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="DropCommand.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="NPC.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="CommandInterface.h">
       <Filter>Commands\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Directions.h">
+      <Filter>Enums</Filter>
+    </ClInclude>
+    <ClInclude Include="ItemType.h">
+      <Filter>Enums</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectType.h">
+      <Filter>Enums</Filter>
+    </ClInclude>
+    <ClInclude Include="ActionType.h">
+      <Filter>Enums</Filter>
+    </ClInclude>
+    <ClInclude Include="DropCommand.h">
+      <Filter>Commands\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CommandFactory.h">
+      <Filter>Commands\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ActorBase.h">
+      <Filter>Actors\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="NPC.h">
+      <Filter>Actors\Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -143,9 +152,6 @@
     <ClCompile Include="Utils.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="CommandFactory.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="ObjectBase.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -153,9 +159,6 @@
       <Filter>Interfaces</Filter>
     </ClCompile>
     <ClCompile Include="Map.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ActorBase.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="LookCommand.cpp">
@@ -167,14 +170,20 @@
     <ClCompile Include="TakeCommand.cpp">
       <Filter>Commands\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="DropCommand.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="NPC.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="CommandInterface.cpp">
       <Filter>Commands\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DropCommand.cpp">
+      <Filter>Commands\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CommandFactory.cpp">
+      <Filter>Commands\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ActorBase.cpp">
+      <Filter>Actors\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="NPC.cpp">
+      <Filter>Actors\Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
