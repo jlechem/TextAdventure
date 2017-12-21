@@ -54,9 +54,13 @@ unique_ptr<CommandInterface> CommandFactory::getCommand(string command)
 	{
 		commandPointer = make_unique<DropCommand>(command);
 	}
-	else
+	else if (Utilities::isExamineCommand(command))
 	{
-		// TODO: set to invalid command
+		commandPointer = make_unique<ExamineCommand>(command);
+	}
+	else if (Utilities::isExitCommand(command))
+	{
+		commandPointer = make_unique<ExitCommand>(command);
 	}
 
 	// just drop back the pointer we made based on the command

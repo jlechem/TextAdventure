@@ -54,3 +54,33 @@ string CommandInterface::getResult()
 {
 	return _commandResult;
 }
+
+shared_ptr<ActorBase> CommandInterface::getPlayer()
+{
+	return _player;
+}
+
+void CommandInterface::setPlayer(shared_ptr<ActorBase> player)
+{
+	_player = player;
+}
+
+shared_ptr<ActorBase> CommandInterface::getPlayerToActOn()
+{
+	return _playerToActOn;
+}
+
+void CommandInterface::setPlayerToActOn(shared_ptr<ActorBase> actor)
+{
+	_playerToActOn = actor;
+}
+
+unique_ptr<ObjectBase>& CommandInterface::getObjectToActOn()
+{
+	return _objectToActOne;
+}
+
+void CommandInterface::setObjectToActOn(unique_ptr<ObjectBase> object)
+{
+	_objectToActOne = std::move(object);
+}

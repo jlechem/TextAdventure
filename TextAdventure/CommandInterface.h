@@ -41,6 +41,15 @@ public:
 
 	string getResult();
 
+	shared_ptr<ActorBase> getPlayer();
+	void setPlayer(shared_ptr<ActorBase>);
+
+	shared_ptr<ActorBase> getPlayerToActOn();
+	void setPlayerToActOn(shared_ptr<ActorBase>);
+
+	unique_ptr<ObjectBase>& getObjectToActOn();
+	void setObjectToActOn(unique_ptr<ObjectBase>);
+
 protected:
 	bool _isValid;
 

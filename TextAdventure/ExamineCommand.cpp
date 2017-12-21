@@ -10,11 +10,23 @@
 #include "ExamineCommand.h"
 
 
-ExamineCommand::ExamineCommand()
+ExamineCommand::ExamineCommand(): CommandInterface()
+{
+}
+
+ExamineCommand::ExamineCommand(string command) : CommandInterface(command)
 {
 }
 
 
 ExamineCommand::~ExamineCommand()
+{
+}
+
+void ExamineCommand::process()
+{
+}
+
+void ExamineCommand::calculateValidity()
 {
 }
