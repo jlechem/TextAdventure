@@ -303,6 +303,10 @@ void LoadItems(vector<unique_ptr<Item>> &items, rapidxml::xml_document<>* docume
 			attributeNode = attributeNode->next_sibling();
 			newItem->setItemType(attributeNode->value() == "item" ? ItemType::BaseItem : ItemType::Treasure);
 
+			// item score
+			attributeNode = attributeNode->next_sibling();
+			newItem->setScore(atoi(attributeNode->value()));
+
 			// move to the alternate names group
 			attributeNode = attributeNode->next_sibling();
 			

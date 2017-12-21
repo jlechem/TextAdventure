@@ -94,6 +94,7 @@ bool ActorBase::addItem(string name)
 
 	if (item != nullptr)
 	{
+		_score += item->getScore();
 		_items.push_back(std::move(item));
 		result = true;
 	}
@@ -111,6 +112,7 @@ bool ActorBase::dropItem(string name)
 
 	if (foundItem != nullptr)
 	{
+		_score -= foundItem->getScore();
 		_currentRoom->addItem(std::move(foundItem));
 		result = true;
 	}
@@ -139,9 +141,6 @@ bool ActorBase::Move(string direction)
 		if (newRoom != nullptr)
 		{
 			_numberOfMoves++;
-			
-			// TODO: update the visit count on the room
-
 			_currentRoom = newRoom;
 			_currentRoom->updateVisitCount();
 			result = true;
@@ -155,6 +154,26 @@ bool ActorBase::Move(string direction)
 unsigned long ActorBase::getMoveCount()
 {
 	return _numberOfMoves;
+}
+
+void ActorBase::attack(shared_ptr<ActorBase> defender)
+{
+	// TODO: implement attack
+}
+
+void ActorBase::defend(shared_ptr<ActorBase> attacker)
+{
+	// TODO: implement defend
+}
+
+int ActorBase::getHitPoints()
+{
+	return _hitpoints;
+}
+
+void ActorBase::setHitPoints(int hp)
+{
+	_hitpoints = hp;
 }
 
 unique_ptr<Item> ActorBase::findItem(string name)

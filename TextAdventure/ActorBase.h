@@ -1,8 +1,8 @@
 /*
 	ActorBase.h
 	Created By:			Justin LeCheminant
-	Created On:			12-20-2017
-	Last Modified:		12-20-2017
+	Created On:			12-21-2017
+	Last Modified:		12-21-2017
 	Last Modified By:	Justin LeCheminant
 
 	Notes: This is a base class for actors in the game. An actor can be a player, enemy, or NPC (Non Playable Character).
@@ -46,12 +46,19 @@ public:
 	
 	unsigned long getMoveCount();
 
+	void attack(shared_ptr<ActorBase>);
+	void defend(shared_ptr<ActorBase>);
+
+	int getHitPoints();
+	void setHitPoints(int);
+
 protected:
 	string _name;
 	string _description;
 	int _score;
 	int _id;
 	unsigned long _numberOfMoves;
+	int _hitpoints;
 
 	vector<unique_ptr<Item>> _items;
 

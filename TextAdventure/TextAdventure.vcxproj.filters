@@ -87,9 +87,6 @@
     <ClInclude Include="ObjectType.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="CommandInterface.h">
-      <Filter>Interfaces</Filter>
-    </ClInclude>
     <ClInclude Include="DescribableObjectInterface.h">
       <Filter>Interfaces</Filter>
     </ClInclude>
@@ -113,6 +110,9 @@
     </ClInclude>
     <ClInclude Include="NPC.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CommandInterface.h">
+      <Filter>Commands\Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -149,9 +149,6 @@
     <ClCompile Include="ObjectBase.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="CommandInterface.cpp">
-      <Filter>Interfaces</Filter>
-    </ClCompile>
     <ClCompile Include="DescribableObjectInterface.cpp">
       <Filter>Interfaces</Filter>
     </ClCompile>
@@ -175,6 +172,9 @@
     </ClCompile>
     <ClCompile Include="NPC.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CommandInterface.cpp">
+      <Filter>Commands\Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

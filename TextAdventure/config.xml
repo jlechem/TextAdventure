@@ -16,6 +16,7 @@
       <Name>Stick</Name>
       <Description>A small pointy stick.</Description>
       <Type>item</Type>
+      <score>1</score>
       <AlternateNames>
         <Name>stick</Name>
         <Name>pointy stick</Name>
@@ -28,6 +29,7 @@
       <Name>Rock</Name>
       <Description>A small and very shiny black rock.</Description>
       <Type>item</Type>
+      <score>100</score>
       <AlternateNames>
         <Name>rock</Name>
         <Name>black rock</Name>
@@ -41,6 +43,7 @@
       <Name>Golden Egg</Name>
       <Description>A egg laid by a golden goose.</Description>
       <Type>treasure</Type>
+      <score>1000</score>
       <AlternateNames>
         <Name>golden egg</Name>
         <Name>gold egg</Name>
@@ -53,6 +56,7 @@
       <Name>Dome</Name>
       <Description>A shiny golden dome.</Description>
       <Type>treasure</Type>
+      <score>500</score>
       <AlternateNames>
         <Name>dome</Name>
         <Name>golden dome</Name>
