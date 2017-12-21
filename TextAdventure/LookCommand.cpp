@@ -35,20 +35,29 @@ void LookCommand::process()
 
 	if (_isValid)
 	{
-
 		// based on the size of the vector we can assume certain things
 		switch (_commandWords.size())
 		{
 			// just a LOOK command, this prints the room description
-		case 1:
-			_commandResult = _player->getCurrentRoom()->getLongDescription();
-			break;
+			case 1:
+				_commandResult = _player->getCurrentRoom()->getLongDescription();
+				break;
 
-		case 2:
-			break;
+			// could be LOOK AT || LOOK ITEM (ITEM could be rather long)
+			case 2:
+				if (_commandWords[1] == "at")
+				{
+					_commandResult = "Look at what?";
+				}
+				else
+				{
 
-		case 3:
-			break;
+				}
+
+				break;
+
+			case 3:
+				break;
 
 		}
 	}

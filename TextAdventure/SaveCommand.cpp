@@ -28,6 +28,7 @@ SaveCommand::~SaveCommand()
 
 void SaveCommand::process()
 {
+	cout << endl << "SAVE" << endl;
 }
 
 void SaveCommand::calculateValidity()

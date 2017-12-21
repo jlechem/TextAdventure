@@ -30,6 +30,7 @@ TakeCommand::~TakeCommand()
 
 void TakeCommand::process()
 {
+	cout << endl << "TAKE" << endl;
 }
 
 void TakeCommand::calculateValidity()

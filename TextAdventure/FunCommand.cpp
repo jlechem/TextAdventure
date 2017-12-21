@@ -28,6 +28,7 @@ FunCommand::~FunCommand()
 
 void FunCommand::process()
 {
+	cout << endl << "FUN" << endl;
 }
 
 void FunCommand::calculateValidity()

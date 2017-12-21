@@ -506,14 +506,12 @@ int main()
 		
 		command = CommandFactory::getCommand("LOOK", player);
 		ProcessCommand(command);
-		command = nullptr;
-
+		
 		// run the game loop
 		while (!IsGaveOver(player))
 		{
 			EnterCommand(command, player);
 			ProcessCommand(command);
-			command = nullptr;
 		}
 
 		PrintEnding(player, settings);

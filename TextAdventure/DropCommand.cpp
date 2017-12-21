@@ -29,6 +29,7 @@ DropCommand::~DropCommand()
 
 void DropCommand::process()
 {
+	cout << endl << "DROP" << endl;
 }
 
 void DropCommand::calculateValidity()

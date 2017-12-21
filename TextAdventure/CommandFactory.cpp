@@ -39,29 +39,55 @@ unique_ptr<CommandInterface> CommandFactory::getCommand(string command, shared_p
 	// always get commands in tolower
 	Utilities::toLower(command);
 
+	string initCommand = "";
+
+	// this is an entire sentence so we need to break it up and parse the words
+	if ( !command.empty() )
+	{
+		vector<string>* commands = new vector<string>();
+
+		// tokenize the command based on spaces
+		char delim = ' ';
+		stringstream ss(command);
+		string item;
+
+		commands->clear();
+
+		while (std::getline(ss, item, delim))
+		{
+			Utilities::toLower(item);
+			commands->push_back(item);
+		}
+
+		initCommand = (*commands)[0];
+
+		delete commands;
+
+	}
+	
 	// command should be one word (look,move,take,drop,jump,etc)
 	// based on this we need to return the correct command class
-	if (Utilities::isLookCommand(command))
+	if (Utilities::isLookCommand(initCommand))
 	{
 		commandPointer = make_unique<LookCommand>(command, player);
 	}
-	else if (Utilities::isMoveCommand(command))
+	else if (Utilities::isMoveCommand(initCommand))
 	{
 		commandPointer = make_unique<MoveCommand>(command, player);
 	}
-	else if (Utilities::isTakeCommand(command))
+	else if (Utilities::isTakeCommand(initCommand))
 	{
 		commandPointer = make_unique<TakeCommand>(command, player);
 	}
-	else if (Utilities::isDropCommand(command))
+	else if (Utilities::isDropCommand(initCommand))
 	{
 		commandPointer = make_unique<DropCommand>(command, player);
 	}
-	else if (Utilities::isExamineCommand(command))
+	else if (Utilities::isExamineCommand(initCommand))
 	{
 		commandPointer = make_unique<ExamineCommand>(command, player);
 	}
-	else if (Utilities::isExitCommand(command))
+	else if (Utilities::isExitCommand(initCommand))
 	{
 		commandPointer = make_unique<ExitCommand>(command, player);
 	}

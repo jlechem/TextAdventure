@@ -29,6 +29,7 @@ ExamineCommand::~ExamineCommand()
 
 void ExamineCommand::process()
 {
+	cout << endl << "EXAMINE" << endl;
 }
 
 void ExamineCommand::calculateValidity()

@@ -29,6 +29,7 @@ ExitCommand::~ExitCommand()
 
 void ExitCommand::process()
 {
+	cout << endl << "EXIT" << endl;
 }
 
 void ExitCommand::calculateValidity()

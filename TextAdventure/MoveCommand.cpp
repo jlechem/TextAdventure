@@ -33,6 +33,7 @@ MoveCommand::~MoveCommand()
 
 void MoveCommand::process()
 {
+	cout << endl << "MOVE" << endl;
 }
 
 void MoveCommand::calculateValidity()

@@ -29,6 +29,7 @@ LoadCommand::~LoadCommand()
 
 void LoadCommand::process()
 {
+	cout << endl << "LOAD" << endl;
 }
 
 void LoadCommand::calculateValidity()
