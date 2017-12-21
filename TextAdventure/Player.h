@@ -24,8 +24,6 @@ public:
 	Player(shared_ptr<Room>);
 	~Player();
 
-	void takeAllItems();
-
 	void printInventory();
 	
 	string takeAllItems();

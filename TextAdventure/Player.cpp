@@ -25,11 +25,6 @@ Player::~Player()
 {
 }
 
-void Player::takeAllItems()
-{
-	// TODO: implement take all
-}
-
 void Player::printInventory()
 {
 	vector<unique_ptr<Item>>::iterator it;
