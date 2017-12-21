@@ -26,6 +26,8 @@ public:
 
 	void printInventory();
 	
+	string takeAllItems();
+
 private:
 	
 };

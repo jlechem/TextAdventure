@@ -121,13 +121,16 @@ bool ActorBase::Move(string direction)
 	// first get the enum from the string
 	Directions enumDirection = Utilities::convertDirection(direction);
 
-	// get the shared pointer from the map we have
-	auto newRoom = getCurrentRoom()->getExits()[enumDirection];
-
-	if (newRoom != nullptr)
+	if (enumDirection != Directions::Invalid )
 	{
-		_currentRoom = newRoom;
-		result = true;
+		// get the shared pointer from the map we have
+		auto newRoom = getCurrentRoom()->getExits()[enumDirection];
+
+		if (newRoom != nullptr)
+		{
+			_currentRoom = newRoom;
+			result = true;
+		}
 	}
 
 	return result;

@@ -36,3 +36,43 @@ void Player::printInventory()
 		cout << (*it)->getName() << endl;
 	}
 }
+
+string Player::takeAllItems()
+{
+	string result = "";
+	
+	vector<unique_ptr<Item>>::iterator it;
+
+	// get all the items from this room
+	vector<unique_ptr<Item>>* items = _currentRoom->getAllItems();
+
+	if (items->size() == 0)
+	{
+		result = "There's nothing here to take";
+	}
+	else
+	{
+		result = "You take the following items: ";
+
+		// loop through the items in the room and add them to our inventory
+		// add them to the players inventory
+		for (it = items->begin(); it != items->end(); ++it)
+		{
+			result += (*it)->getName() + ", ";
+			_items.push_back(std::move((*it)));
+		}
+
+		items->clear();
+
+		_currentRoom->setItemsString("");
+
+		// clear any ', ' at the end
+		if (result.size() > 2)
+		{
+			result.erase(result.end() - 2, result.end());
+		}
+	}
+	
+	return result;
+
+}

@@ -125,6 +125,11 @@ unique_ptr<Item> Room::findItem(string name)
 
 }
 
+vector<unique_ptr<Item>>* Room::getAllItems()
+{
+	return &_items;
+}
+
 void Room::generateItemString()
 {
 	_itemsString.clear();
@@ -147,6 +152,11 @@ void Room::generateItemString()
 string Room::getItemsString()
 {
 	return _itemsString;
+}
+
+void Room::setItemsString(string itemsString)
+{
+	_itemsString = itemsString;
 }
 
 void Room::generateExitString()

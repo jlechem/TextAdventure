@@ -38,7 +38,10 @@ public:
 
 	unique_ptr<Item> findItem(string);
 	
+	vector<unique_ptr<Item>>* getAllItems();
+
 	string getItemsString();
+	void setItemsString(string);
 
 private:
 	string _shortDesctiption;

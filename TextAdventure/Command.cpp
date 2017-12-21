@@ -264,6 +264,11 @@ void Command::takeItem()
 	{
 		_commandResult = "take what?";
 	}
+	else if (_commands.size() == 2 &&
+		_commands[1] == "all")
+	{
+		_commandResult = _player->takeAllItems();
+	}
 	// take X Z
 	// or take the X Y Z
 	else
