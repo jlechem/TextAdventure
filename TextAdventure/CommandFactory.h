@@ -18,6 +18,7 @@
 #include "ExamineCommand.h"
 #include "ExitCommand.h"
 #include "FunCommand.h"
+#include "InvalidCommand.h"
 #include "LoadCommand.h"
 #include "LookCommand.h"
 #include "MoveCommand.h"
@@ -31,6 +32,6 @@ public:
 	CommandFactory();
 	~CommandFactory();
 
-	static unique_ptr<CommandInterface> getCommand(string);
+	static unique_ptr<CommandInterface> getCommand(string, shared_ptr<Player>);
 
 };

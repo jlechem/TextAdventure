@@ -19,6 +19,10 @@ TakeCommand::TakeCommand(string command): CommandInterface(command)
 {
 }
 
+TakeCommand::TakeCommand(string command, shared_ptr<Player> player) : CommandInterface(command,player)
+{
+}
+
 
 TakeCommand::~TakeCommand()
 {

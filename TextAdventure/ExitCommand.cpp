@@ -18,6 +18,10 @@ ExitCommand::ExitCommand(string command): CommandInterface(command)
 {
 }
 
+ExitCommand::ExitCommand(string command, shared_ptr<Player> player): CommandInterface(command,player)
+{
+}
+
 
 ExitCommand::~ExitCommand()
 {

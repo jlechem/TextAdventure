@@ -18,6 +18,10 @@ LoadCommand::LoadCommand(string command): CommandInterface(command)
 {
 }
 
+LoadCommand::LoadCommand(string command, shared_ptr<Player> player): CommandInterface(command,player)
+{
+}
+
 
 LoadCommand::~LoadCommand()
 {

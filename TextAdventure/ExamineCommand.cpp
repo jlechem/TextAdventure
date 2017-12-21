@@ -18,6 +18,10 @@ ExamineCommand::ExamineCommand(string command) : CommandInterface(command)
 {
 }
 
+ExamineCommand::ExamineCommand(string command, shared_ptr<Player> player):CommandInterface(command,player)
+{
+}
+
 
 ExamineCommand::~ExamineCommand()
 {

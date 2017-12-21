@@ -24,6 +24,7 @@ public:
 
 	string getShortDescription();
 	void setShortDescription(string);
+	string getLongDescription();
 
 	void addItem(unique_ptr<Item>);
 	void removeItem(string);
@@ -46,6 +47,7 @@ public:
 	unsigned long getVisitCount();
 	void updateVisitCount();
 
+	
 private:
 	unsigned long _visitCount;
 

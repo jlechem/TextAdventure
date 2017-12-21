@@ -22,6 +22,10 @@ MoveCommand::MoveCommand(string command)
 {
 }
 
+MoveCommand::MoveCommand(string command, shared_ptr<Player> player): CommandInterface(command,player)
+{
+}
+
 
 MoveCommand::~MoveCommand()
 {

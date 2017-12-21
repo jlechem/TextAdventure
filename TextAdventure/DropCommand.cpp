@@ -18,6 +18,10 @@ DropCommand::DropCommand(string command): CommandInterface(command)
 {
 }
 
+DropCommand::DropCommand(string command, shared_ptr<Player> player)
+{
+}
+
 
 DropCommand::~DropCommand()
 {

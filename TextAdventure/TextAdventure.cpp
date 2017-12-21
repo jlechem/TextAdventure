@@ -2,7 +2,7 @@
 	TextAdventure.cpp
 	Created By:			Justin LeCheminant
 	Created On:			12-18-2017
-	Last Modified:		12-20-2017
+	Last Modified:		12-21-2017
 	Last Modified By:	Justin LeCheminant
 */
 
@@ -13,10 +13,12 @@
 #include "Room.h"
 #include "Player.h"
 #include "GameSettings.h"
-#include "Command.h"
+#include "CommandInterface.h"
+#include "CommandFactory.h"
 #include "rapidxml.hpp"
 #include "Item.h"
 #include "Utils.h"
+#include "Command.h"
 
 using namespace std;
 
@@ -432,7 +434,7 @@ void LoadGameData(unique_ptr<GameSettings> &settings, rapidxml::xml_document<>* 
 /// Enters the command.
 /// </summary>
 /// <param name="command">The command.</param>
-void EnterCommand(unique_ptr<Command>& command)
+void EnterCommand(unique_ptr<CommandInterface>& command, shared_ptr<Player> player )
 {
 	string commandLine;
 
@@ -442,18 +444,21 @@ void EnterCommand(unique_ptr<Command>& command)
 
 	Utilities::toLower(commandLine);
 
-	command->setCommand(commandLine);
-
+	command = CommandFactory::getCommand(commandLine, player);
+	
 }
 
 /// <summary>
 /// Processes the command.
 /// </summary>
 /// <param name="command">The command.</param>
-void ProcessCommand(unique_ptr<Command>& command)
+void ProcessCommand(unique_ptr<CommandInterface>& command)
 {
+	// process then clear our pointer to make way for the new Dependency Injection
 	command->process();
+	command = nullptr;
 }
+
 
 /*
 	Main function
@@ -463,17 +468,16 @@ int main()
 	try
 	{
 		// declare some variables we need to use
-		vector<shared_ptr<Room>> rooms;
-		vector<unique_ptr<Item>> items;
-		unique_ptr<GameSettings> settings = make_unique<GameSettings>();
-		unique_ptr<Command> command = make_unique<Command>();
-		vector<unique_ptr<Player>> enemies;
-
-		string xml;
-
-		cout << "Loading data" << endl << "Loading XML...";
+		vector<shared_ptr<Room>> rooms;										// vector of all the rooms, TODO: make this a map??
+		vector<unique_ptr<Item>> items;										// vector of all the items in the game, this gets cleared as we load items into the rooms to start
+		unique_ptr<GameSettings> settings = make_unique<GameSettings>();	// game settings
+		unique_ptr<CommandInterface> command;								// newCommand, used to process input from the user. We don't init this, we get our concrete instance from our factory
+		vector<unique_ptr<Player>> enemies;									// vector of enemiees, this gets cleared as we load them into the rooms to start
+		string xml;															// holds our XML data from our config file
 
 		// load our data
+		cout << "Loading data" << endl << "Loading XML...";
+
 		LoadXML(xml);
 
 		cout << "Done" << endl << "Parsing XML...";
@@ -484,10 +488,6 @@ int main()
 		cout << "Done" << endl << "Loading Game Settings...";
 
 		LoadGameData(settings, &doc);
-		
-		cout << "Done" << endl << "Loading verbs...";
-		
-		LoadVerbs(command);
 		
 		cout << "Done" << endl << "Loading Items...";
 		
@@ -501,19 +501,19 @@ int main()
 
 		// this is our main player object, we use it for running the game
 		shared_ptr<Player> player = make_shared<Player>(rooms[0]);
-
-		command->setPlayer(player);
-
+		
 		PrintInto(settings);
 		
-		command->setCommand("LOOK");
+		command = CommandFactory::getCommand("LOOK", player);
 		ProcessCommand(command);
+		command = nullptr;
 
 		// run the game loop
 		while (!IsGaveOver(player))
 		{
-			EnterCommand(command);
+			EnterCommand(command, player);
 			ProcessCommand(command);
+			command = nullptr;
 		}
 
 		PrintEnding(player, settings);
@@ -536,7 +536,7 @@ int main()
 		cout << " An error occured" << endl;
 	}
 
-	cout << "Press any key to exit" << endl;
+	cout << endl << "Press any key to exit" << endl;
 	
 	auto id = getchar();
 

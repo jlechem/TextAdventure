@@ -41,6 +41,24 @@ void Room::setShortDescription(string shortDescription)
 	_shortDesctiption = shortDescription;
 }
 
+string Room::getLongDescription()
+{
+	string result = _description;
+
+	if (_exitString.size() > 0)
+	{
+		result += "\n" + _exitString;
+	}
+
+	if (_itemsString.size() > 0)
+	{
+		result += "\n" + _itemsString;
+	}
+
+	return result;
+
+}
+
 void Room::addItem(unique_ptr<Item> item)
 {
 	_items.push_back(std::move(item));

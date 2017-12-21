@@ -23,12 +23,14 @@
 #include "stdafx.h"
 
 #include "ActorBase.h"
+#include "Player.h"
 
 class CommandInterface
 {
 public:
 	CommandInterface();
 	CommandInterface(string);
+	CommandInterface(string, shared_ptr<Player>);
 	~CommandInterface();
 
 	virtual void process() = 0;
@@ -41,11 +43,11 @@ public:
 
 	string getResult();
 
-	shared_ptr<ActorBase> getPlayer();
-	void setPlayer(shared_ptr<ActorBase>);
+	shared_ptr<Player> getPlayer();
+	void setPlayer(shared_ptr<Player>);
 
-	shared_ptr<ActorBase> getPlayerToActOn();
-	void setPlayerToActOn(shared_ptr<ActorBase>);
+	shared_ptr<Player> getPlayerToActOn();
+	void setPlayerToActOn(shared_ptr<Player>);
 
 	unique_ptr<ObjectBase>& getObjectToActOn();
 	void setObjectToActOn(unique_ptr<ObjectBase>);
@@ -60,11 +62,10 @@ protected:
 
 	virtual void calculateValidity() = 0;
 
-	shared_ptr<ActorBase> _player;
-	shared_ptr<ActorBase> _playerToActOn;
+	shared_ptr<Player> _player;
+	shared_ptr<Player> _playerToActOn;
 	unique_ptr<ObjectBase> _objectToActOne;
-
-private:
-		
+	
+	void parseCommand();
 
 };

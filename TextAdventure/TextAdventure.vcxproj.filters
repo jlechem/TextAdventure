@@ -138,6 +138,9 @@
     <ClInclude Include="SaveCommand.h">
       <Filter>Commands\Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="InvalidCommand.h">
+      <Filter>Commands\Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -213,6 +216,9 @@
       <Filter>Commands\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="SaveCommand.cpp">
+      <Filter>Commands\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="InvalidCommand.cpp">
       <Filter>Commands\Source Files</Filter>
     </ClCompile>
   </ItemGroup>

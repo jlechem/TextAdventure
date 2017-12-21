@@ -17,6 +17,10 @@ FunCommand::FunCommand(string command): CommandInterface(command)
 {
 }
 
+FunCommand::FunCommand(string command, shared_ptr<Player> player): CommandInterface(command,player)
+{
+}
+
 
 FunCommand::~FunCommand()
 {
