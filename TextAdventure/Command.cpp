@@ -261,8 +261,6 @@ void Command::takeItem()
 	// this means they typed 'take the' and nothing else
 	if (_commands.size() == 2 && 
 		_commands[1] == "the" )
-	if (_commands.size() == 2 &&
-		_commands[1] == "the")
 	{
 		_commandResult = "take what?";
 	}
