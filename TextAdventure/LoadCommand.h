@@ -1,29 +1,24 @@
 /*
-	TakeCommand.h
+	LoadCommand.h
 	Created By:		Justin LeCheminant
 	Created On:		12-21-2017
 	Last Modified:	12-21-2017
-	Notes: A class that represents a take command, take all, take X, etc
+	Notes: A class that represents a LoadCommand. The use loads a saved game from disk.
 */
 
 #pragma once
-
-#include "stdafx.h"
 #include "CommandInterface.h"
-
-class TakeCommand :
+class LoadCommand :
 	public CommandInterface
 {
 public:
-	TakeCommand();
-	TakeCommand(string);
-	~TakeCommand();
+	LoadCommand();
+	LoadCommand(string);
+	~LoadCommand(); 
 
 	void process();
-
+	
 protected:
 	void calculateValidity();
-
-private:
 
 };

@@ -8,6 +8,14 @@
 	Notes: This is an interface class that will get used for dependency injection. When a command is typed in the correct concrete
 	implementation will be injected into the appropriate object that holds the command. This is most likely in the actual game loop.
 
+	Subclasses HAVE TO IMPLEMENT:
+	public:
+		void process();
+		CONSTRUCTOR(string);
+
+	protected:
+		void calculateValidity();
+
 */
 
 #pragma once

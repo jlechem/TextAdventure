@@ -15,10 +15,14 @@
 
 #include "CommandInterface.h"
 #include "DropCommand.h"
+#include "ExamineCommand.h"
+#include "ExitCommand.h"
+#include "FunCommand.h"
+#include "LoadCommand.h"
 #include "LookCommand.h"
 #include "MoveCommand.h"
+#include "SaveCommand.h"
 #include "TakeCommand.h"
-
 #include "Utils.h"
 
 class CommandFactory

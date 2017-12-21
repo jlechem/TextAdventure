@@ -1,29 +1,24 @@
 /*
-	TakeCommand.h
+	SaveCommand.h
 	Created By:		Justin LeCheminant
 	Created On:		12-21-2017
 	Last Modified:	12-21-2017
-	Notes: A class that represents a take command, take all, take X, etc
+	Notes: Class that represents a save command, ie when the user saves their game.
 */
 
 #pragma once
-
-#include "stdafx.h"
 #include "CommandInterface.h"
-
-class TakeCommand :
+class SaveCommand :
 	public CommandInterface
 {
 public:
-	TakeCommand();
-	TakeCommand(string);
-	~TakeCommand();
-
+	SaveCommand();
+	SaveCommand(string);
+	~SaveCommand(); 
+		
 	void process();
 
 protected:
 	void calculateValidity();
-
-private:
-
 };
+

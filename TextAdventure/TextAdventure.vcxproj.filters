@@ -129,6 +129,15 @@
     <ClInclude Include="FunCommand.h">
       <Filter>Commands\Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="ExitCommand.h">
+      <Filter>Commands\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LoadCommand.h">
+      <Filter>Commands\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SaveCommand.h">
+      <Filter>Commands\Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -195,6 +204,15 @@
       <Filter>Commands\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="FunCommand.cpp">
+      <Filter>Commands\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ExitCommand.cpp">
+      <Filter>Commands\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="LoadCommand.cpp">
+      <Filter>Commands\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SaveCommand.cpp">
       <Filter>Commands\Source Files</Filter>
     </ClCompile>
   </ItemGroup>

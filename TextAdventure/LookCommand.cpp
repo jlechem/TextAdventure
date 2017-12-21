@@ -1,3 +1,11 @@
+/*
+	LookCommand.cpp
+	Created By:		Justin LeCheminant
+	Created On:		12-21-2017
+	Last Modified:	12-21-2017
+	Notes: Implemenation of the LookCommand class.
+*/
+
 #include "stdafx.h"
 #include "LookCommand.h"
 

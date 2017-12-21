@@ -16,5 +16,13 @@ class DropCommand :
 {
 public:
 	DropCommand();
+	DropCommand(string);
 	~DropCommand();
+	void process();
+
+protected:
+	void calculateValidity();
+
+private:
+
 };

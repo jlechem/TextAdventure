@@ -144,10 +144,12 @@
     <ClInclude Include="Directions.h" />
     <ClInclude Include="DropCommand.h" />
     <ClInclude Include="ExamineCommand.h" />
+    <ClInclude Include="ExitCommand.h" />
     <ClInclude Include="FunCommand.h" />
     <ClInclude Include="GameSettings.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="ItemType.h" />
+    <ClInclude Include="LoadCommand.h" />
     <ClInclude Include="LookCommand.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="MoveCommand.h" />
@@ -160,6 +162,7 @@
     <ClInclude Include="rapidxml_print.hpp" />
     <ClInclude Include="rapidxml_utils.hpp" />
     <ClInclude Include="Room.h" />
+    <ClInclude Include="SaveCommand.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="TakeCommand.h" />
     <ClInclude Include="targetver.h" />
@@ -174,9 +177,11 @@
     <ClCompile Include="DescribableObjectInterface.cpp" />
     <ClCompile Include="DropCommand.cpp" />
     <ClCompile Include="ExamineCommand.cpp" />
+    <ClCompile Include="ExitCommand.cpp" />
     <ClCompile Include="FunCommand.cpp" />
     <ClCompile Include="GameSettings.cpp" />
     <ClCompile Include="Item.cpp" />
+    <ClCompile Include="LoadCommand.cpp" />
     <ClCompile Include="LookCommand.cpp" />
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="MoveCommand.cpp" />
@@ -184,6 +189,7 @@
     <ClCompile Include="ObjectBase.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Room.cpp" />
+    <ClCompile Include="SaveCommand.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
