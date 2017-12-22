@@ -65,16 +65,6 @@ void Room::addItem(unique_ptr<Item> item)
 	generateItemString();
 }
 
-void Room::removeItem(string itemName)
-{
-	generateItemString();
-}
-
-void Room::removeItem(unique_ptr<Item> item)
-{
-	generateItemString();
-}
-
 map<Directions, shared_ptr<Room>>& Room::getExits()
 {
 	return _exits;
@@ -140,7 +130,7 @@ unique_ptr<Item> Room::findItem(string name)
 
 	generateItemString();
 
-	return std::move(result);
+	return result;
 
 }
 

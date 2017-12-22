@@ -55,23 +55,30 @@ string Player::takeAllItems()
 	{
 		result = "You take the following items: ";
 
-		// loop through the items in the room and add them to our inventory
-		// add them to the players inventory
-		for (it = items->begin(); it != items->end(); ++it)
+		try
 		{
-			_score += (*it)->getScore();
-			result += (*it)->getName() + ", ";
-			_items.push_back(std::move((*it)));
+			// loop through the items in the room and add them to our inventory
+			// add them to the players inventory
+			for (it = items->begin(); it != items->end(); ++it)
+			{
+				_score += (*it)->getScore();
+				result += (*it)->getName() + ", ";
+				_items.push_back(std::move((*it)));
+			}
+
+			items->clear();
+
+			_currentRoom->setItemsString("");
+
+			// clear any ', ' at the end
+			if (result.size() > 2)
+			{
+				result.erase(result.end() - 2, result.end());
+			}
 		}
-
-		items->clear();
-
-		_currentRoom->setItemsString("");
-
-		// clear any ', ' at the end
-		if (result.size() > 2)
+		catch (exception* e)
 		{
-			result.erase(result.end() - 2, result.end());
+			cout << e->what() << endl;
 		}
 	}
 	
@@ -93,21 +100,27 @@ string Player::dropAllItems()
 	{
 		result = "You drop the following items: ";
 
-		// loop through the items in the room and add them to our inventory
-		// add them to the players inventory
-		for (it = _items.begin(); it != _items.end(); ++it)
+		try
 		{
-			result += (*it)->getName() + ", ";
-			_score -= (*it)->getScore();
-			_currentRoom->addItem(std::move((*it)));
+			// loop through the items in the room and add them to our inventory
+			for (it = _items.begin(); it != _items.end(); ++it)
+			{
+				result += (*it)->getName() + ", ";
+				_score -= (*it)->getScore();
+				_currentRoom->addItem(std::move((*it)));
+			}
+
+			_items.clear();
+
+			// clear any ', ' at the end
+			if (result.size() > 2)
+			{
+				result.erase(result.end() - 2, result.end());
+			}
 		}
-
-		_items.clear();
-
-		// clear any ', ' at the end
-		if (result.size() > 2)
+		catch (exception* e)
 		{
-			result.erase(result.end() - 2, result.end());
+			cout << e->what() << endl;
 		}
 	}
 

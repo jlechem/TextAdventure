@@ -18,18 +18,15 @@ class Room : public ObjectBase
 {
 public:
 	Room();
-	~Room();
-
 	Room(int, string, string, string);
+	~Room();
 
 	string getShortDescription();
 	void setShortDescription(string);
 	string getLongDescription();
 
 	void addItem(unique_ptr<Item>);
-	void removeItem(string);
-	void removeItem(unique_ptr<Item>);
-
+	
 	string getExitsString();
 	map<Directions, shared_ptr<Room>>& getExits();
 	void setExits(map<Directions, shared_ptr<Room>>&);

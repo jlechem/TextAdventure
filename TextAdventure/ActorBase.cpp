@@ -90,7 +90,7 @@ bool ActorBase::addItem(string name)
 	bool result = false;
 
 	// check if our room has an item or teasure with this name
-	unique_ptr<Item> item = _currentRoom->findItem(name);
+	auto item = _currentRoom->findItem(name);
 
 	if (item != nullptr)
 	{
@@ -189,9 +189,10 @@ unique_ptr<Item> ActorBase::findItem(string name)
 		if (temp != (*it)->getAlterateNames().end())
 		{
 			result = std::move((*it));
+			_items.erase(it);
 			break;
 		}
 	}
 
-	return std::move(result);
+	return result;
 }

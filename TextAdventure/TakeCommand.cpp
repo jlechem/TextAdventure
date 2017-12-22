@@ -45,9 +45,17 @@ void TakeCommand::process()
 
 		// TAKE X
 		case 2:
+			if (_commandWords[1] == "all")
+			{
+				auto result = _player->takeAllItems();
+				_commandResult = !result.empty() ? result : "There's nothing here to take";
+			}
+			else
+			{
 				// use the single word to find in the room
-			_commandResult = _player->addItem(_commandWords[1]) ? "You take the " + _commandWords[1]  : "You don't see " + _commandWords[1];
-
+				_commandResult = _player->addItem(_commandWords[1]) ? "You take the " + _commandWords[1] : "You don't see " + _commandWords[1];
+			}
+			
 			break;
 
 		default:
