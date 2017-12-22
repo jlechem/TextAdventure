@@ -2,26 +2,30 @@
 	DropCommand.cpp
 	Created By:		Justin LeCheminant
 	Created On:		12-18-2017
-	Last Modified:	12-21-2017
+	Last Modified:	12-22-2017
+
 	Notes: Implementation of the DropCommand class.
+
 */
 
 #include "stdafx.h"
+
 #include "DropCommand.h"
 
-
-DropCommand::DropCommand(): CommandInterface()
+DropCommand::DropCommand()
+	: CommandInterface()
 {
 }
 
-DropCommand::DropCommand(string command): CommandInterface(command)
+DropCommand::DropCommand(string command)
+	: CommandInterface(command)
 {
 }
 
-DropCommand::DropCommand(string command, shared_ptr<Player> player) : CommandInterface(command, player)
+DropCommand::DropCommand(string command, shared_ptr<Player> player) 
+	: CommandInterface(command, player)
 {
 }
-
 
 DropCommand::~DropCommand()
 {

@@ -14,17 +14,20 @@
 
 
 InvalidCommand::InvalidCommand()
+	: CommandInterface()
 {
 	_isValid = false;
 }
 
-InvalidCommand::InvalidCommand(string command): CommandInterface(command)
+InvalidCommand::InvalidCommand(string command)
+	: CommandInterface(command)
 {
 	_isValid = false;
 }
 
 
-InvalidCommand::InvalidCommand(string command, shared_ptr<Player> player) : CommandInterface(command,player)
+InvalidCommand::InvalidCommand(string command, shared_ptr<Player> player) 
+	: CommandInterface(command,player)
 {
 	_isValid = false;
 }

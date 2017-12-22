@@ -8,21 +8,23 @@
 
 
 #include "stdafx.h"
+
 #include "TakeCommand.h"
 
-
-TakeCommand::TakeCommand(): CommandInterface()
+TakeCommand::TakeCommand()
+	: CommandInterface()
 {
 }
 
-TakeCommand::TakeCommand(string command): CommandInterface(command)
+TakeCommand::TakeCommand(string command)
+	: CommandInterface(command)
 {
 }
 
-TakeCommand::TakeCommand(string command, shared_ptr<Player> player) : CommandInterface(command,player)
+TakeCommand::TakeCommand(string command, shared_ptr<Player> player)
+	: CommandInterface(command,player)
 {
 }
-
 
 TakeCommand::~TakeCommand()
 {

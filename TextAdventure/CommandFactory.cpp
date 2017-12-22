@@ -10,27 +10,17 @@
 */
 
 #include "stdafx.h"
+
 #include "CommandFactory.h"
 
-/// <summary>
-/// Initializes a new instance of the <see cref="CommandFactory"/> class.
-/// </summary>
 CommandFactory::CommandFactory()
 {
 }
 
-/// <summary>
-/// Finalizes an instance of the <see cref="CommandFactory"/> class.
-/// </summary>
 CommandFactory::~CommandFactory()
 {
 }
 
-/// <summary>
-/// Gets the command.
-/// </summary>
-/// <param name="">The .</param>
-/// <returns></returns>
 unique_ptr<CommandInterface> CommandFactory::getCommand(string command, shared_ptr<Player> player)
 {
 	// create a pointer to our base class

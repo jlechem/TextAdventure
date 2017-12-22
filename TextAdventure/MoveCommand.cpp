@@ -10,19 +10,21 @@
 */
 
 #include "stdafx.h"
+
 #include "MoveCommand.h"
 
-
-MoveCommand::MoveCommand():CommandInterface()
+MoveCommand::MoveCommand()
+	: CommandInterface()
 {
 }
 
 MoveCommand::MoveCommand(string command)
-	:CommandInterface(command)
+	: CommandInterface(command)
 {
 }
 
-MoveCommand::MoveCommand(string command, shared_ptr<Player> player): CommandInterface(command,player)
+MoveCommand::MoveCommand(string command, shared_ptr<Player> player)
+	: CommandInterface(command,player)
 {
 }
 
@@ -38,4 +40,5 @@ void MoveCommand::process()
 
 void MoveCommand::calculateValidity()
 {
+	// TODO: check if we can move the direction they specified
 }

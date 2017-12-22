@@ -8,20 +8,23 @@
 
 
 #include "stdafx.h"
+
 #include "InventoryCommand.h"
 
-
-InventoryCommand::InventoryCommand():CommandInterface()
+InventoryCommand::InventoryCommand()
+	: CommandInterface()
 {
 	_isValid = true;
 }
 
-InventoryCommand::InventoryCommand(string command): CommandInterface(command)
+InventoryCommand::InventoryCommand(string command)
+	: CommandInterface(command)
 {
 	_isValid = true;
 }
 
-InventoryCommand::InventoryCommand(string command, shared_ptr<Player> player):CommandInterface(command,player)
+InventoryCommand::InventoryCommand(string command, shared_ptr<Player> player)
+	: CommandInterface(command,player)
 {
 	_isValid = true;
 }

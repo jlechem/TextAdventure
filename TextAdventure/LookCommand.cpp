@@ -3,23 +3,27 @@
 	Created By:		Justin LeCheminant
 	Created On:		12-21-2017
 	Last Modified:	12-22-2017
+
 	Notes: Implemenation of the LookCommand class.
+
 */
 
 #include "stdafx.h"
+
 #include "LookCommand.h"
 
-
 LookCommand::LookCommand()
+	: CommandInterface()
 {
 }
 
 LookCommand::LookCommand(string command)
-	:CommandInterface(command)
+	: CommandInterface(command)
 {
 }
 
-LookCommand::LookCommand(string command, shared_ptr<Player> player): CommandInterface(command,player)
+LookCommand::LookCommand(string command, shared_ptr<Player> player)
+	: CommandInterface(command,player)
 {
 }
 
