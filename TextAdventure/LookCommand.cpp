@@ -2,7 +2,7 @@
 	LookCommand.cpp
 	Created By:		Justin LeCheminant
 	Created On:		12-21-2017
-	Last Modified:	12-21-2017
+	Last Modified:	12-22-2017
 	Notes: Implemenation of the LookCommand class.
 */
 
@@ -22,7 +22,6 @@ LookCommand::LookCommand(string command)
 LookCommand::LookCommand(string command, shared_ptr<Player> player): CommandInterface(command,player)
 {
 }
-
 
 LookCommand::~LookCommand()
 {
@@ -51,7 +50,12 @@ void LookCommand::process()
 				}
 				else
 				{
+					// use the single word to find in the room
+					string itemToFind = _commandWords[1];
 
+					auto item = _player->getCurrentRoom()->findItemDescription(itemToFind);
+
+					_commandResult = item.size() > 0 ? item : "There's no " + itemToFind + " here";
 				}
 
 				break;
@@ -75,4 +79,4 @@ void LookCommand::calculateValidity()
 {
 	auto size = _commandWords.size();
 	_isValid = size > 0 && size < 4;
-}
+};

@@ -47,12 +47,12 @@ string Room::getLongDescription()
 
 	if (_exitString.size() > 0)
 	{
-		result += "\n" + _exitString;
+		result += "\nYou see the following exits: " + _exitString;
 	}
 
 	if (_itemsString.size() > 0)
 	{
-		result += "\n" + _itemsString;
+		result += "\nYou see the following items: " + _itemsString;
 	}
 
 	return result;
