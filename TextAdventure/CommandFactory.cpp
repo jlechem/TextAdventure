@@ -91,6 +91,10 @@ unique_ptr<CommandInterface> CommandFactory::getCommand(string command, shared_p
 	{
 		commandPointer = make_unique<ExitCommand>(command, player);
 	}
+	else if (Utilities::isInventoryCommand(initCommand))
+	{
+		commandPointer = make_unique<InventoryCommand>(command, player);
+	}
 	// last case is always an invalid command
 	else
 	{

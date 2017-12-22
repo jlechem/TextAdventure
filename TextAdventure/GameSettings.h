@@ -2,8 +2,10 @@
 	GameSettings.h
 	Created By:		Justin LeCheminant
 	Created On:		12-18-2017
-	Last Modified:	12-18-2017
+	Last Modified:	12-21-2017
+
 	Notes: A class used to hold game settings
+
 */
 
 #pragma once
@@ -33,4 +35,3 @@ private:
 	string _title;
 
 };
-

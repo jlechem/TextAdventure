@@ -19,6 +19,7 @@
 #include "ExitCommand.h"
 #include "FunCommand.h"
 #include "InvalidCommand.h"
+#include "InventoryCommand.h"
 #include "LoadCommand.h"
 #include "LookCommand.h"
 #include "MoveCommand.h"

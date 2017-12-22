@@ -148,6 +148,7 @@
     <ClInclude Include="FunCommand.h" />
     <ClInclude Include="GameSettings.h" />
     <ClInclude Include="InvalidCommand.h" />
+    <ClInclude Include="InventoryCommand.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="ItemType.h" />
     <ClInclude Include="LoadCommand.h" />
@@ -182,6 +183,7 @@
     <ClCompile Include="FunCommand.cpp" />
     <ClCompile Include="GameSettings.cpp" />
     <ClCompile Include="InvalidCommand.cpp" />
+    <ClCompile Include="InventoryCommand.cpp" />
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="LoadCommand.cpp" />
     <ClCompile Include="LookCommand.cpp" />
