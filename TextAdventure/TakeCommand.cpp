@@ -30,9 +30,45 @@ TakeCommand::~TakeCommand()
 
 void TakeCommand::process()
 {
-	cout << endl << "TAKE" << endl;
+	// first check the validity
+	calculateValidity();
+
+	if (_isValid)
+	{
+		// based on the size of the vector we can assume certain things
+		switch (_commandWords.size())
+		{
+		// just a TAKE command, this prints Take what?
+		case 1:
+			_commandResult = "Take what?";
+			break;
+
+		// TAKE X
+		case 2:
+				// use the single word to find in the room
+			_commandResult = _player->addItem(_commandWords[1]) ? "You take the " + _commandWords[1]  : "You don't see " + _commandWords[1];
+
+			break;
+
+		default:
+			// we could have any length of LOOK X Y ...... Z
+			// we need to parse this somehow
+			break;
+
+		}
+	}
+	else
+	{
+		_commandResult = "I don't know how to " + _command;
+	}
+
+	// always print our result
+	cout << endl << _commandResult << endl;
+
 }
 
 void TakeCommand::calculateValidity()
 {
+	auto size = _commandWords.size();
+	_isValid = size > 0 && size < 4;
 }
