@@ -31,7 +31,7 @@ public:
 	CommandInterface();
 	CommandInterface(string);
 	CommandInterface(string, shared_ptr<Player>);
-	~CommandInterface();
+	virtual ~CommandInterface();
 
 	virtual void process() = 0;
 	

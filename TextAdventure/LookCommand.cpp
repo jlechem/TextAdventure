@@ -60,7 +60,11 @@ void LookCommand::process()
 
 				break;
 
-			case 3:
+			default:
+
+				// we could have any length of LOOK X Y ...... Z
+				// we need to parse this somehow
+
 				break;
 
 		}
