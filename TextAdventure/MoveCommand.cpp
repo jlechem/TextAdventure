@@ -37,22 +37,20 @@ void MoveCommand::process()
 {
 	auto newDirection = Utilities::convertDirection(_command);
 
+	_commandResult = "There is no exit " + _command;
+
 	switch (_commandWords.size())
 	{
 		// single direction
 		case 1:
 			_commandResult = _player->Move(_command) ? _player->getCurrentRoom()->getLongDescription() : "There is no exit " + _command;
-
 			break;
 
 		case 2:
+			//  this could be north east, south west, etc
+			_commandResult = _player->Move(_commandWords[0] + " " + _commandWords[1]) ? _player->getCurrentRoom()->getLongDescription() : "There is no exit " + _command;
 			break;
 
-		case 3:
-			break;
-
-		default:
-			break;
 	}
 
 	cout << endl << _commandResult << endl;
