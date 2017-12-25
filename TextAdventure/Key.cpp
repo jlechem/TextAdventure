@@ -14,8 +14,21 @@
 #include "Key.h"
 
 Key::Key()
-	:ObjectBase()
+	: ObjectBase()
 {
+}
+
+Key::Key(int id)
+	: ObjectBase()
+{
+	_id = id;
+}
+
+Key::Key(int id, int itemId) 
+	: ObjectBase()
+{
+	_id = id;
+	_itemToUnlockId = itemId;
 }
 
 Key::~Key()

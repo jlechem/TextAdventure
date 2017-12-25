@@ -15,34 +15,20 @@
 /// </summary>
 enum ObjectType
 {
-	/// <summary>
-	/// The player
-	/// </summary>
 	PlayerObject,
-
-	/// <summary>
-	/// The Non Playable Character
-	/// </summary>
+	
 	NPC,
 
-	/// <summary>
-	/// The enemy
-	/// </summary>
 	Enemy,
 
-	/// <summary>
-	/// The item
-	/// </summary>
 	ItemObject,
 
-	/// <summary>
-	/// The treasure
-	/// </summary>
 	TreasureObject,
 
-	/// <summary>
-	/// The room
-	/// </summary>
-	RoomObject
+	RoomObject,
+
+	KeyObject,
+
+	DoorObject
 
 };

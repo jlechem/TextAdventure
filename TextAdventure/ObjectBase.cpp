@@ -23,6 +23,11 @@ ObjectBase::ObjectBase()
 	_type = ObjectType::ItemObject;
 }
 
+ObjectBase::ObjectBase(int id)
+{
+	_id = id;
+}
+
 ObjectBase::ObjectBase(string name, string description, int id, int score, ObjectType type)
 {
 	_name = name;

@@ -5,7 +5,7 @@
 	Last Modified:		12-24-2017
 	Last Modified By:	Justin LeCheminant
 
-	Notes: Class that represents a door or item to open
+	Notes: Class that represents a key that opens a door or item
 
 */
 
@@ -18,5 +18,12 @@ class Key :
 {
 public:
 	Key();
+	Key(int);
+	Key(int, int);
 	~Key();
+
+private:
+	int _id;
+	int _itemToUnlockId;
+
 };

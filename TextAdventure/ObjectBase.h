@@ -8,6 +8,7 @@ class ObjectBase
 {
 public:
 	ObjectBase();
+	ObjectBase(int);
 	ObjectBase(string, string, int, int, ObjectType);
 	~ObjectBase();
 
@@ -37,4 +38,3 @@ protected:
 private:
 
 };
-
