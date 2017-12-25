@@ -35,10 +35,31 @@ MoveCommand::~MoveCommand()
 
 void MoveCommand::process()
 {
-	cout << endl << "MOVE" << endl;
+	auto newDirection = Utilities::convertDirection(_command);
+
+	switch (_commandWords.size())
+	{
+		// single direction
+		case 1:
+			_commandResult = _player->Move(_command) ? _player->getCurrentRoom()->getLongDescription() : "There is no exit " + _command;
+
+			break;
+
+		case 2:
+			break;
+
+		case 3:
+			break;
+
+		default:
+			break;
+	}
+
+	cout << endl << _commandResult << endl;
+
 }
 
 void MoveCommand::calculateValidity()
 {
-	// TODO: check if we can move the direction they specified
+	_isValid = _commandWords.size() > 0 && _commandWords.size() < 4;
 }
