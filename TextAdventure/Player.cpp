@@ -137,3 +137,29 @@ void Player::setIsGameOver(bool gameOverFlag)
 {
 	_isGameOver = gameOverFlag;
 }
+
+string Player::toString()
+{
+	// TODO: should the player class return something descriptive??
+	return "";
+}
+
+unsigned long Player::getTotalExperience()
+{
+	return _totalExperience;
+}
+
+void Player::setTotalExperience(unsigned long experience)
+{
+	_totalExperience = experience;
+}
+
+unsigned long Player::getExperienceToNextLevel()
+{
+	return _experienceToNextLevel;
+}
+
+void Player::setExperienceToNextLevel(unsigned long experience)
+{
+	_experienceToNextLevel = experience;
+}

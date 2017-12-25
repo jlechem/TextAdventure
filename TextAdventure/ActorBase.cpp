@@ -2,7 +2,7 @@
 	ActorBase.cpp
 	Created By:			Justin LeCheminant
 	Created On:			12-20-2017
-	Last Modified:		12-21-2017
+	Last Modified:		12-24-2017
 	Last Modified By:	Justin LeCheminant
 
 	Notes: Implementation of the ActorBase class.
@@ -14,6 +14,7 @@
 
 ActorBase::ActorBase()
 {
+	_level = 0;
 	_score = 0;
 	_numberOfMoves = 0;
 	_description = "";
@@ -23,6 +24,7 @@ ActorBase::ActorBase()
 
 ActorBase::ActorBase(shared_ptr<Room> initialRoom)
 {
+	_level = 0;
 	_score = 0;
 	_numberOfMoves = 0;
 	_description = "";
@@ -35,27 +37,27 @@ ActorBase::~ActorBase()
 {
 }
 
-int ActorBase::getId()
+unsigned int ActorBase::getId()
 {
 	return _id;
 }
 
-void ActorBase::setId(int id)
+void ActorBase::setId(unsigned int id)
 {
 	_id = id;
 }
 
-int ActorBase::getScore()
+unsigned int ActorBase::getScore()
 {
 	return _score;
 }
 
-void ActorBase::setScore(int score)
+void ActorBase::setScore(unsigned int score)
 {
 	_score = score;
 }
 
-void ActorBase::addToScore(int score)
+void ActorBase::addToScore(unsigned int score)
 {
 	_score += score;
 }
@@ -166,14 +168,29 @@ void ActorBase::defend(shared_ptr<ActorBase> attacker)
 	// TODO: implement defend
 }
 
-int ActorBase::getHitPoints()
+unsigned int ActorBase::getHitPoints()
 {
 	return _hitpoints;
 }
 
-void ActorBase::setHitPoints(int hp)
+void ActorBase::setHitPoints(unsigned int hp)
 {
 	_hitpoints = hp;
+}
+
+unsigned int ActorBase::getLevel()
+{
+	return _level;
+}
+
+void ActorBase::setLevel(unsigned int level)
+{
+	_level = level;
+}
+
+void ActorBase::levelUp()
+{
+	_level++;
 }
 
 unique_ptr<Item> ActorBase::findItem(string name)

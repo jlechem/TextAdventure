@@ -33,6 +33,19 @@ public:
 	bool getIsGameOver();
 	void setIsGameOver(bool);
 
+	string toString();
+
+	unsigned long getTotalExperience();
+	void setTotalExperience(unsigned long);
+
+	unsigned long getExperienceToNextLevel();
+	void setExperienceToNextLevel(unsigned long);
+
 private:
 	bool _isGameOver;
+
+	unsigned long _totalExperience;
+	
+	unsigned long _experienceToNextLevel;
+
 };
