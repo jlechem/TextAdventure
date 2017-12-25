@@ -94,6 +94,12 @@
         <Item>3</Item>
       </Items>
     </Room>
+    <Room>
+      <Id>4</Id>
+      <Name>Engine Room</Name>
+      <Description>You are standing in the starship's engine room. It's a large spherical chamber with a glass tube in the middle. You can see the anti-matter/matter reaction going on in the middle.</Description>
+    <Items/>
+    </Room>
   </Rooms>
   <RoomExits>
     <Room>
@@ -124,6 +130,19 @@
         <Exit>
           <RoomId>2</RoomId>
           <Direction>w</Direction>
+        </Exit>
+       <Exit>
+          <RoomId>4</RoomId>
+          <Direction>ne</Direction>
+        </Exit>
+      </Exits>
+    </Room>
+    <Room>
+      <RoomId>4</RoomId>
+      <Exits>
+        <Exit>
+          <RoomId>3</RoomId>
+          <Direction>sw</Direction>
         </Exit>
       </Exits>
     </Room>
