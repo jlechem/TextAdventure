@@ -44,9 +44,7 @@ FunCommand::~FunCommand()
 void FunCommand::process()
 {
 	// get the result from the map, if we got this far we know we have a valid command
-	_commandResult = _map[_command];
-
-	cout << endl << _commandResult << endl;
+	cout << endl << _map[_command] << endl;
 }
 
 void FunCommand::calculateValidity()
