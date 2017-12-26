@@ -147,4 +147,10 @@
       </Exits>
     </Room>
   </RoomExits>
+  <FunCommands>
+    <Command>
+      <trigger>jump</trigger>
+      <result>You jump up and down</result>
+    </Command>
+  </FunCommands>
 </config>
