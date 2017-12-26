@@ -142,6 +142,7 @@
     <ClInclude Include="CommandInterface.h" />
     <ClInclude Include="DescribableObjectInterface.h" />
     <ClInclude Include="Directions.h" />
+    <ClInclude Include="Door.h" />
     <ClInclude Include="DropCommand.h" />
     <ClInclude Include="ExamineCommand.h" />
     <ClInclude Include="ExitCommand.h" />
@@ -178,6 +179,7 @@
     <ClCompile Include="CommandFactory.cpp" />
     <ClCompile Include="CommandInterface.cpp" />
     <ClCompile Include="DescribableObjectInterface.cpp" />
+    <ClCompile Include="Door.cpp" />
     <ClCompile Include="DropCommand.cpp" />
     <ClCompile Include="ExamineCommand.cpp" />
     <ClCompile Include="ExitCommand.cpp" />

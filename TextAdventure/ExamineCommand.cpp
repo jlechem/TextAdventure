@@ -31,11 +31,72 @@ ExamineCommand::~ExamineCommand()
 {
 }
 
+string ExamineCommand::examineItem(string name)
+{
+	auto items = _player->getInventory();
+
+	string result = "";
+
+	vector<unique_ptr<Item>>::iterator it;
+
+	// loop through the items
+	for (it = items->begin(); it != items->end(); ++it)
+	{
+		// check our alternate names to see if we have this item
+		auto foundItem = find((*it)->getAlterateNames().begin(), (*it)->getAlterateNames().end(), name);
+
+		if (foundItem != (*it)->getAlterateNames().end())
+		{
+			result = (*it)->getDescription();
+			break;
+		}
+	}
+
+	return result;
+
+}
+
 void ExamineCommand::process()
 {
-	cout << endl << "EXAMINE" << endl;
+	calculateValidity();
+
+	if (_isValid)
+	{
+		string searchWord = "";
+
+		switch (_commandWords.size())
+		{
+		case 1:
+			// EXAMINE 
+			_commandResult = "Examine what?";
+			break;
+
+		case 2:
+			// EXAMINE X
+			searchWord = examineItem(_commandWords[1]);
+			_commandResult = searchWord.empty() ? "You don't have the " + _commandWords[1] : searchWord;
+
+			break;
+
+		default:
+			// TODO: Implement complex examine
+			break;
+		}
+	}
+	else
+	{
+		_commandResult = "I don't know how to " + _command;
+	}
+	
+	cout << endl << _commandResult << endl;
+
 }
 
 void ExamineCommand::calculateValidity()
 {
+	// word count should be between 1 and 3
+	auto wordCount = _commandWords.size();
+
+	_isValid = wordCount > 0 && wordCount < 4;
+
 }

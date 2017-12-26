@@ -192,10 +192,12 @@ void Room::generateExitString()
 	for (it = _exits.begin(); it != _exits.end(); ++it)
 	{
 		_exitString += Utilities::convertDirection(it->first);
-		_exitString += ",";
+		_exitString += ", ";
 	}
 
 	// take off the last comma
-	_exitString.erase(_exitString.end() - 1);
-
+	if (_exitString.size() > 2)
+	{
+		_exitString.erase(_exitString.end() - 2);
+	}
 }

@@ -28,4 +28,7 @@ public:
 protected:
 	void calculateValidity();
 
+private:
+	string examineItem(string name);
+
 };

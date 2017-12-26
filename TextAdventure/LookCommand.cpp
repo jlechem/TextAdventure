@@ -46,7 +46,7 @@ void LookCommand::process()
 				_commandResult = _player->getCurrentRoom()->getLongDescription();
 				break;
 
-			// could be LOOK AT || LOOK ITEM (ITEM could be rather long)
+			// could be LOOK AT || LOOK ITEM
 			case 2:
 				if (_commandWords[1] == "at")
 				{

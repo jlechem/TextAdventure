@@ -534,9 +534,11 @@ int main()
 		cout << " An error occured" << endl;
 	}
 
-	cout << endl << "Press any key to exit" << endl;
-	
-	auto id = getchar();
+	cout << endl << endl;
+
+	// This is a WINDOWS only call, if you want to get the same thing in another OS you
+	// will need to use a different system call
+	system("pause");
 
     return 0;
 
