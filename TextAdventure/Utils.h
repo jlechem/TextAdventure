@@ -2,7 +2,7 @@
 	Utils.h
 	Created By:			Justin LeCheminant
 	Created On:			12-20-2017
-	Last Modified:		12-21-2017
+	Last Modified:		12-25-2017
 	Last Modified By:	Justin LeCheminant
 
 	Notes: Static class with a bunch of utility functions in it
@@ -16,10 +16,9 @@
 class Utilities
 {
 public:
+	static Directions convertDirection(string);
 
-	static Directions convertDirection(string direction);
-
-	static bool isUnlockCommand(string command);
+	static bool isUnlockCommand(string);
 
 	static string convertDirection(Directions);
 
@@ -41,13 +40,13 @@ public:
 
 	static bool isExitCommand(string);
 
-	static bool isExamineCommand(string command);
+	static bool isExamineCommand(string);
 
-	static bool isOpenCommand(string command);
+	static bool isOpenCommand(string);
 
-	static bool isCloseCommand(string command);
+	static bool isCloseCommand(string);
 
-	static bool isLockCommand(string command);
+	static bool isLockCommand(string);
 
 	static bool isKillCommand(string);
 
@@ -57,4 +56,7 @@ public:
 
 	static void toLower(string&);
 
+private:
+	// blocks anyone from making a default instance of this class
+	Utilities();
 };

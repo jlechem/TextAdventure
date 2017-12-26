@@ -2,7 +2,7 @@
 	CommandFactory.cpp
 	Created By:			Justin LeCheminant
 	Created On:			12-20-2017
-	Last Modified:		12-21-2017
+	Last Modified:		12-25-2017
 	Last Modified By:	Justin LeCheminant
 
 	Notes: CommandFactory implementation
@@ -84,6 +84,19 @@ unique_ptr<CommandInterface> CommandFactory::getCommand(string command, shared_p
 	else if (Utilities::isInventoryCommand(initCommand))
 	{
 		commandPointer = make_unique<InventoryCommand>(command, player);
+	}
+	else if (Utilities::isFunCommand(command))
+	{
+		// TODO: get the map from the utilities class some how......
+		map<string, string> m;
+		m["jump"] = "You jump up and down";
+		m["hum"] = "You hum that little ditty you like so much";
+		m["sing"] = "You sing that song you love but the key seems to be off.....";
+		m["dance"] = "You perform a waltz of epic proportions";
+		m["rest"] = "You rest for a minute";
+		m["sleep"] = "You lay down and sleep, refreshing";
+
+		commandPointer = make_unique<FunCommand>(command, player,m);
 	}
 	// last case is always an invalid command
 	else

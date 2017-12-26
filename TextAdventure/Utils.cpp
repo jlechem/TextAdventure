@@ -2,7 +2,7 @@
 	Utilis.cpp
 	Created By:			Justin LeCheminant
 	Created On:			12-20-2017
-	Last Modified:		12-21-2017
+	Last Modified:		12-25-2017
 	Last Modified By:	Justin LeCheminant
 
 	Notes: Implementation of the Utilities class.
@@ -14,6 +14,10 @@
 #include "stdafx.h"
 
 #include "Utils.h"
+
+Utilities::Utilities()
+{
+}
 
 Directions Utilities::convertDirection(string direction)
 {
@@ -63,40 +67,30 @@ Directions Utilities::convertDirection(string direction)
 	return result;
 }
 
-/// <summary>
-/// Determines whether [is kill command] [the specified command].
-/// </summary>
-/// <param name="command">The command.</param>
-/// <returns>
-///   <c>true</c> if [is kill command] [the specified command]; otherwise, <c>false</c>.
-/// </returns>
 bool Utilities::isKillCommand(string command)
 {
 	return command == "kill" || command == "fight";
 }
 
-/// <summary>
-/// Determines whether [is fun command] [the specified command].
-/// </summary>
-/// <param name="command">The command.</param>
-/// <returns>
-///   <c>true</c> if [is fun command] [the specified command]; otherwise, <c>false</c>.
-/// </returns>
 bool Utilities::isFunCommand(string command)
 {
-	/*auto result = _funCommands.find(command);
+	/*
+	_funCommands["jump"] = "You jump up and down";
+	_funCommands["hum"] = "You hum that little ditty you like so much";
+	_funCommands["sing"] = "You sing that song you love but the key seems to be off.....";
+	_funCommands["dance"] = "You perform a waltz of epic proportions";
+	_funCommands["rest"] = "You rest for a minte";
+	_funCommands["sleep"] = "You lay down and sleep, refreshing";
+	*/
 
-	return result != _funCommands.end();*/
-	return false;
+	return	command == "jump" ||
+			command == "hum" ||
+			command == "sing" ||
+			command == "dance" ||
+			command == "rest" ||
+			command == "sleep";
 }
 
-/// <summary>
-/// Determines whether [is action command] [the specified command].
-/// </summary>
-/// <param name="command">The command.</param>
-/// <returns>
-///   <c>true</c> if [is action command] [the specified command]; otherwise, <c>false</c>.
-/// </returns>
 bool Utilities::isActionCommand(string command)
 {
 	return	isKillCommand(command) ||
@@ -104,35 +98,16 @@ bool Utilities::isActionCommand(string command)
 		isTakeCommand(command);
 }
 
-/// <summary>
-/// Determines whether [is clear command] [the specified command].
-/// </summary>
-/// <param name="command">The command.</param>
-/// <returns>
-///   <c>true</c> if [is clear command] [the specified command]; otherwise, <c>false</c>.
-/// </returns>
 bool Utilities::isClearCommand(string command)
 {
 	return command == "cls" || command == "clear";
 }
 
-/// <summary>
-/// Converts the value to all lower case.
-/// </summary>
-/// <param name="value">The value.</param>
-/// <returns></returns>
 void Utilities::toLower(string& value)
 {
 	transform(value.begin(), value.end(), value.begin(), tolower);
 }
 
-/// <summary>
-/// Determines whether [is move command] [the specified command].
-/// </summary>
-/// <param name="command">The command.</param>
-/// <returns>
-///   <c>true</c> if [is move command] [the specified command]; otherwise, <c>false</c>.
-/// </returns>
 bool Utilities::isMoveCommand(string command)
 {
 	return
@@ -154,86 +129,37 @@ bool Utilities::isMoveCommand(string command)
 		command == "sw";
 }
 
-/// <summary>
-/// Determines whether [is take command] [the specified command].
-/// </summary>
-/// <param name="command">The command.</param>
-/// <returns>
-///   <c>true</c> if [is take command] [the specified command]; otherwise, <c>false</c>.
-/// </returns>
 bool Utilities::isTakeCommand(string command)
 {
 	return command == "take";
 }
 
-/// <summary>
-/// Determines whether [is look command] [the specified command].
-/// </summary>
-/// <param name="command">The command.</param>
-/// <returns>
-///   <c>true</c> if [is look command] [the specified command]; otherwise, <c>false</c>.
-/// </returns>
 bool Utilities::isLookCommand(string command)
 {
 	return command == "look" || command == "l";
 }
 
-/// <summary>
-/// Determines whether [is drop command] [the specified command].
-/// </summary>
-/// <param name="command">The command.</param>
-/// <returns>
-///   <c>true</c> if [is drop command] [the specified command]; otherwise, <c>false</c>.
-/// </returns>
 bool Utilities::isDropCommand(string command)
 {
 	return command == "drop";
 }
 
-/// <summary>
-/// Determines whether [is item command] [the specified command].
-/// </summary>
-/// <param name="command">The command.</param>
-/// <returns>
-///   <c>true</c> if [is item command] [the specified command]; otherwise, <c>false</c>.
-/// </returns>
 bool Utilities::isItemCommand(string command)
 {
 	return false;
 }
 
-/// <summary>
-/// Determines whether [is inventory command] [the specified command].
-/// </summary>
-/// <param name="command">The command.</param>
-/// <returns>
-///   <c>true</c> if [is inventory command] [the specified command]; otherwise, <c>false</c>.
-/// </returns>
 bool Utilities::isInventoryCommand(string command)
 {
 	return	command == "i" ||
 		command == "inventory";
 }
 
-/// <summary>
-/// Determines whether [is save command] [the specified command].
-/// </summary>
-/// <param name="command">The command.</param>
-/// <returns>
-///   <c>true</c> if [is save command] [the specified command]; otherwise, <c>false</c>.
-/// </returns>
 bool Utilities::isSaveCommand(string command)
 {
 	return command == "save";
 }
 
-/// <summary>
-/// Determines whether [is exit command] [the specified command].
-/// </summary>
-/// <param name="command">The command.</param>
-/// <returns>
-///   <c>true</c> if [is exit command] [the specified command]; otherwise, <c>false</c>.
-/// </returns>
 bool Utilities::isExitCommand(string command)
 {
 	return	command == "exit" ||
@@ -241,75 +167,35 @@ bool Utilities::isExitCommand(string command)
 		command == "q";
 }
 
-/// <summary>
-/// Determines whether [is examine command] [the specified command].
-/// </summary>
-/// <param name="command">The command.</param>
-/// <returns>
-///   <c>true</c> if [is examine command] [the specified command]; otherwise, <c>false</c>.
-/// </returns>
 bool Utilities::isExamineCommand(string command)
 {
 	return	command == "examine";
 }
 
-/// <summary>
-/// Determines whether [is open command] [the specified command].
-/// </summary>
-/// <param name="command">The command.</param>
-/// <returns>
-///   <c>true</c> if [is open command] [the specified command]; otherwise, <c>false</c>.
-/// </returns>
 bool Utilities::isOpenCommand(string command)
 {
 	// TODO: implement isOpenCommand
 	return false;
 }
 
-/// <summary>
-/// Determines whether [is close command] [the specified command].
-/// </summary>
-/// <param name="command">The command.</param>
-/// <returns>
-///   <c>true</c> if [is close command] [the specified command]; otherwise, <c>false</c>.
-/// </returns>
 bool Utilities::isCloseCommand(string command)
 {
 	// TODO: implement isCloseCommand
 	return false;
 }
 
-/// <summary>
-/// Determines whether [is lock command] [the specified command].
-/// </summary>
-/// <param name="command">The command.</param>
-/// <returns>
-///   <c>true</c> if [is lock command] [the specified command]; otherwise, <c>false</c>.
-/// </returns>
 bool Utilities::isLockCommand(string command)
 {
 	// TODO: implement isLockCommand
 	return false;
 }
 
-/// <summary>
-/// Determines whether [is unlock command] [the specified command].
-/// </summary>
-/// <param name="command">The command.</param>
-/// <returns>
-///   <c>true</c> if [is unlock command] [the specified command]; otherwise, <c>false</c>.
-/// </returns>
 bool Utilities::isUnlockCommand(string command)
 {
 	// TODO: implement isUnlockCommand
 	return false;
 }
 
-/// <summary>
-/// Converts the direction.
-/// </summary>
-/// <param name="direction">The direction.</param>
-/// <returns></returns>
 string Utilities::convertDirection(Directions direction)
 {
 	string result = "";
