@@ -126,7 +126,11 @@ bool Utilities::isMoveCommand(string command)
 		command == "ne" ||
 		command == "nw" ||
 		command == "se" ||
-		command == "sw";
+		command == "sw" ||
+		command == "up" ||
+		command == "u" ||
+		command == "down" ||
+		command == "d";
 }
 
 bool Utilities::isTakeCommand(string command)
@@ -234,6 +238,13 @@ string Utilities::convertDirection(Directions direction)
 			result = "South West";
 			break;
 
+		case Up:
+			result = "Up";
+			break;
+
+		case Down:
+			result = "Down";
+			break;
 	}
 
 	return result;

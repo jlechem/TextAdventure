@@ -152,6 +152,7 @@
     <ClInclude Include="InventoryCommand.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="ItemType.h" />
+    <ClInclude Include="JumpCommand.h" />
     <ClInclude Include="Key.h" />
     <ClInclude Include="LoadCommand.h" />
     <ClInclude Include="LookCommand.h" />
@@ -188,6 +189,7 @@
     <ClCompile Include="InvalidCommand.cpp" />
     <ClCompile Include="InventoryCommand.cpp" />
     <ClCompile Include="Item.cpp" />
+    <ClCompile Include="JumpCommand.cpp" />
     <ClCompile Include="Key.cpp" />
     <ClCompile Include="LoadCommand.cpp" />
     <ClCompile Include="LookCommand.cpp" />

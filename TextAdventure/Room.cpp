@@ -196,7 +196,7 @@ void Room::generateExitString()
 	}
 
 	// take off the last comma
-	if (_exitString.size() > 2)
+	if (_exitString.size() >= 2)
 	{
 		_exitString.erase(_exitString.end() - 2);
 	}

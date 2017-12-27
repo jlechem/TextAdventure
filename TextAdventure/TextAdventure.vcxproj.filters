@@ -150,6 +150,9 @@
     <ClInclude Include="Door.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="JumpCommand.h">
+      <Filter>Commands\Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -238,6 +241,9 @@
     </ClCompile>
     <ClCompile Include="Door.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="JumpCommand.cpp">
+      <Filter>Commands\Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
