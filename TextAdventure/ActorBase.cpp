@@ -105,6 +105,11 @@ bool ActorBase::addItem(string name)
 
 }
 
+unique_ptr<Item> ActorBase::dropItem(string name, bool x = false)
+{
+	return nullptr;
+}
+
 bool ActorBase::dropItem(string name)
 {
 	bool result = false;

@@ -2,7 +2,7 @@
 	Item.cpp
 	Created By:			Justin LeCheminant
 	Created On:			12-20-2017
-	Last Modified:		12-26-2017
+	Last Modified:		12-27-2017
 	Last Modified By:	Justin LeCheminant
 
 	Notes: Implementation of the Item class.
@@ -26,10 +26,10 @@ Item::Item():
 	Inits a new instance of the Item class. We're assuming if you give something a capacity it can be opened. I guess you could set
 	this to zero and false to be a fucking dick. So go ahead and you be you.
 */
-Item::Item(int capacity,bool canOpen = true)
+Item::Item(int capacity, int, bool canOpen = true, bool canTake = false)
 	:ObjectBase()
 {
-	_canTake = true;
+	_canTake = canTake;
 	_canOpen = canOpen;
 	_subItemCapacity = capacity;
 
@@ -100,7 +100,7 @@ void Item::setSubItemCapacity(int capacity)
 	_subItemCapacity = capacity;
 }
 
-bool Item::addItem(unique_ptr<Item>)
+bool Item::addItem(unique_ptr<Item> item)
 {
 	bool result = false;
 

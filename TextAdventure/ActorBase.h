@@ -37,6 +37,7 @@ public:
 
 	bool addItem(string);
 	bool dropItem(string);
+	unique_ptr<Item> dropItem(string,bool);
 
 	vector<unique_ptr<Item>>* getInventory();
 

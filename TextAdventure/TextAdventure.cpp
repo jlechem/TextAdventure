@@ -18,7 +18,6 @@
 #include "rapidxml.hpp"
 #include "Item.h"
 #include "Utils.h"
-#include "Command.h"
 
 using namespace std;
 
@@ -235,30 +234,6 @@ void LoadRooms(vector<shared_ptr<Room>> &rooms, vector<unique_ptr<Item>> &items,
 		items.clear();
 
 	}
-}
-
-/// <summary>
-/// Loads the allowed verbs from the verbs.data file.
-/// </summary>
-/// <param name="command">The command.</param>
-void LoadVerbs(unique_ptr<Command> &command)
-{
-	string verb;
-
-	ifstream inputFile("verbs.dat", ifstream::in);
-
-	if (inputFile.is_open())
-	{
-		while (inputFile >> verb)
-		{
-			command->getVerbs().push_back(verb);
-		}
-	}
-
-	inputFile.close();
-
-	sort(command->getVerbs().begin(), command->getVerbs().end());
-
 }
 
 /// <summary>

@@ -19,7 +19,7 @@ class Item: public ObjectBase
 {
 public:
 	Item();
-	Item(int,bool);
+	Item(int, int, bool,bool);
 	~Item();
 
 	ItemType getItemType();

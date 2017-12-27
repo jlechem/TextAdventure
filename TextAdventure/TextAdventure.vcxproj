@@ -137,7 +137,6 @@
   <ItemGroup>
     <ClInclude Include="ActionType.h" />
     <ClInclude Include="ActorBase.h" />
-    <ClInclude Include="Command.h" />
     <ClInclude Include="CommandFactory.h" />
     <ClInclude Include="CommandInterface.h" />
     <ClInclude Include="DescribableObjectInterface.h" />
@@ -162,6 +161,7 @@
     <ClInclude Include="ObjectBase.h" />
     <ClInclude Include="ObjectType.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="PutCommand.h" />
     <ClInclude Include="rapidxml.hpp" />
     <ClInclude Include="rapidxml_iterators.hpp" />
     <ClInclude Include="rapidxml_print.hpp" />
@@ -176,7 +176,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ActorBase.cpp" />
-    <ClCompile Include="Command.cpp" />
     <ClCompile Include="CommandFactory.cpp" />
     <ClCompile Include="CommandInterface.cpp" />
     <ClCompile Include="DescribableObjectInterface.cpp" />
@@ -198,6 +197,7 @@
     <ClCompile Include="NPC.cpp" />
     <ClCompile Include="ObjectBase.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="PutCommand.cpp" />
     <ClCompile Include="Room.cpp" />
     <ClCompile Include="SaveCommand.cpp" />
     <ClCompile Include="stdafx.cpp">

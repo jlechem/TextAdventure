@@ -2,7 +2,7 @@
 	CommandInterface.h
 	Created By:			Justin LeCheminant
 	Created On:			12-20-2017
-	Last Modified:		12-21-2017
+	Last Modified:		12-27-2017
 	Last Modified By:	Justin LeCheminant
 
 	Notes: This is an interface class that will get used for dependency injection. When a command is typed in the correct concrete
@@ -12,6 +12,8 @@
 	public:
 		void process();
 		CONSTRUCTOR(string);
+		CONSTRUCTOR(string);
+		CONSTRUCTOR(string, shared_ptr<Player>);
 
 	protected:
 		void calculateValidity();
@@ -34,7 +36,7 @@ public:
 	virtual ~CommandInterface();
 
 	virtual void process() = 0;
-	
+
 	string getCommad();
 	void setCommand(string);
 
