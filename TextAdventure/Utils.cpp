@@ -173,31 +173,32 @@ bool Utilities::isExitCommand(string command)
 
 bool Utilities::isExamineCommand(string command)
 {
-	return	command == "examine";
+	return command == "examine";
 }
 
 bool Utilities::isOpenCommand(string command)
 {
-	// TODO: implement isOpenCommand
-	return false;
+	return command == "open";
 }
 
 bool Utilities::isCloseCommand(string command)
 {
-	// TODO: implement isCloseCommand
-	return false;
+	return command == "close";
 }
 
 bool Utilities::isLockCommand(string command)
 {
-	// TODO: implement isLockCommand
-	return false;
+	return command == "lock";
 }
 
 bool Utilities::isUnlockCommand(string command)
 {
-	// TODO: implement isUnlockCommand
-	return false;
+	return command == "unlock";
+}
+
+bool Utilities::isPutCommand(string command)
+{
+	return command == "put";
 }
 
 string Utilities::convertDirection(Directions direction)

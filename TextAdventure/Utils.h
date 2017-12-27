@@ -20,6 +20,8 @@ public:
 
 	static bool isUnlockCommand(string);
 
+	static bool isPutCommand(string command);
+
 	static string convertDirection(Directions);
 
 	static bool isFunCommand(string);

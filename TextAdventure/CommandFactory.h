@@ -23,6 +23,7 @@
 #include "LoadCommand.h"
 #include "LookCommand.h"
 #include "MoveCommand.h"
+#include "PutCommand.h"
 #include "SaveCommand.h"
 #include "TakeCommand.h"
 #include "Utils.h"

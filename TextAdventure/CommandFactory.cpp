@@ -98,6 +98,10 @@ unique_ptr<CommandInterface> CommandFactory::getCommand(string command, shared_p
 
 		commandPointer = make_unique<FunCommand>(command, player,m);
 	}
+	else if (Utilities::isPutCommand(initCommand))
+	{
+		commandPointer = make_unique<PutCommand>(command, player);
+	}
 	// last case is always an invalid command
 	else
 	{
