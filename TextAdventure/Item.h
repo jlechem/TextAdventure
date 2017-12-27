@@ -41,11 +41,16 @@ public:
 	void setSubItemCapacity(int);
 
 	bool addItem(unique_ptr<Item>);
+	bool removeItem(string);
+
+	bool getCanTake();
+	void setCanTake(bool);
 
 private:	
 	bool _canOpen;
 	bool _isOpen;
 	bool _canAddItems;
+	bool _canTake;
 
 	int _subItemCapacity;
 

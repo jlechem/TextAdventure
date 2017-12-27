@@ -2,7 +2,7 @@
 	Item.cpp
 	Created By:			Justin LeCheminant
 	Created On:			12-20-2017
-	Last Modified:		12-24-2017
+	Last Modified:		12-26-2017
 	Last Modified By:	Justin LeCheminant
 
 	Notes: Implementation of the Item class.
@@ -17,6 +17,7 @@ Item::Item():
 {
 	_isOpen = false;
 	_canOpen = false;
+	_canTake = true;
 	_itemType = ItemType::BaseItem;
 	_type = ObjectType::ItemObject;
 }
@@ -28,6 +29,7 @@ Item::Item():
 Item::Item(int capacity,bool canOpen = true)
 	:ObjectBase()
 {
+	_canTake = true;
 	_canOpen = canOpen;
 	_subItemCapacity = capacity;
 
@@ -111,4 +113,19 @@ bool Item::addItem(unique_ptr<Item>)
 
 	return result;
 
+}
+
+bool Item::removeItem(string name)
+{
+	return false;
+}
+
+bool Item::getCanTake()
+{
+	return _canTake;
+}
+
+void Item::setCanTake(bool canTake)
+{
+	_canTake = canTake;
 }

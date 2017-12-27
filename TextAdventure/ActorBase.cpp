@@ -94,7 +94,7 @@ bool ActorBase::addItem(string name)
 	// check if our room has an item or teasure with this name
 	auto item = _currentRoom->findItem(name);
 
-	if (item != nullptr)
+	if (item != nullptr && item->getCanTake() )
 	{
 		_score += item->getScore();
 		_items.push_back(std::move(item));
