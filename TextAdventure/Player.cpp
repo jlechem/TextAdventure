@@ -61,9 +61,12 @@ string Player::takeAllItems()
 			// add them to the players inventory
 			for (it = items->begin(); it != items->end(); ++it)
 			{
-				_score += (*it)->getScore();
-				result += (*it)->getName() + ", ";
-				_items.push_back(std::move((*it)));
+				if ((*it)->getCanTake())
+				{
+					_score += (*it)->getScore();
+					result += (*it)->getName() + ", ";
+					_items.push_back(std::move((*it)));
+				}
 			}
 
 			items->clear();
