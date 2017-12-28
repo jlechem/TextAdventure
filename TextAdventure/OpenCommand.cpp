@@ -59,7 +59,7 @@ void OpenCommand::process()
 			}
 			else
 			{
-
+				_commandResult = "You can't open that";
 			}
 		}
 	}
