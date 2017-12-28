@@ -160,6 +160,7 @@
     <ClInclude Include="NPC.h" />
     <ClInclude Include="ObjectBase.h" />
     <ClInclude Include="ObjectType.h" />
+    <ClInclude Include="OpenCommand.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PutCommand.h" />
     <ClInclude Include="rapidxml.hpp" />
@@ -196,6 +197,7 @@
     <ClCompile Include="MoveCommand.cpp" />
     <ClCompile Include="NPC.cpp" />
     <ClCompile Include="ObjectBase.cpp" />
+    <ClCompile Include="OpenCommand.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PutCommand.cpp" />
     <ClCompile Include="Room.cpp" />

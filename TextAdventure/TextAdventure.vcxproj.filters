@@ -153,6 +153,9 @@
     <ClInclude Include="PutCommand.h">
       <Filter>Commands\Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="OpenCommand.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -244,6 +247,9 @@
     </ClCompile>
     <ClCompile Include="PutCommand.cpp">
       <Filter>Commands\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="OpenCommand.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

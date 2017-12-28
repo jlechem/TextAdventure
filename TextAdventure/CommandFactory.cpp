@@ -102,6 +102,10 @@ unique_ptr<CommandInterface> CommandFactory::getCommand(string command, shared_p
 	{
 		commandPointer = make_unique<PutCommand>(command, player);
 	}
+	else if (Utilities::isOpenCommand(initCommand))
+	{
+		commandPointer = make_unique<OpenCommand>(command, player);
+	}
 	// last case is always an invalid command
 	else
 	{
