@@ -214,6 +214,8 @@
     <ClCompile Include="Utils.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\README.md" />
+    <None Include="packages.config" />
     <None Include="ReadMe.dat" />
     <None Include="verbs.dat" />
   </ItemGroup>
