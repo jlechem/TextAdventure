@@ -7,6 +7,10 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
     <Grid>
-        
+        <Menu>
+            <MenuItem Header="File" />
+            <MenuItem Header="File" />
+            <MenuItem Header="File" />
+        </Menu>
     </Grid>
 </Window>
