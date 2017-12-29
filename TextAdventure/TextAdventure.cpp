@@ -19,8 +19,6 @@
 #include "Item.h"
 #include "Utils.h"
 
-using namespace std;
-
 /// <summary>
 /// Finds the room.
 /// </summary>
@@ -321,7 +319,6 @@ void LoadGame()
 {
 
 }
-
 
 bool IsGaveOver(Player* player)
 {
