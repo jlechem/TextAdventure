@@ -1,5 +1,5 @@
 // define a grammer called TextAdventure
-grammar TextAdventure
+grammar TextAdventure;
 
 // we start with a sentence
 sentence: VERB? ARTICLE? NOUN;
@@ -9,6 +9,6 @@ VERB: 'enter' | 'north' | 'south' | 'east' | 'west' | 'northwest' | 'northeast' 
 
 ARTICLE: 'the' | 'an' | 'a' | 'at' | 'under' | 'with' ;
 
-NOUN: ('a'..'z')+ ; ;
+NOUN: ('a'..'z')+ ;
 
 WHITESPACE: ( '\t' | ' ' | '\r' | '\n'| '\u000C' )+ -> skip;
