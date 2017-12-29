@@ -1,4 +1,4 @@
-// define a grammer called TextAdventure
+// define a grammer called TitextAdventure
 grammar TextAdventure;
 
 // we start with a sentence

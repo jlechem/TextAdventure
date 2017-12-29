@@ -31,7 +31,7 @@ DropCommand::~DropCommand()
 {
 }
 
-void DropCommand::process()
+void DropCommand::process() 
 {
 	// first check the validity
 	calculateValidity();
