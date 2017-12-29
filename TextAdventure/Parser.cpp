@@ -19,3 +19,22 @@ Parser::Parser()
 Parser::~Parser()
 {
 }
+
+void Parser::parse()
+{
+}
+
+string Parser::getVerb()
+{
+	return _verb;
+}
+
+string Parser::getNoun()
+{
+	return _noun;
+}
+
+string Parser::getAdjective()
+{
+	return _adjective;
+}

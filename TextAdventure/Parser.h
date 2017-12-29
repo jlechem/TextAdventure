@@ -17,6 +17,12 @@ public:
 	Parser();
 	~Parser();
 
+	void parse();
+
+	string getVerb();
+	string getNoun();
+	string getAdjective();
+
 private:
 
 	string _verb;
