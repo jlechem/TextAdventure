@@ -5,8 +5,6 @@ VisualStudioVersion = 15.0.26403.7
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TextAdventure", "TextAdventure\TextAdventure.vcxproj", "{A62B25EF-6E2B-4593-BD0B-C603FDF5D909}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TextAdventureCreator", "TextAdventureCreator\TextAdventureCreator.csproj", "{832EEFF2-64A7-4E38-9561-17C7425B9257}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,18 +27,6 @@ Global
 		{A62B25EF-6E2B-4593-BD0B-C603FDF5D909}.Release|x64.Build.0 = Release|x64
 		{A62B25EF-6E2B-4593-BD0B-C603FDF5D909}.Release|x86.ActiveCfg = Release|Win32
 		{A62B25EF-6E2B-4593-BD0B-C603FDF5D909}.Release|x86.Build.0 = Release|Win32
-		{832EEFF2-64A7-4E38-9561-17C7425B9257}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{832EEFF2-64A7-4E38-9561-17C7425B9257}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{832EEFF2-64A7-4E38-9561-17C7425B9257}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{832EEFF2-64A7-4E38-9561-17C7425B9257}.Debug|x64.Build.0 = Debug|Any CPU
-		{832EEFF2-64A7-4E38-9561-17C7425B9257}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{832EEFF2-64A7-4E38-9561-17C7425B9257}.Debug|x86.Build.0 = Debug|Any CPU
-		{832EEFF2-64A7-4E38-9561-17C7425B9257}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{832EEFF2-64A7-4E38-9561-17C7425B9257}.Release|Any CPU.Build.0 = Release|Any CPU
-		{832EEFF2-64A7-4E38-9561-17C7425B9257}.Release|x64.ActiveCfg = Release|Any CPU
-		{832EEFF2-64A7-4E38-9561-17C7425B9257}.Release|x64.Build.0 = Release|Any CPU
-		{832EEFF2-64A7-4E38-9561-17C7425B9257}.Release|x86.ActiveCfg = Release|Any CPU
-		{832EEFF2-64A7-4E38-9561-17C7425B9257}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
