@@ -35,6 +35,7 @@ ActorBase::ActorBase(Room* initialRoom)
 
 ActorBase::~ActorBase()
 {
+	delete _currentRoom;
 }
 
 unsigned int ActorBase::getId()

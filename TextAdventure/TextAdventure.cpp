@@ -482,6 +482,8 @@ int main()
 
 		PrintEnding(player, settings);
 
+		delete player;
+
 	}
 	catch (exception* ex)
 	{
