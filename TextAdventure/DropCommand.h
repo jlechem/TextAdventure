@@ -20,7 +20,7 @@ class DropCommand :
 public:
 	DropCommand();
 	DropCommand(string);
-	DropCommand(string, shared_ptr<Player>);
+	DropCommand(string, Player*);
 	~DropCommand();
 	void process();
 

@@ -21,7 +21,7 @@ class MoveCommand :
 public:
 	MoveCommand();
 	MoveCommand(string);
-	MoveCommand(string, shared_ptr<Player>);
+	MoveCommand(string, Player*);
 	~MoveCommand();
 
 	void process();

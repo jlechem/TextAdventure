@@ -22,7 +22,7 @@ OpenCommand::OpenCommand(string command)
 {
 }
 
-OpenCommand::OpenCommand(string command, shared_ptr<Player> player)
+OpenCommand::OpenCommand(string command,Player* player)
 	: CommandInterface(command,player)
 {
 }

@@ -20,7 +20,7 @@ class LookCommand :
 public:
 	LookCommand();
 	LookCommand(string);
-	LookCommand(string, shared_ptr<Player>);
+	LookCommand(string, Player*);
 	~LookCommand();
 
 	void process();

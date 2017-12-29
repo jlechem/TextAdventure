@@ -24,13 +24,13 @@ FunCommand::FunCommand(string command)
 	_isValid = true;
 }
 
-FunCommand::FunCommand(string command, shared_ptr<Player> player)
+FunCommand::FunCommand(string command,Player* player)
 	: CommandInterface(command,player)
 {
 	_isValid = true;
 }
 
-FunCommand::FunCommand(string command, shared_ptr<Player> player, map<string, string> map)
+FunCommand::FunCommand(string command, Player* player, map<string, string> map)
 	: CommandInterface(command, player)
 {
 	_isValid = true;

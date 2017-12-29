@@ -20,7 +20,7 @@ class SaveCommand :
 public:
 	SaveCommand();
 	SaveCommand(string);
-	SaveCommand(string, shared_ptr<Player>);
+	SaveCommand(string, Player*);
 	~SaveCommand(); 
 		
 	void process();

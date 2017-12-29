@@ -20,7 +20,7 @@ class LoadCommand :
 public:
 	LoadCommand();
 	LoadCommand(string);
-	LoadCommand(string, shared_ptr<Player>);
+	LoadCommand(string, Player*);
 	~LoadCommand(); 
 
 	void process();

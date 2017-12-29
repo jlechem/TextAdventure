@@ -20,7 +20,7 @@ class ExitCommand :
 public:
 	ExitCommand();
 	ExitCommand(string);
-	ExitCommand(string, shared_ptr<Player>);
+	ExitCommand(string, Player*);
 	~ExitCommand();
 	
 	void process();

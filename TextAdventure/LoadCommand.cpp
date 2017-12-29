@@ -22,7 +22,7 @@ LoadCommand::LoadCommand(string command)
 {
 }
 
-LoadCommand::LoadCommand(string command, shared_ptr<Player> player)
+LoadCommand::LoadCommand(string command,Player* player)
 	: CommandInterface(command,player)
 {
 }

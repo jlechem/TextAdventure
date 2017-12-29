@@ -20,8 +20,8 @@ class FunCommand :
 public:
 	FunCommand();
 	FunCommand(string);
-	FunCommand(string, shared_ptr<Player>);
-	FunCommand(string, shared_ptr<Player>,map<string,string>);
+	FunCommand(string, Player*);
+	FunCommand(string, Player*,map<string,string>);
 	~FunCommand();
 
 	void process();

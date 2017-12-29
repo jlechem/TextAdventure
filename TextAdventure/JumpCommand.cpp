@@ -8,7 +8,7 @@ JumpCommand::JumpCommand()
 	_isValid = true;
 }
 
-JumpCommand::JumpCommand(string command, shared_ptr<Player> player)
+JumpCommand::JumpCommand(string command,Player* player)
 	: CommandInterface(command, player)
 {
 	_isValid = true;

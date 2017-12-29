@@ -23,7 +23,7 @@ InventoryCommand::InventoryCommand(string command)
 	_isValid = true;
 }
 
-InventoryCommand::InventoryCommand(string command, shared_ptr<Player> player)
+InventoryCommand::InventoryCommand(string command,Player* player)
 	: CommandInterface(command,player)
 {
 	_isValid = true;

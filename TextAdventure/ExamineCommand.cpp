@@ -22,7 +22,7 @@ ExamineCommand::ExamineCommand(string command)
 {
 }
 
-ExamineCommand::ExamineCommand(string command, shared_ptr<Player> player)
+ExamineCommand::ExamineCommand(string command,Player* player)
 	:CommandInterface(command,player)
 {
 }

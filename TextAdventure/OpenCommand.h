@@ -19,7 +19,7 @@ class OpenCommand :
 public:
 	OpenCommand();
 	OpenCommand(string);
-	OpenCommand(string, shared_ptr<Player>);
+	OpenCommand(string, Player*);
 	~OpenCommand();
 
 	void process();

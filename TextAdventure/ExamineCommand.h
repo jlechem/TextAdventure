@@ -20,7 +20,7 @@ class ExamineCommand :
 public:
 	ExamineCommand();
 	ExamineCommand(string);
-	ExamineCommand(string, shared_ptr<Player>);
+	ExamineCommand(string, Player*);
 	~ExamineCommand();
 
 	void process();

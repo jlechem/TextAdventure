@@ -7,7 +7,7 @@ class JumpCommand :
 {
 public:
 	JumpCommand();
-	JumpCommand(string, shared_ptr<Player>);
+	JumpCommand(string, Player*);
 	~JumpCommand();
 
 	void process();

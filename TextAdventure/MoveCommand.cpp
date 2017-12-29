@@ -23,7 +23,7 @@ MoveCommand::MoveCommand(string command)
 {
 }
 
-MoveCommand::MoveCommand(string command, shared_ptr<Player> player)
+MoveCommand::MoveCommand(string command,Player* player)
 	: CommandInterface(command,player)
 {
 }

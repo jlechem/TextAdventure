@@ -19,7 +19,7 @@ class PutCommand :
 public:
 	PutCommand();
 	PutCommand(string);
-	PutCommand(string, shared_ptr<Player>);
+	PutCommand(string, Player*);
 	~PutCommand();
 
 	void process(); 

@@ -20,7 +20,7 @@ class TakeCommand :
 public:
 	TakeCommand();
 	TakeCommand(string);
-	TakeCommand(string, shared_ptr<Player>);
+	TakeCommand(string, Player*);
 	~TakeCommand();
 
 	void process();

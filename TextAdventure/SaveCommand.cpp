@@ -20,7 +20,7 @@ SaveCommand::SaveCommand(string command)
 {
 }
 
-SaveCommand::SaveCommand(string command, shared_ptr<Player> player) 
+SaveCommand::SaveCommand(string command,Player* player)
 	: CommandInterface(command, player)
 {
 }

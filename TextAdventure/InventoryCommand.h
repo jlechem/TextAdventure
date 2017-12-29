@@ -20,7 +20,7 @@ class InventoryCommand: public CommandInterface
 public:
 	InventoryCommand();
 	InventoryCommand(string);
-	InventoryCommand(string, shared_ptr<Player>);
+	InventoryCommand(string, Player*);
 	~InventoryCommand();
 
 	void process();

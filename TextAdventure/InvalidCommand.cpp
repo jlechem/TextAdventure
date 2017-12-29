@@ -26,7 +26,7 @@ InvalidCommand::InvalidCommand(string command)
 }
 
 
-InvalidCommand::InvalidCommand(string command, shared_ptr<Player> player) 
+InvalidCommand::InvalidCommand(string command,Player* player)
 	: CommandInterface(command,player)
 {
 	_isValid = false;

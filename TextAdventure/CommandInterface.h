@@ -13,7 +13,7 @@
 		void process();
 		CONSTRUCTOR(string);
 		CONSTRUCTOR(string);
-		CONSTRUCTOR(string, shared_ptr<Player>);
+		CONSTRUCTOR(string, Player*);
 
 	protected:
 		void calculateValidity();
@@ -32,7 +32,7 @@ class CommandInterface
 public:
 	CommandInterface();
 	CommandInterface(string);
-	CommandInterface(string, shared_ptr<Player>);
+	CommandInterface(string, Player*);
 	virtual ~CommandInterface();
 
 	virtual void process() = 0;
@@ -45,14 +45,11 @@ public:
 
 	string getResult();
 
-	shared_ptr<Player> getPlayer();
-	void setPlayer(shared_ptr<Player>);
+	Player* getPlayer();
+	void setPlayer(Player*);
 
-	shared_ptr<Player> getPlayerToActOn();
-	void setPlayerToActOn(shared_ptr<Player>);
-
-	unique_ptr<ObjectBase>& getObjectToActOn();
-	void setObjectToActOn(unique_ptr<ObjectBase>);
+	Player* getPlayerToActOn();
+	void setPlayerToActOn(Player*);
 
 protected:
 	bool _isValid;
@@ -62,12 +59,11 @@ protected:
 
 	vector<string> _commandWords;
 
-	virtual void calculateValidity() = 0;
+	Player* _player;
+	Player* _playerToActOn;
 
-	shared_ptr<Player> _player;
-	shared_ptr<Player> _playerToActOn;
-	unique_ptr<ObjectBase> _objectToActOne;
-	
 	void parseCommand();
+
+	virtual void calculateValidity() = 0;
 
 };

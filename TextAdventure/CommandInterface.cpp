@@ -15,25 +15,17 @@
 
 CommandInterface::CommandInterface()
 {
-	 _player = make_shared<Player>();
-	 _playerToActOn = make_shared<Player>();
-	_objectToActOne = make_unique<Item>();
 }
 
 CommandInterface::CommandInterface(string command)
 {
-	_player = make_shared<Player>();
-	_playerToActOn = make_shared<Player>();
-	_objectToActOne = make_unique<Item>();
 	_command = command;
 	parseCommand();
 }
 
-CommandInterface::CommandInterface(string command, shared_ptr<Player> player)
+CommandInterface::CommandInterface(string command, Player* player)
 {
 	_player = player;
-	_playerToActOn = make_shared<Player>();
-	_objectToActOne = make_unique<Item>();
 	_command = command;
 	parseCommand();
 }
@@ -68,34 +60,24 @@ string CommandInterface::getResult()
 	return _commandResult;
 }
 
-shared_ptr<Player> CommandInterface::getPlayer()
+Player* CommandInterface::getPlayer()
 {
 	return _player;
 }
 
-void CommandInterface::setPlayer(shared_ptr<Player> player)
+void CommandInterface::setPlayer(Player*player)
 {
 	_player = player;
 }
 
-shared_ptr<Player> CommandInterface::getPlayerToActOn()
+Player* CommandInterface::getPlayerToActOn()
 {
 	return _playerToActOn;
 }
 
-void CommandInterface::setPlayerToActOn(shared_ptr<Player> actor)
+void CommandInterface::setPlayerToActOn(Player* actor)
 {
 	_playerToActOn = actor;
-}
-
-unique_ptr<ObjectBase>& CommandInterface::getObjectToActOn()
-{
-	return _objectToActOne;
-}
-
-void CommandInterface::setObjectToActOn(unique_ptr<ObjectBase> object)
-{
-	_objectToActOne = std::move(object);
 }
 
 void CommandInterface::parseCommand()

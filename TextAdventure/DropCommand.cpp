@@ -22,7 +22,7 @@ DropCommand::DropCommand(string command)
 {
 }
 
-DropCommand::DropCommand(string command, shared_ptr<Player> player) 
+DropCommand::DropCommand(string command,Player* player)
 	: CommandInterface(command, player)
 {
 }

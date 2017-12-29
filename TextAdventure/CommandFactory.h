@@ -35,6 +35,6 @@ public:
 	CommandFactory();
 	~CommandFactory();
 
-	static unique_ptr<CommandInterface> getCommand(string, shared_ptr<Player>);
+	static unique_ptr<CommandInterface> getCommand(string, Player*);
 
 };

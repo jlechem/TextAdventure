@@ -23,7 +23,7 @@ PutCommand::PutCommand(string command)
 {
 }
 
-PutCommand::PutCommand(string command, shared_ptr<Player> player)
+PutCommand::PutCommand(string command,Player* player)
 	: CommandInterface(command,player) 
 {
 }

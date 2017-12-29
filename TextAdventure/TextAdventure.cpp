@@ -322,14 +322,8 @@ void LoadGame()
 
 }
 
-/// <summary>
-/// Determines whether [is gave over] [the specified player].
-/// </summary>
-/// <param name="player">The player.</param>
-/// <returns>
-///   <c>true</c> if [is gave over] [the specified player]; otherwise, <c>false</c>.
-/// </returns>
-bool IsGaveOver(shared_ptr<Player> &player)
+
+bool IsGaveOver(Player* player)
 {
 	return player->getIsGameOver();
 }
@@ -338,7 +332,7 @@ bool IsGaveOver(shared_ptr<Player> &player)
 /// Prints the into.
 /// </summary>
 /// <param name="settings">The settings.</param>
-void PrintInto(unique_ptr<GameSettings> &settings)
+void PrintInto(unique_ptr<GameSettings>& settings)
 {
 	cout << settings->getTitle() << endl << endl;
 
@@ -353,7 +347,7 @@ void PrintInto(unique_ptr<GameSettings> &settings)
 /// Prints the ending.
 /// </summary>
 /// <param name="player">The player.</param>
-void PrintEnding(shared_ptr<Player> player, unique_ptr<GameSettings>& settings)
+void PrintEnding(Player* player, unique_ptr<GameSettings>& settings)
 {
 	auto items = player->getInventory();
 
@@ -378,7 +372,7 @@ void PrintEnding(shared_ptr<Player> player, unique_ptr<GameSettings>& settings)
 /// </summary>
 /// <param name="settings">The settings.</param>
 /// <param name="document">The document.</param>
-void LoadGameData(unique_ptr<GameSettings> &settings, rapidxml::xml_document<>* document)
+void LoadGameData(unique_ptr<GameSettings>& settings, rapidxml::xml_document<>* document)
 {
 	// get the first config node
 	rapidxml::xml_node<>* rootNode = document->first_node("config");
@@ -409,7 +403,7 @@ void LoadGameData(unique_ptr<GameSettings> &settings, rapidxml::xml_document<>* 
 /// Enters the command.
 /// </summary>
 /// <param name="command">The command.</param>
-void EnterCommand(unique_ptr<CommandInterface>& command, shared_ptr<Player> player )
+void EnterCommand(unique_ptr<CommandInterface>& command, Player* player )
 {
 	string commandLine;
 
@@ -475,7 +469,7 @@ int main()
 		cout << "Done" << endl << "All game data loaded" << endl << endl;
 
 		// this is our main player object, we use it for running the game
-		shared_ptr<Player> player = make_shared<Player>(rooms[0]);
+		Player* player = new Player(rooms[0]);
 		
 		PrintInto(settings);
 		

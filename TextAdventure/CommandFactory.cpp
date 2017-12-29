@@ -21,7 +21,7 @@ CommandFactory::~CommandFactory()
 {
 }
 
-unique_ptr<CommandInterface> CommandFactory::getCommand(string command, shared_ptr<Player> player)
+unique_ptr<CommandInterface> CommandFactory::getCommand(string command, Player* player)
 {
 	// create a pointer to our base class
 	unique_ptr<CommandInterface> commandPointer = nullptr;

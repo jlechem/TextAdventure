@@ -20,7 +20,7 @@ class InvalidCommand :
 public:
 	InvalidCommand();
 	InvalidCommand(string);
-	InvalidCommand(string,shared_ptr<Player>);
+	InvalidCommand(string,Player*);
 	~InvalidCommand();
 
 	void process();

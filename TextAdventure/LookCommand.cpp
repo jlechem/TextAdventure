@@ -22,7 +22,7 @@ LookCommand::LookCommand(string command)
 {
 }
 
-LookCommand::LookCommand(string command, shared_ptr<Player> player)
+LookCommand::LookCommand(string command,Player* player)
 	: CommandInterface(command,player)
 {
 }

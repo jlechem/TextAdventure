@@ -24,7 +24,7 @@ ExitCommand::ExitCommand(string command)
 	_isValid = true;
 }
 
-ExitCommand::ExitCommand(string command, shared_ptr<Player> player)
+ExitCommand::ExitCommand(string command,Player* player)
 	: CommandInterface(command,player)
 {
 	_isValid = true;
