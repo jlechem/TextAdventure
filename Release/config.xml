@@ -1,0 +1,212 @@
+<?xml version="1.0"?>
+<config>
+  <GameData>
+    <Name>Justins Text Adventure</Name>
+    <Version>1.0</Version>
+    <DisplayIntroduction>true</DisplayIntroduction>
+    <Introduction>Test intro.</Introduction>
+  </GameData>
+  <Player>
+    <Name>Justin</Name>
+    <SaveFile>save.dat</SaveFile>
+  </Player>
+  <Items>
+    <Item>
+      <Id>1</Id>
+      <Name>Stick</Name>
+      <Description>A small pointy stick.</Description>
+      <Type>item</Type>
+      <score>1</score>
+      <AlternateNames>
+        <Name>stick</Name>
+        <Name>pointy stick</Name>
+        <Name>sharp stick</Name>
+        <Name>sharp pointy stick</Name>
+      </AlternateNames>
+    </Item>
+    <Item>
+      <Id>2</Id>
+      <Name>Rock</Name>
+      <Description>A small and very shiny black rock.</Description>
+      <Type>item</Type>
+      <score>100</score>
+      <AlternateNames>
+        <Name>rock</Name>
+        <Name>black rock</Name>
+        <Name>shiny rock</Name>
+        <Name>shiny black rock</Name>
+        <Name>black shiny rock</Name>
+      </AlternateNames>
+    </Item>
+    <Item>
+      <Id>3</Id>
+      <Name>Golden Egg</Name>
+      <Description>A egg laid by a golden goose.</Description>
+      <Type>treasure</Type>
+      <score>1000</score>
+      <AlternateNames>
+        <Name>golden egg</Name>
+        <Name>gold egg</Name>
+        <Name>goose egg</Name>
+        <Name>egg</Name>
+      </AlternateNames>
+    </Item>
+    <Item>
+      <Id>4</Id>
+      <Name>Dome</Name>
+      <Description>A shiny golden dome.</Description>
+      <Type>treasure</Type>
+      <score>500</score>
+      <AlternateNames>
+        <Name>dome</Name>
+        <Name>golden dome</Name>
+        <Name>shiny dome</Name>
+        <Name>shiny golden dome</Name>
+      </AlternateNames>
+    </Item>
+  </Items>
+  <Rooms>
+    <Room>
+      <Id>1</Id>
+      <Name>Room 1</Name>
+      <Description>A small brown room. With a door to the North.</Description>
+      <Items>
+        <Item>1</Item>
+        <Item>4</Item>
+      </Items>
+      <Treasures />
+    </Room>
+    <Room>
+      <Id>2</Id>
+      <Name>Green Room</Name>
+      <Description>A small green room. With a door to the South and East.</Description>
+      <Items>
+        <Item>2</Item>
+        <Item>3</Item>
+      </Items>
+    </Room>
+    <Room>
+      <Id>3</Id>
+      <Name>Purple Room</Name>
+      <Description>A large purple room with a golden ceiling and tiled floor. There's a door to the West.</Description>
+      <Items>
+        <Item>2</Item>
+        <Item>3</Item>
+      </Items>
+    </Room>
+    <Room>
+      <Id>4</Id>
+      <Name>Engine Room</Name>
+      <Description>You are standing in the starship's engine room. It's a large spherical chamber with a glass tube in the middle. You can see the anti-matter/matter reaction going on in the middle. There is an elevator here.</Description>
+    <Items/>
+    </Room>
+    <Room>
+      <Id>5</Id>
+      <Name>Bridge</Name>
+      <Description>You are standing in the bridge. Oddly no one else is here. You see a chair in the middle of the room where the captain must sit. Blinking panels surround the rest of the room.</Description>
+      <Items/>
+    </Room>
+    <Room>
+      <Id>6</Id>
+      <Name>Captains Personal Room</Name>
+      <Description>You are standing in the captain's personal room. You see the officer briefing table in the middle.</Description>
+      <Items/>
+    </Room>
+    <Room>
+      <Id>7</Id>
+      <Name>Captains Personal Room</Name>
+      <Description>You are standing in the captain's personal room. You see the officer briefing table in the middle.</Description>
+      <Items/>
+    </Room>
+    <Room>
+      <Id>8</Id>
+      <Name>Captains Personal Room</Name>
+      <Description>You are standing in the captain's personal room. You see the officer briefing table in the middle.</Description>
+      <Items/>
+    </Room>
+    <Room>
+      <Id>9</Id>
+      <Name>Captains Personal Room</Name>
+      <Description>You are standing in the captain's personal room. You see the officer briefing table in the middle.</Description>
+      <Items/>
+    </Room>
+    <Room>
+      <Id>10</Id>
+      <Name>Captains Personal Room</Name>
+      <Description>You are standing in the captain's personal room. You see the officer briefing table in the middle.</Description>
+      <Items/>
+    </Room>
+  </Rooms>
+  <RoomExits>
+    <Room>
+      <RoomId>1</RoomId>
+      <Exits>
+        <Exit>
+          <RoomId>2</RoomId>
+          <Direction>n</Direction>
+        </Exit>
+      </Exits>
+    </Room>
+    <Room>
+      <RoomId>2</RoomId>
+      <Exits>
+        <Exit>
+          <RoomId>1</RoomId>
+          <Direction>s</Direction>
+        </Exit>
+        <Exit>
+          <RoomId>3</RoomId>
+          <Direction>e</Direction>
+        </Exit>
+      </Exits>
+    </Room>
+    <Room>
+      <RoomId>3</RoomId>
+      <Exits>
+        <Exit>
+          <RoomId>2</RoomId>
+          <Direction>w</Direction>
+        </Exit>
+       <Exit>
+          <RoomId>4</RoomId>
+          <Direction>ne</Direction>
+        </Exit>
+      </Exits>
+    </Room>
+    <Room>
+      <RoomId>4</RoomId>
+      <Exits>
+        <Exit>
+          <RoomId>3</RoomId>
+          <Direction>sw</Direction>
+        </Exit>
+        <Exit>
+          <RoomId>5</RoomId>
+          <Direction>u</Direction>
+        </Exit>
+      </Exits>
+    </Room>
+    <Room>
+      <RoomId>5</RoomId>
+      <Exits>
+        <Exit>
+          <RoomId>4</RoomId>
+          <Direction>d</Direction>
+        </Exit>
+        <Exit>
+          <RoomId>6</RoomId>
+          <Direction>e</Direction>
+        </Exit>
+      </Exits>
+    </Room>
+    <Room>
+      <RoomId>6</RoomId>
+      <Exits>
+      <Exit>
+        <RoomId>5</RoomId>
+        <Direction>w</Direction>
+      </Exit>
+      </Exits>
+    </Room>
+  </RoomExits>
+</config>
