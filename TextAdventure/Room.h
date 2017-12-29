@@ -28,9 +28,9 @@ public:
 	void addItem(unique_ptr<Item>);
 	
 	string getExitsString();
-	map<Directions, shared_ptr<Room>>& getExits();
-	void setExits(map<Directions, shared_ptr<Room>>&);
-	void addExit(Directions, shared_ptr<Room>);
+	map<Directions, Room*>& getExits();
+	void setExits(map<Directions, Room*>&);
+	void addExit(Directions, Room*);
 	
 	string findItemDescription(string name);
 
@@ -53,7 +53,7 @@ private:
 	string _itemsString;
 
 	vector<unique_ptr<Item>> _items;
-	map<Directions,shared_ptr<Room>> _exits;
+	map<Directions,Room*> _exits;
 	
 	void generateExitString();
 	void generateItemString();

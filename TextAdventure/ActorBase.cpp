@@ -22,7 +22,7 @@ ActorBase::ActorBase()
 	_id = 0;
 }
 
-ActorBase::ActorBase(shared_ptr<Room> initialRoom)
+ActorBase::ActorBase(Room* initialRoom)
 {
 	_level = 0;
 	_score = 0;
@@ -128,7 +128,7 @@ bool ActorBase::dropItem(string name)
 
 }
 
-shared_ptr<Room> ActorBase::getCurrentRoom()
+Room* ActorBase::getCurrentRoom()
 {
 	return _currentRoom;
 }

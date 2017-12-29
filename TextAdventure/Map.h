@@ -19,12 +19,12 @@ class Map
 {
 public:
 	Map();
-	Map(shared_ptr<Room>);
+	Map(Room*);
 	~Map();
 
 private:
-	shared_ptr<Room> _startRoom;
-	shared_ptr<Room> _currentRoom;
+	Room* _startRoom;
+	Room* _currentRoom;
 
 };
 

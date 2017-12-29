@@ -25,11 +25,11 @@
 /// <param name="id">The identifier.</param>
 /// <param name="rooms">The rooms.</param>
 /// <returns></returns>
-shared_ptr<Room> FindRoom(int id, vector<shared_ptr<Room>> &rooms)
+Room* FindRoom(int id, vector<Room*> &rooms)
 {
-	vector<shared_ptr<Room>>::iterator it;
+	vector<Room*>::iterator it;
 
-	shared_ptr<Room> result = nullptr;
+	Room* result = nullptr;
 
 	for (it = rooms.begin(); it != rooms.end(); ++it)
 	{
@@ -100,7 +100,7 @@ void LoadXML(string& xmlBuffer)
 /// <param name="rooms">The rooms.</param>
 /// <param name="items">The items.</param>
 /// <param name="document">The document.</param>
-void LoadRooms(vector<shared_ptr<Room>> &rooms, vector<unique_ptr<Item>> &items, rapidxml::xml_document<>* document)
+void LoadRooms(vector<Room*> &rooms, vector<unique_ptr<Item>> &items, rapidxml::xml_document<>* document)
 {
 	// get the first config node
 	rapidxml::xml_node<>* rootNode = document->first_node("config");
@@ -124,7 +124,7 @@ void LoadRooms(vector<shared_ptr<Room>> &rooms, vector<unique_ptr<Item>> &items,
 
 		while (roomNode)
 		{
-			auto newRoom = make_shared<Room>();
+			Room* newRoom = new Room();
 
 			// this is our Room attribute Node, starts at Id
 			rapidxml::xml_node<>* attributeNode = roomNode->first_node();
@@ -434,7 +434,7 @@ int main()
 	try
 	{
 		// declare some variables we need to use
-		vector<shared_ptr<Room>> rooms;										// vector of all the rooms, TODO: make this a map??
+		vector<Room*> rooms;										// vector of all the rooms, TODO: make this a map??
 		vector<unique_ptr<Item>> items;										// vector of all the items in the game, this gets cleared as we load items into the rooms to start
 		unique_ptr<GameSettings> settings = make_unique<GameSettings>();	// game settings
 		unique_ptr<CommandInterface> command;								// newCommand, used to process input from the user. We don't init this, we get our concrete instance from our factory

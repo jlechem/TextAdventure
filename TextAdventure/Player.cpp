@@ -17,7 +17,7 @@ Player::Player(): ActorBase()
 	_isGameOver = false;
 }
 
-Player::Player(shared_ptr<Room> initialRoom): ActorBase(initialRoom)
+Player::Player(Room* initialRoom): ActorBase(initialRoom)
 {
 	_isGameOver = false;
 }

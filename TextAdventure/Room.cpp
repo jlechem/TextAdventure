@@ -65,7 +65,7 @@ void Room::addItem(unique_ptr<Item> item)
 	generateItemString();
 }
 
-map<Directions, shared_ptr<Room>>& Room::getExits()
+map<Directions, Room*>& Room::getExits()
 {
 	return _exits;
 }
@@ -75,13 +75,13 @@ string Room::getExitsString()
 	return _exitString;
 }
 
-void Room::setExits(map<Directions, shared_ptr<Room>>& exits)
+void Room::setExits(map<Directions, Room*>& exits)
 {
 	_exits = exits;
 	generateExitString();
 }
 
-void Room::addExit(Directions exit, shared_ptr<Room> room)
+void Room::addExit(Directions exit, Room* room)
 {
 	_exits[exit] = room;
 	generateExitString();
@@ -185,7 +185,7 @@ void Room::updateVisitCount()
 
 void Room::generateExitString()
 {
-	std::map<Directions, shared_ptr<Room>>::iterator it;
+	std::map<Directions, Room*>::iterator it;
 
 	_exitString.clear();
 

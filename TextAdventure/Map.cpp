@@ -23,7 +23,7 @@ Map::Map()
 /// Initializes a new instance of the <see cref="Map"/> class.
 /// </summary>
 /// <param name="room">The room.</param>
-Map::Map(shared_ptr<Room> room)
+Map::Map(Room* room)
 {
 	_currentRoom = _startRoom = room;
 }

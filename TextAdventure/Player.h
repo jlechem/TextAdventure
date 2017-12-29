@@ -21,7 +21,7 @@ class Player: public ActorBase
 {
 public:
 	Player();
-	Player(shared_ptr<Room>);
+	Player(Room*);
 	~Player();
 
 	void printInventory();

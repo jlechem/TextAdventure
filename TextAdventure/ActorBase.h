@@ -19,7 +19,7 @@ class ActorBase
 {
 public:
 	ActorBase();
-	ActorBase(shared_ptr<Room>);
+	ActorBase(Room*);
 	~ActorBase();
 	
 	string getName();
@@ -41,7 +41,7 @@ public:
 
 	vector<unique_ptr<Item>>* getInventory();
 
-	shared_ptr<Room> getCurrentRoom();
+	Room* getCurrentRoom();
 	
 	bool Move(string);
 	
@@ -67,7 +67,7 @@ protected:
 
 	vector<unique_ptr<Item>> _items;
 
-	shared_ptr<Room> _currentRoom;
+	Room* _currentRoom;
 
 	unique_ptr<Item> findItem(string);
 
