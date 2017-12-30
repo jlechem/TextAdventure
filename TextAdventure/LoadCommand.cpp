@@ -2,7 +2,7 @@
 	LoadCommand.cpp
 	Created By:		Justin LeCheminant
 	Created On:		12-21-2017
-	Last Modified:	12-21-2017
+	Last Modified:	12-29-2017
 
 	Notes: Implemenation of the LoadCommand class.
 
@@ -15,16 +15,19 @@
 LoadCommand::LoadCommand()
 	: CommandInterface()
 {
+	_isValid = true;
 }
 
 LoadCommand::LoadCommand(string command)
 	: CommandInterface(command)
 {
+	_isValid = true;
 }
 
 LoadCommand::LoadCommand(string command,Player* player)
 	: CommandInterface(command,player)
 {
+	_isValid = true;
 }
 
 LoadCommand::~LoadCommand()
@@ -33,7 +36,38 @@ LoadCommand::~LoadCommand()
 
 void LoadCommand::process()
 {
-	cout << endl << "LOAD" << endl;
+	// we need to read from the SAVE\save.dat folder
+	ifstream file("SAVE\save.dat", ios::in | ios::binary);
+	
+	if (file)
+	{
+		vector<int> itemIds;
+
+		// first read the current room id
+		auto roomId = 0;
+		file >> roomId;
+		
+		string line;
+		
+		getline( file, line );
+
+		// find the room that matches our id
+		//auto room = findRoom(roomId);
+		auto room = nullptr;
+
+		if (room)
+		{
+			_player->setCurrentRoom(room);
+			//_commandResult = room->getLongDescription();
+		}
+		else
+		{
+			_commandResult = "An error occured loading game data";
+		}
+	}
+
+	cout << endl << _commandResult << endl;
+
 }
 
 void LoadCommand::calculateValidity()

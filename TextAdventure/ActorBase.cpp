@@ -134,6 +134,11 @@ Room* ActorBase::getCurrentRoom()
 	return _currentRoom;
 }
 
+void ActorBase::setCurrentRoom(Room* room)
+{
+	_currentRoom = room;
+}
+
 bool ActorBase::Move(string direction)
 {
 	bool result = false;

@@ -54,7 +54,7 @@ unique_ptr<CommandInterface> CommandFactory::getCommand(string command, Player* 
 		delete commands;
 
 	}
-	
+
 	// command should be one word (look,move,take,drop,jump,etc)
 	// based on this we need to return the correct command class
 	if (Utilities::isLookCommand(initCommand))
@@ -109,6 +109,10 @@ unique_ptr<CommandInterface> CommandFactory::getCommand(string command, Player* 
 	else if (Utilities::isSaveCommand(command))
 	{
 		commandPointer = make_unique<SaveCommand>(command, player);
+	}
+	else if (Utilities::isLoadCommand(command))
+	{
+		commandPointer = make_unique<LoadCommand>(command, player);
 	}
 	// last case is always an invalid command
 	else

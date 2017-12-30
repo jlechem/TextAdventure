@@ -2,7 +2,7 @@
 	Utils.h
 	Created By:			Justin LeCheminant
 	Created On:			12-20-2017
-	Last Modified:		12-25-2017
+	Last Modified:		12-29-2017
 	Last Modified By:	Justin LeCheminant
 
 	Notes: Static class with a bunch of utility functions in it
@@ -55,6 +55,8 @@ public:
 	static bool isActionCommand(string);
 
 	static bool isClearCommand(string);
+
+	static bool isLoadCommand(string);
 
 	static void toLower(string&);
 

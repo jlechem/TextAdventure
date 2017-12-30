@@ -103,6 +103,11 @@ bool Utilities::isClearCommand(string command)
 	return command == "cls" || command == "clear";
 }
 
+bool Utilities::isLoadCommand(string command)
+{
+	return command == "load";
+}
+
 void Utilities::toLower(string& value)
 {
 	transform(value.begin(), value.end(), value.begin(), tolower);

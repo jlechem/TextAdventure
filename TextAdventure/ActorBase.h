@@ -2,7 +2,7 @@
 	ActorBase.h
 	Created By:			Justin LeCheminant
 	Created On:			12-21-2017
-	Last Modified:		12-24-2017
+	Last Modified:		12-29-2017
 	Last Modified By:	Justin LeCheminant
 
 	Notes: This is a base class for actors in the game. An actor can be a player, enemy, or NPC (Non Playable Character).
@@ -42,7 +42,8 @@ public:
 	vector<unique_ptr<Item>>* getInventory();
 
 	Room* getCurrentRoom();
-	
+	void setCurrentRoom(Room*);
+
 	bool Move(string);
 	
 	unsigned long getMoveCount();
