@@ -2,7 +2,7 @@
 	CommandFactory.cpp
 	Created By:			Justin LeCheminant
 	Created On:			12-20-2017
-	Last Modified:		12-25-2017
+	Last Modified:		12-29-2017
 	Last Modified By:	Justin LeCheminant
 
 	Notes: CommandFactory implementation
@@ -105,6 +105,10 @@ unique_ptr<CommandInterface> CommandFactory::getCommand(string command, Player* 
 	else if (Utilities::isOpenCommand(initCommand))
 	{
 		commandPointer = make_unique<OpenCommand>(command, player);
+	}
+	else if (Utilities::isSaveCommand(command))
+	{
+		commandPointer = make_unique<SaveCommand>(command, player);
 	}
 	// last case is always an invalid command
 	else

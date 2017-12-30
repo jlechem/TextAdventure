@@ -159,6 +159,9 @@
     <ClInclude Include="Parser.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Rooms.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -257,12 +260,21 @@
     <ClCompile Include="Parser.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Rooms.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.dat" />
     <None Include="verbs.dat" />
     <None Include="..\README.md" />
     <None Include="packages.config" />
+    <None Include="TextAdventureLexer.tokens" />
+    <None Include="TextAdventureLexer.interp" />
+    <None Include="TextAdventure.tokens" />
+    <None Include="TextAdventure.interp" />
+    <None Include="TextAdventure.g" />
+    <None Include="save.dat" />
   </ItemGroup>
   <ItemGroup>
     <Xml Include="config.xml" />

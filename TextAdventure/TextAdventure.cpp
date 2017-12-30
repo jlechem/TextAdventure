@@ -18,20 +18,15 @@
 #include "rapidxml.hpp"
 #include "Item.h"
 #include "Utils.h"
+#include "Rooms.h"
 
-/// <summary>
-/// Finds the room.
-/// </summary>
-/// <param name="id">The identifier.</param>
-/// <param name="rooms">The rooms.</param>
-/// <returns></returns>
-Room* FindRoom(int id, vector<Room*> &rooms)
+Room* FindRoom(int id)
 {
 	vector<Room*>::iterator it;
 
 	Room* result = nullptr;
 
-	for (it = rooms.begin(); it != rooms.end(); ++it)
+	for (it = Rooms::getInstance().getRooms().begin(); it != Rooms::getInstance().getRooms().end(); ++it)
 	{
 		if ((*it)->getId() == id)
 		{
@@ -43,12 +38,6 @@ Room* FindRoom(int id, vector<Room*> &rooms)
 	return result;
 }
 
-/// <summary>
-/// Finds the item.
-/// </summary>
-/// <param name="id">The identifier.</param>
-/// <param name="items">The items.</param>
-/// <returns></returns>
 unique_ptr<Item> FindItem(int id, vector<unique_ptr<Item>> &items)
 {
 	vector<unique_ptr<Item>>::iterator it;
@@ -73,10 +62,6 @@ unique_ptr<Item> FindItem(int id, vector<unique_ptr<Item>> &items)
 	
 }
 
-/// <summary>
-/// Loads the XML.
-/// </summary>
-/// <param name="xmlBuffer">The XML buffer.</param>
 void LoadXML(string& xmlBuffer)
 {
 	ifstream inputFile("config.xml", ifstream::in);
@@ -94,13 +79,7 @@ void LoadXML(string& xmlBuffer)
 	}
 }
 
-/// <summary>
-/// Loads the rooms.
-/// </summary>
-/// <param name="rooms">The rooms.</param>
-/// <param name="items">The items.</param>
-/// <param name="document">The document.</param>
-void LoadRooms(vector<Room*> &rooms, vector<unique_ptr<Item>> &items, rapidxml::xml_document<>* document)
+void LoadRooms(vector<unique_ptr<Item>> &items, rapidxml::xml_document<>* document)
 {
 	// get the first config node
 	rapidxml::xml_node<>* rootNode = document->first_node("config");
@@ -167,7 +146,7 @@ void LoadRooms(vector<Room*> &rooms, vector<unique_ptr<Item>> &items, rapidxml::
 			}
 
 			// add thw new room to our vector
-			rooms.push_back(newRoom);
+			Rooms::getInstance().getRooms().push_back(newRoom);
 
 			// move to the next room
 			roomNode = roomNode->next_sibling();
@@ -187,7 +166,7 @@ void LoadRooms(vector<Room*> &rooms, vector<unique_ptr<Item>> &items, rapidxml::
 			auto roomID = atoi(attributeNode->value());
 
 			// find the room with that ID
-			auto room = FindRoom(roomID, rooms);
+			auto room = FindRoom(roomID);
 
 			// if we have a room that matches that, then add some exits
 			if (room)
@@ -210,7 +189,7 @@ void LoadRooms(vector<Room*> &rooms, vector<unique_ptr<Item>> &items, rapidxml::
 					auto direction = Utilities::convertDirection(attributeNode->value());
 
 					// find a room with this ID
-					auto exitRoom = FindRoom(roomID, rooms);
+					auto exitRoom = FindRoom(roomID);
 
 					// if we have a room with this ID then add it to our map
 					if (exitRoom)
@@ -234,11 +213,6 @@ void LoadRooms(vector<Room*> &rooms, vector<unique_ptr<Item>> &items, rapidxml::
 	}
 }
 
-/// <summary>
-/// Loads the items from the xml config file.
-/// </summary>
-/// <param name="items">The items.</param>
-/// <param name="document">The document.</param>
 void LoadItems(vector<unique_ptr<Item>> &items, rapidxml::xml_document<>* document)
 {
 	// get the first config node
@@ -304,31 +278,11 @@ void LoadItems(vector<unique_ptr<Item>> &items, rapidxml::xml_document<>* docume
 	}
 }
 
-/// <summary>
-/// Saves the game.
-/// </summary>
-void SaveGame()
-{
-
-}
-
-/// <summary>
-/// Loads the game.
-/// </summary>
-void LoadGame()
-{
-
-}
-
 bool IsGaveOver(Player* player)
 {
 	return player->getIsGameOver();
 }
 
-/// <summary>
-/// Prints the into.
-/// </summary>
-/// <param name="settings">The settings.</param>
 void PrintInto(unique_ptr<GameSettings>& settings)
 {
 	cout << settings->getTitle() << endl << endl;
@@ -340,10 +294,6 @@ void PrintInto(unique_ptr<GameSettings>& settings)
 	}
 }
 
-/// <summary>
-/// Prints the ending.
-/// </summary>
-/// <param name="player">The player.</param>
 void PrintEnding(Player* player, unique_ptr<GameSettings>& settings)
 {
 	auto items = player->getInventory();
@@ -364,11 +314,6 @@ void PrintEnding(Player* player, unique_ptr<GameSettings>& settings)
 
 }
 
-/// <summary>
-/// Loads the game data.
-/// </summary>
-/// <param name="settings">The settings.</param>
-/// <param name="document">The document.</param>
 void LoadGameData(unique_ptr<GameSettings>& settings, rapidxml::xml_document<>* document)
 {
 	// get the first config node
@@ -396,10 +341,6 @@ void LoadGameData(unique_ptr<GameSettings>& settings, rapidxml::xml_document<>* 
 	}
 }
 
-/// <summary>
-/// Enters the command.
-/// </summary>
-/// <param name="command">The command.</param>
 void EnterCommand(unique_ptr<CommandInterface>& command, Player* player )
 {
 	string commandLine;
@@ -414,10 +355,6 @@ void EnterCommand(unique_ptr<CommandInterface>& command, Player* player )
 	
 }
 
-/// <summary>
-/// Processes the command.
-/// </summary>
-/// <param name="command">The command.</param>
 void ProcessCommand(unique_ptr<CommandInterface>& command)
 {
 	// process then clear our pointer to make way for the new Dependency Injection
@@ -434,7 +371,6 @@ int main()
 	try
 	{
 		// declare some variables we need to use
-		vector<Room*> rooms;										// vector of all the rooms, TODO: make this a map??
 		vector<unique_ptr<Item>> items;										// vector of all the items in the game, this gets cleared as we load items into the rooms to start
 		unique_ptr<GameSettings> settings = make_unique<GameSettings>();	// game settings
 		unique_ptr<CommandInterface> command;								// newCommand, used to process input from the user. We don't init this, we get our concrete instance from our factory
@@ -461,13 +397,13 @@ int main()
 
 		cout << "Done" << endl << "Loading Rooms...";
 
-		LoadRooms(rooms, items, &doc);
+		LoadRooms(items, &doc);
 
 		cout << "Done" << endl << "All game data loaded" << endl << endl;
 
 		// this is our main player object, we use it for running the game
-		Player* player = new Player(rooms[0]);
-		
+		Player* player = new Player(Rooms::getInstance().getRooms()[0]);
+
 		PrintInto(settings);
 		
 		command = CommandFactory::getCommand("LOOK", player);
