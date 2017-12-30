@@ -18,6 +18,7 @@
 #include "ExamineCommand.h"
 #include "ExitCommand.h"
 #include "FunCommand.h"
+#include "HelpCommand.h"
 #include "InvalidCommand.h"
 #include "InventoryCommand.h"
 #include "LoadCommand.h"

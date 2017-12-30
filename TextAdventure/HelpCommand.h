@@ -2,17 +2,18 @@
 
 #include "CommandInterface.h"
 
-class JumpCommand :
+class HelpCommand :
 	public CommandInterface
 {
 public:
-	JumpCommand();
-	JumpCommand(string, Player*);
-	~JumpCommand();
+	HelpCommand();
+	HelpCommand(string);
+	HelpCommand(string, Player*);
+	~HelpCommand();
 
 	void process() override;
 
-private:
+protected:
 	void calculateValidity() override;
 
 };

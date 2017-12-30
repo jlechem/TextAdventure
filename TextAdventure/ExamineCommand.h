@@ -23,10 +23,10 @@ public:
 	ExamineCommand(string, Player*);
 	~ExamineCommand();
 
-	void process();
+	void process() override;
 
 protected:
-	void calculateValidity();
+	void calculateValidity() override;
 
 private:
 	string examineItem(string name);

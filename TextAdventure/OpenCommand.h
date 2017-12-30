@@ -22,8 +22,8 @@ public:
 	OpenCommand(string, Player*);
 	~OpenCommand();
 
-	void process();
+	void process() override;
 
 protected:
-	void calculateValidity();
+	void calculateValidity() override;
 };

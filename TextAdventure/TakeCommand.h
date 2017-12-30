@@ -23,9 +23,9 @@ public:
 	TakeCommand(string, Player*);
 	~TakeCommand();
 
-	void process();
+	void process() override;
 
 protected:
-	void calculateValidity();
+	void calculateValidity() override;
 
 };

@@ -23,9 +23,9 @@ public:
 	LookCommand(string, Player*);
 	~LookCommand();
 
-	void process();
+	void process() override;
 
 protected:
-	void calculateValidity();
+	void calculateValidity() override;
 
 };

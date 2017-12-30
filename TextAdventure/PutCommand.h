@@ -22,9 +22,9 @@ public:
 	PutCommand(string, Player*);
 	~PutCommand();
 
-	void process(); 
+	void process() override;
 
 protected:
-	void calculateValidity();
+	void calculateValidity() override;
 
 };

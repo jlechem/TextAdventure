@@ -24,10 +24,10 @@ public:
 	FunCommand(string, Player*,map<string,string>);
 	~FunCommand();
 
-	void process();
+	void process() override;
 	
 protected:
-	void calculateValidity();
+	void calculateValidity() override;
 
 private:
 	map<string, string> _map;

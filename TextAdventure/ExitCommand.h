@@ -23,10 +23,10 @@ public:
 	ExitCommand(string, Player*);
 	~ExitCommand();
 	
-	void process();
+	void process() override;
 	
 
 protected:
-	void calculateValidity();
+	void calculateValidity() override;
 
 };

@@ -24,9 +24,9 @@ public:
 	LoadCommand(string, Player*);
 	~LoadCommand(); 
 
-	void process();
+	void process() override;
 	
 protected:
-	void calculateValidity();
+	void calculateValidity() override;
 
 };

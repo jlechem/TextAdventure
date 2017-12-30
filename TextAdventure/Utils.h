@@ -58,6 +58,8 @@ public:
 
 	static bool isLoadCommand(string);
 
+	static bool isHelpCommand(string);
+
 	static void toLower(string&);
 
 private:

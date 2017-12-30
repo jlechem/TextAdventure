@@ -24,9 +24,9 @@ public:
 	SaveCommand(string, Player*);
 	~SaveCommand(); 
 		
-	void process();
+	void process() override;
 
 protected:
-	void calculateValidity();
+	void calculateValidity() override;
 
 };

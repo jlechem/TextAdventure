@@ -22,9 +22,9 @@ public:
 	DropCommand(string);
 	DropCommand(string, Player*);
 	~DropCommand();
-	void process();
+	void process() override;
 
 protected:
-	void calculateValidity();
+	void calculateValidity() override;
 
 };

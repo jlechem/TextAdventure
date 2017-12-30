@@ -108,6 +108,11 @@ bool Utilities::isLoadCommand(string command)
 	return command == "load";
 }
 
+bool Utilities::isHelpCommand(string command)
+{
+	return command == "help" || command == "h";
+}
+
 void Utilities::toLower(string& value)
 {
 	transform(value.begin(), value.end(), value.begin(), tolower);
