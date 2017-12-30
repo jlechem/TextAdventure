@@ -39,7 +39,7 @@ void SaveCommand::process()
 	string filename = "SAVE\\save.dat";
 
 	// open file for output in binary truncating any existing data
-	ofstream file(filename, ios::out | ios::trunc);
+	ofstream file(filename, ios::out | ios::binary | ios::trunc);
 
 	// now write out all our items
 	vector<unique_ptr<Item>>::iterator it;
@@ -61,6 +61,39 @@ void SaveCommand::process()
 		}
 	}
 
+	// write out our room and item data
+
+	// loop through the rooms
+	for (auto i = 0; i < Rooms::getInstance().getRooms().size(); i++)
+	{
+		// get any items we might have in this room
+		auto items = Rooms::getInstance().getRooms()[i]->getAllItems();
+	
+		// write rooms that only have items
+		if (items && items->size() > 0)
+		{
+			// first thing is the roomid
+			file << Rooms::getInstance().getRooms()[i]->getId() << " ";
+
+			vector<unique_ptr<Item>>::iterator it;
+
+			// loop through any items we found
+			for (it = items->begin(); it != items->end(); ++it)
+			{
+				file << (*it)->getId();
+
+				if (it != items->end() - 1)
+				{
+					file << " ";
+				}
+				else
+				{
+					file << endl;
+				}
+			}
+		}
+	}
+	
 	file.close();
 
 	std::cout << "Saved" << endl;

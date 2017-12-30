@@ -13,6 +13,7 @@
 #include "stdafx.h"
 
 #include "CommandInterface.h"
+#include "Rooms.h"
 
 class SaveCommand :
 	public CommandInterface
@@ -29,4 +30,3 @@ protected:
 	void calculateValidity();
 
 };
-
