@@ -186,6 +186,8 @@
     <ClInclude Include="TreasureCase.h" />
     <ClInclude Include="Utils.h" />
     <ClInclude Include="Weapon.h" />
+    <ClInclude Include="WearCommand.h" />
+    <ClInclude Include="WieldCommand.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ActorBase.cpp" />
@@ -230,6 +232,8 @@
     <ClCompile Include="TreasureCase.cpp" />
     <ClCompile Include="Utils.cpp" />
     <ClCompile Include="Weapon.cpp" />
+    <ClCompile Include="WearCommand.cpp" />
+    <ClCompile Include="WieldCommand.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\README.md" />

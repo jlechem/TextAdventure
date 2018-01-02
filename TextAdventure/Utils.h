@@ -60,6 +60,12 @@ public:
 
 	static bool isHelpCommand(string);
 
+	static bool isWearCommand(string);
+
+	static bool isWieldCommand(string);
+
+	static bool isTalkCommand(string);
+
 	static void toLower(string&);
 
 private:

@@ -113,6 +113,21 @@ bool Utilities::isHelpCommand(string command)
 	return command == "help" || command == "h";
 }
 
+bool Utilities::isWearCommand(string command)
+{
+	return command == "wear";
+}
+
+bool Utilities::isWieldCommand(string command)
+{
+	return command == "wield";
+}
+
+bool Utilities::isTalkCommand(string command)
+{
+	return command == "talk" || command == "say";
+}
+
 void Utilities::toLower(string& value)
 {
 	transform(value.begin(), value.end(), value.begin(), tolower);

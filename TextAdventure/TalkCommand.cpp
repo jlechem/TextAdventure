@@ -35,7 +35,16 @@ void TalkCommand::process()
 {
 	calculateValidity();
 
-	cout << endl << "TALK" << endl;
+	if (_commandWords.size() == 1)
+	{
+		_commandResult = "Say what?";
+	}
+	else
+	{
+		_commandResult = "TALK";
+	}
+
+	cout << endl <<  _commandResult << endl;
 
 }
 

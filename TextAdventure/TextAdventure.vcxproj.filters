@@ -175,7 +175,13 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="TalkCommand.h">
-      <Filter>Header Files</Filter>
+      <Filter>Commands\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="WieldCommand.h">
+      <Filter>Commands\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="WearCommand.h">
+      <Filter>Commands\Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -288,7 +294,13 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="TalkCommand.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Commands\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="WieldCommand.cpp">
+      <Filter>Commands\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="WearCommand.cpp">
+      <Filter>Commands\Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -114,6 +114,18 @@ unique_ptr<CommandInterface> CommandFactory::getCommand(string command, Player* 
 	{
 		commandPointer = make_unique<LoadCommand>(command, player);
 	}
+	else if (Utilities::isTalkCommand(command))
+	{
+		commandPointer = make_unique<TalkCommand>(command, player);
+	}
+	else if (Utilities::isWearCommand(command))
+	{
+		commandPointer = make_unique<WearCommand>(command, player);
+	}
+	else if (Utilities::isWieldCommand(command))
+	{
+		commandPointer = make_unique<WieldCommand>(command, player);
+	}
 	// last case is always an invalid command
 	else
 	{

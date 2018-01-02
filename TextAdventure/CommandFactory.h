@@ -27,8 +27,11 @@
 #include "OpenCommand.h"
 #include "PutCommand.h"
 #include "SaveCommand.h"
+#include "TalkCommand.h"
 #include "TakeCommand.h"
 #include "Utils.h"
+#include "WearCommand.h"
+#include "WieldCommand.h"
 
 class CommandFactory
 {
