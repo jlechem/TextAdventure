@@ -136,6 +136,8 @@ void Utilities::toLower(string& value)
 bool Utilities::isMoveCommand(string command)
 {
 	return
+		command == "move" ||
+		command == "go" ||
 		command == "north" ||
 		command == "south" ||
 		command == "east" ||
