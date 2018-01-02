@@ -2,7 +2,7 @@
 	ActorBase.cpp
 	Created By:			Justin LeCheminant
 	Created On:			12-20-2017
-	Last Modified:		12-24-2017
+	Last Modified:		01-02-2018
 	Last Modified By:	Justin LeCheminant
 
 	Notes: Implementation of the ActorBase class.
@@ -10,6 +10,7 @@
 */
 
 #include "stdafx.h"
+
 #include "ActorBase.h"
 
 ActorBase::ActorBase()

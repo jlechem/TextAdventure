@@ -13,6 +13,6 @@ enum ItemType
 	Container,
 	BaseItem,
 	Treasure,
-	Weapon,
-	Armor
+	Weapons,
+	Armors
 };

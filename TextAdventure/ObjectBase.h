@@ -1,3 +1,13 @@
+/*
+	ObjectBase.h
+	Created By:		Justin LeCheminant
+	Created On:		12-19-2017
+	Last Modified:	01-02-2018
+
+	Notes: Base class for all items in the system.
+
+*/
+
 #pragma once
 
 #include "stdafx.h"

@@ -2,7 +2,7 @@
 	ObjectType.h
 	Created By:		Justin LeCheminant
 	Created On:		12-18-2017
-	Last Modified:	12-21-2017
+	Last Modified:	01-02-2018
 	Notes: An enumeration for the various types of objects in the game, Item, Room, Treasure, Player, etc
 */
 
@@ -29,6 +29,10 @@ enum ObjectType
 
 	KeyObject,
 
-	DoorObject
+	DoorObject,
+
+	WeaponObject,
+
+	ArmorObject
 
 };

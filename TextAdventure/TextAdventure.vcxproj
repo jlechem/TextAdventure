@@ -142,6 +142,7 @@
   <ItemGroup>
     <ClInclude Include="ActionType.h" />
     <ClInclude Include="ActorBase.h" />
+    <ClInclude Include="Armor.h" />
     <ClInclude Include="CommandFactory.h" />
     <ClInclude Include="CommandInterface.h" />
     <ClInclude Include="DescribableObjectInterface.h" />
@@ -170,6 +171,7 @@
     <ClInclude Include="Parser.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PutCommand.h" />
+    <ClInclude Include="Races.h" />
     <ClInclude Include="rapidxml.hpp" />
     <ClInclude Include="rapidxml_iterators.hpp" />
     <ClInclude Include="rapidxml_print.hpp" />
@@ -179,12 +181,15 @@
     <ClInclude Include="SaveCommand.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="TakeCommand.h" />
+    <ClInclude Include="TalkCommand.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="TreasureCase.h" />
     <ClInclude Include="Utils.h" />
+    <ClInclude Include="Weapon.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ActorBase.cpp" />
+    <ClCompile Include="Armor.cpp" />
     <ClCompile Include="CommandFactory.cpp" />
     <ClCompile Include="CommandInterface.cpp" />
     <ClCompile Include="DescribableObjectInterface.cpp" />
@@ -220,9 +225,11 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="TakeCommand.cpp" />
+    <ClCompile Include="TalkCommand.cpp" />
     <ClCompile Include="TextAdventure.cpp" />
     <ClCompile Include="TreasureCase.cpp" />
     <ClCompile Include="Utils.cpp" />
+    <ClCompile Include="Weapon.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\README.md" />
