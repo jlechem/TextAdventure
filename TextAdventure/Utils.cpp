@@ -125,7 +125,7 @@ bool Utilities::isWieldCommand(string command)
 
 bool Utilities::isTalkCommand(string command)
 {
-	return command == "talk" || command == "say";
+	return command == "talk" || command == "say" || command == "speak";
 }
 
 void Utilities::toLower(string& value)
