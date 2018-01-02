@@ -272,7 +272,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.dat" />
-    <None Include="verbs.dat" />
     <None Include="..\README.md" />
     <None Include="packages.config" />
     <None Include="TextAdventureLexer.tokens" />
