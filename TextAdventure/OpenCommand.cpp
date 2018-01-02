@@ -49,18 +49,25 @@ void OpenCommand::process()
 		// check if we didnt find anything in OUR inventory, we need to check the room
 		if (!itemToOpen)
 		{
-
+			itemToOpen = _player->getCurrentRoom()->findItem(itemToFind);
 		}
-		else
+
+		// check if we found something in the room or on the player
+		if (itemToOpen)
 		{
 			if (itemToOpen->getCanOpen())
 			{
+				// TODO: always put back what we found
 
 			}
 			else
 			{
 				_commandResult = "You can't open that";
 			}
+		}
+		else
+		{
+			_commandResult = "I don't know how to " + _command;
 		}
 	}
 	// could be anything, OPEN THE X
