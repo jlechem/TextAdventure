@@ -38,10 +38,22 @@ void Parser::parse(string sentence)
 	else
 	{
 		// look at the first word, this should be a valid VERB (LOOK,MOVE,etc)
+		_verb = words[0];
+		
+		if (words.size() > 1)
+		{
+			vector<string>::iterator it;
 
-
+			for (it = words.begin() + 1; it != words.end(); ++it)
+			{
+				if(  )
+			}
+		}
 	}
+}
 
+bool Parser::isPhrase()
+{
 
 }
 
