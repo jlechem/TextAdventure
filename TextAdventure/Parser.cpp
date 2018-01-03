@@ -46,15 +46,9 @@ void Parser::parse(string sentence)
 
 			for (it = words.begin() + 1; it != words.end(); ++it)
 			{
-				if(  )
 			}
 		}
 	}
-}
-
-bool Parser::isPhrase()
-{
-
 }
 
 string Parser::getVerb()
