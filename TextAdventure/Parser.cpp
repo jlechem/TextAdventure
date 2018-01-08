@@ -27,8 +27,23 @@ void Parser::parse(string sentence)
 {
 	Utilities::toLower(sentence);
 
-	// split the words into a vector
 	vector<string> words;
+
+	// this is an entire sentence so we need to break it up and parse the words
+	if (!sentence.empty())
+	{
+		// tokenize the command based on spaces
+		char delim = ' ';
+		stringstream ss(sentence);
+		string item;
+
+		words.clear();
+
+		while (std::getline(ss, item, delim))
+		{
+			words.push_back(item);
+		}
+	}
 
 	// validate the length
 	if (words.size() == 0)
