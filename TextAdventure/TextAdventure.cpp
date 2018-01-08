@@ -54,10 +54,6 @@ unique_ptr<Item> FindItem(int id, vector<unique_ptr<Item>> &items)
 		}
 	}
 
-	/// <summary>
-	/// Loads the verbs.
-	/// </summary>
-	/// <param name="command">The command.</param>
 	return result;
 	
 }

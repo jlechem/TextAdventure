@@ -188,6 +188,7 @@
     <ClInclude Include="Weapon.h" />
     <ClInclude Include="WearCommand.h" />
     <ClInclude Include="WieldCommand.h" />
+    <ClInclude Include="WordBase.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ActorBase.cpp" />
@@ -234,6 +235,7 @@
     <ClCompile Include="Weapon.cpp" />
     <ClCompile Include="WearCommand.cpp" />
     <ClCompile Include="WieldCommand.cpp" />
+    <ClCompile Include="WordBase.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\README.md" />

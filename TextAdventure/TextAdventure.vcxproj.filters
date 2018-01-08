@@ -183,6 +183,9 @@
     <ClInclude Include="WearCommand.h">
       <Filter>Commands\Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="WordBase.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -301,6 +304,9 @@
     </ClCompile>
     <ClCompile Include="WearCommand.cpp">
       <Filter>Commands\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="WordBase.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
