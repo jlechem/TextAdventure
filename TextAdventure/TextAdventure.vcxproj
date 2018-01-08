@@ -245,10 +245,13 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="..\README.md" />
+    <None Include="articles.dat" />
+    <None Include="articles2.dat" />
     <None Include="packages.config" />
     <None Include="ReadMe.dat" />
     <None Include="save.dat" />
     <None Include="TextAdventure.g" />
+    <None Include="verbs.dat" />
   </ItemGroup>
   <ItemGroup>
     <Xml Include="config.xml">

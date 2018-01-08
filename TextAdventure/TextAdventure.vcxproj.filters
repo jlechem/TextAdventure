@@ -333,6 +333,9 @@
     <None Include="packages.config" />
     <None Include="TextAdventure.g" />
     <None Include="save.dat" />
+    <None Include="verbs.dat" />
+    <None Include="articles.dat" />
+    <None Include="articles2.dat" />
   </ItemGroup>
   <ItemGroup>
     <Xml Include="config.xml" />
