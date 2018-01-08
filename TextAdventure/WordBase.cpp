@@ -59,5 +59,5 @@ void WordBase::removeWord(string word)
 bool WordBase::containsWord(string word)
 {
 	auto found = find(_words.begin(), _words.end(), word);
-	return found == _words.end();
+	return found != _words.end();
 }

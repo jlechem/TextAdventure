@@ -27,13 +27,17 @@ public:
 
 	string getVerb();
 	string getNoun();
-	string getAdjective();
+	string getArticleOne();
+	string getArticleTwo();
 	bool getIsValid();
 
 private:
+	string _sentence;
 	string _verb;
 	string _noun;
-	string _adjective;
+	string _articleOne;
+	string _articleTwo;
+	string _connector;
 
 	bool _isValid;
 

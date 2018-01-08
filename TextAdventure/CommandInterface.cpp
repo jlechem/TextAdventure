@@ -2,7 +2,7 @@
 	CommandInterface.cpp
 	Created By:			Justin LeCheminant
 	Created On:			12-20-2017
-	Last Modified:		12-27-2017
+	Last Modified:		1-8-2018
 	Last Modified By:	Justin LeCheminant
 
 	Notes:				Implementation of the CommandInterface class.
@@ -18,16 +18,21 @@ CommandInterface::CommandInterface()
 }
 
 CommandInterface::CommandInterface(string command)
+	: CommandInterface()
 {
 	_command = command;
-	parseCommand();
 }
 
 CommandInterface::CommandInterface(string command, Player* player)
+	: CommandInterface(command)
 {
 	_player = player;
-	_command = command;
-	parseCommand();
+}
+
+CommandInterface::CommandInterface(string command, Player *player, Parser* parser)
+	: CommandInterface(command, player)
+{
+	_parser = parser;
 }
 
 CommandInterface::~CommandInterface()
@@ -42,7 +47,7 @@ string CommandInterface::getCommad()
 void CommandInterface::setCommand(string command)
 {
 	_command = command;
-	parseCommand();
+	
 }
 
 void CommandInterface::addWord(string word)
@@ -78,20 +83,4 @@ Player* CommandInterface::getPlayerToActOn()
 void CommandInterface::setPlayerToActOn(Player* actor)
 {
 	_playerToActOn = actor;
-}
-
-void CommandInterface::parseCommand()
-{
-	// tokenize the command based on spaces
-	char delim = ' ';
-	stringstream ss(_command);
-	string item;
-
-	_commandWords.clear();
-
-	while (std::getline(ss, item, delim))
-	{
-		Utilities::toLower(item);
-		_commandWords.push_back(item);
-	}
 }

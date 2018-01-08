@@ -26,6 +26,11 @@ LookCommand::LookCommand(string command,Player* player)
 	: CommandInterface(command,player)
 {
 }
+ 
+LookCommand::LookCommand(string command, Player * player,Parser* parser)
+	: CommandInterface(command, player, parser)
+{
+}
 
 LookCommand::~LookCommand()
 {
@@ -33,45 +38,16 @@ LookCommand::~LookCommand()
 
 void LookCommand::process()
 {
-	// first check the validity
-	calculateValidity();
-
-	if (_isValid)
+	// first check if we just did look, this is just a verb no noun and no articles
+	if ( _parser->getNoun().empty() )
 	{
-		// based on the size of the vector we can assume certain things
-		switch (_commandWords.size())
-		{
-			// just a LOOK command, this prints the room description
-			case 1:
-				_commandResult = _player->getCurrentRoom()->getLongDescription();
-				break;
+		_commandResult = _player->getCurrentRoom()->getLongDescription();
+	}
+	else if ( !_parser->getNoun().empty())
+	{
+		auto item = _player->getCurrentRoom()->findItemDescription(_parser->getNoun());
 
-			// could be LOOK AT || LOOK ITEM
-			case 2:
-				if (_commandWords[1] == "at")
-				{
-					_commandResult = "Look at what?";
-				}
-				else
-				{
-					// use the single word to find in the room
-					string itemToFind = _commandWords[1];
-
-					auto item = _player->getCurrentRoom()->findItemDescription(itemToFind);
-
-					_commandResult = item.size() > 0 ? item : "There's no " + itemToFind + " here";
-				}
-
-				break;
-
-			default:
-
-				// we could have any length of LOOK X Y ...... Z
-				// we need to parse this somehow
-
-				break;
-
-		}
+		_commandResult = item.size() > 0 ? item : "There's no " + _parser->getNoun() + " here";
 	}
 	else
 	{
@@ -85,6 +61,4 @@ void LookCommand::process()
 
 void LookCommand::calculateValidity()
 {
-	auto size = _commandWords.size();
-	_isValid = size > 0 && size < 4;
 };

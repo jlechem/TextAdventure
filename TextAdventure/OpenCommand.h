@@ -20,6 +20,7 @@ public:
 	OpenCommand();
 	OpenCommand(string);
 	OpenCommand(string, Player*);
+	OpenCommand(string, Player*, Parser*);
 	~OpenCommand();
 
 	void process() override;

@@ -22,6 +22,7 @@ public:
 	MoveCommand();
 	MoveCommand(string);
 	MoveCommand(string, Player*);
+	MoveCommand(string, Player*, Parser*);
 	~MoveCommand();
 
 	void process() override;

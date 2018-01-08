@@ -26,6 +26,11 @@ TakeCommand::TakeCommand(string command,Player* player)
 {
 }
 
+TakeCommand::TakeCommand(string command, Player * player, Parser * parser)
+	: CommandInterface(command, player, parser)
+{
+}
+
 TakeCommand::~TakeCommand()
 {
 }

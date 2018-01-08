@@ -21,6 +21,7 @@ public:
 	TakeCommand();
 	TakeCommand(string);
 	TakeCommand(string, Player*);
+	TakeCommand(string, Player*, Parser*);
 	~TakeCommand();
 
 	void process() override;

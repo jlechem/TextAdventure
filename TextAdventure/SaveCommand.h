@@ -22,6 +22,7 @@ public:
 	SaveCommand();
 	SaveCommand(string);
 	SaveCommand(string, Player*);
+	SaveCommand(string, Player*, Parser*);
 	~SaveCommand(); 
 		
 	void process() override;

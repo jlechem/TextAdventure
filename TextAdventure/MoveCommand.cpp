@@ -28,6 +28,11 @@ MoveCommand::MoveCommand(string command,Player* player)
 {
 }
 
+MoveCommand::MoveCommand(string command, Player * player, Parser * parser)
+	: CommandInterface(command, player, parser)
+{
+}
+
 
 MoveCommand::~MoveCommand()
 {

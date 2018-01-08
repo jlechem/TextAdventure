@@ -27,6 +27,11 @@ WearCommand::WearCommand(string command, Player * player)
 {
 }
 
+WearCommand::WearCommand(string command, Player * player, Parser * parser)
+	: CommandInterface(command, player, parser)
+{
+}
+
 WearCommand::~WearCommand()
 {
 }

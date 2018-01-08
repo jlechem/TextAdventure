@@ -20,6 +20,7 @@ public:
 	PutCommand();
 	PutCommand(string);
 	PutCommand(string, Player*);
+	PutCommand(string, Player*, Parser*);
 	~PutCommand();
 
 	void process() override;

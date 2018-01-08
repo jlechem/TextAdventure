@@ -27,6 +27,11 @@ DropCommand::DropCommand(string command,Player* player)
 {
 }
 
+DropCommand::DropCommand(string command, Player * player, Parser * parser)
+	: CommandInterface(command,player,parser)
+{
+}
+
 DropCommand::~DropCommand()
 {
 }

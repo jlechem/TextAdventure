@@ -28,6 +28,11 @@ PutCommand::PutCommand(string command,Player* player)
 {
 }
 
+PutCommand::PutCommand(string command, Player * player, Parser * parser)
+	: CommandInterface(command, player, parser)
+{
+}
+
 PutCommand::~PutCommand()
 {
 }

@@ -14,6 +14,7 @@
 		CONSTRUCTOR(string);
 		CONSTRUCTOR(string);
 		CONSTRUCTOR(string, Player*);
+		CONSTRUCTOR(string, Player*,Parser*);
 
 	protected:
 		void calculateValidity();
@@ -26,6 +27,7 @@
 
 #include "ActorBase.h"
 #include "Player.h"
+#include "Parser.h"
 
 class CommandInterface
 {
@@ -33,6 +35,8 @@ public:
 	CommandInterface();
 	CommandInterface(string);
 	CommandInterface(string, Player*);
+	CommandInterface(string, Player*, Parser*  );
+
 	virtual ~CommandInterface();
 
 	virtual void process() = 0;
@@ -62,7 +66,7 @@ protected:
 	Player* _player;
 	Player* _playerToActOn;
 
-	void parseCommand();
+	Parser* _parser;
 
 	virtual void calculateValidity() = 0;
 

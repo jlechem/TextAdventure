@@ -14,7 +14,6 @@
 
 #include "Utils.h"
 
-
 Parser::Parser()
 {
 }
@@ -98,9 +97,14 @@ string Parser::getNoun()
 	return _noun;
 }
 
-string Parser::getAdjective()
+string Parser::getArticleOne()
 {
-	return _adjective;
+	return _articleOne;
+}
+
+string Parser::getArticleTwo()
+{
+	return _articleTwo;
 }
 
 bool Parser::getIsValid()

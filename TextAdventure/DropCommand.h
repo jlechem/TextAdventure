@@ -21,6 +21,7 @@ public:
 	DropCommand();
 	DropCommand(string);
 	DropCommand(string, Player*);
+	DropCommand(string, Player*,Parser*);
 	~DropCommand();
 	void process() override;
 

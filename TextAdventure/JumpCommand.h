@@ -8,6 +8,7 @@ class JumpCommand :
 public:
 	JumpCommand();
 	JumpCommand(string, Player*);
+	JumpCommand(string, Player*, Parser*);
 	~JumpCommand();
 
 	void process() override;

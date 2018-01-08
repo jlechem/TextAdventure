@@ -21,6 +21,7 @@ public:
 	TalkCommand();
 	TalkCommand(string);
 	TalkCommand(string, Player *);
+	TalkCommand(string, Player*, Parser*);
 	~TalkCommand();
 
 	void process();

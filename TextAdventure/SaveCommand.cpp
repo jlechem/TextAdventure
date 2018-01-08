@@ -30,6 +30,11 @@ SaveCommand::SaveCommand(string command,Player* player)
 	_isValid = true;
 }
 
+SaveCommand::SaveCommand(string command, Player * player, Parser * parser)
+	: CommandInterface(command, player, parser)
+{
+}
+
 SaveCommand::~SaveCommand()
 {
 }

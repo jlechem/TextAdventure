@@ -21,6 +21,7 @@ public:
 	WearCommand();
 	WearCommand(string);
 	WearCommand(string,Player*);
+	WearCommand(string, Player*, Parser*);
 	~WearCommand();
 
 	void process();

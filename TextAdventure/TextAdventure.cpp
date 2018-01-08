@@ -389,12 +389,11 @@ int main()
 		unique_ptr<CommandInterface> command;													// newCommand, used to process input from the user. We don't init this, we get our concrete instance from our factory
 		vector<unique_ptr<Player>> enemies;																// vector of enemiees, this gets cleared as we load them into the rooms to start
 		string xml;																												// holds our XML data from our config file
-		
-		LoadWords();
 
 		// load our data
 		cout << "Loading data" << endl << "Loading XML...";
 
+		LoadWords();
 		LoadXML(xml);
 
 		cout << "Done" << endl << "Parsing XML...";

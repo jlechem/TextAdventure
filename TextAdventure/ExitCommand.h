@@ -21,6 +21,7 @@ public:
 	ExitCommand();
 	ExitCommand(string);
 	ExitCommand(string, Player*);
+	ExitCommand(string, Player*, Parser*);
 	~ExitCommand();
 	
 	void process() override;

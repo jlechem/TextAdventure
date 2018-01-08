@@ -27,6 +27,11 @@ TalkCommand::TalkCommand(string command, Player* player)
 {
 }
 
+TalkCommand::TalkCommand(string command, Player * player, Parser * parser)
+	: CommandInterface(command, player, parser)
+{
+}
+
 TalkCommand::~TalkCommand()
 {
 }

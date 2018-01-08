@@ -29,6 +29,11 @@ InventoryCommand::InventoryCommand(string command,Player* player)
 	_isValid = true;
 }
 
+InventoryCommand::InventoryCommand(string command, Player * player, Parser * parser)
+	: CommandInterface(command, player, parser)
+{
+}
+
 InventoryCommand::~InventoryCommand()
 {
 }

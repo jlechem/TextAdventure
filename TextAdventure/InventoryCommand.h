@@ -21,6 +21,7 @@ public:
 	InventoryCommand();
 	InventoryCommand(string);
 	InventoryCommand(string, Player*);
+	InventoryCommand(string, Player*, Parser*);
 	~InventoryCommand();
 
 	void process();

@@ -21,6 +21,7 @@ public:
 	ExamineCommand();
 	ExamineCommand(string);
 	ExamineCommand(string, Player*);
+	ExamineCommand(string, Player*, Parser*);
 	~ExamineCommand();
 
 	void process() override;

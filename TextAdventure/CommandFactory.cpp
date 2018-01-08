@@ -27,93 +27,77 @@ unique_ptr<CommandInterface> CommandFactory::getCommand(string command, Player* 
 	unique_ptr<CommandInterface> commandPointer = nullptr;
 
 	// parse the command
-	Parser *p = new Parser();
+	
+	Parser* parser = new Parser();
+	parser->parse(command);
 
-	p->parse(command);
-
-	if (p->getIsValid())
+	if (parser->getIsValid())
 	{
-
-		string initCommand = p->getVerb();
+		string initCommand = parser->getVerb();
 
 		// command should be one word (look,move,take,drop,jump,etc)
 		// based on this we need to return the correct command class
 		if (Utilities::isLookCommand(initCommand))
 		{
-			commandPointer = make_unique<LookCommand>(command, player);
+			commandPointer = make_unique<LookCommand>(command, player, parser);
 		}
 		else if (Utilities::isMoveCommand(initCommand))
 		{
-			commandPointer = make_unique<MoveCommand>(command, player);
+			commandPointer = make_unique<MoveCommand>(command, player, parser);
 		}
 		else if (Utilities::isTakeCommand(initCommand))
 		{
-			commandPointer = make_unique<TakeCommand>(command, player);
+			commandPointer = make_unique<TakeCommand>(command, player, parser);
 		}
 		else if (Utilities::isDropCommand(initCommand))
 		{
-			commandPointer = make_unique<DropCommand>(command, player);
+			commandPointer = make_unique<DropCommand>(command, player, parser);
 		}
 		else if (Utilities::isExamineCommand(initCommand))
 		{
-			commandPointer = make_unique<ExamineCommand>(command, player);
+			commandPointer = make_unique<ExamineCommand>(command, player, parser);
 		}
 		else if (Utilities::isExitCommand(initCommand))
 		{
-			commandPointer = make_unique<ExitCommand>(command, player);
+			commandPointer = make_unique<ExitCommand>(command, player, parser);
 		}
 		else if (Utilities::isInventoryCommand(initCommand))
 		{
-			commandPointer = make_unique<InventoryCommand>(command, player);
-		}
-		else if (Utilities::isFunCommand(command))
-		{
-			// TODO: get the map from the utilities class some how......
-			map<string, string> m;
-			m["jump"] = "You jump up and down";
-			m["hum"] = "You hum that little ditty you like so much";
-			m["sing"] = "You sing that song you love but the key seems to be off.....";
-			m["dance"] = "You perform a waltz of epic proportions";
-			m["rest"] = "You rest for a minute";
-			m["sleep"] = "You lay down and sleep, refreshing";
-
-			commandPointer = make_unique<FunCommand>(command, player, m);
+			commandPointer = make_unique<InventoryCommand>(command, player, parser);
 		}
 		else if (Utilities::isPutCommand(initCommand))
 		{
-			commandPointer = make_unique<PutCommand>(command, player);
+			commandPointer = make_unique<PutCommand>(command, player, parser);
 		}
 		else if (Utilities::isOpenCommand(initCommand))
 		{
-			commandPointer = make_unique<OpenCommand>(command, player);
+			commandPointer = make_unique<OpenCommand>(command, player, parser);
 		}
 		else if (Utilities::isSaveCommand(command))
 		{
-			commandPointer = make_unique<SaveCommand>(command, player);
+			commandPointer = make_unique<SaveCommand>(command, player, parser);
 		}
 		else if (Utilities::isLoadCommand(command))
 		{
-			commandPointer = make_unique<LoadCommand>(command, player);
+			commandPointer = make_unique<LoadCommand>(command, player, parser);
 		}
 		else if (Utilities::isTalkCommand(command))
 		{
-			commandPointer = make_unique<TalkCommand>(command, player);
+			commandPointer = make_unique<TalkCommand>(command, player, parser);
 		}
 		else if (Utilities::isWearCommand(command))
 		{
-			commandPointer = make_unique<WearCommand>(command, player);
+			commandPointer = make_unique<WearCommand>(command, player, parser);
 		}
 		else if (Utilities::isWieldCommand(command))
 		{
-			commandPointer = make_unique<WieldCommand>(command, player);
+			commandPointer = make_unique<WieldCommand>(command, player, parser);
 		}
 	}
 	else
 	{
 		commandPointer = make_unique<InvalidCommand>(command, player);
 	}
-
-	delete p;
 
 	// just drop back the pointer we made based on the command
 	return std::move(commandPointer);

@@ -27,6 +27,11 @@ OpenCommand::OpenCommand(string command,Player* player)
 {
 }
 
+OpenCommand::OpenCommand(string command, Player * player, Parser * parser)
+	: CommandInterface(command, player, parser)
+{
+}
+
 OpenCommand::~OpenCommand()
 {
 }

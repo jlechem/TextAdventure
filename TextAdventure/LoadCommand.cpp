@@ -2,7 +2,7 @@
 	LoadCommand.cpp
 	Created By:		Justin LeCheminant
 	Created On:		12-21-2017
-	Last Modified:	12-29-2017
+	Last Modified:	1-8-2018
 
 	Notes: Implemenation of the LoadCommand class.
 
@@ -28,6 +28,11 @@ LoadCommand::LoadCommand(string command,Player* player)
 	: CommandInterface(command,player)
 {
 	_isValid = true;
+} 
+
+LoadCommand::LoadCommand(string command, Player * player, Parser* parser)
+	: CommandInterface(command,player, parser )
+{
 }
 
 LoadCommand::~LoadCommand()

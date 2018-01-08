@@ -30,6 +30,11 @@ ExitCommand::ExitCommand(string command,Player* player)
 	_isValid = true;
 }
 
+ExitCommand::ExitCommand(string command, Player * player, Parser * parser)
+	: CommandInterface(command, player, parser)
+{
+}
+
 ExitCommand::~ExitCommand()
 {
 }

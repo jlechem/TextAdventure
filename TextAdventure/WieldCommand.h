@@ -19,6 +19,7 @@ public:
 	WieldCommand();
 	WieldCommand(string);
 	WieldCommand(string,Player*);
+	WieldCommand(string, Player*, Parser*);
 	~WieldCommand();
 
 	void process();

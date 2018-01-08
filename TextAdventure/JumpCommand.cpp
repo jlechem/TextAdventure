@@ -14,6 +14,11 @@ JumpCommand::JumpCommand(string command,Player* player)
 	_isValid = true;
 }
 
+JumpCommand::JumpCommand(string command, Player * player, Parser * parser)
+	: CommandInterface(command, player, parser)
+{
+}
+
 
 JumpCommand::~JumpCommand()
 {

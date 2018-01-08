@@ -27,6 +27,11 @@ WieldCommand::WieldCommand(string command, Player * player)
 {
 }
 
+WieldCommand::WieldCommand(string command, Player * player, Parser * parser)
+	: CommandInterface(command, player, parser)
+{
+}
+
 WieldCommand::~WieldCommand()
 {
 }

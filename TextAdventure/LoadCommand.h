@@ -22,6 +22,8 @@ public:
 	LoadCommand();
 	LoadCommand(string);
 	LoadCommand(string, Player*);
+	LoadCommand(string, Player*, Parser* );
+	
 	~LoadCommand(); 
 
 	void process() override;

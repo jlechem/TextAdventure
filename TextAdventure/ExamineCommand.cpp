@@ -27,6 +27,11 @@ ExamineCommand::ExamineCommand(string command,Player* player)
 {
 }
 
+ExamineCommand::ExamineCommand(string command, Player * player, Parser * parser)
+	: CommandInterface(command, player, parser)
+{
+}
+
 ExamineCommand::~ExamineCommand()
 {
 }
