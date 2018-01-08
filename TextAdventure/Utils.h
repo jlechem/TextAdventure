@@ -68,6 +68,8 @@ public:
 
 	static void toLower(string&);
 
+	static string trim(const string&);
+
 private:
 	// blocks anyone from making a default instance of this class
 	Utilities();

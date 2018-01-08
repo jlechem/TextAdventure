@@ -16,13 +16,14 @@ class WordBase
 {
 public:
 	WordBase();
-	~WordBase();
+	virtual ~WordBase();
 
 	void Load(string);
 
 	vector<string>& getWords();
 	void addWord(string);
 	void removeWord(string);
+	bool containsWord(string);
 
 protected:
 	vector<string> _words;

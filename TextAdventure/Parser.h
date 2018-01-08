@@ -11,6 +11,12 @@
 
 #pragma once
 
+#include "stdafx.h"
+
+#include "Articles.h"
+#include "Articles2.h"
+#include "Verbs.h"
+
 class Parser
 {
 public:
@@ -22,10 +28,13 @@ public:
 	string getVerb();
 	string getNoun();
 	string getAdjective();
+	bool getIsValid();
 
 private:
 	string _verb;
 	string _noun;
 	string _adjective;
+
+	bool _isValid;
 
 };

@@ -27,6 +27,5 @@ public:
 private:
 	Rooms();
 	vector<Room*> s_rooms;
-	static Rooms s_instance;
 
 };

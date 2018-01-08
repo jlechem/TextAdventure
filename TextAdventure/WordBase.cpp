@@ -4,7 +4,7 @@
 	Created On:					1-8-2018
 	Last Modified On:			1-8-2018
 
-	Notes: Implementation of the WordBase class.
+	Notes: Implementation of the WordBase class
 
 */
 
@@ -54,4 +54,10 @@ void WordBase::removeWord(string word)
 	{
 		_words.erase(found);
 	}
+}
+
+bool WordBase::containsWord(string word)
+{
+	auto found = find(_words.begin(), _words.end(), word);
+	return found == _words.end();
 }

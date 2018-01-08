@@ -186,6 +186,15 @@
     <ClInclude Include="WordBase.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Verbs.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Articles.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Articles2.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -308,15 +317,20 @@
     <ClCompile Include="WordBase.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Verbs.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Articles.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Articles2.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.dat" />
     <None Include="..\README.md" />
     <None Include="packages.config" />
-    <None Include="TextAdventureLexer.tokens" />
-    <None Include="TextAdventureLexer.interp" />
-    <None Include="TextAdventure.tokens" />
-    <None Include="TextAdventure.interp" />
     <None Include="TextAdventure.g" />
     <None Include="save.dat" />
   </ItemGroup>

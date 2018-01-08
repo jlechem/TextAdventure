@@ -143,6 +143,8 @@
     <ClInclude Include="ActionType.h" />
     <ClInclude Include="ActorBase.h" />
     <ClInclude Include="Armor.h" />
+    <ClInclude Include="Articles.h" />
+    <ClInclude Include="Articles2.h" />
     <ClInclude Include="CommandFactory.h" />
     <ClInclude Include="CommandInterface.h" />
     <ClInclude Include="DescribableObjectInterface.h" />
@@ -185,6 +187,7 @@
     <ClInclude Include="targetver.h" />
     <ClInclude Include="TreasureCase.h" />
     <ClInclude Include="Utils.h" />
+    <ClInclude Include="Verbs.h" />
     <ClInclude Include="Weapon.h" />
     <ClInclude Include="WearCommand.h" />
     <ClInclude Include="WieldCommand.h" />
@@ -193,6 +196,8 @@
   <ItemGroup>
     <ClCompile Include="ActorBase.cpp" />
     <ClCompile Include="Armor.cpp" />
+    <ClCompile Include="Articles.cpp" />
+    <ClCompile Include="Articles2.cpp" />
     <ClCompile Include="CommandFactory.cpp" />
     <ClCompile Include="CommandInterface.cpp" />
     <ClCompile Include="DescribableObjectInterface.cpp" />
@@ -232,6 +237,7 @@
     <ClCompile Include="TextAdventure.cpp" />
     <ClCompile Include="TreasureCase.cpp" />
     <ClCompile Include="Utils.cpp" />
+    <ClCompile Include="Verbs.cpp" />
     <ClCompile Include="Weapon.cpp" />
     <ClCompile Include="WearCommand.cpp" />
     <ClCompile Include="WieldCommand.cpp" />
@@ -243,10 +249,6 @@
     <None Include="ReadMe.dat" />
     <None Include="save.dat" />
     <None Include="TextAdventure.g" />
-    <None Include="TextAdventure.interp" />
-    <None Include="TextAdventure.tokens" />
-    <None Include="TextAdventureLexer.interp" />
-    <None Include="TextAdventureLexer.tokens" />
   </ItemGroup>
   <ItemGroup>
     <Xml Include="config.xml">

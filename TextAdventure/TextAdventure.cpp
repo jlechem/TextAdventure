@@ -10,6 +10,8 @@
 
 #include "stdafx.h"
 
+#include "Articles.h"
+#include "Articles2.h"
 #include "Room.h"
 #include "Player.h"
 #include "GameSettings.h"
@@ -19,6 +21,7 @@
 #include "Item.h"
 #include "Utils.h"
 #include "Rooms.h"
+#include "Verbs.h"
 
 Room* FindRoom(int id)
 {
@@ -341,10 +344,18 @@ void EnterCommand(unique_ptr<CommandInterface>& command, Player* player )
 {
 	string commandLine;
 
-	cout << endl << "?> ";
+	do
+	{
+		cout << endl << "?> ";
+		getline(cin, commandLine);
+		commandLine = Utilities::trim(commandLine);
 
-	getline(cin, commandLine);
-
+		if (commandLine.empty())
+		{
+			cout << "What do you want to do?" << endl;
+		}
+	} while (commandLine.size() <= 0);
+	
 	Utilities::toLower(commandLine);
 
 	command = CommandFactory::getCommand(commandLine, player);
@@ -358,6 +369,12 @@ void ProcessCommand(unique_ptr<CommandInterface>& command)
 	command = nullptr;
 }
 
+void LoadWords()
+{
+	Verbs::getInstance().Load("verbs.dat");
+	Articles::getInstance().Load("articles.dat");
+	Articles2::getInstance().Load("articles2.dat");
+}
 
 /*
 	Main function
@@ -367,11 +384,11 @@ int main()
 	try
 	{
 		// declare some variables we need to use
-		vector<unique_ptr<Item>> items;										// vector of all the items in the game, this gets cleared as we load items into the rooms to start
+		vector<unique_ptr<Item>> items;																		// vector of all the items in the game, this gets cleared as we load items into the rooms to start
 		unique_ptr<GameSettings> settings = make_unique<GameSettings>();	// game settings
-		unique_ptr<CommandInterface> command;								// newCommand, used to process input from the user. We don't init this, we get our concrete instance from our factory
-		vector<unique_ptr<Player>> enemies;									// vector of enemiees, this gets cleared as we load them into the rooms to start
-		string xml;															// holds our XML data from our config file
+		unique_ptr<CommandInterface> command;													// newCommand, used to process input from the user. We don't init this, we get our concrete instance from our factory
+		vector<unique_ptr<Player>> enemies;																// vector of enemiees, this gets cleared as we load them into the rooms to start
+		string xml;																												// holds our XML data from our config file
 
 		// load our data
 		cout << "Loading data" << endl << "Loading XML...";
