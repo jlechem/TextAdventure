@@ -2,7 +2,7 @@
 	ExitCommand.h
 	Created By:		Justin LeCheminant
 	Created On:		12-21-2017
-	Last Modified:	12-21-2017
+	Last Modified:	1-8-2018
 
 	Notes: A class that represents an Exit command. Like quit, q, or exit
 

@@ -2,7 +2,7 @@
 	MoveCommand.cpp
 	Created By:			Justin LeCheminant
 	Created On:			12-20-2017
-	Last Modified:		12-21-2017
+	Last Modified:		1-8-2018
 	Last Modified By:	Justin LeCheminant
 
 	Notes: Implementation of the MoveCommand class.
@@ -40,23 +40,10 @@ MoveCommand::~MoveCommand()
 
 void MoveCommand::process()
 {
-	auto newDirection = Utilities::convertDirection(_command);
+	// check if the verb is a direction to move or a move N or go N
+	auto verb = _parser->getVerb() == "move" || _parser->getVerb() == "go " ? _parser->getNoun() : _parser->getVerb();
 
-	_commandResult = "There is no exit " + _command;
-
-	switch (_commandWords.size())
-	{
-		// single direction
-		case 1:
-			_commandResult = _player->Move(_command) ? _player->getCurrentRoom()->getLongDescription() : "There is no exit " + _command;
-			break;
-
-		case 2:
-			//  this could be north east, south west, etc
-			_commandResult = _player->Move(_commandWords[0] + " " + _commandWords[1]) ? _player->getCurrentRoom()->getLongDescription() : "There is no exit " + _command;
-			break;
-
-	}
+	_commandResult = _player->Move(verb) ? _player->getCurrentRoom()->getLongDescription() : "There is no exit " + verb;
 
 	cout << endl << _commandResult << endl;
 

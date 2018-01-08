@@ -1,6 +1,6 @@
 #include "stdafx.h"
-#include "JumpCommand.h"
 
+#include "JumpCommand.h"
 
 JumpCommand::JumpCommand()
 	: CommandInterface()
@@ -18,7 +18,6 @@ JumpCommand::JumpCommand(string command, Player * player, Parser * parser)
 	: CommandInterface(command, player, parser)
 {
 }
-
 
 JumpCommand::~JumpCommand()
 {

@@ -2,7 +2,7 @@
 	FunCommand.cpp
 	Created By:		Justin LeCheminant
 	Created On:		12-21-2017
-	Last Modified:	12-25-2017
+	Last Modified:	1-8-2018
 
 	Notes: Implemenation of the FunCommand class.
 

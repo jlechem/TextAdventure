@@ -2,9 +2,11 @@
 	InventoryCommand.cpp
 	Created By:		Justin LeCheminant
 	Created On:		12-22-2017
-	Last Modified:	12-22-2017
+	Last Modified:	1-8-2018
+
 	Notes: Implementation of the InventoryCommand class.
-*/
+
+	*/
 
 
 #include "stdafx.h"
