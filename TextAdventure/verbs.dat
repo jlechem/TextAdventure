@@ -1,5 +1,5 @@
-enter
 look
+l
 north
 south
 east
@@ -16,7 +16,10 @@ north east
 south east
 south west
 north west
-l
+up
+down
+u
+d
 quit
 q
 exit
@@ -31,6 +34,7 @@ jig
 speak
 say
 talk
+tell
 take
 drop
 eat
