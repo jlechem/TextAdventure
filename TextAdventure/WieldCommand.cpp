@@ -2,9 +2,9 @@
 	WieldCommand.cpp
 	Created By:		Justin LeCheminant
 	Created On:		01-02-2018
-	Last Modified:	1-8-2018
+	Last Modified:	1-9-2018
 
-	Notes: Implementation of the WieldCommand class
+	Notes:			Implementation of the WieldCommand class
 
 */
 
@@ -38,12 +38,6 @@ WieldCommand::~WieldCommand()
 
 void WieldCommand::process()
 {
-	calculateValidity();
-
 	cout << endl << "WIELD" << endl;
 
-}
-
-void WieldCommand::calculateValidity()
-{
 }

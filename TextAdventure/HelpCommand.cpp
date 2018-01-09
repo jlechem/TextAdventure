@@ -34,7 +34,3 @@ HelpCommand::~HelpCommand()
 void HelpCommand::process()
 {
 }
-
-void HelpCommand::calculateValidity()
-{
-}

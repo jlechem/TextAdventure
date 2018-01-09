@@ -1,10 +1,10 @@
 /*
-	WieldCommand.h
+	File:			WieldCommand.h
 	Created By:		Justin LeCheminant
 	Created On:		01-02-2018
-	Last Modified:	1-8-2018
+	Last Modified:	1-9-2018
 
-	Notes: A class used for a WieldCommand
+	Notes:			A class used for a WieldCommand (weapon)
 
 */
 
@@ -23,10 +23,5 @@ public:
 	~WieldCommand();
 
 	void process();
-
-protected:
-	void calculateValidity();
-
-private:
 
 };

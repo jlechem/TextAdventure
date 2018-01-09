@@ -1,11 +1,10 @@
 /*
-	MoveCommand.h
+	File:				MoveCommand.h
 	Created By:			Justin LeCheminant
 	Created On:			12-20-2017
-	Last Modified:		1-8-2018
-	Last Modified By:	Justin LeCheminant
+	Last Modified:		1-9-2018
 
-	Notes: This class represents a command to move, like N, S, n, northwest, up, down, etc
+	Notes:				This class represents a command to move, like N, S, n, northwest, up, down, etc
 
 */
 
@@ -26,9 +25,6 @@ public:
 	~MoveCommand();
 
 	void process() override;
-
-protected:
-	void calculateValidity() override;
 
 };
 

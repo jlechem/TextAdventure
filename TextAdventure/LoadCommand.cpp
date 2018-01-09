@@ -2,9 +2,9 @@
 	LoadCommand.cpp
 	Created By:		Justin LeCheminant
 	Created On:		12-21-2017
-	Last Modified:	1-8-2018
+	Last Modified:	1-9-2018
 
-	Notes: Implemenation of the LoadCommand class.
+	Notes:			Implemenation of the LoadCommand class.
 
 */
 
@@ -15,19 +15,16 @@
 LoadCommand::LoadCommand()
 	: CommandInterface()
 {
-	_isValid = true;
 }
 
 LoadCommand::LoadCommand(string command)
 	: CommandInterface(command)
 {
-	_isValid = true;
 }
 
 LoadCommand::LoadCommand(string command,Player* player)
 	: CommandInterface(command,player)
 {
-	_isValid = true;
 } 
 
 LoadCommand::LoadCommand(string command, Player * player, Parser* parser)
@@ -73,8 +70,4 @@ void LoadCommand::process()
 
 	cout << endl << _commandResult << endl;
 
-}
-
-void LoadCommand::calculateValidity()
-{
 }

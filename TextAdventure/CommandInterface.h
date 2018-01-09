@@ -1,8 +1,8 @@
 /*
-	CommandInterface.h
+	File:				CommandInterface.h
 	Created By:			Justin LeCheminant
 	Created On:			12-20-2017
-	Last Modified:		1-8-2018
+	Last Modified:		1-9-2018
 	Last Modified By:	Justin LeCheminant
 
 	Notes: This is an interface class that will get used for dependency injection. When a command is typed in the correct concrete
@@ -14,10 +14,7 @@
 		CONSTRUCTOR(string);
 		CONSTRUCTOR(string);
 		CONSTRUCTOR(string, Player*);
-		CONSTRUCTOR(string, Player*,Parser*);
-
-	protected:
-		void calculateValidity();
+		CONSTRUCTOR(string, Player*, Parser*);
 
 */
 
@@ -44,9 +41,6 @@ public:
 	string getCommad();
 	void setCommand(string);
 
-	void addWord(string);
-	vector<string>& getWords();
-
 	string getResult();
 
 	Player* getPlayer();
@@ -56,18 +50,12 @@ public:
 	void setPlayerToActOn(Player*);
 
 protected:
-	bool _isValid;
-
 	string _command;
 	string _commandResult;
-
-	vector<string> _commandWords;
 
 	Player* _player;
 	Player* _playerToActOn;
 
 	Parser* _parser;
-
-	virtual void calculateValidity() = 0;
 
 };

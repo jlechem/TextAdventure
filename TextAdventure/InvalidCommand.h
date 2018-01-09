@@ -1,10 +1,10 @@
 /*
-	InvalidCommand.h
+	File:			InvalidCommand.h
 	Created By:		Justin LeCheminant
 	Created On:		12-21-2017
-	Last Modified:	1-8-2018
+	Last Modified:	1-9-2018
 
-	Notes: A class that represents an InvalidCommand. This means the user typed in a command we don't understand.
+	Notes:			A class that represents an InvalidCommand. This means the user typed in a command we don't understand.
 
 */
 
@@ -24,8 +24,5 @@ public:
 	~InvalidCommand();
 
 	void process() override;
-
-protected:
-	void calculateValidity() override;
 
 };

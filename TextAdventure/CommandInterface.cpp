@@ -50,16 +50,6 @@ void CommandInterface::setCommand(string command)
 	
 }
 
-void CommandInterface::addWord(string word)
-{
-	_commandWords.push_back( word );
-}
-
-vector<string>& CommandInterface::getWords()
-{
-	return _commandWords;
-}
-
 string CommandInterface::getResult()
 {
 	return _commandResult;

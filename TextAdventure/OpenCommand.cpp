@@ -1,11 +1,11 @@
 /*
-	OpenCommand.cpp
+	File:				OpenCommand.cpp
 	Created By:			Justin LeCheminant
 	Created On:			12-27-2017
-	Last Modified:		1-8-2018
+	Last Modified:		1-9-2018
 	Last Modified By:	Justin LeCheminant
 
-	Notes: Implementation of the OpenCommand class
+	Notes:				Implementation of the OpenCommand class
 
 */
 
@@ -39,22 +39,20 @@ OpenCommand::~OpenCommand()
 void OpenCommand::process()
 {
 	// OPEN
-	if (_commandWords.size() == 1)
+	if (_parser->getNoun().empty() )
 	{
 		_commandResult = "Open what?";
 	}
 	// OPEN X
-	else if (_commandWords.size() == 2)
+	else
 	{
-		string itemToFind = _commandWords[1];
-
 		// get the item to open
-		auto itemToOpen = _player->dropItem(itemToFind,false);
+		auto itemToOpen = _player->dropItem(_parser->getNoun(),false);
 
 		// check if we didnt find anything in OUR inventory, we need to check the room
 		if (!itemToOpen)
 		{
-			itemToOpen = _player->getCurrentRoom()->findItem(itemToFind);
+			itemToOpen = _player->getCurrentRoom()->findItem(_parser->getNoun());
 		}
 
 		// check if we found something in the room or on the player
@@ -62,7 +60,7 @@ void OpenCommand::process()
 		{
 			if (itemToOpen->getCanOpen())
 			{
-				// TODO: always put back what we found
+				// TODO: OpenCommand, always put back what we found
 
 			}
 			else
@@ -75,17 +73,7 @@ void OpenCommand::process()
 			_commandResult = "I don't know how to " + _command;
 		}
 	}
-	// could be anything, OPEN THE X
-	else
-	{
-		_commandResult = "I don't know how to " + _command;
-	}
 
 	cout << endl << _commandResult << endl;
 
-}
-
-void OpenCommand::calculateValidity()
-{
-	_isValid = _commandWords.size() < 1;
 }

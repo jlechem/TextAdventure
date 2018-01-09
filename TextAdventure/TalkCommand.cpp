@@ -2,9 +2,9 @@
 	TalkCommand.cpp
 	Created By:		Justin LeCheminant
 	Created On:		01-02-2018
-	Last Modified:	1-8-2018
+	Last Modified:	1-9-2018
 
-	Notes: Implementation of the TalkCommand class
+	Notes:			Implementation of the TalkCommand class
 
 */
 
@@ -38,9 +38,7 @@ TalkCommand::~TalkCommand()
 
 void TalkCommand::process()
 {
-	calculateValidity();
-
-	if (_commandWords.size() == 1)
+	if (_parser->getNoun().empty())
 	{
 		_commandResult = "Say what?";
 	}
@@ -48,11 +46,7 @@ void TalkCommand::process()
 	{
 		_commandResult = "TALK";
 	}
-
+	
 	cout << endl <<  _commandResult << endl;
 
-}
-
-void TalkCommand::calculateValidity()
-{
 }

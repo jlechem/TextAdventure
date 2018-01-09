@@ -2,9 +2,9 @@
 	WearCommand.cpp
 	Created By:		Justin LeCheminant
 	Created On:		01-02-2018
-	Last Modified:	1-8-2018
+	Last Modified:	1-9-2018
 
-	Notes: Implementation of the WearCommand class
+	Notes:			Implementation of the WearCommand class
 
 */
 
@@ -38,11 +38,5 @@ WearCommand::~WearCommand()
 
 void WearCommand::process()
 {
-	calculateValidity();
-
 	cout << endl << "WEAR" << endl;
-}
-
-void WearCommand::calculateValidity()
-{
 }

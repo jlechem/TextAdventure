@@ -1,10 +1,10 @@
 /*
-	SaveCommand.h
+	File:			SaveCommand.h
 	Created By:		Justin LeCheminant
 	Created On:		12-21-2017
-	Last Modified:	1-8-2018
+	Last Modified:	1-9-2018
 
-	Notes: Class that represents a save command, ie when the user saves their game.
+	Notes:			A class that represents a save command, ie when the user saves their game.
 
 */
 
@@ -26,8 +26,5 @@ public:
 	~SaveCommand(); 
 		
 	void process() override;
-
-protected:
-	void calculateValidity() override;
 
 };

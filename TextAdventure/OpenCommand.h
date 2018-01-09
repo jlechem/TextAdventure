@@ -1,11 +1,10 @@
 /*
-	OpenCommand.h
+	File:				OpenCommand.h
 	Created By:			Justin LeCheminant
 	Created On:			12-27-2017
-	Last Modified:		1-8-2018
-	Last Modified By:	Justin LeCheminant
+	Last Modified:		1-9-2018
 
-	Notes: A class used to open an Item
+	Notes:				A class used to open an Item
 
 */
 
@@ -25,6 +24,4 @@ public:
 
 	void process() override;
 
-protected:
-	void calculateValidity() override;
 };

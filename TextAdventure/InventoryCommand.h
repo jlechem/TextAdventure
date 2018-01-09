@@ -1,10 +1,10 @@
 /*
-	InventoryCommand.h
+	File:			InventoryCommand.h
 	Created By:		Justin LeCheminant
 	Created On:		12-21-2017
-	Last Modified:	12-21-2017
+	Last Modified:	1-9-2018
 
-	Notes: A class used to hold game settings
+	Notes:			A class used to deal with inventory
 
 */
 
@@ -25,8 +25,5 @@ public:
 	~InventoryCommand();
 
 	void process();
-
-protected:
-	void calculateValidity();
 
 };

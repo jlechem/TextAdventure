@@ -1,10 +1,10 @@
 /*
-	SaveCommand.cpp
+	File:			SaveCommand.cpp
 	Created By:		Justin LeCheminant
 	Created On:		12-21-2017
-	Last Modified:	1-8-2018
+	Last Modified:	1-9-2018
 
-	Notes: Implemenation of the SaveCommand class.
+	Notes:			Implemenation of the SaveCommand class.
 
 */
 
@@ -15,19 +15,16 @@
 SaveCommand::SaveCommand()
 	: CommandInterface()
 {
-	_isValid = true;
 }
 
 SaveCommand::SaveCommand(string command)
 	: CommandInterface(command)
 {
-	_isValid = true;
 }
 
 SaveCommand::SaveCommand(string command,Player* player)
 	: CommandInterface(command, player)
 {
-	_isValid = true;
 }
 
 SaveCommand::SaveCommand(string command, Player * player, Parser * parser)
@@ -103,8 +100,4 @@ void SaveCommand::process()
 
 	std::cout << "Saved" << endl;
 
-}
-
-void SaveCommand::calculateValidity()
-{
 }

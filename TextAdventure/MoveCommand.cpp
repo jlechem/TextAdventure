@@ -2,10 +2,10 @@
 	MoveCommand.cpp
 	Created By:			Justin LeCheminant
 	Created On:			12-20-2017
-	Last Modified:		1-8-2018
+	Last Modified:		1-9-2018
 	Last Modified By:	Justin LeCheminant
 
-	Notes: Implementation of the MoveCommand class.
+	Notes:				Implementation of the MoveCommand class.
 
 */
 
@@ -47,9 +47,4 @@ void MoveCommand::process()
 
 	cout << endl << _commandResult << endl;
 
-}
-
-void MoveCommand::calculateValidity()
-{
-	_isValid = _commandWords.size() > 0 && _commandWords.size() < 4;
 }

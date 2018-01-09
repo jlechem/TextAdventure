@@ -15,25 +15,21 @@
 FunCommand::FunCommand()
 	: CommandInterface()
 {
-	_isValid = true;
 }
 
 FunCommand::FunCommand(string command)
 	: CommandInterface(command)
 {
-	_isValid = true;
 }
 
 FunCommand::FunCommand(string command,Player* player)
 	: CommandInterface(command,player)
 {
-	_isValid = true;
 }
 
 FunCommand::FunCommand(string command, Player* player, map<string, string> map)
 	: CommandInterface(command, player)
 {
-	_isValid = true;
 	_map = map;
 }
 
@@ -45,9 +41,4 @@ void FunCommand::process()
 {
 	// get the result from the map, if we got this far we know we have a valid command
 	cout << endl << _map[_command] << endl;
-}
-
-void FunCommand::calculateValidity()
-{
-	// fun commands are always true since all we have to do is get the result from the map
 }

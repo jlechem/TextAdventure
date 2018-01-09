@@ -1,10 +1,10 @@
 /*
-	TakeCommand.h
+	File:			TakeCommand.h
 	Created By:		Justin LeCheminant
 	Created On:		12-21-2017
-	Last Modified:	1-8-2018
+	Last Modified:	1-9-2018
 
-	Notes: A class that represents a take command, take all, take X, etc
+	Notes:			A class that represents a take command, take all, take X, etc
 
 */
 
@@ -25,8 +25,5 @@ public:
 	~TakeCommand();
 
 	void process() override;
-
-protected:
-	void calculateValidity() override;
 
 };

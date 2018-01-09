@@ -63,45 +63,17 @@ string ExamineCommand::examineItem(string name)
 
 void ExamineCommand::process()
 {
-	calculateValidity();
 
-	if (_isValid)
+	if (_parser->getNoun().empty())
 	{
-		string searchWord = "";
-
-		switch (_commandWords.size())
-		{
-		case 1:
-			// EXAMINE 
-			_commandResult = "Examine what?";
-			break;
-
-		case 2:
-			// EXAMINE X
-			searchWord = examineItem(_commandWords[1]);
-			_commandResult = searchWord.empty() ? "You don't have the " + _commandWords[1] : searchWord;
-
-			break;
-
-		default:
-			// TODO: Implement complex examine
-			break;
-		}
+		_commandResult = "Examine what?";
 	}
 	else
 	{
-		_commandResult = "I don't know how to " + _command;
+		string searchWord = examineItem(_parser->getNoun());
+		_commandResult = searchWord.empty() ? "You don't have the " + _parser->getNoun() : searchWord;
 	}
-	
+
 	cout << endl << _commandResult << endl;
-
-}
-
-void ExamineCommand::calculateValidity()
-{
-	// word count should be between 1 and 3
-	auto wordCount = _commandWords.size();
-
-	_isValid = wordCount > 0 && wordCount < 4;
 
 }

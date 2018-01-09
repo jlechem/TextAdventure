@@ -38,53 +38,23 @@ DropCommand::~DropCommand()
 
 void DropCommand::process() 
 {
-	// first check the validity
-	calculateValidity();
-
-	if (_isValid)
+	if (_parser->getNoun().empty())
 	{
-		// based on the size of the vector we can assume certain things
-		switch (_commandWords.size())
-		{
-		// just a DROP command, this prints Take what?
-		case 1:
-			_commandResult = "Drop what?";
-			break;
-
-		// DROP X
-		// Could be DROP ALL
-		case 2:
-			if (_commandWords[1] == "all")
-			{
-				auto result = _player->dropAllItems();
-				_commandResult = !result.empty() ? result : "You don't have anything";
-			}
-			else
-			{
-				// use the single word to find in the room
-				_commandResult = _player->dropItem(_commandWords[1]) ? "You drop the " + _commandWords[1] : "You don't have the " + _commandWords[1];
-			}
-
-			break;
-
-		default:
-			// we could have any length of LOOK X Y ...... Z
-			// we need to parse this somehow
-			break;
-
-		}
+		_commandResult = "Drop what?";
 	}
 	else
 	{
-		_commandResult = "I don't know how to " + _command;
+		if (_parser->getNoun() == "all")
+		{
+			auto result = _player->dropAllItems();
+			_commandResult = !result.empty() ? result : "You don't have anything";
+		}
+		else
+		{
+			// use the single word to find in the room
+			_commandResult = _player->dropItem(_parser->getNoun()) ? _parser->getNoun() + ": Dropped" : "You don't have the " + _parser->getNoun();
+		}
 	}
-
 	// always print our result
 	cout << endl << _commandResult << endl;
-}
-
-void DropCommand::calculateValidity()
-{
-	auto size = _commandWords.size();
-	_isValid = size > 0 && size < 4;
 }
