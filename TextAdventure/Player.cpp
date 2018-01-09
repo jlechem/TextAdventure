@@ -53,8 +53,6 @@ string Player::takeAllItems()
 	}
 	else
 	{
-		result = "You take the following items: ";
-
 		try
 		{
 			// loop through the items in the room and add them to our inventory
@@ -63,9 +61,13 @@ string Player::takeAllItems()
 			{
 				if ((*it)->getCanTake())
 				{
+					result += (*it)->getName() + ": Taken\n";
 					_score += (*it)->getScore();
-					result += (*it)->getName() + ", ";
 					_items.push_back(std::move((*it)));
+				}
+				else
+				{
+					result += (*it)->getName() + ": Nice try\n";
 				}
 			}
 
@@ -76,7 +78,7 @@ string Player::takeAllItems()
 			// clear any ', ' at the end
 			if (result.size() > 2)
 			{
-				result.erase(result.end() - 2, result.end());
+				result.erase(result.end() - 1);
 			}
 		}
 		catch (exception* e)
