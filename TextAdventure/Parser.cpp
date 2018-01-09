@@ -24,6 +24,8 @@ Parser::~Parser()
 
 void Parser::parse(string sentence)
 {
+	_isValid = false;
+
 	Utilities::toLower(sentence);
 
 	vector<string> words;
@@ -45,25 +47,128 @@ void Parser::parse(string sentence)
 	}
 
 	// validate the length
-	if (words.size() == 0)
+	if (words.empty() )
 	{
 		cout << "Do what?";
+		_isValid = false;
 	}
 	else
 	{
-		// look at the first word, this should be a valid VERB (LOOK,MOVE,etc)
+		// look at the first word, this should be a VERB
 		_verb = words[0];
 		
-		// validate the verb is a valid verb, if not our entire command is invalid
+		// validate the verb is a valid, if not our entire command is invalid
 		if (!Verbs::getInstance().containsWord(_verb))
 		{
 			_isValid = false;
 		}
 		else
 		{
-			// next if we have anything should be an article or noun
+			// based on the size of the sentence we handle things differenty
+			switch (words.size())
+			{
+				// LOOK, N, NE, ETC
+				case 1:
+					// we already know this is valid or we wouldn't have gotten here past the first valid check
+					// so we do nothing here but break out
+					_isValid = true;
+					break;
+
+				// LOOK ITEM
+				// TAKE ITEM
+				// DROP ALL
+				// two word command
+				case 2:
+						// this is easy, we just assume the second word is the noun
+					_noun = words[1];
+					_isValid = true;
+					break;
+
+				// LOOK AT ITEM
+				// TAKE THE ITEM
+				// DROP THE ITEM
+				// three word commands
+				case 3:
+					_articleOne = words[1];
+					_noun = words[2];
+
+					_isValid = Articles::getInstance().containsWord(_articleOne);
+
+					break;
+
+				// LOOK AT THE ITEM
+				// 4 word commands
+				case 4:
+					_articleOne = words[1];
+					_articleTwo = words[2];
+					_noun = words[3];
+
+					_isValid = Articles::getInstance().containsWord(_articleOne) && Articles2::getInstance().containsWord(_articleTwo);
+
+					break;
+
+				// LOOK AT THE ROUND BLUE ITEM (ADJECTIVES are just examples, could be a lot of them)
+				default:
+					_articleOne = words[1];
+					_articleTwo = words[2];
+					
+					_isValid = Articles::getInstance().containsWord(_articleOne) && Articles2::getInstance().containsWord(_articleTwo);
+
+					// the noun is the rest of the words
+					if (_isValid)
+					{
+						for (auto i = 3; i < words.size(); i++)
+						{
+							_noun += words[i] + " ";
+						}
+
+						// erase the last space
+						_noun.erase(_noun.end() - 1);
+
+					}
+					
+					break;
+
+			}
+
+
+			// if we have any more words process them
 			if (words.size() > 1)
 			{
+				
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 				// if no article we assume its all noun the rest of the way
 				if (!Articles::getInstance().containsWord(words[1]))
 				{
@@ -79,10 +184,6 @@ void Parser::parse(string sentence)
 					}
 				}
 			}
-
-
-
-
 		}
 	}
 }
