@@ -103,24 +103,22 @@ string Player::dropAllItems()
 	}
 	else
 	{
-		result = "You drop the following items: ";
-
 		try
 		{
 			// loop through the items in the room and add them to our inventory
 			for (it = _items.begin(); it != _items.end(); ++it)
 			{
-				result += (*it)->getName() + ", ";
+				result += (*it)->getName() + ": Dropped\n";
 				_score -= (*it)->getScore();
 				_currentRoom->addItem(std::move((*it)));
 			}
 
 			_items.clear();
 
-			// clear any ', ' at the end
-			if (result.size() > 2)
+			// clear any '\n' at the end
+			if (result.size() > 1)
 			{
-				result.erase(result.end() - 2, result.end());
+				result.erase(result.end() - 1);
 			}
 		}
 		catch (exception* e)
