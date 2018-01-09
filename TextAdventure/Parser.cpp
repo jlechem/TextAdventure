@@ -102,9 +102,10 @@ void Parser::parse(string sentence)
 					_articleOne = words[1];
 					_articleTwo = words[2];
 					_noun = words[3];
-
-					_isValid = Articles::getInstance().containsWord(_articleOne) && Articles2::getInstance().containsWord(_articleTwo);
-
+	
+					_isValid =	Articles::getInstance().containsWord(_articleOne) &&
+								Articles2::getInstance().containsWord(_articleTwo)  &&
+								( _articleOne != _articleTwo );
 					break;
 
 				// LOOK AT THE ROUND BLUE ITEM (ADJECTIVES are just examples, could be a lot of them)
@@ -112,7 +113,9 @@ void Parser::parse(string sentence)
 					_articleOne = words[1];
 					_articleTwo = words[2];
 					
-					_isValid = Articles::getInstance().containsWord(_articleOne) && Articles2::getInstance().containsWord(_articleTwo);
+					_isValid = Articles::getInstance().containsWord(_articleOne) &&
+						Articles2::getInstance().containsWord(_articleTwo) &&
+						(_articleOne != _articleTwo);
 
 					// the noun is the rest of the words
 					if (_isValid)
