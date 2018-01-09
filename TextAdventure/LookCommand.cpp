@@ -45,9 +45,16 @@ void LookCommand::process()
 	}
 	else if ( !_parser->getNoun().empty())
 	{
-		auto item = _player->getCurrentRoom()->findItemDescription(_parser->getNoun());
+		if (_parser->getNoun() == "at")
+		{
+			_commandResult = "Look at what?";
+		}
+		else
+		{
+			auto item = _player->getCurrentRoom()->findItemDescription(_parser->getNoun());
 
-		_commandResult = item.size() > 0 ? item : "There's no " + _parser->getNoun() + " here";
+			_commandResult = item.size() > 0 ? item : "There's no " + _parser->getNoun() + " here";
+		}
 	}
 	else
 	{
