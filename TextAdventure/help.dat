@@ -1,0 +1,18 @@
+This is Justin's text adventure, a game of low cunning, small combat, and hopefully fun.
+
+The following commands are available (more may exist???):
+look
+north
+south
+east
+west
+north west
+south west
+north east
+south east
+up
+down
+take
+drop
+save
+load

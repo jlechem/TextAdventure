@@ -336,6 +336,7 @@
     <None Include="verbs.dat" />
     <None Include="articles.dat" />
     <None Include="articles2.dat" />
+    <None Include="help.dat" />
   </ItemGroup>
   <ItemGroup>
     <Xml Include="config.xml" />

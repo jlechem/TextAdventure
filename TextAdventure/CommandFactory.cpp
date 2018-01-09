@@ -93,6 +93,10 @@ unique_ptr<CommandInterface> CommandFactory::getCommand(string command, Player* 
 		{
 			commandPointer = make_unique<WieldCommand>(command, player, parser);
 		}
+		else if (Utilities::isHelpCommand(command))
+		{
+			commandPointer = make_unique<HelpCommand>(command, player, parser);
+		}
 	}
 	else
 	{

@@ -19,6 +19,7 @@ public:
 	HelpCommand();
 	HelpCommand(string);
 	HelpCommand(string, Player*);
+	HelpCommand(string, Player*, Parser*);
 	~HelpCommand();
 
 	void process() override;

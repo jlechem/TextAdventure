@@ -247,6 +247,7 @@
     <None Include="..\README.md" />
     <None Include="articles.dat" />
     <None Include="articles2.dat" />
+    <None Include="help.dat" />
     <None Include="packages.config" />
     <None Include="ReadMe.dat" />
     <None Include="save.dat" />
