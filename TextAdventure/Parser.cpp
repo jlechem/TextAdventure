@@ -130,60 +130,6 @@ void Parser::parse(string sentence)
 					break;
 
 			}
-
-
-			// if we have any more words process them
-			if (words.size() > 1)
-			{
-				
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-				// if no article we assume its all noun the rest of the way
-				if (!Articles::getInstance().containsWord(words[1]))
-				{
-					for (auto i = 1; i < words.size(); i++)
-					{
-						_noun += words[i] + " ";
-					}
-
-					// trim the end of the noun
-					if (_noun.size() > 1)
-					{
-						_noun.erase(_noun.end() - 1);
-					}
-				}
-			}
 		}
 	}
 }
