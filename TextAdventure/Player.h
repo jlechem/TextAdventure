@@ -42,9 +42,6 @@ public:
 	unsigned long getExperienceToNextLevel();
 	void setExperienceToNextLevel(unsigned long);
 
-	string openItem(string);
-	string closeItem(string);
-
 private:
 	bool _isGameOver;
 

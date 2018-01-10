@@ -2,7 +2,7 @@
 	ActorBase.h
 	Created By:			Justin LeCheminant
 	Created On:			12-21-2017
-	Last Modified:		01-02-2018
+	Last Modified:		1-9-2018
 	Last Modified By:	Justin LeCheminant
 
 	Notes: This is a base class for actors in the game. An actor can be a player, enemy, or NPC (Non Playable Character).
@@ -14,9 +14,11 @@
 #include "stdafx.h"
 
 #include "Armor.h"
+#include "ItemInterface.h"
 #include "Weapon.h"
 
 class ActorBase
+	: public ItemInterface
 {
 public:
 	ActorBase();
@@ -37,14 +39,11 @@ public:
 	void setId(unsigned int);
 
 	bool addItem(string);
-	bool dropItem(string);
-	unique_ptr<Item> dropItem(string,bool);
+	bool addItem(unique_ptr<Item> item);
 
-	unique_ptr<Item>& getItem(string );
+	bool dropItem(string);
 
 	vector<unique_ptr<Item>>* getInventory();
-
-	bool addItem(unique_ptr<Item> item);
 
 	Room* getCurrentRoom();
 	void setCurrentRoom(Room*);
@@ -71,11 +70,7 @@ protected:
 	unsigned long _numberOfMoves;
 	unsigned int _hitpoints;
 
-	vector<unique_ptr<Item>> _items;
-
 	Room* _currentRoom;
-
-	unique_ptr<Item> findItem(string);
 
 	unsigned int _level;
 
@@ -83,7 +78,5 @@ protected:
 	unique_ptr<Weapon> _currentWeapon;
 
 	vector<unique_ptr<Armor>> _armors;
-
-private:
 	
 };

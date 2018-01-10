@@ -50,3 +50,76 @@ unique_ptr<Item> ItemInterface::findItem(string name)
 
 	return result;
 }
+
+string ItemInterface::openItem(string name)
+{
+	// empty means success
+	string result = "";
+
+	// first check if we even have this fucking thing
+	auto item = findItem(name);
+
+	if (item)
+	{
+		// can we open this thing?
+		if (item->getCanOpen())
+		{
+			// is it already open
+			if (item->getIsOpen())
+			{
+				result = ": Already open";
+			}
+			else
+			{
+				item->setIsOpen(true);
+			}
+		}
+		else
+		{
+			result = ": Nice try";
+		}
+	}
+	else
+	{
+		result = ": Not found";
+	}
+
+	return result;
+
+}
+
+string ItemInterface::closeItem(string name)
+{
+	// empty means success
+	string result = "";
+
+	// first check if we even have this fucking thing
+	auto item = findItem(name);
+
+	if (item)
+	{
+		// can we open this thing?
+		if (item->getCanOpen())
+		{
+			// is it already closed
+			if (!item->getIsOpen())
+			{
+				result = ": Already closed";
+			}
+			else
+			{
+				item->setIsOpen(false);
+			}
+		}
+		else
+		{
+			result = ": Nice try";
+		}
+	}
+	else
+	{
+		result = ": Not found";
+	}
+
+	return result;
+}

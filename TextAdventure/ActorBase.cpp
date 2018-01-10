@@ -2,7 +2,7 @@
 	ActorBase.cpp
 	Created By:			Justin LeCheminant
 	Created On:			12-20-2017
-	Last Modified:		01-02-2018
+	Last Modified:		1-9-2018
 	Last Modified By:	Justin LeCheminant
 
 	Notes: Implementation of the ActorBase class.
@@ -114,33 +114,6 @@ bool ActorBase::addItem(string name)
 
 }
 
-unique_ptr<Item> ActorBase::dropItem(string name, bool x = false)
-{
-	// find the item in our collection if it exists
-	auto foundItem = findItem(name);
-	return std::move(foundItem);
-}
-
-unique_ptr<Item>& ActorBase::getItem(string name)
-{
-	// find the item in our collection if it exists
-	unique_ptr<Item> result = nullptr;
-
-	vector<unique_ptr<Item>>::iterator it;
-
-	for (it = _items.begin(); it != _items.end(); ++it)
-	{
-		auto temp = find((*it)->getAlterateNames().begin(), (*it)->getAlterateNames().end(), name);
-
-		if (temp != (*it)->getAlterateNames().end())
-		{
-			return (*it);
-		}
-	}
-
-	return result;
-}
-
 bool ActorBase::dropItem(string name)
 {
 	bool result = false;
@@ -232,25 +205,4 @@ void ActorBase::setLevel(unsigned int level)
 void ActorBase::levelUp()
 {
 	_level++;
-}
-
-unique_ptr<Item> ActorBase::findItem(string name)
-{
-	unique_ptr<Item> result = nullptr;
-
-	vector<unique_ptr<Item>>::iterator it;
-
-	for (it = _items.begin(); it != _items.end(); ++it)
-	{
-		auto temp = find((*it)->getAlterateNames().begin(), (*it)->getAlterateNames().end(), name);
-
-		if (temp != (*it)->getAlterateNames().end())
-		{
-			result = std::move((*it));
-			_items.erase(it);
-			break;
-		}
-	}
-
-	return result;
 }

@@ -13,7 +13,6 @@
 #include "stdafx.h"
 
 #include "Item.h"
-#include "Room.h"
 
 class ItemInterface
 {
@@ -25,6 +24,9 @@ public:
 	void addItem(unique_ptr<Item>);
 	unique_ptr<Item> findItem(string);
 	
+	string openItem(string);
+	string closeItem(string);
+
 protected:
 	vector<unique_ptr<Item>> _items;
 

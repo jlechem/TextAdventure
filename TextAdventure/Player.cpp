@@ -1,15 +1,16 @@
 /*
-Map.cpp
-Created By:			Justin LeCheminant
-Created On:			12-20-2017
-Last Modified:		12-26-2017
-Last Modified By:	Justin LeCheminant
+	File:							Player.cpp
+	Created By:			Justin LeCheminant
+	Created On:			12-20-2017
+	Last Modified:		1-9-2018
+	Last Modified By:	Justin LeCheminant
 
-Notes: Implementation of the Player class.
+	Notes:						Implementation of the Player class.
 
 */
 
 #include "stdafx.h"
+
 #include "Player.h"
 
 Player::Player(): ActorBase()
@@ -165,40 +166,4 @@ unsigned long Player::getExperienceToNextLevel()
 void Player::setExperienceToNextLevel(unsigned long experience)
 {
 	_experienceToNextLevel = experience;
-}
-
-string Player::openItem(string name)
-{
-	string result = "";
-
-	auto item = findItem(name);
-
-	if (item)
-	{
-		if (item->getCanOpen())
-		{
-			if (item->getIsOpen())
-			{
-				item->setIsOpen(true);
-			}
-			else
-			{
-				result = name + ": Is already open";
-			}
-		}
-		else
-		{
-			result = name + ": Nice try";
-		}
-	}
-	
-	_items.push_back(std::move(item));
-
-	return result;
-
-}
-
-string Player::closeItem(string name)
-{
-	return "";
 }
