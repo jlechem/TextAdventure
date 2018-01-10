@@ -78,86 +78,85 @@ void PutCommand::process()
 		// find the first item either in the room or on the player
 		// find the second item either in the room or on the player
 		auto itemPointer = _player->getCurrentRoom()->findItem(item);
-		
+
 		if (!itemPointer)
 		{
-			itemPointer = _player->dropItem(item,false);
-		}
+			auto containerPointer = _player->getCurrentRoom()->findItem(container);
 
-		auto containerPointer = _player->getCurrentRoom()->findItem(container);
-
-		if (!containerPointer)
-		{
-			containerPointer = _player->dropItem(item, false);
-			personContainer = true;
-		}
-
-		// only continue if we found both items
-		if (containerPointer && itemPointer)
-		{
-			// check if the container can even hold anything
-			if (containerPointer->getCanAddItem())
+			if (!containerPointer)
 			{
-				// if it can hold something check if it's open
-				if (containerPointer->getIsOpen())
+				//containerPointer = _player->dropItem(item);
+				personContainer = true;
+			}
+
+			// only continue if we found both items
+			if (containerPointer && itemPointer)
+			{
+				// check if the container can even hold anything
+				if (containerPointer->getCanAddItem())
 				{
-					// check if the container if full
-					if (!containerPointer->getIsFull())
+					// if it can hold something check if it's open
+					if (containerPointer->getIsOpen())
 					{
-						// TODO: validate the item going in can fit into the container
-
-						// ok the container is open, not full, lets put the new item in it
-						containerPointer->addItem(std::move(itemPointer));
-
-						// now put the container back where it came from, this could be a person or room
-						if (personContainer)
+						// check if the container if full
+						if (!containerPointer->getIsFull())
 						{
-							_player->addItem(std::move(containerPointer));
+							// TODO: validate the item going in can fit into the container
+
+							// ok the container is open, not full, lets put the new item in it
+							containerPointer->addItem(std::move(itemPointer));
+
+							// now put the container back where it came from, this could be a person or room
+							if (personContainer)
+							{
+								_player->addItem(std::move(containerPointer));
+							}
+							else
+							{
+								_player->getCurrentRoom()->addItem(std::move(containerPointer));
+							}
+
+							// pheew made it through all the validations
+							_commandResult = "You put the " + item + " in the " + container;
+
 						}
 						else
 						{
-							_player->getCurrentRoom()->addItem(std::move(containerPointer));
+							_commandResult = "Sorry " + container + " is full";
 						}
-
-						// pheew made it through all the validations
-						_commandResult = "You put the " + item + " in the " + container;
-
 					}
 					else
 					{
-						_commandResult = "Sorry " + container + " is full";
+						_commandResult = container + " isn't open";
 					}
 				}
 				else
 				{
-					_commandResult = container + " isn't open";
+					_commandResult = container + " can't hold anything";
 				}
 			}
 			else
 			{
-				_commandResult = container + " can't hold anything";
+				// setting formatting for error messages
+				if (!itemPointer && !containerPointer)
+				{
+					_commandResult = "There's no " + item + " or " + container + " here";
+				}
+				else if (!itemPointer && containerPointer)
+				{
+					_commandResult = "There's no " + item + " here";
+					// TODO: put the item back wherever we got it from
+				}
+				else
+				{
+					_commandResult = "There's no " + container + " here";
+					// TODO: put the item back wherever we got it from
+				}
 			}
 		}
-		else
-		{
-			// setting formatting for error messages
-			if (!itemPointer && !containerPointer)
-			{
-				_commandResult = "There's no " + item + " or " + container + " here";
-			}
-			else if (!itemPointer && containerPointer)
-			{
-				_commandResult = "There's no " + item + " here";
-				// TODO: put the item back wherever we got it from
-			}
-			else
-			{
-				_commandResult = "There's no "  + container + " here";
-				// TODO: put the item back wherever we got it from
-			}
-		}
+
+		cout << endl << _commandResult << endl;
+
+
 	}
-
-	cout << endl << _commandResult << endl;
-
 }

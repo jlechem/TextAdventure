@@ -63,8 +63,15 @@ void OpenCommand::process()
 		{
 			if (itemToOpen->getCanOpen())
 			{
-				itemToOpen->setIsOpen(true);
-				_commandResult = itemToOpen->getName() + ": Opened";
+				if (itemToOpen->getIsOpen())
+				{
+					_commandResult = _parser->getNoun() + " is already open";
+				}
+				else
+				{
+					itemToOpen->setIsOpen(true);
+					_commandResult = itemToOpen->getName() + ": Opened";
+				}
 			}
 			else
 			{

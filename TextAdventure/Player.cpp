@@ -166,3 +166,39 @@ void Player::setExperienceToNextLevel(unsigned long experience)
 {
 	_experienceToNextLevel = experience;
 }
+
+string Player::openItem(string name)
+{
+	string result = "";
+
+	auto item = findItem(name);
+
+	if (item)
+	{
+		if (item->getCanOpen())
+		{
+			if (item->getIsOpen())
+			{
+				item->setIsOpen(true);
+			}
+			else
+			{
+				result = name + ": Is already open";
+			}
+		}
+		else
+		{
+			result = name + ": Nice try";
+		}
+	}
+	
+	_items.push_back(std::move(item));
+
+	return result;
+
+}
+
+string Player::closeItem(string name)
+{
+	return "";
+}
