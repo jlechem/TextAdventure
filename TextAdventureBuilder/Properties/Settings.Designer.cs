@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TextAdventureCreator.Properties
+namespace TextAdventureBuilder.Properties
 {
 
 

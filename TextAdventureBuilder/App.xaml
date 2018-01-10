@@ -1,7 +1,7 @@
-﻿<Application x:Class="TextAdventureCreator.App"
+﻿<Application x:Class="TextAdventureBuilder.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:TextAdventureCreator"
+             xmlns:local="clr-namespace:TextAdventureBuilder"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
          
