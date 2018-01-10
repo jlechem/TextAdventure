@@ -58,7 +58,6 @@ private:
 	string _exitString;
 	string _itemsString;
 
-	vector<unique_ptr<Item>> _items;
 	map<Directions,Room*> _exits;
 	
 	void generateExitString();

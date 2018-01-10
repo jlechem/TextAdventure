@@ -46,15 +46,28 @@ void OpenCommand::process()
 	// OPEN X
 	else
 	{
-		// check the player and see if they opened the damn thing
-		string playerResult = _player->openItem(_parser->getNoun());
+		bool openResult = _player->openItem(_parser->getNoun());
 
-		// empty means something happened so do the room
-		_commandResult = playerResult.empty() ?
-			_commandResult = _player->getCurrentRoom()->openItem(_parser->getNoun()) :
-			playerResult;
+		if (openResult)
+		{
+			_commandResult = _parser->getNoun() + ": Opened";
+		}
+		else
+		{
+			// first check the error message, so we need to know if we need to check the room
+			if (_player->getItemErrorMessage() != "Not found")
+			{
+				_commandResult = _parser->getNoun() + ": " + _player->getItemErrorMessage();
+			}
+			else
+			{
+				_commandResult = _player->getCurrentRoom()->openItem(_parser->getNoun()) ? 
+					_parser->getNoun() + ": Opened" : 
+					_parser->getNoun() + ": " + _player->getCurrentRoom()->getItemErrorMessage();
+			}
+		}
 	}
 
 	cout << endl << _commandResult << endl;
-
+	
 }

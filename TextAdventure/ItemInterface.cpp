@@ -51,10 +51,10 @@ unique_ptr<Item> ItemInterface::findItem(string name)
 	return result;
 }
 
-string ItemInterface::openItem(string name)
+bool ItemInterface::openItem(string name)
 {
 	// empty means success
-	string result = "";
+	bool result = true;
 
 	// first check if we even have this fucking thing
 	auto item = findItem(name);
@@ -67,7 +67,8 @@ string ItemInterface::openItem(string name)
 			// is it already open
 			if (item->getIsOpen())
 			{
-				result = ": Already open";
+				result = false;
+				_error = "Already open";
 			}
 			else
 			{
@@ -76,22 +77,28 @@ string ItemInterface::openItem(string name)
 		}
 		else
 		{
-			result = ": Nice try";
+			result = false;
+			_error = "Nice try";
 		}
+
+		// always put it back
+		addItem(std::move(item));
+
 	}
 	else
 	{
-		result = ": Not found";
+		result = false;
+		_error = "Not found";
 	}
 
 	return result;
 
 }
 
-string ItemInterface::closeItem(string name)
+bool ItemInterface::closeItem(string name)
 {
 	// empty means success
-	string result = "";
+	bool result = true;
 
 	// first check if we even have this fucking thing
 	auto item = findItem(name);
@@ -104,7 +111,8 @@ string ItemInterface::closeItem(string name)
 			// is it already closed
 			if (!item->getIsOpen())
 			{
-				result = ": Already closed";
+				result = false;
+				_error = "Already closed";
 			}
 			else
 			{
@@ -113,13 +121,20 @@ string ItemInterface::closeItem(string name)
 		}
 		else
 		{
-			result = ": Nice try";
+			result = false;
+			_error = "Nice try";
 		}
 	}
 	else
 	{
-		result = ": Not found";
+		result = false;
+		_error = "Not found";
 	}
 
 	return result;
+}
+
+string ItemInterface::getItemErrorMessage()
+{
+	return _error;
 }

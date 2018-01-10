@@ -24,10 +24,12 @@ public:
 	void addItem(unique_ptr<Item>);
 	unique_ptr<Item> findItem(string);
 	
-	string openItem(string);
-	string closeItem(string);
+	bool openItem(string);
+	bool closeItem(string);
+
+	string getItemErrorMessage();
 
 protected:
 	vector<unique_ptr<Item>> _items;
-
+	string _error;
 };
