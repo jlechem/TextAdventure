@@ -30,27 +30,6 @@ void ItemInterface::addItem(unique_ptr<Item> item)
 	_items.push_back(std::move(item));
 }
 
-bool ItemInterface::addItem(string name)
-{
-	bool result = false;
-
-	auto item = findItem(name);
-	
-	if (item)
-	{
-		_items.push_back(std::move(item));
-		result = true;
-	}
-	
-	return result;
-
-}
-
-unique_ptr<Item> ItemInterface::dropItem(string name)
-{
-	return std::move(findItem(name));
-}
-
 unique_ptr<Item> ItemInterface::findItem(string name)
 {
 	unique_ptr<Item> result = nullptr;

@@ -23,13 +23,9 @@ public:
 	
 	vector<unique_ptr<Item>>& getItems();
 	void addItem(unique_ptr<Item>);
-	bool addItem(string);
-	unique_ptr<Item> dropItem(string);
+	unique_ptr<Item> findItem(string);
 	
 protected:
 	vector<unique_ptr<Item>> _items;
-
-private:
-	unique_ptr<Item> findItem(string);
 
 };
