@@ -255,6 +255,21 @@ void LoadItems(vector<unique_ptr<Item>> &items, rapidxml::xml_document<>* docume
 			attributeNode = attributeNode->next_sibling();
 			newItem->setScore(atoi(attributeNode->value()));
 
+			// can open
+			attributeNode = attributeNode->next_sibling();
+			newItem->setCanOpen(Utilities::toBoolean(attributeNode->value()));
+
+			// can take
+			attributeNode = attributeNode->next_sibling();
+			newItem->setCanTake(Utilities::toBoolean(attributeNode->value()));
+
+			// sub item capacity
+			attributeNode = attributeNode->next_sibling();
+			newItem->setSubItemCapacity(atoi(attributeNode->value()));
+			
+			// size type (passing for now, not sure about this yet)
+			attributeNode = attributeNode->next_sibling();
+
 			// move to the alternate names group
 			attributeNode = attributeNode->next_sibling();
 			

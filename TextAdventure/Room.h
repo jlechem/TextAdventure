@@ -27,6 +27,8 @@ public:
 
 	void addItem(unique_ptr<Item>);
 	
+	unique_ptr<Item>& Room::getItem(string);
+
 	string getExitsString();
 	map<Directions, Room*>& getExits();
 	void setExits(map<Directions, Room*>&);

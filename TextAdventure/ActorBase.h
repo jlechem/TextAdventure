@@ -40,6 +40,8 @@ public:
 	bool dropItem(string);
 	unique_ptr<Item> dropItem(string,bool);
 
+	unique_ptr<Item>& getItem(string );
+
 	vector<unique_ptr<Item>>* getInventory();
 
 	bool addItem(unique_ptr<Item> item);

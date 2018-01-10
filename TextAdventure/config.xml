@@ -17,6 +17,10 @@
       <Description>A small pointy stick.</Description>
       <Type>item</Type>
       <score>1</score>
+      <canOpen>false</canOpen>
+      <canTake>true</canTake>
+      <subItemCapacity>0</subItemCapacity>
+      <SizeType>small</SizeType>
       <AlternateNames>
         <Name>stick</Name>
         <Name>pointy stick</Name>
@@ -30,6 +34,10 @@
       <Description>A small and very shiny black rock.</Description>
       <Type>item</Type>
       <score>100</score>
+      <canOpen>false</canOpen>
+      <canTake>true</canTake>
+      <subItemCapacity>0</subItemCapacity>
+      <SizeType>small</SizeType>
       <AlternateNames>
         <Name>rock</Name>
         <Name>black rock</Name>
@@ -44,6 +52,10 @@
       <Description>A egg laid by a golden goose.</Description>
       <Type>treasure</Type>
       <score>1000</score>
+      <canOpen>false</canOpen>
+      <canTake>true</canTake>
+      <subItemCapacity>0</subItemCapacity>
+      <SizeType>small</SizeType>
       <AlternateNames>
         <Name>golden egg</Name>
         <Name>gold egg</Name>
@@ -57,6 +69,10 @@
       <Description>A shiny golden dome.</Description>
       <Type>treasure</Type>
       <score>500</score>
+      <canOpen>false</canOpen>
+      <canTake>true</canTake>
+      <subItemCapacity>0</subItemCapacity>
+      <SizeType>small</SizeType>
       <AlternateNames>
         <Name>dome</Name>
         <Name>golden dome</Name>
@@ -64,6 +80,40 @@
         <Name>shiny golden dome</Name>
       </AlternateNames>
     </Item>
+  <Item>
+      <Id>5</Id>
+      <Name>Bag of Holding</Name>
+      <Description>A an infinite bag of olding, its bigger on the inside.</Description>
+      <Type>item</Type>
+      <score>1000</score>
+      <canOpen>true</canOpen>
+      <canTake>true</canTake>
+      <subItemCapacity>1000</subItemCapacity>
+      <SizeType>medium</SizeType>
+      <AlternateNames>
+        <Name>bag</Name>
+        <Name>bag of holding</Name>
+      </AlternateNames>
+    </Item>
+    <Item>
+        <Id>6</Id>
+        <Name>Obsidian Dagger</Name>
+        <Description>A long thin and obscenely sharp dagger made from dark black obsidian.</Description>
+        <Type>treasure</Type>
+        <score>50000</score>
+        <canOpen>false</canOpen>
+        <canTake>true</canTake>
+        <subItemCapacity>0</subItemCapacity>
+        <SizeType>small</SizeType>
+        <AlternateNames>
+          <Name>dagger</Name>
+          <Name>obsidian dagger</Name>
+          <Name>sharp dagger</Name>
+          <Name>dark dagger</Name>
+        <Name>dark obisidan dagger</Name>
+        <Name>sharp dark dagger</Name>
+        </AlternateNames>
+      </Item>
   </Items>
   <Rooms>
     <Room>
@@ -89,10 +139,7 @@
       <Id>3</Id>
       <Name>Purple Room</Name>
       <Description>A large purple room with a golden ceiling and tiled floor. There's a door to the West.</Description>
-      <Items>
-        <Item>2</Item>
-        <Item>3</Item>
-      </Items>
+      <Items />
     </Room>
     <Room>
       <Id>4</Id>
@@ -104,7 +151,10 @@
       <Id>5</Id>
       <Name>Bridge</Name>
       <Description>You are standing in the bridge. Oddly no one else is here. You see a chair in the middle of the room where the captain must sit. Blinking panels surround the rest of the room.</Description>
-      <Items/>
+      <Items>
+        <Item>4</Item>
+      <Item>5</Item>
+      </Items>
     </Room>
     <Room>
       <Id>6</Id>

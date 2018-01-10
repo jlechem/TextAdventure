@@ -37,19 +37,7 @@ unique_ptr<CommandInterface> CommandFactory::getCommand(string command, Player* 
 
 		// command should be one word (look,move,take,drop,jump,etc)
 		// based on this we need to return the correct command class
-		if (Utilities::isLookCommand(initCommand))
-		{
-			commandPointer = make_unique<LookCommand>(command, player, parser);
-		}
-		else if (Utilities::isMoveCommand(initCommand))
-		{
-			commandPointer = make_unique<MoveCommand>(command, player, parser);
-		}
-		else if (Utilities::isTakeCommand(initCommand))
-		{
-			commandPointer = make_unique<TakeCommand>(command, player, parser);
-		}
-		else if (Utilities::isDropCommand(initCommand))
+		if (Utilities::isDropCommand(initCommand))
 		{
 			commandPointer = make_unique<DropCommand>(command, player, parser);
 		}
@@ -61,29 +49,45 @@ unique_ptr<CommandInterface> CommandFactory::getCommand(string command, Player* 
 		{
 			commandPointer = make_unique<ExitCommand>(command, player, parser);
 		}
+		else if (Utilities::isHelpCommand(command))
+		{
+			commandPointer = make_unique<HelpCommand>(command, player, parser);
+		}
 		else if (Utilities::isInventoryCommand(initCommand))
 		{
 			commandPointer = make_unique<InventoryCommand>(command, player, parser);
-		}
-		else if (Utilities::isPutCommand(initCommand))
-		{
-			commandPointer = make_unique<PutCommand>(command, player, parser);
-		}
-		else if (Utilities::isOpenCommand(initCommand))
-		{
-			commandPointer = make_unique<OpenCommand>(command, player, parser);
-		}
-		else if (Utilities::isSaveCommand(command))
-		{
-			commandPointer = make_unique<SaveCommand>(command, player, parser);
 		}
 		else if (Utilities::isLoadCommand(command))
 		{
 			commandPointer = make_unique<LoadCommand>(command, player, parser);
 		}
+		if (Utilities::isLookCommand(initCommand))
+		{
+			commandPointer = make_unique<LookCommand>(command, player, parser);
+		}
+		else if (Utilities::isMoveCommand(initCommand))
+		{
+			commandPointer = make_unique<MoveCommand>(command, player, parser);
+		}
+		else if (Utilities::isOpenCommand(initCommand))
+		{
+			commandPointer = make_unique<OpenCommand>(command, player, parser);
+		}
+		else if (Utilities::isPutCommand(initCommand))
+		{
+			commandPointer = make_unique<PutCommand>(command, player, parser);
+		}
+		else if (Utilities::isSaveCommand(command))
+		{
+			commandPointer = make_unique<SaveCommand>(command, player, parser);
+		}
 		else if (Utilities::isTalkCommand(command))
 		{
 			commandPointer = make_unique<TalkCommand>(command, player, parser);
+		}
+		else if (Utilities::isTakeCommand(initCommand))
+		{
+			commandPointer = make_unique<TakeCommand>(command, player, parser);
 		}
 		else if (Utilities::isWearCommand(command))
 		{
@@ -92,10 +96,6 @@ unique_ptr<CommandInterface> CommandFactory::getCommand(string command, Player* 
 		else if (Utilities::isWieldCommand(command))
 		{
 			commandPointer = make_unique<WieldCommand>(command, player, parser);
-		}
-		else if (Utilities::isHelpCommand(command))
-		{
-			commandPointer = make_unique<HelpCommand>(command, player, parser);
 		}
 	}
 	else

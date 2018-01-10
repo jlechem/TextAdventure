@@ -144,6 +144,27 @@ string Utilities::trim(const string& str)
 	return str.substr(first, (last - first + 1));
 }
 
+string Utilities::trimLeft(const string & original)
+{
+	return string();
+}
+
+string Utilities::trimRight(const string & original)
+{
+	return string();
+}
+
+bool Utilities::toBoolean(const string & original)
+{
+	auto lowered = original;
+	Utilities::toLower(lowered);
+
+	// send back true if we have a match in here
+	// anything other than this will result in a false
+	return lowered == "1" || lowered == "true" || lowered == "t" || lowered == "y" || lowered == "yes";
+
+}
+
 bool Utilities::isMoveCommand(string command)
 {
 	return

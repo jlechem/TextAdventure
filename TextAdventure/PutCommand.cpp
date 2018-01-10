@@ -39,8 +39,6 @@ PutCommand::~PutCommand()
 
 void PutCommand::process()
 {
-	// TODO: implement process for PuCommand
-
 	// empty PUT
 	if (_parser->getNoun().empty())
 	{
@@ -53,14 +51,27 @@ void PutCommand::process()
 		auto tempWord = _parser->getVerb() + _parser->getArticleOne() + _parser->getArticleTwo() + _parser->getNoun();
 
 		// erase THE and IN
-		// TODO: trim any leading/trailing whitespace
 		// now we should have ITEM ITEM
 		tempWord.erase(std::remove(tempWord.begin(), tempWord.end(), 'the'), tempWord.end());
 		tempWord.erase(std::remove(tempWord.begin(), tempWord.end(), 'in'), tempWord.end());
 
-		// TODO: split based on first space we find
-		string item = "";
-		string container = "";
+		// split based on first space we find
+		char delim = ' ';
+		stringstream ss(tempWord);
+		string item;
+
+		vector<string>* tempVector = new vector<string>(2);
+
+		while (std::getline(ss, item, delim))
+		{
+			// trim before we put into the vector
+			tempVector->push_back(item);
+		}
+
+		item = (*tempVector)[0];
+		string container = (*tempVector)[1];
+
+		delete tempVector;
 
 		bool personContainer = false;
 
@@ -137,10 +148,12 @@ void PutCommand::process()
 			else if (!itemPointer && containerPointer)
 			{
 				_commandResult = "There's no " + item + " here";
+				// TODO: put the item back wherever we got it from
 			}
 			else
 			{
 				_commandResult = "There's no "  + container + " here";
+				// TODO: put the item back wherever we got it from
 			}
 		}
 	}

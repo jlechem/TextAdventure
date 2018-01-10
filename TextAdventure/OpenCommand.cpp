@@ -46,13 +46,16 @@ void OpenCommand::process()
 	// OPEN X
 	else
 	{
-		// get the item to open
+		bool fromPlayer = true;
+
+		// get the item to open from the players inventory
 		auto itemToOpen = _player->dropItem(_parser->getNoun(),false);
 
 		// check if we didnt find anything in OUR inventory, we need to check the room
 		if (!itemToOpen)
 		{
 			itemToOpen = _player->getCurrentRoom()->findItem(_parser->getNoun());
+			fromPlayer = false;
 		}
 
 		// check if we found something in the room or on the player
@@ -60,17 +63,28 @@ void OpenCommand::process()
 		{
 			if (itemToOpen->getCanOpen())
 			{
-				// TODO: OpenCommand, always put back what we found
-
+				itemToOpen->setIsOpen(true);
+				_commandResult = itemToOpen->getName() + ": Opened";
 			}
 			else
 			{
-				_commandResult = "You can't open that";
+				_commandResult = _parser->getNoun() + ": ";
 			}
+
+			// OpenCommand, always put back what we found
+			if (fromPlayer)
+			{
+				_player->addItem(std::move(itemToOpen));
+			}
+			else
+			{
+				_player->getCurrentRoom()->addItem(std::move(itemToOpen));
+			}
+
 		}
 		else
 		{
-			_commandResult = "I don't know how to " + _command;
+			_commandResult = "There's no " + _parser->getNoun() + " here";
 		}
 	}
 

@@ -70,6 +70,12 @@ public:
 
 	static string trim(const string&);
 
+	static string trimLeft(const string&);
+
+	static string trimRight(const string&);
+
+	static bool toBoolean(const string&);
+
 private:
 	// blocks anyone from making a default instance of this class
 	Utilities();

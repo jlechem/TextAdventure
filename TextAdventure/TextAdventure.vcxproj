@@ -145,6 +145,7 @@
     <ClInclude Include="Armor.h" />
     <ClInclude Include="Articles.h" />
     <ClInclude Include="Articles2.h" />
+    <ClInclude Include="CloseCommand.h" />
     <ClInclude Include="CommandFactory.h" />
     <ClInclude Include="CommandInterface.h" />
     <ClInclude Include="DescribableObjectInterface.h" />
@@ -181,6 +182,7 @@
     <ClInclude Include="Room.h" />
     <ClInclude Include="Rooms.h" />
     <ClInclude Include="SaveCommand.h" />
+    <ClInclude Include="SizeType.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="TakeCommand.h" />
     <ClInclude Include="TalkCommand.h" />
@@ -198,6 +200,7 @@
     <ClCompile Include="Armor.cpp" />
     <ClCompile Include="Articles.cpp" />
     <ClCompile Include="Articles2.cpp" />
+    <ClCompile Include="CloseCommand.cpp" />
     <ClCompile Include="CommandFactory.cpp" />
     <ClCompile Include="CommandInterface.cpp" />
     <ClCompile Include="DescribableObjectInterface.cpp" />
@@ -251,7 +254,6 @@
     <None Include="packages.config" />
     <None Include="ReadMe.dat" />
     <None Include="save.dat" />
-    <None Include="TextAdventure.g" />
     <None Include="verbs.dat" />
   </ItemGroup>
   <ItemGroup>

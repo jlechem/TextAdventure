@@ -116,7 +116,29 @@ bool ActorBase::addItem(string name)
 
 unique_ptr<Item> ActorBase::dropItem(string name, bool x = false)
 {
-	return nullptr;
+	// find the item in our collection if it exists
+	auto foundItem = findItem(name);
+	return std::move(foundItem);
+}
+
+unique_ptr<Item>& ActorBase::getItem(string name)
+{
+	// find the item in our collection if it exists
+	unique_ptr<Item> result = nullptr;
+
+	vector<unique_ptr<Item>>::iterator it;
+
+	for (it = _items.begin(); it != _items.end(); ++it)
+	{
+		auto temp = find((*it)->getAlterateNames().begin(), (*it)->getAlterateNames().end(), name);
+
+		if (temp != (*it)->getAlterateNames().end())
+		{
+			return (*it);
+		}
+	}
+
+	return result;
 }
 
 bool ActorBase::dropItem(string name)

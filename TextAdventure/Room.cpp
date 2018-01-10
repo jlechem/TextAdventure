@@ -109,6 +109,26 @@ string Room::findItemDescription(string name)
 
 }
 
+unique_ptr<Item>& Room::getItem(string name)
+{
+	vector<unique_ptr<Item>>::iterator it;
+
+	unique_ptr<Item> result = nullptr;
+
+	// loop through all the items in this room and search for the one we want
+	for (it = _items.begin(); it != _items.end(); ++it)
+	{
+		auto temp = find((*it)->getAlterateNames().begin(), (*it)->getAlterateNames().end(), name);
+
+		if (temp != (*it)->getAlterateNames().end())
+		{
+			return (*it);
+		}
+	}
+
+	return result;
+}
+
 unique_ptr<Item> Room::findItem(string name)
 {
 	vector<unique_ptr<Item>>::iterator it;
