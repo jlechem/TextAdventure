@@ -1,10 +1,10 @@
 /*
-	File:						CloseCommand.h
+	File:			CloseCommand.h
 	Created By:		Justin LeCheminant
 	Created On:		1-9-2018
-	Last Modified:	1-9-2018
+	Last Modified:	1-10-2018
 
-	Notes:					A class for Closing an item
+	Notes:			A class for Closing an item
 
 */
 

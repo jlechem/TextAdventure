@@ -198,11 +198,11 @@
     <ClInclude Include="SizeType.h">
       <Filter>Enums</Filter>
     </ClInclude>
-    <ClInclude Include="CloseCommand.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="ItemInterface.h">
       <Filter>Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="CloseCommand.h">
+      <Filter>Commands\Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -335,11 +335,11 @@
     <ClCompile Include="HelpCommand.cpp">
       <Filter>Commands\Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="CloseCommand.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="ItemInterface.cpp">
       <Filter>Interfaces</Filter>
+    </ClCompile>
+    <ClCompile Include="CloseCommand.cpp">
+      <Filter>Commands\Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

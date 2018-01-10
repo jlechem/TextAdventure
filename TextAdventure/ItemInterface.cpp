@@ -124,6 +124,10 @@ bool ItemInterface::closeItem(string name)
 			result = false;
 			_error = "Nice try";
 		}
+
+		// always put it back
+		_items.push_back(std::move(item));
+
 	}
 	else
 	{

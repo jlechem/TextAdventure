@@ -37,7 +37,11 @@ unique_ptr<CommandInterface> CommandFactory::getCommand(string command, Player* 
 
 		// command should be one word (look,move,take,drop,jump,etc)
 		// based on this we need to return the correct command class
-		if (Utilities::isDropCommand(initCommand))
+		if (Utilities::isCloseCommand(initCommand))
+		{
+			commandPointer = make_unique<CloseCommand>(command, player, parser);
+		}
+		else if (Utilities::isDropCommand(initCommand))
 		{
 			commandPointer = make_unique<DropCommand>(command, player, parser);
 		}

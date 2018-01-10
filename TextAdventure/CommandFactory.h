@@ -13,6 +13,7 @@
 
 #include "stdafx.h"
 
+#include "CloseCommand.h"
 #include "CommandInterface.h"
 #include "DropCommand.h"
 #include "ExamineCommand.h"
