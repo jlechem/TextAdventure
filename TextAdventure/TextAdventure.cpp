@@ -1,10 +1,13 @@
 /*
-	TextAdventure.cpp
+	File:				TextAdventure.cpp
 	Created By:			Justin LeCheminant
 	Created On:			12-18-2017
-	Last Modified:		12-21-2017
+	Last Modified:		1-10-2018
 	Last Modified By:	Justin LeCheminant
-*/
+
+	Notes:				This is the main game running part.
+
+	*/
 
 #pragma once
 
@@ -61,9 +64,9 @@ unique_ptr<Item> FindItem(int id, vector<unique_ptr<Item>> &items)
 	
 }
 
-void LoadXML(string& xmlBuffer)
+void LoadXML(string& xmlBuffer, const string& filename)
 {
-	ifstream inputFile("config.xml", ifstream::in);
+	ifstream inputFile(filename, ifstream::in);
 	
 	if (inputFile.is_open())
 	{
@@ -394,23 +397,33 @@ void LoadWords()
 /*
 	Main function
 */
-int main()
+int main(int argc, const char** argv )
 {
 	try
 	{
 		// declare some variables we need to use
-		vector<unique_ptr<Item>> items;																		// vector of all the items in the game, this gets cleared as we load items into the rooms to start
+		vector<unique_ptr<Item>> items;										// vector of all the items in the game, this gets cleared as we load items into the rooms to start
 		unique_ptr<GameSettings> settings = make_unique<GameSettings>();	// game settings
-		unique_ptr<CommandInterface> command;													// newCommand, used to process input from the user. We don't init this, we get our concrete instance from our factory
-		vector<unique_ptr<Player>> enemies;																// vector of enemiees, this gets cleared as we load them into the rooms to start
-		string xml;																												// holds our XML data from our config file
+		unique_ptr<CommandInterface> command;								// newCommand, used to process input from the user. We don't init this, we get our concrete instance from our factory
+		vector<unique_ptr<Player>> enemies;									// vector of enemiees, this gets cleared as we load them into the rooms to start
+		string xml;															// holds our XML data from our config file
+		string filename;													// XML file to read from
+
+		// validate we have an XML config file to use
+		if (argc != 2)
+		{
+			throw "No XML configuration file was specified";
+		}
+		else
+		{
+			filename = argv[1];
+		}
 
 		// load our data
 		cout << "Loading data" << endl << "Loading XML...";
 
-		LoadWords();
-		LoadXML(xml);
-
+		LoadXML(xml, filename);
+		
 		cout << "Done" << endl << "Parsing XML...";
 
 		rapidxml::xml_document<> doc;
@@ -427,6 +440,10 @@ int main()
 		cout << "Done" << endl << "Loading Rooms...";
 
 		LoadRooms(items, &doc);
+
+		cout << "Done" << endl << "Loading Words...";
+
+		LoadWords();
 
 		cout << "Done" << endl << "All game data loaded" << endl << endl;
 
