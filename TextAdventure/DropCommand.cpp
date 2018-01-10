@@ -1,10 +1,10 @@
 /*
-	DropCommand.cpp
+	File:			DropCommand.cpp
 	Created By:		Justin LeCheminant
 	Created On:		12-18-2017
-	Last Modified:	12-22-2017
+	Last Modified:	1-10-2018
 
-	Notes: Implementation of the DropCommand class.
+	Notes:			Implementation of the DropCommand class.
 
 */
 

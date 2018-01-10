@@ -1,10 +1,10 @@
 /*
-	File:						CloseCommand.cpp
+	File:			CloseCommand.cpp
 	Created By:		Justin LeCheminant
 	Created On:		1-9-2018
 	Last Modified:	1-9-2018
 
-	Notes:					Implementation of the CloseCommand class
+	Notes:			Implementation of the CloseCommand class
 
 */
 
