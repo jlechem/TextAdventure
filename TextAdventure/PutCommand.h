@@ -2,7 +2,7 @@
 	File:				PutCommand.h
 	Created By:			Justin LeCheminant
 	Created On:			12-27-2017
-	Last Modified:		1-9-2018
+	Last Modified:		1-10-2018
 	Last Modified By:	Justin LeCheminant
 
 	Notes:				A class used to put an item into another item, PUT X in Y
@@ -24,5 +24,8 @@ public:
 	~PutCommand();
 
 	void process() override;
+
+private:
+	void split(string&, string&);
 
 };

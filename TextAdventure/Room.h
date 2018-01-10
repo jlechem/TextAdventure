@@ -29,11 +29,8 @@ public:
 	void setShortDescription(string);
 	string getLongDescription();
 
-	void addItem(unique_ptr<Item>);
-	
 	unique_ptr<Item>& Room::getItem(string);
 
-	string getExitsString();
 	map<Directions, Room*>& getExits();
 	void setExits(map<Directions, Room*>&);
 	void addExit(Directions, Room*);
@@ -44,24 +41,16 @@ public:
 	
 	vector<unique_ptr<Item>>* getAllItems();
 
-	string getItemsString();
-	void setItemsString(string);
-
 	unsigned long getVisitCount();
 	void updateVisitCount();
 
-	
 private:
 	unsigned long _visitCount;
 
 	string _shortDesctiption;
-	string _exitString;
-	string _itemsString;
 
 	map<Directions,Room*> _exits;
 	
-	void generateExitString();
-	void generateItemString();
 	void increaseVisitCount();
 
 };

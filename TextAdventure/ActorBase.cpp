@@ -89,13 +89,6 @@ vector<unique_ptr<Item>>* ActorBase::getInventory()
 	return &_items;
 }
 
-bool ActorBase::addItem(unique_ptr<Item> item)
-{
-	_items.push_back(std::move(item));
-
-	return true;
-}
-
 bool ActorBase::addItem(string name)
 {
 	bool result = false;

@@ -39,8 +39,6 @@ public:
 	void setId(unsigned int);
 
 	bool addItem(string);
-	bool addItem(unique_ptr<Item> item);
-
 	bool dropItem(string);
 
 	vector<unique_ptr<Item>>* getInventory();

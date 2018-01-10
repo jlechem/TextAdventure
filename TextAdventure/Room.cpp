@@ -43,26 +43,56 @@ void Room::setShortDescription(string shortDescription)
 
 string Room::getLongDescription()
 {
-	string result = _description;
+	string result = _name + "\n\n" + _description;
 
-	if (_exitString.size() > 0)
+	// add the exits
+	map<Directions, Room*>::iterator it;
+
+	string exits = "", items = "";
+
+	for (it = _exits.begin(); it != _exits.end(); ++it)
 	{
-		result += "\nYou see the following exits: " + _exitString;
+		exits += Utilities::convertDirection((*it).first);
+		exits += ", ";
 	}
 
-	if (_itemsString.size() > 0)
+	if (exits.size() > 2)
 	{
-		result += "\nYou see the following items: " + _itemsString;
+		exits.erase(exits.end() - 2);
+	}
+
+	// add the item
+	vector<unique_ptr<Item>>::iterator it2;
+
+	for (it2 = _items.begin(); it2 != _items.end(); ++it2)
+	{
+		items += (*it2)->getName();
+
+		if ((*it2)->getIsOpen())
+		{
+			items += " (open)";
+		}
+
+		items += ", ";
+	}
+
+	if (items.size() > 2)
+	{
+		items.erase(items.end() - 2);
+	}
+
+	if (exits.size() > 0)
+	{
+		result += "\nYou see the following exits: " + exits;
+	}
+
+	if (items.size() > 0)
+	{
+		result += "\nYou see the following items: " + items;
 	}
 
 	return result;
 
-}
-
-void Room::addItem(unique_ptr<Item> item)
-{
-	_items.push_back(std::move(item));
-	generateItemString();
 }
 
 map<Directions, Room*>& Room::getExits()
@@ -70,21 +100,14 @@ map<Directions, Room*>& Room::getExits()
 	return _exits;
 }
 
-string Room::getExitsString()
-{
-	return _exitString;
-}
-
 void Room::setExits(map<Directions, Room*>& exits)
 {
 	_exits = exits;
-	generateExitString();
 }
 
 void Room::addExit(Directions exit, Room* room)
 {
 	_exits[exit] = room;
-	generateExitString();
 }
 
 string Room::findItemDescription(string name)
@@ -148,8 +171,6 @@ unique_ptr<Item> Room::findItem(string name)
 		}
 	}
 
-	generateItemString();
-
 	return result;
 
 }
@@ -159,38 +180,9 @@ vector<unique_ptr<Item>>* Room::getAllItems()
 	return &_items;
 }
 
-void Room::generateItemString()
-{
-	_itemsString.clear();
-
-	vector<unique_ptr<Item>>::iterator it;
-
-	for ( it = _items.begin(); it != _items.end(); ++it )
-	{
-		_itemsString += (*it)->getName();
-		_itemsString += ", ";
-	}
-
-	if (_itemsString.size() > 2)
-	{
-		// take off the last comma and space
-		_itemsString.erase(_itemsString.end() - 2);
-	}
-}
-
 void Room::increaseVisitCount()
 {
 	_visitCount++;
-}
-
-string Room::getItemsString()
-{
-	return _itemsString;
-}
-
-void Room::setItemsString(string itemsString)
-{
-	_itemsString = itemsString;
 }
 
 unsigned long Room::getVisitCount()
@@ -201,23 +193,4 @@ unsigned long Room::getVisitCount()
 void Room::updateVisitCount()
 {
 	_visitCount++;
-}
-
-void Room::generateExitString()
-{
-	std::map<Directions, Room*>::iterator it;
-
-	_exitString.clear();
-
-	for (it = _exits.begin(); it != _exits.end(); ++it)
-	{
-		_exitString += Utilities::convertDirection(it->first);
-		_exitString += ", ";
-	}
-
-	// take off the last comma
-	if (_exitString.size() >= 2)
-	{
-		_exitString.erase(_exitString.end() - 2);
-	}
 }

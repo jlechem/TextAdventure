@@ -74,8 +74,6 @@ string Player::takeAllItems()
 
 			items->clear();
 
-			_currentRoom->setItemsString("");
-
 			// clear any ', ' at the end
 			if (result.size() > 2)
 			{

@@ -2,7 +2,7 @@
 	File:				PutCommand.cpp
 	Created By:			Justin LeCheminant
 	Created On:			12-27-2017
-	Last Modified:		1-9-2018
+	Last Modified:		1-10-2018
 	Last Modified By:	Justin LeCheminant
 
 	Notes:				Implementation of the PutCommand class.
@@ -37,126 +37,145 @@ PutCommand::~PutCommand()
 {
 }
 
+void PutCommand::split(string& item, string& container)
+{
+	// PUT ITEM IN ITEM
+	// PUT THE ITEM IN THE ITEM
+	auto tempWord = _parser->getVerb() + _parser->getArticleOne() + _parser->getArticleTwo() + _parser->getNoun();
+
+	// erase THE and IN
+	// now we should have ITEM ITEM
+	tempWord.erase(std::remove(tempWord.begin(), tempWord.end(), 'the'), tempWord.end());
+	tempWord.erase(std::remove(tempWord.begin(), tempWord.end(), 'in'), tempWord.end());
+
+	// split based on first space we find
+	char delim = ' ';
+	stringstream ss(tempWord);
+	string temp;
+
+	vector<string>* tempVector = new vector<string>(2);
+
+	while (std::getline(ss, temp, delim))
+	{
+		// trim before we put into the vector
+		tempVector->push_back(temp);
+	}
+
+	item = (*tempVector)[0];
+	container = (*tempVector)[1];
+
+	delete tempVector;
+
+}
+
 void PutCommand::process()
 {
 	// empty PUT
 	if (_parser->getNoun().empty())
 	{
-		_commandResult = "Put what?";
+		_commandResult = "Put what in what?";
 	}
 	else
 	{
-		// PUT ITEM IN ITEM
-		// PUT THE ITEM IN THE ITEM
-		auto tempWord = _parser->getVerb() + _parser->getArticleOne() + _parser->getArticleTwo() + _parser->getNoun();
+		string item = "", container = "";
 
-		// erase THE and IN
-		// now we should have ITEM ITEM
-		tempWord.erase(std::remove(tempWord.begin(), tempWord.end(), 'the'), tempWord.end());
-		tempWord.erase(std::remove(tempWord.begin(), tempWord.end(), 'in'), tempWord.end());
+		// get the item and container from the noun
+		split(item, container);
 
-		// split based on first space we find
-		char delim = ' ';
-		stringstream ss(tempWord);
-		string item;
+		bool isFromPlayer = true;
 
-		vector<string>* tempVector = new vector<string>(2);
-
-		while (std::getline(ss, item, delim))
-		{
-			// trim before we put into the vector
-			tempVector->push_back(item);
-		}
-
-		item = (*tempVector)[0];
-		string container = (*tempVector)[1];
-
-		delete tempVector;
-
-		bool personContainer = false;
-
-		// find the first item either in the room or on the player
-		// find the second item either in the room or on the player
-		auto itemPointer = _player->getCurrentRoom()->findItem(item);
+		// get the item and container from the player or the room
+		auto itemPointer = _player->findItem(item);
 
 		if (!itemPointer)
 		{
-			auto containerPointer = _player->getCurrentRoom()->findItem(container);
+			itemPointer = _player->getCurrentRoom()->findItem(item);
+			isFromPlayer = false;
+		}
 
-			if (!containerPointer)
-			{
-				//containerPointer = _player->dropItem(item);
-				personContainer = true;
-			}
+		auto containerPointer = _player->findItem(container);
 
-			// only continue if we found both items
-			if (containerPointer && itemPointer)
+		if (!containerPointer)
+		{
+			containerPointer = _player->getCurrentRoom()->findItem(item);
+			isFromPlayer = false;
+		}
+
+		// we found both items
+		if (itemPointer && containerPointer)
+		{
+			// first check if the container can even take items
+			if (containerPointer->getCanAddItem())
 			{
-				// check if the container can even hold anything
-				if (containerPointer->getCanAddItem())
+				// check that the container is open
+				if (containerPointer->getIsOpen())
 				{
-					// if it can hold something check if it's open
-					if (containerPointer->getIsOpen())
-					{
-						// check if the container if full
-						if (!containerPointer->getIsFull())
-						{
-							// TODO: validate the item going in can fit into the container
+					// finally put the item in there
 
-							// ok the container is open, not full, lets put the new item in it
-							containerPointer->addItem(std::move(itemPointer));
-
-							// now put the container back where it came from, this could be a person or room
-							if (personContainer)
-							{
-								_player->addItem(std::move(containerPointer));
-							}
-							else
-							{
-								_player->getCurrentRoom()->addItem(std::move(containerPointer));
-							}
-
-							// pheew made it through all the validations
-							_commandResult = "You put the " + item + " in the " + container;
-
-						}
-						else
-						{
-							_commandResult = "Sorry " + container + " is full";
-						}
-					}
-					else
-					{
-						_commandResult = container + " isn't open";
-					}
 				}
 				else
 				{
-					_commandResult = container + " can't hold anything";
+					_commandResult = container + ": Nice try, it isn't open";
 				}
 			}
 			else
 			{
-				// setting formatting for error messages
-				if (!itemPointer && !containerPointer)
-				{
-					_commandResult = "There's no " + item + " or " + container + " here";
-				}
-				else if (!itemPointer && containerPointer)
-				{
-					_commandResult = "There's no " + item + " here";
-					// TODO: put the item back wherever we got it from
-				}
-				else
-				{
-					_commandResult = "There's no " + container + " here";
-					// TODO: put the item back wherever we got it from
-				}
+				_commandResult = container + ": Nice try, can't put anything in here";
 			}
+
+			// always put the container back where we found it
+			if (isFromPlayer)
+			{
+				_player->addItem(containerPointer->getName());
+			}
+			else
+			{
+				_player->getCurrentRoom()->addItem(std::move(containerPointer));
+			}
+		}
+		// only found an item
+		else if (itemPointer && !containerPointer)
+		{
+			_commandResult = "There's no " + container + " here";
+
+			// always put the item back where we found it
+			if (isFromPlayer)
+			{
+				_player->getCurrentRoom()->addItem(std::move(itemPointer));
+				_player->addItem(item);
+			}
+			else
+			{
+				_player->getCurrentRoom()->addItem(std::move(itemPointer));
+			}
+		}
+		// only found a container
+		else if (!itemPointer && containerPointer)
+		{
+			_commandResult = "There's no " + item + " here";
+
+			// always put the container back where we found it
+			if (isFromPlayer)
+			{
+				_player->getCurrentRoom()->addItem(std::move(containerPointer));
+				_player->addItem(container);
+			}
+			else
+			{
+				_player->getCurrentRoom()->addItem(std::move(itemPointer));
+				_player->addItem(item);
+
+				_player->getCurrentRoom()->addItem(std::move(containerPointer));
+			}
+		}
+		// we didn't find anything
+		// no pointers so no need to put anything back
+		else
+		{
+			_commandResult = "There's no " + container + " or " + item + " here";
 		}
 
 		cout << endl << _commandResult << endl;
-
 
 	}
 }

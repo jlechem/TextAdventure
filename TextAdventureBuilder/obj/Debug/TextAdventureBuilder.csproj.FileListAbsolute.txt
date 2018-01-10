@@ -1,0 +1,15 @@
+C:\Users\lechemju\Documents\Visual Studio 2017\Projects\TextAdventure\TextAdventureBuilder\bin\Debug\TextAdventureBuilder.exe.config
+C:\Users\lechemju\Documents\Visual Studio 2017\Projects\TextAdventure\TextAdventureBuilder\bin\Debug\TextAdventureBuilder.exe
+C:\Users\lechemju\Documents\Visual Studio 2017\Projects\TextAdventure\TextAdventureBuilder\bin\Debug\TextAdventureBuilder.pdb
+C:\Users\lechemju\Documents\Visual Studio 2017\Projects\TextAdventure\TextAdventureBuilder\obj\Debug\TextAdventureBuilder.csprojResolveAssemblyReference.cache
+C:\Users\lechemju\Documents\Visual Studio 2017\Projects\TextAdventure\TextAdventureBuilder\obj\Debug\MainWindow.g.cs
+C:\Users\lechemju\Documents\Visual Studio 2017\Projects\TextAdventure\TextAdventureBuilder\obj\Debug\App.g.cs
+C:\Users\lechemju\Documents\Visual Studio 2017\Projects\TextAdventure\TextAdventureBuilder\obj\Debug\TextAdventureBuilder_MarkupCompile.cache
+C:\Users\lechemju\Documents\Visual Studio 2017\Projects\TextAdventure\TextAdventureBuilder\obj\Debug\TextAdventureBuilder_MarkupCompile.lref
+C:\Users\lechemju\Documents\Visual Studio 2017\Projects\TextAdventure\TextAdventureBuilder\obj\Debug\MainWindow.baml
+C:\Users\lechemju\Documents\Visual Studio 2017\Projects\TextAdventure\TextAdventureBuilder\obj\Debug\TextAdventureBuilder.g.resources
+C:\Users\lechemju\Documents\Visual Studio 2017\Projects\TextAdventure\TextAdventureBuilder\obj\Debug\TextAdventureBuilder.Properties.Resources.resources
+C:\Users\lechemju\Documents\Visual Studio 2017\Projects\TextAdventure\TextAdventureBuilder\obj\Debug\TextAdventureBuilder.csproj.GenerateResource.Cache
+C:\Users\lechemju\Documents\Visual Studio 2017\Projects\TextAdventure\TextAdventureBuilder\obj\Debug\TextAdventureBuilder.csproj.CoreCompileInputs.cache
+C:\Users\lechemju\Documents\Visual Studio 2017\Projects\TextAdventure\TextAdventureBuilder\obj\Debug\TextAdventureBuilder.exe
+C:\Users\lechemju\Documents\Visual Studio 2017\Projects\TextAdventure\TextAdventureBuilder\obj\Debug\TextAdventureBuilder.pdb
