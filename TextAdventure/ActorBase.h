@@ -42,6 +42,8 @@ public:
 
 	vector<unique_ptr<Item>>* getInventory();
 
+	bool addItem(unique_ptr<Item> item);
+
 	Room* getCurrentRoom();
 	void setCurrentRoom(Room*);
 

@@ -46,6 +46,8 @@ public:
 	bool getCanTake();
 	void setCanTake(bool);
 
+	bool getIsFull();
+
 private:	
 	bool _canOpen;
 	bool _isOpen;

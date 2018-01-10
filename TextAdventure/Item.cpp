@@ -129,3 +129,8 @@ void Item::setCanTake(bool canTake)
 {
 	_canTake = canTake;
 }
+
+bool Item::getIsFull()
+{
+	return _subItems.size() <= _subItemCapacity;
+}
