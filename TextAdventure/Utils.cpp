@@ -133,25 +133,20 @@ void Utilities::toLower(string& value)
 	transform(value.begin(), value.end(), value.begin(), tolower);
 }
 
-string Utilities::trim(const string& str)
+void Utilities::trim(string& str)
 {
-	size_t first = str.find_first_not_of(' ');
-	if (string::npos == first)
-	{
-		return str;
-	}
-	size_t last = str.find_last_not_of(' ');
-	return str.substr(first, (last - first + 1));
+	trimLeft(str);
+	trimRight(str);
 }
 
-string Utilities::trimLeft(const string & original)
+void Utilities::trimLeft(string & original)
 {
-	return string();
+	original.erase(original.begin(), find_if(original.begin(), original.end(), not1(std::ptr_fun<int, int>(isspace))));
 }
 
-string Utilities::trimRight(const string & original)
+void Utilities::trimRight(string & original)
 {
-	return string();
+	original.erase(find_if(original.rbegin(), original.rend(), not1(std::ptr_fun<int, int>(isspace))).base(), original.end());
 }
 
 bool Utilities::toBoolean(const string & original)

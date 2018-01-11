@@ -366,7 +366,7 @@ void EnterCommand(unique_ptr<CommandInterface>& command, Player* player )
 	{
 		cout << endl << "?> ";
 		getline(cin, commandLine);
-		commandLine = Utilities::trim(commandLine);
+		Utilities::trim(commandLine);
 
 		if (commandLine.empty())
 		{

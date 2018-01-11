@@ -68,11 +68,11 @@ public:
 
 	static void toLower(string&);
 
-	static string trim(const string&);
+	static void trim(string& );
 
-	static string trimLeft(const string&);
+	static void trimLeft(string&);
 
-	static string trimRight(const string&);
+	static void trimRight(string&);
 
 	static bool toBoolean(const string&);
 

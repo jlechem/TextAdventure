@@ -89,23 +89,23 @@ vector<unique_ptr<Item>>* ActorBase::getInventory()
 	return &_items;
 }
 
-bool ActorBase::addItem(string name)
-{
-	bool result = false;
-
-	// check if our room has an item or teasure with this name
-	auto item = _currentRoom->findItem(name);
-
-	if (item != nullptr && item->getCanTake() )
-	{
-		_score += item->getScore();
-		_items.push_back(std::move(item));
-		result = true;
-	}
-
-	return result;
-
-}
+//bool ActorBase::addItem(string name)
+//{
+//	bool result = false;
+//
+//	// check if our room has an item or teasure with this name
+//	auto item = _currentRoom->findItem(name);
+//
+//	if (item != nullptr && item->getCanTake() )
+//	{
+//		_score += item->getScore();
+//		_items.push_back(std::move(item));
+//		result = true;
+//	}
+//
+//	return result;
+//
+//}
 
 bool ActorBase::dropItem(string name)
 {

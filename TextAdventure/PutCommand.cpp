@@ -45,34 +45,30 @@ void PutCommand::split(string& item, string& container)
 	// THE ITEM IN ITEM
 	auto tempWord = _parser->getNoun();
 
-	// erase THE and IN
-	// now we should have ITEM ITEM
-	tempWord.erase(std::remove(tempWord.begin(), tempWord.end(), 'the'), tempWord.end());
-	tempWord.erase(std::remove(tempWord.begin(), tempWord.end(), 'in'), tempWord.end());
+	// erase THE
+	// now we should have X Y Z (LONG ITEM NOUN) IN  X Y Z (LONG ITEM NOUN)
+	regex pattern(" the ");
+	tempWord = regex_replace(tempWord, pattern, " ");
+	pattern.assign("the ");
+	tempWord = regex_replace(tempWord, pattern, " ");
 
-	// split based on first space we find
-	char delim = ' ';
-	stringstream ss(tempWord);
-	string temp;
+	// find the first instance of 'in'
+	auto location = tempWord.find(" in ");
 
-	vector<string>* tempVector = new vector<string>(2);
-
-	while (std::getline(ss, temp, delim))
+	// based on the index of the 'in' we split the sentence into item and container
+	if (location != string::npos)
 	{
-		// trim the word
-		string result = Utilities::trim(temp);
+		item = tempWord.substr(0, location);
+		container = tempWord.substr(location + 3, tempWord.size());
 
-		if (!result.empty())
-		{
-			tempVector->push_back(temp);
-		}
+		Utilities::trim(item);
+		Utilities::trim(container);
 	}
-
-	item = (*tempVector)[0];
-	container = (*tempVector)[1];
-
-	delete tempVector;
-
+	else
+	{
+		// we don't have an in so the item is first???
+		item = tempWord;
+	}
 }
 
 void PutCommand::process()
@@ -86,20 +82,30 @@ void PutCommand::process()
 	{
 		string item = "", container = "";
 
-		// get the item and container from the noun
+		// get the item and container from the Parser's noun
 		split(item, container);
 
+		// do some validation
 		if (item.empty() && !container.empty())
-		{
-			_commandResult = "Put " + item + " in what?";
-		}
-		else if (!item.empty() && container.empty())
 		{
 			_commandResult = "Put what in the " + container;
 		}
+		else if (!item.empty() && container.empty())
+		{
+			_commandResult = "Put " + item + " in what?";
+		}
+		else if (item.empty() && container.empty())
+		{
+			_commandResult = "Put what in what";
+		}
+		else if (item == container)
+		{
+			_commandResult = "You can't put the " + item + " in itself";
+		}
 		else
 		{
-			bool isFromPlayer = true;
+			bool isPlayerItem = true;
+			bool isPlayerContainer = true;
 
 			// get the item and container from the player or the room
 			auto itemPointer = _player->findItem(item);
@@ -107,15 +113,15 @@ void PutCommand::process()
 			if (!itemPointer)
 			{
 				itemPointer = _player->getCurrentRoom()->findItem(item);
-				isFromPlayer = false;
+				isPlayerItem = false;
 			}
 
 			auto containerPointer = _player->findItem(container);
-
+			
 			if (!containerPointer)
 			{
-				containerPointer = _player->getCurrentRoom()->findItem(item);
-				isFromPlayer = false;
+				containerPointer = _player->getCurrentRoom()->findItem(container);
+				isPlayerContainer = false;
 			}
 
 			// we found both items
@@ -128,7 +134,8 @@ void PutCommand::process()
 					if (containerPointer->getIsOpen())
 					{
 						// finally put the item in there
-
+						containerPointer->addItem(std::move(itemPointer));
+						_commandResult = item + ": Placed into - " + container;
 					}
 					else
 					{
@@ -137,59 +144,50 @@ void PutCommand::process()
 				}
 				else
 				{
-					_commandResult = container + ": Nice try, can't put anything in here";
-				}
-
-				// always put the container back where we found it
-				if (isFromPlayer)
-				{
-					_player->addItem(containerPointer->getName());
-				}
-				else
-				{
-					_player->getCurrentRoom()->addItem(std::move(containerPointer));
+					_commandResult = container + ": Nice try, you can't put anything in that";
 				}
 			}
 			// only found an item
 			else if (itemPointer && !containerPointer)
 			{
 				_commandResult = "There's no " + container + " here";
-
-				// always put the item back where we found it
-				if (isFromPlayer)
-				{
-					_player->getCurrentRoom()->addItem(std::move(itemPointer));
-					_player->addItem(item);
-				}
-				else
-				{
-					_player->getCurrentRoom()->addItem(std::move(itemPointer));
-				}
 			}
 			// only found a container
 			else if (!itemPointer && containerPointer)
 			{
 				_commandResult = "There's no " + item + " here";
+			}
+			// we didn't find anything
+			else
+			{
+				_commandResult = "There's no " + container + " or " + item + " here";
+			}
 
-				// always put the container back where we found it
-				if (isFromPlayer)
+			// finally we need to do some pointer stuff and move items back where they 
+			if (itemPointer)
+			{
+				// if we have an item pointer it means an error happened and the item never got moved
+				if (isPlayerItem)
 				{
-					_player->getCurrentRoom()->addItem(std::move(containerPointer));
-					_player->addItem(container);
+					_player->addItem(std::move(itemPointer));
 				}
 				else
 				{
 					_player->getCurrentRoom()->addItem(std::move(itemPointer));
-					_player->addItem(item);
-
-					_player->getCurrentRoom()->addItem(std::move(containerPointer));
 				}
 			}
-			// we didn't find anything
-			// no pointers so no need to put anything back
-			else
+			
+			// if we found a container it always goes back no matter what
+			if (containerPointer)
 			{
-				_commandResult = "There's no " + container + " or " + item + " here";
+				if (isPlayerContainer)
+				{
+					_player->addItem(std::move(containerPointer));
+				}
+				else
+				{
+					_player->getCurrentRoom()->addItem(std::move(containerPointer));
+				}
 			}
 		}
 

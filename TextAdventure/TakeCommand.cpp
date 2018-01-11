@@ -50,8 +50,18 @@ void TakeCommand::process()
 		}
 		else
 		{
-			// use the single word to find in the room
-			_commandResult = _player->addItem(_parser->getNoun()) ? _parser->getNoun() + ": Taken" : "You don't see " + _parser->getNoun();
+			// use the single word to find in the item in room
+			auto item = _player->getCurrentRoom()->findItem(_parser->getNoun());
+
+			if (item)
+			{
+				_player->addItem(std::move(item));
+				_commandResult = _parser->getNoun() + ": Taken";
+			}
+			else
+			{
+				_commandResult = "You don't see " + _parser->getNoun();
+			}
 		}
 	}
 

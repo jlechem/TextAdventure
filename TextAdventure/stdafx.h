@@ -29,6 +29,9 @@
 #include <algorithm>
 #include <cctype>
 #include <sstream>
+#include <regex>
+#include <functional>
+
 #include "Directions.h"
 
 using namespace std;
