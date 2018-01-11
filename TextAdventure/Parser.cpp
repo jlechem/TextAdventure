@@ -97,39 +97,73 @@ void Parser::parse(string sentence)
 					break;
 
 				// LOOK AT THE ITEM
+				// PUT STICK IN BOX
 				// 4 word commands
 				case 4:
-					_articleOne = words[1];
-					_articleTwo = words[2];
-					_noun = words[3];
-	
-					_isValid =	Articles::getInstance().containsWord(_articleOne) &&
-								Articles2::getInstance().containsWord(_articleTwo)  &&
-								( _articleOne != _articleTwo );
-					break;
-
-				// LOOK AT THE ROUND BLUE ITEM (ADJECTIVES are just examples, could be a lot of them)
-				default:
-					_articleOne = words[1];
-					_articleTwo = words[2];
-					
-					_isValid = Articles::getInstance().containsWord(_articleOne) &&
-						Articles2::getInstance().containsWord(_articleTwo) &&
-						(_articleOne != _articleTwo);
-
-					// the noun is the rest of the words
-					if (_isValid)
+					if (_verb == "put")
 					{
-						for (auto i = 3; i < words.size(); i++)
+						_isValid = true;
+
+						for (auto i = 1; i < words.size(); i++)
 						{
 							_noun += words[i] + " ";
 						}
 
 						// erase the last space
 						_noun.erase(_noun.end() - 1);
+					}
+					else
+					{
+						_articleOne = words[1];
+						_articleTwo = words[2];
+						_noun = words[3];
 
+						_isValid = Articles::getInstance().containsWord(_articleOne) &&
+							Articles2::getInstance().containsWord(_articleTwo) &&
+							(_articleOne != _articleTwo);
 					}
 					
+					break;
+
+				// LOOK AT THE ROUND BLUE ITEM (ADJECTIVES are just examples, could be a lot of them)
+				// PUT THE STICK IN THE BUCKET
+				// PUT THE STICK IN BUCKET
+				default:
+					if (_verb == "put")
+					{
+						_isValid = true;
+
+						for (auto i = 1; i < words.size(); i++)
+						{
+							_noun += words[i] + " ";
+						}
+
+						// erase the last space
+						_noun.erase(_noun.end() - 1);
+					}
+					else
+					{
+						_articleOne = words[1];
+						_articleTwo = words[2];
+
+						_isValid = Articles::getInstance().containsWord(_articleOne) &&
+							Articles2::getInstance().containsWord(_articleTwo) &&
+							(_articleOne != _articleTwo);
+
+						// the noun is the rest of the words
+						if (_isValid)
+						{
+							for (auto i = 3; i < words.size(); i++)
+							{
+								_noun += words[i] + " ";
+							}
+
+							// erase the last space
+							_noun.erase(_noun.end() - 1);
+
+						}
+					}
+
 					break;
 
 			}

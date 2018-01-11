@@ -39,9 +39,11 @@ PutCommand::~PutCommand()
 
 void PutCommand::split(string& item, string& container)
 {
-	// PUT ITEM IN ITEM
-	// PUT THE ITEM IN THE ITEM
-	auto tempWord = _parser->getVerb() + " " + _parser->getArticleOne() + " " + _parser->getArticleTwo() + " " + _parser->getNoun();
+	// ITEM IN ITEM
+	// THE ITEM IN THE ITEM
+	// ITEM IN THE ITEM
+	// THE ITEM IN ITEM
+	auto tempWord = _parser->getNoun();
 
 	// erase THE and IN
 	// now we should have ITEM ITEM
@@ -57,8 +59,13 @@ void PutCommand::split(string& item, string& container)
 
 	while (std::getline(ss, temp, delim))
 	{
-		// trim before we put into the vector
-		tempVector->push_back(temp);
+		// trim the word
+		string result = Utilities::trim(temp);
+
+		if (!result.empty())
+		{
+			tempVector->push_back(temp);
+		}
 	}
 
 	item = (*tempVector)[0];
