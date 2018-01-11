@@ -47,3 +47,5 @@ open
 close
 put
 throw
+inventory
+i

@@ -35,7 +35,17 @@ void Player::printInventory()
 
 	for (it = _items.begin(); it != _items.end(); ++it)
 	{
-		cout << (*it)->getName() << endl;
+		cout << (*it)->getName();
+
+		if ((*it)->getIsOpen())
+		{
+			cout << " (open)";
+		}
+
+		// TODO: implement sub items
+
+		cout << endl;
+
 	}
 }
 
