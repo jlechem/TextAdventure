@@ -1,18 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using TextAdventureManager.Models;
 using TextAdventureManager.Windows;
 
@@ -39,7 +28,7 @@ namespace TextAdventureManager
         {
             // TODO: read the games data from the XML file
             _homeViewModel.Games.Add(new GameViewModel { Id = 1, Name = "Justins Text", Description = "Justins Adventure Game", Enabled = true });
-            _homeViewModel.Games[0].ConfigFile = "config.xml";
+            _homeViewModel.Games[0].ConfigFile = "..\\..\\..\\Debug\\config.xml";
         }
 
         private void menuAbout_Click(object sender, RoutedEventArgs e)
