@@ -31,7 +31,7 @@ namespace TextAdventureManager
             this.LoadGames();
 
             this.DataContext = _homeViewModel;
-
+            
         }
 
         private void LoadGames()

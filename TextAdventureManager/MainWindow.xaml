@@ -5,51 +5,60 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TextAdventureManager"
         mc:Ignorable="d"
-        Title="Text Adventure Game Manager" MinHeight="600" MinWidth="800"  >
+        Title="Text Adventure Game Manager" MinHeight="600" MinWidth="800" Height="600" Width="800"  >
     <Grid>
-        <DockPanel>
-            <Menu DockPanel.Dock="Top">
-                <MenuItem Header="File">
-                    <MenuItem Header="New Game" />
-                    <Separator />
-                    <MenuItem Header="Exit" />
-                </MenuItem>
-                <MenuItem Header="Edit">
-                    <MenuItem Header="Undo" />
-                    <MenuItem Header="Redo" />
-                    <Separator />
-                    <MenuItem Header="Cut" />
-                    <MenuItem Header="Copy" />
-                    <MenuItem Header="Paste" />
-                    <MenuItem Header="Clear" />
-                    <Separator/>
-                    <MenuItem Header="Settings" />
-                </MenuItem>
-                <MenuItem Header="Help">
-                    <MenuItem Header="About" x:Name="menuAbout" Click="menuAbout_Click" />
-                </MenuItem>
-            </Menu>
-            <StatusBar DockPanel.Dock="Bottom">
-                <StatusBarItem>
-                    <TextBlock Text="Games" />
-                </StatusBarItem>
-            </StatusBar>
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*" />
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="auto" MinWidth="200"/>
-                </Grid.ColumnDefinitions>
-                <DataGrid Grid.Row="1" Grid.Column="1" DataContext="{Binding Games}" >
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="{Binding Name}" Margin="5" />
-                        <Button Content="Run Game" Width="50" Margin="5" />
-                    </StackPanel>
-                </DataGrid>
-                <GridSplitter Grid.Row="1" Grid.Column="2" />
-                <StackPanel Grid.Row="1" Grid.Column="3"></StackPanel>
-            </Grid>
-        </DockPanel>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="5" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Menu Grid.Row="0" Grid.ColumnSpan="3">
+            <MenuItem Header="File">
+                <MenuItem Header="New Game" />
+                <Separator />
+                <MenuItem Header="Exit" />
+            </MenuItem>
+            <MenuItem Header="Edit">
+                <MenuItem Header="Undo" />
+                <MenuItem Header="Redo" />
+                <Separator />
+                <MenuItem Header="Cut" />
+                <MenuItem Header="Copy" />
+                <MenuItem Header="Paste" />
+                <MenuItem Header="Clear" />
+                <Separator/>
+                <MenuItem Header="Settings" />
+            </MenuItem>
+            <MenuItem Header="Help">
+                <MenuItem Header="About" x:Name="menuAbout" Click="menuAbout_Click" />
+            </MenuItem>
+        </Menu>
+        <DataGrid Grid.Row="1" Grid.Column="0"  AutoGenerateColumns="False" ItemsSource="{Binding Games}" CanUserAddRows="False" CanUserDeleteRows="False">
+                <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Id}" Visibility="Hidden" />
+                <DataGridTextColumn Header="Name" Width="325" Binding="{Binding Name}" />
+                    <DataGridTemplateColumn>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="Run Game" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+        <GridSplitter Grid.Row="1" Grid.Column="1" BorderBrush="Black" Background="Beige"  HorizontalAlignment="Stretch" 
+              VerticalAlignment="Stretch" ShowsPreview="true"  ResizeDirection="Columns"
+              ResizeBehavior="PreviousAndNext" />
+        <StackPanel Grid.Row="1" Grid.Column="2"><TextBlock>Text</TextBlock></StackPanel>
+        <StatusBar Grid.Row="2" Grid.ColumnSpan="3">
+            <StatusBarItem>
+                <TextBlock Text="Games" />
+            </StatusBarItem>
+        </StatusBar>
     </Grid>
 </Window>

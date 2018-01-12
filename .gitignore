@@ -48,3 +48,6 @@ TextAdventureManager/obj/Debug/MainWindow.g.cs
 TextAdventureManager/obj/Debug/TextAdventureManager_Content.g.i.cs
 TextAdventureManager/obj/Debug/TextAdventureManager.g.resources
 *.dll
+*.baml
+TextAdventureManager/obj/Debug/MainWindow.g.cs
+*.baml
