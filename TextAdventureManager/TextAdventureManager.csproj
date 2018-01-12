@@ -34,6 +34,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>text.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -113,6 +116,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="games.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="text.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="text.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

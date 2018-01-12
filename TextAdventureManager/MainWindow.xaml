@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:TextAdventureManager"
         xmlns:Models="clr-namespace:TextAdventureManager.Models" x:Class="TextAdventureManager.MainWindow"
         mc:Ignorable="d"
-        Title="Text Adventure Game Manager" MinHeight="600" MinWidth="800" Height="600" Width="800"  >
+        Title="Text Adventure Game Manager" MinHeight="600" MinWidth="800" Height="600" Width="800" Icon="text.jpg"  >
     <Window.DataContext>
         <Models:HomeViewModel/>
     </Window.DataContext>
