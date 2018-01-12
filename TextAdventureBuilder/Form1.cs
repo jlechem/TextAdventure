@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TextAdventureBuilder.Dialogs;
 using TextAdventureBuilder.MdiControls;
 
 namespace TextAdventureBuilder
@@ -20,9 +21,23 @@ namespace TextAdventureBuilder
 
         private void gameToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            GameForm newGame = new GameForm();
-            newGame.MdiParent = this;
-            newGame.Show();
+            try
+            {
+                this.Cursor = Cursors.WaitCursor;
+
+                GameForm newGame = new GameForm();
+                newGame.MdiParent = this;
+                newGame.Show();
+            }
+            finally
+            {
+                this.Cursor = Cursors.Default;
+            }
+        }
+
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new AboutBox().ShowDialog();
         }
     }
 }

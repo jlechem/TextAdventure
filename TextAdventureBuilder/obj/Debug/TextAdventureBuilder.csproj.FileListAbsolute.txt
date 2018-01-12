@@ -9,3 +9,4 @@ C:\Users\lechemju\documents\visual studio 2017\Projects\TextAdventure\TextAdvent
 C:\Users\lechemju\documents\visual studio 2017\Projects\TextAdventure\TextAdventureBuilder\obj\Debug\TextAdventureBuilder.csproj.CoreCompileInputs.cache
 C:\Users\lechemju\documents\visual studio 2017\Projects\TextAdventure\TextAdventureBuilder\obj\Debug\TextAdventureBuilder.exe
 C:\Users\lechemju\documents\visual studio 2017\Projects\TextAdventure\TextAdventureBuilder\obj\Debug\TextAdventureBuilder.pdb
+C:\Users\lechemju\documents\visual studio 2017\Projects\TextAdventure\TextAdventureBuilder\obj\Debug\TextAdventureBuilder.Dialogs.AboutBox.resources

@@ -16,5 +16,10 @@ namespace TextAdventureBuilder.MdiControls
         {
             InitializeComponent();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.textBox1.Text = "SOMEONE CLICKED ME";
+        }
     }
 }
