@@ -42,7 +42,7 @@
                 <MenuItem Header="About" x:Name="menuAbout" Click="menuAbout_Click" />
             </MenuItem>
         </Menu>
-        <DataGrid Grid.Row="1" Grid.Column="0"  AutoGenerateColumns="False" ItemsSource="{Binding Games}" CanUserAddRows="False" CanUserDeleteRows="False">
+        <DataGrid Grid.Row="1" Grid.Column="0"  AutoGenerateColumns="False" ItemsSource="{Binding Games}" CanUserAddRows="False" CanUserDeleteRows="False" SelectionChanged="DataGrid_SelectionChanged">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Id}" Visibility="Hidden" />
                 <DataGridTextColumn Header="Name" Width="315" Binding="{Binding Name}" />
