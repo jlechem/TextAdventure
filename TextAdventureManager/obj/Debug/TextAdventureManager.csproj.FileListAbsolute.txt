@@ -13,3 +13,5 @@ C:\Users\lechemju\Documents\Visual Studio 2017\Projects\TextAdventure\TextAdvent
 C:\Users\lechemju\Documents\Visual Studio 2017\Projects\TextAdventure\TextAdventureManager\obj\Debug\TextAdventureManager.csproj.CoreCompileInputs.cache
 C:\Users\lechemju\Documents\Visual Studio 2017\Projects\TextAdventure\TextAdventureManager\obj\Debug\TextAdventureManager.exe
 C:\Users\lechemju\Documents\Visual Studio 2017\Projects\TextAdventure\TextAdventureManager\obj\Debug\TextAdventureManager.pdb
+C:\Users\lechemju\documents\visual studio 2017\Projects\TextAdventure\TextAdventureManager\obj\Debug\Windows\AboutWindow.g.cs
+C:\Users\lechemju\documents\visual studio 2017\Projects\TextAdventure\TextAdventureManager\obj\Debug\Windows\AboutWindow.baml

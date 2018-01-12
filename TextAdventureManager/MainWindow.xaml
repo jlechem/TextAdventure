@@ -5,8 +5,51 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TextAdventureManager"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="Text Adventure Game Manager" MinHeight="600" MinWidth="800"  >
     <Grid>
-        
+        <DockPanel>
+            <Menu DockPanel.Dock="Top">
+                <MenuItem Header="File">
+                    <MenuItem Header="New Game" />
+                    <Separator />
+                    <MenuItem Header="Exit" />
+                </MenuItem>
+                <MenuItem Header="Edit">
+                    <MenuItem Header="Undo" />
+                    <MenuItem Header="Redo" />
+                    <Separator />
+                    <MenuItem Header="Cut" />
+                    <MenuItem Header="Copy" />
+                    <MenuItem Header="Paste" />
+                    <MenuItem Header="Clear" />
+                    <Separator/>
+                    <MenuItem Header="Settings" />
+                </MenuItem>
+                <MenuItem Header="Help">
+                    <MenuItem Header="About" x:Name="menuAbout" Click="menuAbout_Click" />
+                </MenuItem>
+            </Menu>
+            <StatusBar DockPanel.Dock="Bottom">
+                <StatusBarItem>
+                    <TextBlock Text="Games" />
+                </StatusBarItem>
+            </StatusBar>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto" MinWidth="200"/>
+                </Grid.ColumnDefinitions>
+                <DataGrid Grid.Row="1" Grid.Column="1" DataContext="{Binding Games}" >
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding Name}" Margin="5" />
+                        <Button Content="Run Game" Width="50" Margin="5" />
+                    </StackPanel>
+                </DataGrid>
+                <GridSplitter Grid.Row="1" Grid.Column="2" />
+                <StackPanel Grid.Row="1" Grid.Column="3"></StackPanel>
+            </Grid>
+        </DockPanel>
     </Grid>
 </Window>

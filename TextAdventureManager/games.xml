@@ -1,0 +1,11 @@
+﻿<xml>
+  <games>
+    <game>
+      <id>1</id>
+      <name>Justins Text Adventure</name>
+      <description>The default text advenuture demo game</description>
+      <config_file>config.xml</config_file>
+      <enabled>true</enabled>
+    </game>
+  </games>  
+</xml>
