@@ -25,6 +25,8 @@ public:
 	Player(Room*);
 	~Player();
 
+	void printSubInventory(unique_ptr<Item>&);
+
 	void printInventory();
 	
 	string takeAllItems();

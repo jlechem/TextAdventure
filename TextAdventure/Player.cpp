@@ -2,7 +2,7 @@
 	File:							Player.cpp
 	Created By:			Justin LeCheminant
 	Created On:			12-20-2017
-	Last Modified:		1-9-2018
+	Last Modified:		1-11-2018
 	Last Modified By:	Justin LeCheminant
 
 	Notes:						Implementation of the Player class.
@@ -27,6 +27,25 @@ Player::~Player()
 {
 }
 
+void Player::printSubInventory(unique_ptr<Item>& parentItem)
+{
+	vector<unique_ptr<Item>>::iterator it;
+
+	for (it = parentItem->getItems().begin(); it != parentItem->getItems().end(); ++it)
+	{
+		cout << "\t" << (*it)->getName();
+
+		if ((*it)->getIsOpen())
+		{
+			cout << " (open)";
+		}
+
+		printSubInventory((*it));
+
+		cout << endl;
+	}
+}
+
 void Player::printInventory()
 {
 	vector<unique_ptr<Item>>::iterator it;
@@ -41,10 +60,10 @@ void Player::printInventory()
 		{
 			cout << " (open)";
 		}
-
-		// TODO: implement sub items
-
+		
 		cout << endl;
+
+		printSubInventory((*it));
 
 	}
 }

@@ -2,7 +2,7 @@
 	Item.cpp
 	Created By:			Justin LeCheminant
 	Created On:			12-20-2017
-	Last Modified:		12-27-2017
+	Last Modified:		1-11-2018
 	Last Modified By:	Justin LeCheminant
 
 	Notes: Implementation of the Item class.
@@ -100,6 +100,16 @@ void Item::setSubItemCapacity(int capacity)
 	_subItemCapacity = capacity;
 }
 
+int Item::getSubItemCount()
+{
+	return _subItems.size();
+}
+
+vector<unique_ptr<Item>>& Item::getItems()
+{
+	return _subItems;
+}
+
 bool Item::addItem(unique_ptr<Item> item)
 {
 	bool result = false;
@@ -108,7 +118,8 @@ bool Item::addItem(unique_ptr<Item> item)
 	if (_canAddItems &&
 		_subItems.size() < _subItemCapacity)
 	{
-
+		_subItems.push_back(std::move(item));
+		result = true;
 	}
 
 	return result;

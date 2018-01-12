@@ -40,6 +40,10 @@ public:
 	int getSubItemCapacity();
 	void setSubItemCapacity(int);
 
+	int getSubItemCount();
+
+	vector<unique_ptr<Item>>& getItems();
+
 	bool addItem(unique_ptr<Item>);
 	bool removeItem(string);
 
@@ -60,6 +64,6 @@ private:
 
 	ItemType _itemType;
 
-	vector<Item> _subItems;
+	vector<unique_ptr<Item>> _subItems;
 
 };
