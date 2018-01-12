@@ -6,6 +6,7 @@
       <description>The default text advenuture demo game</description>
       <config_file>config.xml</config_file>
       <enabled>true</enabled>
+      <iamge>something.jpg</iamge>
     </game>
   </games>  
 </xml>
