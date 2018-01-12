@@ -65,7 +65,7 @@ namespace TextAdventureManager
             process.StartInfo.Arguments = _homeViewModel.CurrentGame.ConfigFile;
             process.ErrorDataReceived += Process_ErrorDataReceived;
             process.Exited += Process_Exited;
-            process.Start();
+            //process.Start();
         }
 
         private void Process_Exited(object sender, EventArgs e)

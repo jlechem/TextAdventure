@@ -63,3 +63,8 @@ TextAdventureManager/obj/Debug/GeneratedInternalTypeHelper.g.i.cs
 TextAdventureManager/obj/Debug/Windows/AboutWindow.g.i.cs
 TextAdventureManager/obj/Debug/Windows/AboutWindow.g.cs
 TextAdventureManager/obj/Debug/TextAdventureManager.csproj.FileListAbsolute.txt
+TextAdventureBuilder/obj/Debug/TextAdventureBuilder.Properties.Resources.resources
+TextAdventureBuilder/obj/Debug/TextAdventureBuilder.Form1.resources
+TextAdventureBuilder/obj/Debug/TextAdventureBuilder.Dialogs.AboutBox.resources
+TextAdventureBuilder/obj/Debug/TextAdventureBuilder.MdiControls.GameForm.resources
+TextAdventureBuilder/bin/Debug/TextAdventureBuilder.exe.config
