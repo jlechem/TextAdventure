@@ -1,0 +1,11 @@
+C:\Users\lechemju\documents\visual studio 2017\Projects\TextAdventure\TextAdventureBuilder\bin\Debug\TextAdventureBuilder.exe.config
+C:\Users\lechemju\documents\visual studio 2017\Projects\TextAdventure\TextAdventureBuilder\bin\Debug\TextAdventureBuilder.exe
+C:\Users\lechemju\documents\visual studio 2017\Projects\TextAdventure\TextAdventureBuilder\bin\Debug\TextAdventureBuilder.pdb
+C:\Users\lechemju\documents\visual studio 2017\Projects\TextAdventure\TextAdventureBuilder\obj\Debug\TextAdventureBuilder.csprojResolveAssemblyReference.cache
+C:\Users\lechemju\documents\visual studio 2017\Projects\TextAdventure\TextAdventureBuilder\obj\Debug\TextAdventureBuilder.Form1.resources
+C:\Users\lechemju\documents\visual studio 2017\Projects\TextAdventure\TextAdventureBuilder\obj\Debug\TextAdventureBuilder.MdiControls.GameForm.resources
+C:\Users\lechemju\documents\visual studio 2017\Projects\TextAdventure\TextAdventureBuilder\obj\Debug\TextAdventureBuilder.Properties.Resources.resources
+C:\Users\lechemju\documents\visual studio 2017\Projects\TextAdventure\TextAdventureBuilder\obj\Debug\TextAdventureBuilder.csproj.GenerateResource.Cache
+C:\Users\lechemju\documents\visual studio 2017\Projects\TextAdventure\TextAdventureBuilder\obj\Debug\TextAdventureBuilder.csproj.CoreCompileInputs.cache
+C:\Users\lechemju\documents\visual studio 2017\Projects\TextAdventure\TextAdventureBuilder\obj\Debug\TextAdventureBuilder.exe
+C:\Users\lechemju\documents\visual studio 2017\Projects\TextAdventure\TextAdventureBuilder\obj\Debug\TextAdventureBuilder.pdb

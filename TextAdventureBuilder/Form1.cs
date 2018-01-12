@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TextAdventureBuilder.MdiControls;
 
 namespace TextAdventureBuilder
 {
@@ -15,6 +16,13 @@ namespace TextAdventureBuilder
         public Form1()
         {
             InitializeComponent();
+        }
+
+        private void gameToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            GameForm newGame = new GameForm();
+            newGame.MdiParent = this;
+            newGame.Show();
         }
     }
 }
