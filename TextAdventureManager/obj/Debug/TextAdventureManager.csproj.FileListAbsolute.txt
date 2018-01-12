@@ -15,3 +15,6 @@ C:\Users\lechemju\Documents\Visual Studio 2017\Projects\TextAdventure\TextAdvent
 C:\Users\lechemju\Documents\Visual Studio 2017\Projects\TextAdventure\TextAdventureManager\obj\Debug\TextAdventureManager.pdb
 C:\Users\lechemju\documents\visual studio 2017\Projects\TextAdventure\TextAdventureManager\obj\Debug\Windows\AboutWindow.g.cs
 C:\Users\lechemju\documents\visual studio 2017\Projects\TextAdventure\TextAdventureManager\obj\Debug\Windows\AboutWindow.baml
+C:\Users\lechemju\documents\visual studio 2017\Projects\TextAdventure\TextAdventureManager\obj\Debug\GameDetails.g.cs
+C:\Users\lechemju\documents\visual studio 2017\Projects\TextAdventure\TextAdventureManager\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\lechemju\documents\visual studio 2017\Projects\TextAdventure\TextAdventureManager\obj\Debug\GameDetails.baml

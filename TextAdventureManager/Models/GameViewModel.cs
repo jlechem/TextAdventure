@@ -16,5 +16,6 @@ namespace TextAdventureManager.Models
 
         public bool Enabled { get; set; }
         
+        public string ConfigFile { get; set; }
     }
 }

@@ -15,6 +15,7 @@ namespace TextAdventureManager.Models
         internal HomeViewModel()
         {
             Games = new List<GameViewModel>();
+            CurrentGame = new GameViewModel();
         }
 
         // Commands will go here
