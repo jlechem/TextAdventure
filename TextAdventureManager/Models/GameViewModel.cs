@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace TextAdventureManager.Models
 {
+    [Serializable]
     internal class GameViewModel
     {
         public long Id { get; set; }
@@ -17,5 +18,6 @@ namespace TextAdventureManager.Models
         public bool Enabled { get; set; }
         
         public string ConfigFile { get; set; }
+
     }
 }

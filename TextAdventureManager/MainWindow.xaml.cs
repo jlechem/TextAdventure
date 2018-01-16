@@ -75,22 +75,8 @@ namespace TextAdventureManager
         private void Process_ErrorDataReceived(object sender, DataReceivedEventArgs e)
         {
         }
+        
 
-        private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            var row = (sender as DataGridRow);
 
-            if( row != null)
-            {
-                var context = row.DataContext as GameViewModel;
-
-                if( context != null)
-                {
-                    _homeViewModel.CurrentGame = context;
-
-                    SetCurrentGame();
-                }
-            }
-        }
     }
 }
