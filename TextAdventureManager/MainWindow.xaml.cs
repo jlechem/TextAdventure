@@ -31,11 +31,6 @@ namespace TextAdventureManager
             _homeViewModel.Games[0].ConfigFile = "..\\..\\..\\Debug\\config.xml";
         }
 
-        private void menuAbout_Click(object sender, RoutedEventArgs e)
-        {
-            new AboutWindow().ShowDialog();
-        }
-
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             // get the object behind the DataContext and set it to our current game

@@ -64,17 +64,17 @@
 
                 <TextBlock Grid.Row="2" Grid.Column="0">Config File:</TextBlock>
                 <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal">
-                    <TextBox Text="{Binding ConfigFile}" Width="250" MaxLength="100" />
-                    <Button Content="..." VerticalAlignment="Bottom" HorizontalAlignment="Left" Height="24" >
+                    <TextBox Text="{Binding ConfigFile, Mode=TwoWay}" Width="250" MaxLength="100" />
+                    <Button Content="..." VerticalAlignment="Bottom" HorizontalAlignment="Left" Height="24" Command="{Binding LoadConfigClickCommand}" >
                     </Button>
                 </StackPanel>
-                <CheckBox Content="Enabled" Grid.Row="3" Grid.ColumnSpan="3" HorizontalAlignment="Center" />
+                <CheckBox Content="Enabled" Grid.Row="3" Grid.ColumnSpan="3" HorizontalAlignment="Center" IsChecked="{Binding Enabled}" />
             </Grid>
         </GroupBox>
         <StackPanel Grid.Row="4" Grid.Column="3" Orientation="Horizontal" HorizontalAlignment="Right">
             <Button Content="Cancel" Width="50" Margin="5" >
             </Button>
-            <Button Content="Save" Width="50" Margin="5" >
+            <Button Content="Save" Width="50" Margin="5" IsEnabled="{Binding IsValidGame}" >
             </Button>
         </StackPanel>
     </Grid>

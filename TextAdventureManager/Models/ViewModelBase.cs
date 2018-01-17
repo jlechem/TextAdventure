@@ -11,8 +11,6 @@ namespace TextAdventureManager.Models
     {
         #region Fields
 
-        private ICommand _command;
-
         private bool _canExecute;
 
         #endregion
@@ -23,12 +21,6 @@ namespace TextAdventureManager.Models
         {
             get { return _canExecute; }
             set { _canExecute = value; }
-        }
-
-        public ICommand Command
-        {
-            get { return _command; }
-            set { _command = value; }
         }
 
         #endregion

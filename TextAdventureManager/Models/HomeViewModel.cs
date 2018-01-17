@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -31,7 +32,7 @@ namespace TextAdventureManager.Models
         {
             get
             {
-                return Command ?? (Command = new CommandHandler(() => AboutClick(), CanExecute));
+                return new CommandHandler(() => AboutClick(), CanExecute);
             }
         }
 
@@ -39,7 +40,7 @@ namespace TextAdventureManager.Models
         {
             get
             {
-                return Command ?? (Command = new CommandHandler(() => ExitClick(), CanExecute));
+                return new CommandHandler(() => ExitClick(), CanExecute);
             }
         }
 
@@ -56,7 +57,5 @@ namespace TextAdventureManager.Models
                 App.Current.Shutdown(0);
             }
         }
-
-
     }
 }
