@@ -61,10 +61,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="CommandHandler.cs" />
     <Compile Include="GameDetails.xaml.cs">
       <DependentUpon>GameDetails.xaml</DependentUpon>
     </Compile>
-    <Compile Include="GridViewModel.cs" />
+    <Compile Include="Models\ViewModelBase.cs" />
     <Compile Include="Windows\AboutWindow.xaml.cs">
       <DependentUpon>AboutWindow.xaml</DependentUpon>
     </Compile>

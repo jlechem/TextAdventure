@@ -22,6 +22,9 @@ namespace TextAdventureManager.Windows
         public AboutWindow()
         {
             InitializeComponent();
+
+            Mouse.OverrideCursor = null;
+
         }
     }
 }

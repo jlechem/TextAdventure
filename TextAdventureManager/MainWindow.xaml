@@ -23,23 +23,22 @@
         </Grid.ColumnDefinitions>
         <Menu Grid.Row="0" Grid.ColumnSpan="3">
             <MenuItem Header="File">
-                <MenuItem Header="New Game" />
+                <MenuItem Header="New Game" Command="ApplicationCommands.New" />
                 <Separator />
-                <MenuItem Header="Exit" />
+                <MenuItem Header="Exit" Command="{Binding ExitClickCommand}" />
             </MenuItem>
             <MenuItem Header="Edit">
-                <MenuItem Header="Undo" />
-                <MenuItem Header="Redo" />
+                <MenuItem Header="Undo" Command="ApplicationCommands.Undo" />
+                <MenuItem Header="Redo" Command="ApplicationCommands.Redo" />
                 <Separator />
-                <MenuItem Header="Cut" />
-                <MenuItem Header="Copy" />
-                <MenuItem Header="Paste" />
-                <MenuItem Header="Clear" />
+                <MenuItem Header="Cut" Command="ApplicationCommands.Cut" />
+                <MenuItem Header="Copy" Command="ApplicationCommands.Copy" />
+                <MenuItem Header="Paste" Command="ApplicationCommands.Paste" />
                 <Separator/>
                 <MenuItem Header="Settings" />
             </MenuItem>
             <MenuItem Header="Help">
-                <MenuItem Header="About" x:Name="menuAbout" Click="menuAbout_Click" />
+                <MenuItem Header="About" Command="{Binding AboutClickCommand}" />
             </MenuItem>
         </Menu>
         <DataGrid Grid.Row="1" Grid.Column="0"  AutoGenerateColumns="False" ItemsSource="{Binding Games}" CanUserAddRows="False" CanUserDeleteRows="False">

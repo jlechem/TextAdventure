@@ -68,3 +68,4 @@ TextAdventureBuilder/obj/Debug/TextAdventureBuilder.Form1.resources
 TextAdventureBuilder/obj/Debug/TextAdventureBuilder.Dialogs.AboutBox.resources
 TextAdventureBuilder/obj/Debug/TextAdventureBuilder.MdiControls.GameForm.resources
 TextAdventureBuilder/bin/Debug/TextAdventureBuilder.exe.config
+*.CopyComplete
