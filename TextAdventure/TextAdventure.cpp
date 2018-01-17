@@ -417,7 +417,7 @@ int main(int argc, const char** argv )
 		else
 		{
 			filename = argv[1];
-		}
+		}	
 
 		// load our data
 		cout << "Loading data" << endl << "Loading XML...";
