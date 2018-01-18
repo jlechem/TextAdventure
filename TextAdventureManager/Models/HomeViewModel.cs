@@ -12,9 +12,28 @@ namespace TextAdventureManager.Models
 {
     internal class HomeViewModel: ViewModelBase
     {
+        #region Fields
+
+        private GameViewModel _gameViewModel;
+
+        private List<GameViewModel> _games;
+
+        #endregion
+
         #region Properties
 
-        public GameViewModel CurrentGame { get; set; }
+        public GameViewModel CurrentGame
+        {
+            get { return _gameViewModel; }
+            set
+            {
+                if( value != _gameViewModel)
+                {
+                    _gameViewModel = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
 
         public List<GameViewModel> Games { get; }
 

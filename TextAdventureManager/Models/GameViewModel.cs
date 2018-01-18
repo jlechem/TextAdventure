@@ -12,31 +12,103 @@ namespace TextAdventureManager.Models
     [Serializable]
     internal class GameViewModel: ViewModelBase
     {
+        #region Fields
+
+        private long _id;
+
+        private string _name;
+
+        private string _description;
+
+        private string _configFile;
+
+        private bool _isEnabled;
+
+        #endregion
+
         /// <summary>
         /// Gets or sets the Id.
         /// </summary>
-        public long Id { get; set; }
+        public long Id
+        {
+            get { return _id; }
+            set
+            {
+                if (value != _id)
+                {
+                    _id = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
 
         /// <summary>
         /// Gets or sets the Name.
         /// </summary>
-        public string Name { get; set; }
+        public string Name
+        {
+            get { return _name; }
+            set
+            {
+                if (value != _name)
+                {
+                    _name = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
 
         /// <summary>
         /// Gets or sets the Description.
         /// </summary>
-        public string Description { get; set; }
+        public string Description
+        {
+            get { return _description; }
+            set
+            {
+                if (value != _description)
+                {
+                    _description = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
 
         /// <summary>
         /// Gets or sets Enabled.
         /// </summary>
-        public bool Enabled { get; set; }
+        public bool Enabled
+        {
+            get { return _isEnabled; }
+            set
+            {
+                if (value != _isEnabled)
+                {
+                    _isEnabled = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
         
         /// <summary>
         /// Gets or sets the Configuration File.
         /// </summary>
-        public string ConfigFile { get; set; }
-        
+        public string ConfigFile
+        {
+            get { return _configFile; }
+            set
+            {
+                if (value != _configFile)
+                {
+                    _configFile = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
         public bool IsValidGame
         {
             get
@@ -60,7 +132,6 @@ namespace TextAdventureManager.Models
         {
             get { return new CommandHandler(() => LoadConfigClick(), CanExecute); }
         }
-
 
         private void SaveGameCommand()
         {
