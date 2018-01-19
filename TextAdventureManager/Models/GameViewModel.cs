@@ -26,6 +26,8 @@ namespace TextAdventureManager.Models
 
         #endregion
 
+        #region Properties
+
         /// <summary>
         /// Gets or sets the Id.
         /// </summary>
@@ -118,6 +120,8 @@ namespace TextAdventureManager.Models
                         ConfigFile.Trim().Length > 0;
             }
         }
+
+        #endregion
 
         /// <summary>
         /// 

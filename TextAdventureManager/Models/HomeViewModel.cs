@@ -16,8 +16,6 @@ namespace TextAdventureManager.Models
 
         private GameViewModel _gameViewModel;
 
-        private List<GameViewModel> _games;
-
         #endregion
 
         #region Properties
