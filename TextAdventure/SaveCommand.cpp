@@ -50,15 +50,18 @@ void SaveCommand::process()
 	// open file for output in binary truncating any existing data
 	ofstream file(filename, ios::out | /*ios::binary | */ ios::trunc);
 
-	// the room id the player is in, followed by their score
-	file << _player->getCurrentRoom()->getId() << " " << _player->getScore() << " ";
+	if (file.is_open()) 
+	{
+		// the room id the player is in, followed by their score
+		file << _player->getCurrentRoom()->getId() << " " << _player->getScore() << " ";
 
-	// then the players items
-	saveItems(_player->getItems(), file);
+		// then the players items
+		saveItems(_player->getItems(), file);
 
-	saveRooms(file);
+		saveRooms(file);
 
-	file.close();
+		file.close();
+	}
 
 	std::cout << "Saved" << endl;
 
@@ -88,13 +91,30 @@ void SaveCommand::saveItems(vector<unique_ptr<Item>>& items, ofstream& file)
 		{
 			file << ": ";
 
-	//		saveItems((*it)->getItems(),file);
+			//auto subItems = (*it)->getItems();
+			//saveItems(subItems,file);
+
+			file << "| ";
 
 		}
 	}
+
+	file << endl;
+
 }
 
 void SaveCommand::saveRooms(ofstream& file)
 {
-	vector<unique_ptr<Item>>::iterator it;
+	vector<Room*>::iterator it;
+
+	for (it == Rooms::getInstance().getRooms().begin(); it != Rooms::getInstance().getRooms().end(); ++it)
+	{
+		file << (*it)->getId() << " ";
+
+		saveItems((*it)->getItems(), file);
+
+	}
+
+	file << endl;
+
 }
