@@ -38,6 +38,25 @@ WieldCommand::~WieldCommand()
 
 void WieldCommand::process()
 {
-	cout << endl << "WIELD" << endl;
+	if (_parser->getNoun().empty())
+	{
+		_commandResult = "Wield what?";
+	}
+	else
+	{
+		// find the item in our inventory to wield
+		auto item = _player->findItem(_parser->getNoun());
+
+		if (item)
+		{
+			// check if we can wield this item
+
+			// always put it back
+			_player->addItem(std::move(item));
+		}
+
+	}
+
+	cout << endl << _commandResult << endl;
 
 }

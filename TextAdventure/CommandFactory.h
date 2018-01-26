@@ -23,6 +23,7 @@
 #include "HelpCommand.h"
 #include "InvalidCommand.h"
 #include "InventoryCommand.h"
+#include "KillCommand.h"
 #include "LoadCommand.h"
 #include "LookCommand.h"
 #include "MoveCommand.h"

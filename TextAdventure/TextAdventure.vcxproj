@@ -165,6 +165,7 @@
     <ClInclude Include="ItemType.h" />
     <ClInclude Include="JumpCommand.h" />
     <ClInclude Include="Key.h" />
+    <ClInclude Include="KillCommand.h" />
     <ClInclude Include="LoadCommand.h" />
     <ClInclude Include="LookCommand.h" />
     <ClInclude Include="Map.h" />
@@ -220,6 +221,7 @@
     <ClCompile Include="ItemInterface.cpp" />
     <ClCompile Include="JumpCommand.cpp" />
     <ClCompile Include="Key.cpp" />
+    <ClCompile Include="KillCommand.cpp" />
     <ClCompile Include="LoadCommand.cpp" />
     <ClCompile Include="LookCommand.cpp" />
     <ClCompile Include="Map.cpp" />

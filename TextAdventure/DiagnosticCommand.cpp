@@ -14,7 +14,7 @@
 #include "DiagnosticCommand.h"
 
 DiagnosticCommand::DiagnosticCommand()
-	
+	: CommandInterface()
 {
 }
 

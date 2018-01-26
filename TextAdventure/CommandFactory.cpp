@@ -65,6 +65,10 @@ unique_ptr<CommandInterface> CommandFactory::getCommand(string command, Player* 
 		{
 			commandPointer = make_unique<InventoryCommand>(command, player, parser);
 		}
+		else if (Utilities::isKillCommand(initCommand))
+		{
+			commandPointer = make_unique<KillCommand>(command, player, parser);
+		}
 		else if (Utilities::isLoadCommand(command))
 		{
 			commandPointer = make_unique<LoadCommand>(command, player, parser);
