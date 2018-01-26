@@ -6,62 +6,52 @@
         xmlns:local="clr-namespace:TextAdventureManager"
         xmlns:Models="clr-namespace:TextAdventureManager.Models" x:Class="TextAdventureManager.MainWindow"
         mc:Ignorable="d"
-        Title="Text Adventure Game Manager" MinHeight="600" MinWidth="800" Height="600" Width="800" Icon="text.jpg"  >
+        Title="Text Adventure Game Manager" MinHeight="600" MinWidth="800" Height="600" Width="800" Icon="text.jpg" FontFamily="Comic Sans MS" >
     <Window.DataContext>
         <Models:HomeViewModel/>
     </Window.DataContext>
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="auto" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="auto" />
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="5" />
-            <ColumnDefinition Width="*" />
-        </Grid.ColumnDefinitions>
-        <Menu Grid.Row="0" Grid.ColumnSpan="3">
-            <MenuItem Header="File">
-                <MenuItem Header="New Game" Command="ApplicationCommands.New" />
-                <Separator />
-                <MenuItem Header="Exit" Command="{Binding ExitClickCommand}" />
-            </MenuItem>
-            <MenuItem Header="Edit">
-                <MenuItem Header="Undo" Command="ApplicationCommands.Undo" />
-                <MenuItem Header="Redo" Command="ApplicationCommands.Redo" />
-                <Separator />
-                <MenuItem Header="Cut" Command="ApplicationCommands.Cut" />
-                <MenuItem Header="Copy" Command="ApplicationCommands.Copy" />
-                <MenuItem Header="Paste" Command="ApplicationCommands.Paste" />
-                <Separator/>
-                <MenuItem Header="Settings" />
-            </MenuItem>
-            <MenuItem Header="Help">
-                <MenuItem Header="About" Command="{Binding AboutClickCommand}" />
-            </MenuItem>
-        </Menu>
-        <DataGrid Grid.Row="1" Grid.Column="0"  AutoGenerateColumns="False" ItemsSource="{Binding Games}" CanUserAddRows="False" CanUserDeleteRows="False">
-            <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding Id}" Visibility="Hidden" />
-                <DataGridTextColumn Header="Name" Width="315" Binding="{Binding Name}" />
-                <DataGridTemplateColumn>
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <Button Content="Run Game" Click="Button_Click" />
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
-            </DataGrid.Columns>
-        </DataGrid>
-        <GridSplitter Grid.Row="1" Grid.Column="1" BorderBrush="Black" Background="Beige"  HorizontalAlignment="Stretch" 
-              VerticalAlignment="Stretch" ShowsPreview="true"  ResizeDirection="Columns"
-              ResizeBehavior="PreviousAndNext" />
-        <local:GameDetails x:Name="ucCurrentGame" Grid.Row="1" Grid.Column="2" />
-        <StatusBar Grid.Row="2" Grid.ColumnSpan="3">
-            <StatusBarItem>
-                <TextBlock Text="Games" />
-            </StatusBarItem>
-        </StatusBar>
+        <DockPanel>
+            <Menu DockPanel.Dock="Top">
+                <MenuItem Header="File">
+                    <MenuItem Header="New Game" Command="{Binding NewClickCommand}" />
+                    <Separator />
+                    <MenuItem Header="Exit" Command="{Binding ExitClickCommand}" />
+                </MenuItem>
+                <MenuItem Header="Edit">
+                    <MenuItem Header="Undo" Command="ApplicationCommands.Undo" />
+                    <MenuItem Header="Redo" Command="ApplicationCommands.Redo" />
+                    <Separator />
+                    <MenuItem Header="Cut" Command="ApplicationCommands.Cut" />
+                    <MenuItem Header="Copy" Command="ApplicationCommands.Copy" />
+                    <MenuItem Header="Paste" Command="ApplicationCommands.Paste" />
+                    <Separator/>
+                    <MenuItem Header="Settings" />
+                </MenuItem>
+                <MenuItem Header="Help">
+                    <MenuItem Header="About" Command="{Binding AboutClickCommand}" />
+                </MenuItem>
+            </Menu>
+            
+            <StatusBar DockPanel.Dock="Bottom">
+                <StatusBarItem>
+                    <TextBlock Text="Games" />
+                </StatusBarItem>
+            </StatusBar>
+
+            <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding Games}" CanUserAddRows="False" CanUserDeleteRows="False">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Binding="{Binding Id}" Visibility="Hidden" />
+                    <DataGridTextColumn Header="Name" Width="700" Binding="{Binding Name}" />
+                    <DataGridTemplateColumn>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="Run Game" Click="Button_Click" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+        </DockPanel>
     </Grid>
 </Window>

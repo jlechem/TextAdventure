@@ -69,3 +69,7 @@ TextAdventureBuilder/obj/Debug/TextAdventureBuilder.Dialogs.AboutBox.resources
 TextAdventureBuilder/obj/Debug/TextAdventureBuilder.MdiControls.GameForm.resources
 TextAdventureBuilder/bin/Debug/TextAdventureBuilder.exe.config
 *.CopyComplete
+TextAdventureManager/obj/Debug/Windows/GameDetails.g.cs
+TextAdventureManager/obj/Debug/Windows/GameDetails.g.i.cs
+TextAdventureManager/obj/Debug/Windows/GameWindow.g.i.cs
+TextAdventureManager/obj/Debug/Windows/GameWindow.g.cs

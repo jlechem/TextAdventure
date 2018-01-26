@@ -48,7 +48,6 @@ namespace TextAdventureManager
         private void SetCurrentGame()
         {
             // TODO: DataBinding should be handled in the XAML
-            ucCurrentGame.DataContext = _homeViewModel.CurrentGame;
         }
 
         private void StartGame()
@@ -56,7 +55,7 @@ namespace TextAdventureManager
             SetCurrentGame();
 
             Process process = new Process();
-            process.StartInfo.FileName = "..\\..\\..\\Debug\\TextAdventure.exe";
+            process.StartInfo.FileName = "TextAdventure.exe";
             process.StartInfo.Arguments = _homeViewModel.CurrentGame.ConfigFile;
             process.ErrorDataReceived += Process_ErrorDataReceived;
             process.Exited += Process_Exited;
@@ -70,8 +69,6 @@ namespace TextAdventureManager
         private void Process_ErrorDataReceived(object sender, DataReceivedEventArgs e)
         {
         }
-        
-
 
     }
 }

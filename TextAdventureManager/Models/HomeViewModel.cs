@@ -1,9 +1,4 @@
-﻿using Microsoft.Win32;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Input;
 using TextAdventureManager.Windows;
@@ -61,6 +56,14 @@ namespace TextAdventureManager.Models
             }
         }
 
+        public ICommand NewClickCommand
+        {
+            get
+            {
+                return new CommandHandler(() => NewClick(), CanExecute);
+            }
+        }
+
         private void AboutClick()
         {
             new AboutWindow().ShowDialog();
@@ -73,6 +76,11 @@ namespace TextAdventureManager.Models
             {
                 App.Current.Shutdown(0);
             }
+        }
+
+        private void NewClick()
+        {
+            new GameWindow().ShowDialog();
         }
     }
 }
