@@ -24,6 +24,8 @@ public:
 
 	static string convertDirection(Directions);
 
+	static bool isDiagnosticCommand(string);
+
 	static bool isFunCommand(string);
 
 	static bool isMoveCommand(string);

@@ -1,10 +1,10 @@
 /*
-	File:						Player.h
+	File:			Player.h
 	Created By:		Justin LeCheminant
 	Created On:		12-18-2017
-	Last Modified:	1-9-2018
+	Last Modified:	1-26-2018
 
-	Notes:					A class that represents the player in the game
+	Notes:			A class that represents the player in the game
 
 */
 

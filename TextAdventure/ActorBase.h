@@ -1,11 +1,11 @@
 /*
-	ActorBase.h
+	File:				ActorBase.h
 	Created By:			Justin LeCheminant
 	Created On:			12-21-2017
-	Last Modified:		1-9-2018
+	Last Modified:		1-26-2018
 	Last Modified By:	Justin LeCheminant
 
-	Notes: This is a base class for actors in the game. An actor can be a player, enemy, or NPC (Non Playable Character).
+	Notes:				This is a base class for actors in the game. An actor can be a player, enemy, or NPC (Non Playable Character).
 
 */
 
@@ -55,6 +55,7 @@ public:
 
 	unsigned int getHitPoints();
 	void setHitPoints(unsigned int);
+	unsigned long getCurrentHitPoints();
 
 	unsigned int getLevel();
 	void setLevel(unsigned int);
@@ -67,6 +68,7 @@ protected:
 	unsigned int _id;
 	unsigned long _numberOfMoves;
 	unsigned int _hitpoints;
+	unsigned int _currentHitpoints;
 
 	Room* _currentRoom;
 

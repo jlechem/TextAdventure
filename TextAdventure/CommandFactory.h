@@ -15,6 +15,7 @@
 
 #include "CloseCommand.h"
 #include "CommandInterface.h"
+#include "DiagnosticCommand.h"
 #include "DropCommand.h"
 #include "ExamineCommand.h"
 #include "ExitCommand.h"

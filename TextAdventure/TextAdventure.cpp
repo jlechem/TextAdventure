@@ -7,7 +7,7 @@
 
 	Notes:				This is the main game running part.
 
-	*/
+*/
 
 #pragma once
 

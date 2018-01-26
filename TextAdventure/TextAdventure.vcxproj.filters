@@ -204,6 +204,9 @@
     <ClInclude Include="CloseCommand.h">
       <Filter>Commands\Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="DiagnosticCommand.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -340,6 +343,9 @@
     </ClCompile>
     <ClCompile Include="CloseCommand.cpp">
       <Filter>Commands\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DiagnosticCommand.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -49,3 +49,5 @@ put
 throw
 inventory
 i
+diagnostic
+diag

@@ -305,3 +305,8 @@ string Utilities::convertDirection(Directions direction)
 	return result;
 
 }
+
+bool Utilities::isDiagnosticCommand(string command)
+{
+	return command == "diag" || command == "diagnostic";
+}

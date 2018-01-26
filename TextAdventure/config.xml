@@ -6,10 +6,10 @@
     <DisplayIntroduction>true</DisplayIntroduction>
     <Introduction>Test intro.</Introduction>
   </GameData>
-  <Player>
-    <Name>Justin</Name>
-    <SaveFile>save.dat</SaveFile>
-  </Player>
+  <GameWin>
+    <WinType>Score</WinType>
+    <WinValue>10000</WinValue>
+  </GameWin>
   <Items>
     <Item>
       <Id>1</Id>

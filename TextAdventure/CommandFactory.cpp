@@ -41,6 +41,10 @@ unique_ptr<CommandInterface> CommandFactory::getCommand(string command, Player* 
 		{
 			commandPointer = make_unique<CloseCommand>(command, player, parser);
 		}
+		else if (Utilities::isDiagnosticCommand(initCommand))
+		{
+			commandPointer = make_unique<DiagnosticCommand>(command, player, parser);
+		}
 		else if (Utilities::isDropCommand(initCommand))
 		{
 			commandPointer = make_unique<DropCommand>(command, player, parser);

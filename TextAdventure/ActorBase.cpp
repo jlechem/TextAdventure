@@ -21,16 +21,13 @@ ActorBase::ActorBase()
 	_description = "";
 	_name = "";
 	_id = 0;
+	_hitpoints = 10;
+	_currentHitpoints = 10;
 }
 
 ActorBase::ActorBase(Room* initialRoom)
+	: ActorBase()
 {
-	_level = 0;
-	_score = 0;
-	_numberOfMoves = 0;
-	_description = "";
-	_name = "";
-	_id = 0;
 	_currentRoom = initialRoom;
 }
 
@@ -88,24 +85,6 @@ vector<unique_ptr<Item>>* ActorBase::getInventory()
 {
 	return &_items;
 }
-
-//bool ActorBase::addItem(string name)
-//{
-//	bool result = false;
-//
-//	// check if our room has an item or teasure with this name
-//	auto item = _currentRoom->findItem(name);
-//
-//	if (item != nullptr && item->getCanTake() )
-//	{
-//		_score += item->getScore();
-//		_items.push_back(std::move(item));
-//		result = true;
-//	}
-//
-//	return result;
-//
-//}
 
 bool ActorBase::dropItem(string name)
 {
@@ -183,6 +162,11 @@ unsigned int ActorBase::getHitPoints()
 void ActorBase::setHitPoints(unsigned int hp)
 {
 	_hitpoints = hp;
+}
+
+unsigned long ActorBase::getCurrentHitPoints()
+{
+	return _currentHitpoints;
 }
 
 unsigned int ActorBase::getLevel()
