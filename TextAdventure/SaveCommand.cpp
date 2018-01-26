@@ -2,7 +2,7 @@
 	File:			SaveCommand.cpp
 	Created By:		Justin LeCheminant
 	Created On:		12-21-2017
-	Last Modified:	1-9-2018
+	Last Modified:	1-26-2018
 
 	Notes:			Implemenation of the SaveCommand class.
 
@@ -38,66 +38,63 @@ SaveCommand::~SaveCommand()
 
 void SaveCommand::process()
 {
-	string filename = "SAVE\\save.dat";
+	string filename = "";
+
+	cout << "Enter filename (default save.dat)>? ";
+	getline(cin, filename);
+
+	Utilities::trim(filename);
+
+	filename = filename.empty() ? filename = "SAVE\\save.dat" :  "SAVE\\" + filename;
 
 	// open file for output in binary truncating any existing data
-	ofstream file(filename, ios::out | ios::binary | ios::trunc);
-
-	// now write out all our items
-	vector<unique_ptr<Item>>::iterator it;
+	ofstream file(filename, ios::out | /*ios::binary | */ ios::trunc);
 
 	// the room id the player is in, followed by their score
 	file << _player->getCurrentRoom()->getId() << " " << _player->getScore() << " ";
 
-	for (it = _player->getInventory()->begin(); it != _player->getInventory()->end(); ++it)
-	{
-		file << (*it)->getId();
+	// then the players items
+	saveItems(_player->getItems(), file);
 
-		if (it != _player->getInventory()->end() - 1)
-		{
-			file << " ";
-		}
-		else
-		{
-			file << endl;
-		}
-	}
+	saveRooms(file);
 
-	// write out our room and item data
-
-	// loop through the rooms
-	for (auto i = 0; i < Rooms::getInstance().getRooms().size(); i++)
-	{
-		// get any items we might have in this room
-		auto items = Rooms::getInstance().getRooms()[i]->getAllItems();
-	
-		// write rooms that only have items
-		if (items && items->size() > 0)
-		{
-			// first thing is the roomid
-			file << Rooms::getInstance().getRooms()[i]->getId() << " ";
-
-			vector<unique_ptr<Item>>::iterator it;
-
-			// loop through any items we found
-			for (it = items->begin(); it != items->end(); ++it)
-			{
-				file << (*it)->getId();
-
-				if (it != items->end() - 1)
-				{
-					file << " ";
-				}
-				else
-				{
-					file << endl;
-				}
-			}
-		}
-	}
-	
 	file.close();
 
 	std::cout << "Saved" << endl;
 
+}
+
+void SaveCommand::saveItems(vector<unique_ptr<Item>>& items, ofstream& file)
+{
+	vector<unique_ptr<Item>>::iterator it;
+
+	for (it = items.begin(); it != items.end(); ++it)
+	{
+		string openStatus = "";
+
+		if ((*it)->getCanOpen())
+		{
+			openStatus = (*it)->getIsOpen() ? "O" : "C";
+		}
+		else
+		{
+			openStatus = "X";
+		}
+
+		file << (*it)->getId() << " " << openStatus << " ";
+
+		// now print any sub items
+		if ((*it)->getSubItemCount() > 0)
+		{
+			file << ": ";
+
+	//		saveItems((*it)->getItems(),file);
+
+		}
+	}
+}
+
+void SaveCommand::saveRooms(ofstream& file)
+{
+	vector<unique_ptr<Item>>::iterator it;
 }

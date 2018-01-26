@@ -2,7 +2,7 @@
 	StdAfx.h
 	Created By:			Justin LeCheminant
 	Created On:			12-18-2017
-	Last Modified:		12-19-2017
+	Last Modified:		1-26-2018
 	Last Modified By:	Justin LeCheminant
 
 	Include file for standard system include files,
@@ -63,3 +63,7 @@ using namespace std;
 #define UP_SHORT "u"
 #define DOWN "down"
 #define DOWN_SHORT "d"
+
+#define SPACE " "
+#define TAB "\t"
+#define NEWLINE "\n"

@@ -1,10 +1,10 @@
 /*
-	Item.h
+	File:			Item.h
 	Created By:		Justin LeCheminant
 	Created On:		12-18-2017
-	Last Modified:	12-24-2017
+	Last Modified:	1-26-2018
 
-	Notes: A class that represents an item in the game
+	Notes:			A class that represents an item in the game
 
 */
 
