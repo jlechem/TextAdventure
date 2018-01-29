@@ -43,6 +43,12 @@ void KillCommand::process()
 	}
 	else
 	{
+		auto opponent = nullptr;
+
+		auto weapon = nullptr;
+
+
+
 
 	}
 
