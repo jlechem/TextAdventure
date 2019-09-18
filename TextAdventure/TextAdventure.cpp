@@ -295,7 +295,7 @@ void LoadItems(vector<unique_ptr<Item>> &items, rapidxml::xml_document<>* docume
 	}
 }
 
-bool IsGaveOver(Player* player)
+bool IsGameOver(Player* player)
 {
 	return player->getIsGameOver();
 }
@@ -456,7 +456,7 @@ int main(int argc, const char** argv )
 		ProcessCommand(command);
 		
 		// run the game loop
-		while (!IsGaveOver(player))
+		while (!IsGameOver(player))
 		{
 			EnterCommand(command, player);
 			ProcessCommand(command);
