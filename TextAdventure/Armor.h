@@ -12,12 +12,12 @@
 
 #include "stdafx.h"
 
-#include "ObjectBase.h""
+#include "Item.h""
 #include "Room.h"
 #include "Item.h"
 
 class Armor
-	: public ObjectBase
+	: public Item
 {
 public:
 	Armor();

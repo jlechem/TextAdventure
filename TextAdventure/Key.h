@@ -11,10 +11,10 @@
 
 #pragma once
 
-#include "ObjectBase.h"
+#include "Item.h"
 
 class Key :
-	public ObjectBase
+	public Item
 {
 public:
 	Key();

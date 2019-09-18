@@ -19,7 +19,9 @@ class Item: public ObjectBase
 {
 public:
 	Item();
+	Item(int);
 	Item(int, int, bool,bool);
+	Item(string, string, int, int, ObjectType);
 	~Item();
 
 	ItemType getItemType();
@@ -52,12 +54,13 @@ public:
 
 	bool getIsFull();
 
-private:	
+protected:
 	bool _canOpen;
 	bool _isOpen;
 	bool _canAddItems;
 	bool _canTake;
 
+private:	
 	int _subItemCapacity;
 
 	vector<string> _alternateNames;

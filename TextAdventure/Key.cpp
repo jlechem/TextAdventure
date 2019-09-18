@@ -14,21 +14,27 @@
 #include "Key.h"
 
 Key::Key()
-	: ObjectBase()
 {
 }
 
 Key::Key(int id)
-	: ObjectBase()
+	: Item()
 {
 	_id = id;
+	_canTake = true;
+	_canOpen = false;
+	_canAddItems = false;
+
 }
 
 Key::Key(int id, int itemId) 
-	: ObjectBase()
+	: Item()
 {
 	_id = id;
 	_itemToUnlockId = itemId;
+	_canTake = true;
+	_canOpen = false;
+	_canAddItems = false;
 }
 
 Key::~Key()

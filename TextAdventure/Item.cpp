@@ -22,6 +22,29 @@ Item::Item():
 	_type = ObjectType::ItemObject;
 }
 
+Item::Item(string name, string description, int id, int score, ObjectType type)
+{
+	_name = name;
+	_description = description;
+	_id = id;
+	_score = score;
+	_type = type;
+	_isOpen = false;
+	_canOpen = false;
+	_canTake = true;
+	_itemType = ItemType::BaseItem;
+}
+
+Item::Item(int id)
+{
+	_id = id;
+	_isOpen = false;
+	_canOpen = false;
+	_canTake = true;
+	_itemType = ItemType::BaseItem;
+	_type = ObjectType::ItemObject;
+}
+
 /*
 	Inits a new instance of the Item class. We're assuming if you give something a capacity it can be opened. I guess you could set
 	this to zero and false to be a fucking dick. So go ahead and you be you.

@@ -15,19 +15,19 @@
 #include "Armor.h"
 
 Armor::Armor()
-	: ObjectBase()
+	: Item()
 {
 	_type = ObjectType::ArmorObject;
 }
 
 Armor::Armor(int id)
-	: ObjectBase( id)
+	: Item(id)
 {
 	_type = ObjectType::ArmorObject;
 }
 
 Armor::Armor(string name, string description, int id, int score, ObjectType type)
-	: ObjectBase(name, description, id, score, type)
+	: Item(name, description, id, score, type)
 {
 }
 
