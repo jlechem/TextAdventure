@@ -2,7 +2,7 @@
 	ObjectType.h
 	Created By:		Justin LeCheminant
 	Created On:		12-18-2017
-	Last Modified:	01-02-2018
+	Last Modified:	9-18-2019
 	Notes: An enumeration for the various types of objects in the game, Item, Room, Treasure, Player, etc
 */
 
