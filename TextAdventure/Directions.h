@@ -10,15 +10,25 @@
 
 enum Directions
 {
-	North,
-	NorthEast,
-	East,
-	SouthEast,
-	South,
-	SouthWest,
-	West,
-	NorthWest,
-	Up,
-	Down,
-	Invalid
+	North = 0,
+
+	NorthEast = 1,
+
+	East = 2,
+
+	SouthEast = 3,
+
+	South = 4,
+
+	SouthWest = 5,
+
+	West = 6,
+
+	NorthWest = 7,
+
+	Up = 8,
+
+	Down = 9,
+
+	Invalid = 10
 };

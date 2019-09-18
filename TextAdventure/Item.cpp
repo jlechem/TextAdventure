@@ -168,3 +168,8 @@ bool Item::getIsFull()
 {
 	return _subItems.size() <= _subItemCapacity;
 }
+
+ItemSizes Item::getItemSize() 
+{
+	return _itemSize;
+}

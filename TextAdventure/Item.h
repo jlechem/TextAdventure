@@ -12,6 +12,7 @@
 
 #include "stdafx.h"
 
+#include "ItemSizes.h"
 #include "ItemType.h"
 #include "ObjectBase.h"
 
@@ -54,11 +55,14 @@ public:
 
 	bool getIsFull();
 
+	ItemSizes getItemSize();
+
 protected:
 	bool _canOpen;
 	bool _isOpen;
 	bool _canAddItems;
 	bool _canTake;
+	ItemSizes _itemSize;
 
 private:	
 	int _subItemCapacity;

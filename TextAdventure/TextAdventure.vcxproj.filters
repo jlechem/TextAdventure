@@ -195,9 +195,6 @@
     <ClInclude Include="InventoryCommand.h">
       <Filter>Commands\Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="SizeType.h">
-      <Filter>Enums</Filter>
-    </ClInclude>
     <ClInclude Include="ItemInterface.h">
       <Filter>Interfaces</Filter>
     </ClInclude>
@@ -209,6 +206,9 @@
     </ClInclude>
     <ClInclude Include="KillCommand.h">
       <Filter>Commands\Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ItemSizes.h">
+      <Filter>Enums</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -10,14 +10,24 @@
 
 enum  ActionType
 {
-	Action,
-	InvalidAction,
-	Movement,
-	Take,
-	Drop,
-	Save,
-	Look,
-	Inventory,
-	Quit,
-	Examine
+	Action = 0,
+
+	InvalidAction = 1,
+
+	Movement = 2,
+
+	Take = 3,
+
+	Drop = 4,
+
+	Save = 5,
+
+	Look = 6,
+
+	Inventory = 7,
+	
+	Quit = 8,
+	
+	Examine = 9
+
 };

@@ -15,24 +15,24 @@
 /// </summary>
 enum ObjectType
 {
-	PlayerObject,
+	PlayerObject = 0,
 	
-	NPC,
+	NPC = 1,
 
-	Enemy,
+	Enemy = 2,
 
-	ItemObject,
+	ItemObject = 3,
 
-	TreasureObject,
+	TreasureObject = 4,
 
-	RoomObject,
+	RoomObject = 5,
 
-	KeyObject,
+	KeyObject = 6,
 
-	DoorObject,
+	DoorObject = 7,
 
-	WeaponObject,
+	WeaponObject = 8,
 
-	ArmorObject
+	ArmorObject = 9
 
 };

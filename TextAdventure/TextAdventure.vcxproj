@@ -162,6 +162,7 @@
     <ClInclude Include="InventoryCommand.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="ItemInterface.h" />
+    <ClInclude Include="ItemSizes.h" />
     <ClInclude Include="ItemType.h" />
     <ClInclude Include="JumpCommand.h" />
     <ClInclude Include="Key.h" />
@@ -185,7 +186,6 @@
     <ClInclude Include="Room.h" />
     <ClInclude Include="Rooms.h" />
     <ClInclude Include="SaveCommand.h" />
-    <ClInclude Include="SizeType.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="TakeCommand.h" />
     <ClInclude Include="TalkCommand.h" />

@@ -10,9 +10,13 @@
 
 enum ItemType
 {
-	Container,
-	BaseItem,
-	Treasure,
-	Weapons,
-	Armors
+	Container = 0,
+
+	BaseItem = 1,
+
+	Treasure = 2,
+
+	Weapons = 3,
+
+	Armors = 4
 };

@@ -27,7 +27,6 @@ unique_ptr<CommandInterface> CommandFactory::getCommand(string command, Player* 
 	unique_ptr<CommandInterface> commandPointer = nullptr;
 
 	// parse the command
-	
 	Parser* parser = new Parser();
 	parser->parse(command);
 
