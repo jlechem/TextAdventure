@@ -210,6 +210,15 @@
     <ClInclude Include="ItemSizes.h">
       <Filter>Enums</Filter>
     </ClInclude>
+    <ClInclude Include="WinTypes.h">
+      <Filter>Enums</Filter>
+    </ClInclude>
+    <ClInclude Include="Actor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Boss.h">
+      <Filter>Actors\Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -352,6 +361,12 @@
     </ClCompile>
     <ClCompile Include="KillCommand.cpp">
       <Filter>Commands\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Actor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Boss.cpp">
+      <Filter>Actors\Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

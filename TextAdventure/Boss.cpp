@@ -1,33 +1,23 @@
 /*
-	NPC.cpp
+	Boss.cpp
 	Created By:			Justin LeCheminant
 	Created On:			12-21-2017
 	Last Modified:		12-21-2017
 	Last Modified By:	Justin LeCheminant
 
-	Notes: Implementation of the NPC class.
+	Notes: Implementation of the Boss class.
 
 */
 
 #include "stdafx.h"
-#include "NPC.h"
+#include "Boss.h"
 
 
-NPC::NPC()
+Boss::Boss()
 {
 }
 
 
-NPC::~NPC()
-{
-}
-
-
-Npc::Npc()
-{
-}
-
-
-Npc::~Npc()
+Boss::~Boss()
 {
 }

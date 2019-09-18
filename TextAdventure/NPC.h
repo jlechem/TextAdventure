@@ -5,7 +5,7 @@
 	Last Modified:		12-21-2017
 	Last Modified By:	Justin LeCheminant
 
-	Notes: A class that represents a on Playable Character (NPC).
+	Notes: A class that represents a Non Playable Character (NPC).
 
 */
 
@@ -20,3 +20,10 @@ public:
 	NPC();
 	~NPC();
 };
+
+	class Npc
+	{
+	public:
+		Npc();
+		~Npc();
+	};

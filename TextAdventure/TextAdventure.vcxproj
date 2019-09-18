@@ -141,10 +141,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="ActionType.h" />
+    <ClInclude Include="Actor.h" />
     <ClInclude Include="ActorBase.h" />
     <ClInclude Include="Armor.h" />
     <ClInclude Include="Articles.h" />
     <ClInclude Include="Articles2.h" />
+    <ClInclude Include="Boss.h" />
     <ClInclude Include="CloseCommand.h" />
     <ClInclude Include="CommandFactory.h" />
     <ClInclude Include="CommandInterface.h" />
@@ -196,13 +198,16 @@
     <ClInclude Include="Weapon.h" />
     <ClInclude Include="WearCommand.h" />
     <ClInclude Include="WieldCommand.h" />
+    <ClInclude Include="WinTypes.h" />
     <ClInclude Include="WordBase.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Actor.cpp" />
     <ClCompile Include="ActorBase.cpp" />
     <ClCompile Include="Armor.cpp" />
     <ClCompile Include="Articles.cpp" />
     <ClCompile Include="Articles2.cpp" />
+    <ClCompile Include="Boss.cpp" />
     <ClCompile Include="CloseCommand.cpp" />
     <ClCompile Include="CommandFactory.cpp" />
     <ClCompile Include="CommandInterface.cpp" />
