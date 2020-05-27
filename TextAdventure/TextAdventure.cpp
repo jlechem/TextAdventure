@@ -300,25 +300,25 @@ bool IsGameOver(Player* player)
 	return player->getIsGameOver();
 }
 
-void PrintInto(unique_ptr<GameSettings>& settings)
+void PrintInto(GameSettings settings)
 {
-	cout << settings->getTitle() << endl << endl;
+	cout << settings.getTitle() << endl << endl;
 
 	// set the title of the command window
-	if (settings->getShowIntroduction())
+	if (settings.getShowIntroduction())
 	{
-		cout << settings->getIntroduction() << endl << endl;
+		cout << settings.getIntroduction() << endl << endl;
 	}
 }
 
-void PrintEnding(Player* player, unique_ptr<GameSettings>& settings)
+void PrintEnding(Player* player, GameSettings settings)
 {
 	auto items = player->getInventory();
 
 	vector<unique_ptr<Item>>::iterator it;
 
 	// print out the score, etc
-	cout << endl << endl << "Thanks for playing " << settings->getTitle() << endl << endl
+	cout << endl << endl << "Thanks for playing " << settings.getTitle() << endl << endl
 		<< "You made a total of: " << player->getMoveCount() << " moves" << endl
 		<< "You have the following items: " << endl;
 	
@@ -331,7 +331,7 @@ void PrintEnding(Player* player, unique_ptr<GameSettings>& settings)
 
 }
 
-void LoadGameData(unique_ptr<GameSettings>& settings, rapidxml::xml_document<>* document)
+void LoadGameData(GameSettings& settings, rapidxml::xml_document<>* document)
 {
 	// get the first config node
 	rapidxml::xml_node<>* rootNode = document->first_node("config");
@@ -343,18 +343,18 @@ void LoadGameData(unique_ptr<GameSettings>& settings, rapidxml::xml_document<>* 
 
 		// move down to the next node, Name (Title)
 		rootNode = rootNode->first_node();
-		settings->setTitle(string(rootNode->value()));
+		settings.setTitle(string(rootNode->value()));
 
 		// move down to the next node, Version
 		rootNode = rootNode->next_sibling();
 
 		// move down to the next node, DisplayIntroduction
 		rootNode = rootNode->next_sibling();
-		settings->setShowIntroduction(rootNode->value() == "y" || rootNode->value() == "yes");
+		settings.setShowIntroduction(rootNode->value() == "y" || rootNode->value() == "yes");
 
 		// move down to the next node, Introduction
 		rootNode = rootNode->next_sibling();
-		settings->setIntroduction(string(rootNode->value()));
+		settings.setIntroduction(string(rootNode->value()));
 	}
 }
 
@@ -402,24 +402,23 @@ int main(int argc, const char** argv )
 	try
 	{
 		// declare some variables we need to use
-		vector<unique_ptr<Item>> items;										// vector of all the items in the game, this gets cleared as we load items into the rooms to start
-		unique_ptr<GameSettings> settings = make_unique<GameSettings>();	// game settings
-		unique_ptr<CommandInterface> command;								// newCommand, used to process input from the user. We don't init this, we get our concrete instance from our factory
-		vector<unique_ptr<Player>> enemies;									// vector of enemiees, this gets cleared as we load them into the rooms to start
-		string xml;															// holds our XML data from our config file
-		string filename;													// XML file to read from
+		vector<unique_ptr<Item>> items;
+
+		GameSettings settings;	
+														
+		string xml;															
+		string filename;													
 
 		// validate we have an XML config file to use
 		if (argc != 2)
 		{
-			throw "No XML configuration file was specified";
+			filename = "config.xml";
 		}
 		else
 		{
 			filename = argv[1];
 		}	
 
-		// load our data
 		cout << "Loading data" << endl << "Loading XML...";
 
 		LoadXML(xml, filename);
@@ -448,11 +447,11 @@ int main(int argc, const char** argv )
 		cout << "Done" << endl << "All game data loaded" << endl << endl;
 
 		// this is our main player object, we use it for running the game
-		Player* player = new Player(Rooms::getInstance().getRooms()[0]);
+		auto player = new Player(Rooms::getInstance().getRooms()[0]);
 
 		PrintInto(settings);
 		
-		command = CommandFactory::getCommand("LOOK", player);
+		auto command = CommandFactory::getCommand("LOOK", player);
 		ProcessCommand(command);
 		
 		// run the game loop

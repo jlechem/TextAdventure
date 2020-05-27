@@ -4,7 +4,7 @@
     <Name>Justins Text Adventure</Name>
     <Version>1.0</Version>
     <DisplayIntroduction>true</DisplayIntroduction>
-    <Introduction>Test intro.</Introduction>
+    <Introduction>Test Introduction</Introduction>
   </GameData>
   <GameWin>
     <WinType>Score</WinType>
