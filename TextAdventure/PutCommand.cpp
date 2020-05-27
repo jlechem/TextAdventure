@@ -104,8 +104,8 @@ void PutCommand::process()
 		}
 		else
 		{
-			bool isPlayerItem = true;
-			bool isPlayerContainer = true;
+			auto isPlayerItem = true;
+			auto isPlayerContainer = true;
 
 			// get the item and container from the player or the room
 			auto itemPointer = _player->findItem(item);
@@ -127,13 +127,10 @@ void PutCommand::process()
 			// we found both items
 			if (itemPointer && containerPointer)
 			{
-				// first check if the container can even take items
 				if (containerPointer->getCanAddItem())
 				{
-					// check that the container is open
 					if (containerPointer->getIsOpen())
 					{
-						// finally put the item in there
 						containerPointer->addItem(std::move(itemPointer));
 						_commandResult = item + ": Placed into - " + container;
 					}
