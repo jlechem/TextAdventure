@@ -56,7 +56,7 @@ bool ItemInterface::openItem(string name)
 	// empty means success
 	bool result = true;
 
-	// first check if we even have this fucking thing
+	// first check if we even have said item
 	auto item = findItem(name);
 
 	if (item)
@@ -100,12 +100,12 @@ bool ItemInterface::closeItem(string name)
 	// empty means success
 	bool result = true;
 
-	// first check if we even have this fucking thing
+	// first check if we even have said item
 	auto item = findItem(name);
 
 	if (item)
 	{
-		// can we open this thing?
+		// can we open this item?
 		if (item->getCanOpen())
 		{
 			// is it already closed
